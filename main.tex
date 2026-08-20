@@ -1,0 +1,357 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\usepackage{lineno}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[super,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\doublespacing
+\linenumbers
+
+% Draft-only macros. Remove before final Nature production submission.
+\newcommand{\result}[1]{\textbf{\textcolor{blue}{[RESULT: #1]}}}
+\newcommand{\methodtodo}[1]{\textbf{\textcolor{purple}{[METHOD: #1]}}}
+\newcommand{\datatodo}[1]{\textbf{\textcolor{teal}{[DATA: #1]}}}
+\newcommand{\figtodo}[1]{%
+  \begin{center}
+  \fbox{\parbox[c][0.18\textheight][c]{0.88\textwidth}{\centering\textbf{#1}\\[6pt]
+  Figure artwork and final numerical values to be inserted.}}
+  \end{center}
+}
+
+\title{\textbf{Molecular structure elucidation by co-evolving hypotheses and evidence}}
+\author{Author names and affiliations to be finalized}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{
+Tandem mass spectrometry can survey thousands of small molecules in complex samples, yet most spectra remain structurally unresolved because the same sparse fragmentation evidence is compatible with many chemically plausible molecules.\cite{daSilva2015,Alseekh2021,MassSpecGym2024} Existing computational approaches have improved molecular retrieval, formula inference, spectrum prediction and de novo generation,\cite{Duhrkop2019,Duhrkop2021,Hoffmann2022,Goldman2023,Xing2023,Stravs2022,Young2024,Bohde2025,Wang2026MetGenX} but generally optimize molecular hypotheses against a fixed representation of spectral evidence. Here we show that this assumption becomes limiting as generators improve: increasingly faithful molecular alternatives become progressively harder to distinguish with static evidence. We introduce ORBIT-MS, which treats structure elucidation as reciprocal falsification between a spectrum-conditioned hypothesis frontier and an auditable fragmentation-evidence frontier. Candidate-specific evidence is represented by atom-traceable collision-induced dissociation trajectories and is separated from chemical plausibility by matched spectrum, no-spectrum and shuffled-spectrum controls. Across leakage-controlled benchmarks, external generators and an independent mouse metabolomics cohort, ORBIT-MS \result{state the principal quantitative gains and external validation}. These results establish adaptive evidence---rather than generation alone---as a central computational object for molecular structure elucidation.
+}
+
+\vspace{1em}
+
+Mass spectrometry is a central technology for discovering and characterizing small molecules in biology, medicine and the environment.\cite{Wang2016GNPS,Alseekh2021,Gentry2024} Modern liquid chromatography--tandem mass spectrometry (LC--MS/MS) can record large numbers of fragmentation spectra from a single sample, but translating those measurements into chemical structures remains a severe bottleneck. Spectral-library matching provides the strongest form of routine evidence when a reference standard has already been measured, yet library coverage captures only a small portion of the chemical diversity encountered in untargeted experiments.\cite{daSilva2015,Wang2016GNPS} Consequently, computational metabolomics has increasingly sought to infer molecular formulae, substructures, classes or complete structures directly from tandem mass spectra.
+
+Several lines of work have substantially advanced this goal. SIRIUS and CSI:FingerID combine fragmentation trees with learned molecular fingerprints for database search,\cite{Duhrkop2015,Duhrkop2019} while CANOPUS extends inference to chemical classes that can remain informative when exact structures cannot be assigned.\cite{Duhrkop2021} COSMIC introduced confidence-aware annotation outside spectral libraries,\cite{Hoffmann2022} and BUDDY uses bottom-up MS/MS interrogation to constrain molecular formulae and control false discoveries.\cite{Xing2023} Neural models such as MIST encode chemical formulae and neutral-loss relationships directly in spectrum transformers,\cite{Goldman2023} whereas DreaMS demonstrates that large collections of unlabelled spectra can support transferable molecular representations.\cite{Bushuiev2026Dreams} In the forward direction, MassFormer and FIORA show that neural networks can predict tandem spectra and learn informative fragmentation patterns from molecular structure.\cite{Young2024,Nowatzky2025}
+
+Complete de novo structure elucidation is more difficult because the mapping from structure to tandem spectrum is many-to-one and only partially observed. MSNovelist reconstructs structures from predicted fingerprints,\cite{Stravs2022} MassSpecGym established leakage-resistant benchmarks for de novo generation and retrieval,\cite{MassSpecGym2024} and DiffMS uses formula-constrained graph diffusion with large-scale structure-only pretraining.\cite{Bohde2025} More recently, structure-informed generation has shown strong performance in experimental metabolomics by using retrieved structural templates to guide molecular generation.\cite{Wang2026MetGenX} These advances make molecular hypotheses substantially more realistic. They also expose a different problem: once incorrect candidates share formulae, scaffolds and most local substructures with the true molecule, generating a plausible structure is no longer the same as obtaining evidence that discriminates it from its closest alternatives.
+
+We therefore asked whether the principal computational object in difficult structure elucidation should be the molecular hypothesis alone. Our central premise is that the evidence required to distinguish molecular hypotheses changes as those hypotheses improve. A peak that separates an implausible decoy from the true molecule may be shared by a later same-formula isomer and become uninformative. Conversely, a weakly abundant fragment may become decisive if it is supported by one candidate-specific, atom-balanced fragmentation trajectory but not by any competing structure. This suggests a reciprocal process: harder hypotheses should expose failures in the current evidence model, and improved evidence should in turn create a stronger training and selection signal for the hypothesis model.
+
+We instantiate this principle in ORBIT-MS. The system contains two scientific frontiers with deliberately different roles. METEOR generates ranked molecular hypotheses conditioned on MS/MS, molecular mass and chemical constraints. pLSE evaluates a spectrum--candidate pair by constructing auditable collision-induced dissociation (CID) evidence, including reaction centres, atom lineage, charge carriers, proton or hydride transfer, bond changes and theoretical fragment masses. ORBIT does not treat a plausible mechanism string or a mass coincidence as evidence authority. Instead, evidence is admitted only at the level supported by the executable chemical trace, evaluated against hard molecular alternatives and promoted through frozen controls. The agentic runtime is therefore not the scientific claim itself; it is the mechanism that makes reciprocal hypothesis--evidence improvement bounded, falsifiable and replayable.
+
+\section*{More faithful molecular hypotheses expose an evidence bottleneck}
+
+We first tested whether increasingly accurate candidate generators necessarily make structure elucidation easier. For each held-out spectrum, we assembled successive candidate frontiers from \result{number and identities of METEOR generations and external candidate sources}. Candidate fidelity increased monotonically across frontiers: the nearest incorrect candidate approached the ground-truth structure in Morgan similarity and maximum common edge subgraph (MCES) distance, while the prevalence of same-formula, shared-scaffold and near-isomer alternatives increased from \result{values for early frontier} to \result{values for late frontier}. These changes were not explained by duplicate structures or train--test leakage, which were excluded using molecule-group and structure-distance controls described in Methods.
+
+Against these candidate populations, a fixed initial evidence model deteriorated systematically. The ground-truth-versus-best-decoy margin decreased by \result{effect size and confidence interval}; pairwise ground-truth win rate fell from \result{value} to \result{value}; and the false-strong decoy rate increased by \result{value}. The effect was most pronounced for same-formula candidates and for pairs differing only in local connectivity, heteroatom placement or charge-stabilized fragmentation sites. Thus, progress in molecular generation created a countervailing decrease in spectral separability.
+
+This observation distinguishes candidate quality from elucidation quality. A generator can become more chemically faithful while simultaneously producing a candidate set that is harder to adjudicate. We refer to this phenomenon as the \emph{evidence bottleneck}: the limiting step shifts from proposing plausible molecules to obtaining spectrum-grounded evidence that excludes plausible alternatives. Across \result{number} independent molecule groups, candidate fidelity and fixed-evidence separability were negatively associated (\result{correlation, confidence interval and P value}), establishing the phenomenon independently of any single generator family.
+
+\figtodo{Figure 1 | Better molecular hypotheses create harder structural alternatives.}
+\noindent\textbf{Figure 1 | Better molecular hypotheses create harder structural alternatives.}
+\textbf{a}, Conceptual structure-elucidation landscape showing an observed spectrum and increasingly faithful candidate frontiers.
+\textbf{b}, Candidate fidelity across hypothesis generations, measured by MCES, Morgan Tanimoto similarity, same-formula frequency and scaffold proximity.
+\textbf{c}, Ground-truth discrimination by a frozen evidence model across the same frontiers.
+\textbf{d}, Relationship between candidate fidelity and spectral separability at the molecule-group level.
+\textbf{e}, Representative spectrum with an early easy decoy and a late near-isomeric decoy, illustrating the loss of discriminative value of shared peaks.
+Values, sample sizes and statistical tests are \result{insert final values}.
+
+\section*{Candidate-specific fragmentation evidence distinguishes close molecular alternatives}
+
+The evidence bottleneck cannot be addressed by rewarding every theoretically reachable fragment. Larger candidate lattices create more opportunities to match observed peaks by chance, while mass-compatible fragments can arise from chemically different or unsupported pathways. We therefore designed pLSE around \emph{candidate-specific fragmentation evidence}: a peak contributes strongly only when its explanation is chemically traceable, spectrum compatible and more specific to the candidate than to its close competitors.
+
+pLSE represents CID as a sequence of auditable states,
+\[
+\text{ion microstate}
+\rightarrow
+\text{reaction centre}
+\rightarrow
+\text{elementary event}
+\rightarrow
+\text{product/co-product}
+\rightarrow
+\text{new microstate}.
+\]
+Each accepted trajectory records the molecular graph before and after the event, atom/component lineage, broken and formed bonds, charge-carrier state, formal-charge changes, hydrogen transfer where applicable, and mass closure. Candidate peaks are then assigned to observed peaks under a strict mass tolerance and one-to-one evidence accounting. Importantly, the score is not a claim that the complete experimental fragmentation mechanism has been reconstructed. It is a measure of how much auditable evidence the observed spectrum provides for one candidate relative to the alternatives under the current reaction basis.
+
+We evaluated this distinction in a benchmark constructed around \result{number} spectra with one ground-truth molecule and \result{number} mass- and formula-matched hard decoys per spectrum. Mass matching alone produced substantial false support. Adding generic structural reachability improved peak coverage but remained weakly selective. Successively enforcing reaction-centre eligibility, atom/formula/charge conservation, explicit ion-state propagation and trajectory-level evidence increased the ground-truth--decoy margin by \result{values}, while reducing false-strong decoys by \result{values}. The gain persisted after matching candidates for formula, molecular mass, scaffold similarity and number of theoretical fragment opportunities.
+
+Mechanistic ablations localized the source of discrimination. Removing charge-carrier accounting caused \result{effect}; removing explicit hydrogen-transfer constraints caused \result{effect}; replacing reaction-centre-specific events with generic graph cuts caused \result{effect}; and collapsing trace-level evidence to a mass-only score caused \result{effect}. These effects were concentrated in candidate pairs where the decisive distinction involved \result{chemical motifs/classes identified in the final audit}. In representative cases, ORBIT-MS excluded a high-similarity decoy using one or two low-redundancy peaks whose matched trajectories were atom-balanced for the ground truth but unavailable or substantially less supported for the decoy.
+
+The resulting evidence is inspectable at the same resolution as the chemical claim. For a selected \result{representative compound}, pLSE assigned the experimental peak at \(m/z=\result{observed m/z}\) to a \result{reaction family} trajectory with \result{ppm error} ppm mass error, preserving \result{atom/charge/H accounting summary}. The strongest decoy, despite a molecular similarity of \result{Tanimoto}, could not produce the corresponding ion under the same evidence authority. Across held-out examples, candidate-specific trajectories provided \result{fraction} of the total discriminative margin while accounting for only \result{fraction} of observed intensity, showing that discriminative value is not equivalent to peak abundance or global explained intensity.
+
+\figtodo{Figure 2 | Candidate-specific chemical evidence separates close molecular alternatives.}
+\noindent\textbf{Figure 2 | Candidate-specific chemical evidence separates close molecular alternatives.}
+\textbf{a}, pLSE evidence representation from precursor ion through reaction centre, electron/proton bookkeeping and atom-traceable fragment.
+\textbf{b}, Ablation ladder from mass-only matching to candidate-specific mechanistic evidence.
+\textbf{c}, Ground-truth versus decoy score distributions for same-formula and near-isomer subsets.
+\textbf{d--f}, Three representative cases showing observed peaks, ground-truth and decoy structures, atom lineage, bond changes and evidence certificates.
+\textbf{g}, Fraction of discriminative margin versus fraction of explained spectrum intensity.
+Final values are \result{insert values}.
+
+\section*{Experimental spectra add information beyond chemical plausibility}
+
+A chemically plausible fragmentation explanation does not establish that a model used the experimental spectrum. This distinction is particularly important for large molecular models, which can generate convincing fragmentation narratives from structural priors alone. We therefore separated two supervision regimes. In the \emph{Chemical-World} view, a molecule defines a proposal graph of fragmentation possibilities under the current chemistry backend, but no proposal is labelled as experimentally observed. In the matched \emph{Spectral-Reality} view, the same proposal graph is conditioned on experimental MS/MS and only mass-compatible relationships to observed peaks are exposed. The design allows the contribution of spectral evidence to be measured relative to the same chemical prior.
+
+For each held-out molecule group, we compared the normal experimental spectrum with a no-spectrum control and a mass/adduct-matched shuffled spectrum drawn from a different molecule group. We defined spectral lift as the improvement in the target observable relative to the no-spectrum condition and identity lift as the improvement relative to the shuffled-spectrum condition. METEOR showed a spectral lift of \result{value} and an identity lift of \result{value} on the primary same-formula ranking endpoint. pLSE evidence specificity likewise decreased by \result{value} when the recipient spectrum was replaced with a matched shuffled spectrum, demonstrating that the decisive evidence depended on the identity of the observed spectrum rather than chemical plausibility alone.
+
+We next tested whether explicit fragmentation reasoning was causally involved in the final molecular decision. A preregistered six-arm comparison crossed baseline and pilot checkpoints with normal reasoning, no-reasoning and molecule-group-shuffled reasoning conditions. The final model improvement under normal reasoning was \result{effect and confidence interval}; the corresponding no-reasoning improvement was \result{effect}; and shuffled reasoning changed the outcome by \result{effect}. The normal-arm gain exceeded both controls under molecule-group-level bootstrap and sign-flip inference (\result{P value and family-wise corrected threshold}). This analysis distinguishes a model that can recite chemically sensible steps from one whose intermediate reasoning carries spectrum-specific information relevant to the final candidate decision.
+
+The same controls exposed cases in which apparently detailed explanations were not evidential. ORBIT-MS classified \result{fraction} of generated mechanism statements as unsupported, non-specific or beyond the available trace authority and prevented them from contributing to candidate promotion. This conservative treatment improved calibration: among decisions retained above the evidence threshold, exact or top-\(k\) structural accuracy increased to \result{value} at \result{coverage} coverage.
+
+\figtodo{Figure 3 | Experimental spectra contribute information beyond chemical plausibility.}
+\noindent\textbf{Figure 3 | Experimental spectra contribute information beyond chemical plausibility.}
+\textbf{a}, Chemical-World and Spectral-Reality matched views.
+\textbf{b}, Normal, no-spectrum and mass/adduct-matched shuffled-spectrum controls.
+\textbf{c}, Spectral and identity lift for candidate ranking and evidence specificity.
+\textbf{d}, Six-arm causal test of fragmentation reasoning.
+\textbf{e}, Supported versus unsupported mechanistic claims by evidence authority.
+\textbf{f}, Accuracy--coverage curve after evidence-based abstention.
+
+\section*{Hypothesis and evidence frontiers improve through reciprocal challenge}
+
+We next asked whether the evidence bottleneck could be relieved by allowing molecular hypotheses and fragmentation evidence to improve reciprocally. ORBIT-MS begins from an immutable pair of a hypothesis checkpoint and an evidence program. A deterministic observation layer measures failures on the current opponent, a bounded reasoning step localizes one causal surface, and at most one intervention is evaluated before promotion. Evidence improvements must retain performance on a frozen candidate anchor, non-target controls and a success bank; hypothesis improvements must demonstrate spectrum-identity dependence and held-out molecular benefit. A promoted move becomes the next challenge to the opposite frontier. This design prevents blind alternation and prevents training progress, self-reported mechanism quality or a single live opponent from serving as promotion evidence.
+
+Across \result{number} accepted reciprocal rounds, molecular hypotheses became progressively harder while evidence discrimination recovered. We summarized this process in a cross-generation matrix
+\[
+A_{ij} =
+\mathrm{Disc}(E_i,\mathcal{H}_j),
+\]
+where \(E_i\) is the evidence frontier after round \(i\), \(\mathcal{H}_j\) is the candidate population generated by hypothesis frontier \(j\), and \(\mathrm{Disc}\) is the preregistered molecule-group-level discrimination metric. Early evidence \(E_0\) lost \result{effect} when challenged by the late candidate frontier \(\mathcal{H}_{\result{T}}\). In contrast, the adapted evidence frontier \(E_{\result{T}}\) recovered \result{effect} on the same candidates while preserving \result{non-regression results} on frozen anchors and earlier success cases.
+
+The reciprocal pattern was asymmetric rather than cyclic for its own sake. Evidence changed only when a measured candidate population exposed a localized failure, and METEOR changed only when the current evidence frontier had sufficient reward fidelity to provide a trustworthy learning signal. Of \result{total proposed rounds} proposed rounds, \result{number} were promoted, \result{number} were rejected for non-target or frozen-anchor regression, and \result{number} terminated in evidence-required or stop states. This selectivity was important: an ablation that alternated updates without promotion gates produced \result{deception/forgetting result}, whereas reciprocal challenge with frozen controls produced \result{stable outcome}.
+
+At the candidate level, later hypothesis frontiers increasingly concentrated probability on structures sharing the correct formula and local scaffold but differing in connectivity at positions associated with discriminative spectral evidence. At the evidence level, later frontiers increased the specificity of \result{reaction/evidence families} rather than simply increasing the number of generated fragments. Thus, the two frontiers did not merely co-adapt numerically; the observed challenge--recovery dynamics corresponded to a shift toward harder molecular alternatives and more selective chemical evidence.
+
+\figtodo{Figure 4 | Reciprocal challenge produces measurable hypothesis--evidence co-evolution.}
+\noindent\textbf{Figure 4 | Reciprocal challenge produces measurable hypothesis--evidence co-evolution.}
+\textbf{a}, ORBIT-MS reciprocal falsification protocol and promotion boundaries.
+\textbf{b}, Cross-generation matrix \(A_{ij}\) of evidence discrimination against hypothesis frontiers.
+\textbf{c}, Candidate fidelity and evidence separability across rounds.
+\textbf{d}, Accepted, rejected, evidence-required and stopped moves with causal surfaces.
+\textbf{e}, Frozen-anchor and success-bank non-regression.
+\textbf{f}, Representative challenge--failure--recovery trajectory.
+
+\section*{Adaptive evidence transfers across generators and calibrates non-resolution}
+
+An adaptive evidence model would be of limited scientific value if it learned only the characteristic errors of the generator that challenged it. We therefore froze the final pLSE evidence frontier and evaluated candidate sets produced by methods that had not participated in ORBIT training. These included \result{final peer-reviewed external generators and retrieval baselines; planned core set: DiffMS, MetGenX or another accessible generator, MIST/CSI-style retrieval, and formula-matched PubChem candidates}. Candidate pools were deduplicated, canonicalized and matched by molecule group before scoring.
+
+Relative to the initial evidence model, the adapted frontier improved ground-truth rank on \result{number of external candidate sources}, increased pairwise ground-truth win rate by \result{range}, and reduced false-strong alternatives by \result{range}. Transfer remained significant in the strict same-formula subset (\result{effect}) and among candidates absent from the ORBIT training frontier (\result{effect}). The improvement therefore reflected transferable structure--spectrum discrimination rather than memorization of a single opponent's error distribution.
+
+We also evaluated the complementary case in which the spectrum did not contain sufficient information to justify a unique structure. ORBIT-MS converts evidence margins and non-specificity diagnostics into a calibrated resolution decision. At stringent thresholds, the system returned a unique two-dimensional structure for \result{fraction} of spectra with \result{accuracy}; for a further \result{fraction}, it retained a small unresolved candidate set with \result{set coverage}; and for \result{fraction}, it abstained from structure-level resolution while preserving formula- or class-level information. Accuracy increased monotonically as coverage decreased, and calibration transferred across \result{datasets/instruments/adducts}. The method therefore treats non-resolution as a valid scientific outcome rather than an error to be hidden by forced top-1 decoding.
+
+This behaviour is especially important for structural isomers whose tandem spectra are intrinsically similar. In \result{representative ambiguous pair}, ORBIT-MS retained both candidates because all high-authority evidence was shared. In contrast, for \result{representative resolvable pair}, a candidate-specific trajectory at \(m/z=\result{value}\) created a calibrated margin sufficient for unique resolution. These examples make explicit what evidence is present, what evidence is missing and why the system reaches different resolution levels.
+
+\figtodo{Figure 5 | Adaptive evidence transfers across candidate generators and calibrates structural resolution.}
+\noindent\textbf{Figure 5 | Adaptive evidence transfers across candidate generators and calibrates structural resolution.}
+\textbf{a}, External-generator evaluation design.
+\textbf{b}, Improvement of the adapted versus initial evidence frontier for each external candidate source.
+\textbf{c}, Same-formula and near-isomer transfer.
+\textbf{d}, Accuracy--coverage and calibration curves.
+\textbf{e}, Resolvable case with candidate-specific evidence.
+\textbf{f}, Ambiguous case in which ORBIT-MS correctly retains multiple hypotheses.
+
+\section*{Auditable structural hypotheses expand the mouse dark metabolome}
+
+Finally, we evaluated ORBIT-MS on an independent collection of previously unlabelled mouse LC--MS/MS spectra. This cohort was not used to optimize the hypothesis or evidence frontiers. We separated spectra into an anchor subset with independent reference support that could be concealed for blinded evaluation and a dark subset lacking a reliable library-level structure assignment. \datatodo{Insert mouse tissue, biological design, sample counts, acquisition platform, ionization mode, collision-energy metadata and ethics/provenance.}
+
+In the blinded anchor subset, ORBIT-MS achieved \result{top-1/top-k accuracy, calibration and comparison with SIRIUS/MIST/COSMIC or other applicable baselines}. More importantly, the complete evidence trace allowed us to distinguish high-confidence structure-level assignments from cases supported only at formula, class or candidate-family level. On the dark subset, ORBIT-MS advanced \result{number/fraction} spectra from unresolved status to an auditable molecular hypothesis set: \result{number} reached a unique high-confidence two-dimensional structure hypothesis, \result{number} were narrowed to small candidate sets, and \result{number} remained deliberately unresolved. These categories will be reported using established metabolomics annotation terminology and will not be interpreted as standard-confirmed identifications without orthogonal evidence.
+
+We prioritized \result{number} recurrent dark spectra on the basis of replication across mouse samples, strong candidate-specific evidence and absence of an exact spectral-library hit. For each spectrum, ORBIT-MS produced a compact evidence dossier linking the precursor and observed peaks to candidate-specific reaction trajectories and listing the strongest surviving alternatives. \result{Number} hypotheses were supported by independent evidence such as \result{synthetic standards, retention time, MSn, orthogonal database evidence or blinded reference revelation}. The remaining hypotheses are reported explicitly as putative structures or unresolved structural families.
+
+One representative dark spectrum at precursor \(m/z=\result{value}\) initially admitted \result{number} formula-compatible candidates. Shared peaks eliminated little of this space. Two candidate-specific fragments at \(m/z=\result{values}\), however, were supported by \result{reaction descriptions} for the leading structure and not for its nearest alternatives, reducing the viable set to \result{number}. The same spectral/evidence pattern recurred in \result{number} independent mouse samples and \result{biological condition/tissue distribution if available}. A second case remained unresolved between \result{number} isomers despite extensive chemical plausibility, illustrating calibrated non-resolution in the same experimental cohort.
+
+At the cohort level, ORBIT-MS increased the fraction of spectra carrying interpretable structural information by \result{value}, while maintaining a predefined false-discovery or blinded-anchor error criterion of \result{criterion}. If biological metadata support a reproducible association, the final manuscript will report \result{one focused biological finding only if independently supported}; otherwise, the mouse cohort will remain a deployment and discovery analysis rather than a post hoc biological story.
+
+\figtodo{Figure 6 | ORBIT-MS converts mouse dark spectra into auditable, confidence-aware molecular hypotheses.}
+\noindent\textbf{Figure 6 | ORBIT-MS converts mouse dark spectra into auditable, confidence-aware molecular hypotheses.}
+\textbf{a}, Independent mouse metabolomics cohort and blinded anchor/dark-spectrum split.
+\textbf{b}, Annotation depth before and after ORBIT-MS.
+\textbf{c}, Reproducibility of prioritized dark hypotheses across samples.
+\textbf{d}, Deep case study of a resolved candidate set with peak-level fragmentation evidence.
+\textbf{e}, Deep case study of a deliberately unresolved isomer set.
+\textbf{f}, Orthogonal validation and, if supported, one focused biological association.
+
+\section*{Discussion}
+
+Our results recast a central difficulty in tandem-mass-spectrometry structure elucidation. The dominant framing has been an inverse-prediction problem: improve the mapping from spectrum to fingerprint, database candidate or generated molecule. That framing has produced major advances in formula inference, retrieval and de novo generation.\cite{Duhrkop2019,Hoffmann2022,Goldman2023,Xing2023,Stravs2022,Bohde2025,Wang2026MetGenX} We find, however, that better molecular hypotheses create a second-order problem. As incorrect candidates become more realistic, the evidence needed to exclude them becomes more specific. A static scorer can therefore become less useful precisely when a generator becomes better.
+
+This distinction clarifies three concepts that are often conflated. First, \emph{spectral simulation} asks whether a structure can reproduce features of an observed spectrum. Modern forward models can solve this increasingly well.\cite{Young2024,Nowatzky2025} Second, \emph{chemical explanation} asks whether an observed peak can be connected to a chemically plausible fragmentation path. Third, \emph{discriminative evidence} asks whether that path carries information that separates one candidate from its close alternatives. A peak can be well simulated yet shared by every isomer in the candidate set; a chemically plausible pathway can be generated without using the experimental spectrum; and a visually convincing mechanism can exceed the evidence authority of the underlying computation. ORBIT-MS is built around the third object and treats the first two as necessary but insufficient components.
+
+The resulting emphasis on candidate-specific evidence also changes how incomplete fragmentation chemistry should be handled. Complete mechanistic reconstruction of a collision-induced spectrum is neither assumed nor required. The relevant question is whether the available reaction basis supplies enough reliable, candidate-specific evidence for the resolution being claimed. Unsupported peaks do not automatically become negative evidence, because absence from an incomplete reaction grammar is not evidence that a candidate is chemically impossible. Conversely, a small number of high-specificity fragments can be more informative than broad but non-specific peak coverage. This asymmetry is important for developing evidence systems that improve without converting missing chemistry into false certainty.
+
+A second consequence is that non-resolution becomes a scientifically meaningful endpoint. Tandem spectra do not always contain enough information to identify a unique two-dimensional structure, and stereochemical resolution is an even stronger limitation.\cite{Schymanski2014,Hoffmann2022,MassSpecGym2024} A model that is forced to emit one structure hides this ambiguity. By calibrating evidence margins against difficult alternatives and maintaining formula-, class- and candidate-family outputs when exact resolution is unsupported, ORBIT-MS makes its claims commensurate with the information present in the experiment. This principle is consistent with longstanding calls for explicit confidence levels in metabolomics annotation.\cite{Schymanski2014,Alseekh2021}
+
+The mouse deployment illustrates why this distinction matters outside benchmarks. Unlabelled biological spectra cannot be converted into validated structures merely because a generative model assigns them plausible SMILES. The useful output is instead an auditable hierarchy: what formula and structural family are supported, which candidates remain viable, which observed peaks provide candidate-specific evidence, and what additional measurement would be needed to discriminate the survivors. Where orthogonal validation is available, these hypotheses can be tested; where it is absent, uncertainty is retained rather than retrospectively erased. This provides a path from the large ``dark'' fraction of untargeted metabolomics data to experimentally tractable molecular hypotheses without lowering the evidentiary standard for identification.
+
+ORBIT-MS also provides a broader computational lesson. Inverse scientific problems are often treated as prediction tasks with fixed observations and fixed evaluation functions. Our results suggest that, when hypotheses become increasingly realistic, the representation of evidence itself can become the limiting object. Reciprocal falsification offers a different learning principle: hypothesis improvements generate harder tests for evidence; evidence failures identify what must be measured or modelled more precisely; and stronger evidence provides a better signal for the next hypothesis frontier. Mass spectrometry provides a stringent setting because the forward physics is only partially observed and multiple structures can agree with the same measurement. Whether analogous hypothesis--evidence co-evolution can improve other inverse problems in spectroscopy and molecular characterization remains an open question.
+
+\section*{Methods}
+
+\subsection*{Study design and evidentiary separation}
+
+The study is organized around two distinct scientific objects. The \emph{hypothesis frontier} maps a tandem mass spectrum and available precursor constraints to a ranked set of candidate molecular structures. The \emph{evidence frontier} maps a spectrum--candidate pair to a scalar discrimination score and an auditable set of fragmentation-evidence records. The two objects are evaluated separately and may be updated only through the reciprocal protocol described below.
+
+All analyses use molecule groups, rather than individual spectra, as the primary independent unit whenever multiple spectra correspond to the same underlying structure. Development, validation and test partitions are molecule-group disjoint. Structural leakage is additionally controlled using \result{final MCES/Tanimoto exclusion criteria and pretraining audit}. Candidate pools used for causal comparisons are frozen before evaluation. Official test data are not used to authorize training or evidence-program changes.
+
+Throughout the manuscript, a chemical mechanism is considered \emph{auditable evidence} only to the level represented by the underlying deterministic trace. A mass match without an atom-mapped event is not labelled as a verified fragmentation mechanism. A proposal generated by the chemistry backend is treated as chemically possible under that backend, not as an empirical reaction probability. Unsupported peaks are not treated as candidate contradictions unless the relevant fragment-generation recall has independently passed the required reliability criterion.
+
+\subsection*{Benchmark spectra and molecular splits}
+
+Primary supervised benchmarking uses MassSpecGym and \datatodo{additional peer-reviewed reference libraries selected for the final study}. MassSpecGym provides a standardized set of high-quality tandem spectra and an MCES-based split designed to reduce structural leakage.\cite{MassSpecGym2024} We retain the benchmark-provided train, validation and test roles and construct all model-development subsets from training data only.
+
+For each spectrum, we define a \emph{molecule group} by \methodtodo{final canonical identity rule, normally 2D connectivity after standardization}. Repeated collision energies, instruments or technical spectrum variants belonging to the same molecule remain in the same group. Statistical aggregation first occurs within molecule group and then equally across groups.
+
+For decoder or chemical-language pretraining on structure-only corpora, molecules within the frozen test exclusion radius are removed before training. The final exclusion protocol reports exact-structure overlap, formula overlap, nearest-neighbour Tanimoto similarity and MCES distance between each pretraining source and held-out benchmark molecules. \result{Insert final audit statistics.}
+
+\subsection*{Candidate frontiers}
+
+A candidate frontier is a frozen ranked or unranked set of molecular hypotheses for each spectrum. Frontiers are generated by successive METEOR checkpoints and by external methods used only for transfer testing. Each candidate is standardized with RDKit, canonicalized at the two-dimensional connectivity level, checked for chemical validity and deduplicated. Candidate provenance records the generator, checkpoint or database source, molecular formula, exact mass and generation rank.
+
+Hardness is quantified independently of the evidence score using ground-truth-to-candidate MCES distance, Morgan Tanimoto similarity, same-formula frequency, Murcko-scaffold relation, exact-mass difference and candidate validity/diversity. These metrics define the hypothesis difficulty of a candidate population and are never included as hidden labels in pLSE scoring.
+
+\subsection*{METEOR hypothesis model}
+
+METEOR is the spectrum-to-molecule hypothesis model. The final implementation uses \result{final backbone, parameterization and checkpoint lineage}, with a chemistry-specific molecular vocabulary and continuous mass-state conditioning. Each molecular token is augmented by token mass, remaining molecular mass and total-mass representations. Experimental MS/MS is encoded as peak-level tokens containing absolute \(m/z\), precursor-relative \(m/z\), intensity and acquisition metadata where observed. Peak tokens condition the causal molecular decoder through \result{final direct-prefix/cross-attention interface}.
+
+Training is staged. Structure-only adaptation learns molecular syntax and mass consistency without experimental-spectrum supervision. Chemical-World pretraining introduces candidate fragmentation graphs generated from structure alone. Experimental-spectrum fine-tuning then uses Spectral-Reality records in which the same structural proposal graph is paired with observed MS/MS. Evidence post-training is permitted only after the active pLSE frontier passes the frozen reward-fidelity criteria described below. Generated non-ground-truth candidates can serve as negatives or policy actions but are not promoted to teacher-forced positive labels solely by model similarity or pLSE score.
+
+\subsection*{Chemical-World and Spectral-Reality records}
+
+Chemical-World and Spectral-Reality records share one fragment-reaction graph schema but differ in evidentiary authority. In Chemical-World mode, an input molecule is expanded by the current deterministic fragmentation proposal backend. The output describes reactions or fragments that are possible under the backend. No experimental intensity, peak presence or empirical reactivity label is fabricated.
+
+In Spectral-Reality mode, an experimentally measured tandem spectrum and its known parent structure are available during training. The structure-derived proposal graph is retained, and observed peaks are linked to mass-compatible fragment hypotheses using a deterministic mass gate. A peak may remain compatible with multiple structural fragments; therefore, fragment identity is represented as a latent compatible set rather than a forced label. Matched ``background'' and ``spectrum'' views expose the same chemical prior with and without the experimental observation, enabling direct estimation of spectral lift.
+
+\subsection*{pLSE collision-induced dissociation evidence}
+
+The pLSE evidence engine represents CID as a bounded reaction-state network. An ion state records the canonical molecular graph, analytical adduct, charge carrier, formal-charge sites, proton or sodium coordination state where applicable, and radical state where represented. Candidate reaction centres are compiled without access to the target spectrum. Elementary operators are defined by explicit chemical eligibility and produce atom-mapped daughter and co-product structures.
+
+Each reaction transition records: (1) the selected reaction centre; (2) electron-source and charge-destination roles when represented; (3) broken, formed or bond-order-changed bonds; (4) atom/component lineage; (5) formal-charge and hydrogen changes; (6) the charge carrier of the product ion; (7) theoretical neutral and ion masses; and (8) provenance identifying the executable reaction family. Ion--neutral-complex states and explicit proton/hydride transfer are represented as separate events rather than being collapsed into arbitrary post hoc mass changes.
+
+The production search is spectrum blind until theoretical product ions are generated. Search follows \result{final best-first/closure protocol} under explicit state and frontier safety limits. Safety-cap truncation is recorded and cannot be interpreted as chemical impossibility.
+
+\subsection*{Peak assignment and candidate-specific evidence}
+
+Observed tandem peaks are normalized according to the benchmark or cohort preprocessing protocol. A theoretical fragment is eligible to support a peak only if the absolute or relative mass error falls within \result{final tolerance, preregistered by instrument/data source}. Peak-to-fragment assignment uses a global one-to-one matching policy \result{final objective} so that one theoretical fragment cannot independently explain multiple observed peaks unless explicitly permitted by the chemistry representation.
+
+For a candidate \(M\) and spectrum \(S\), pLSE produces evidence records \(e_1,\ldots,e_n\) and a scalar score
+\[
+E(S,M)=\mathcal{A}\bigl(e_1,\ldots,e_n; \Omega(M)\bigr),
+\]
+where \(\mathcal{A}\) is the frozen evidence aggregation rule and \(\Omega(M)\) represents the candidate's opportunity to obtain accidental mass matches. The final manuscript will report \result{exact aggregation equation and coefficients, if any, after the scorer is frozen}. Candidate opportunity is controlled by deduplicating theoretical masses and/or an explicit chance-match model; opportunity itself is not positive evidence.
+
+Candidate-specific evidence is evaluated relative to alternative structures. For each peak and evidence layer (generated, retained and assigned), a GT--decoy comparison classifies support as shared, GT-only, decoy-only or neither. Mechanism-specific language is used only when the trace contains the corresponding atom-mapped event. This comparison is used for analysis and calibration; ground-truth identity is not supplied to the deployed candidate scorer.
+
+\subsection*{Reciprocal ORBIT protocol}
+
+A reciprocal run begins from one immutable hypothesis snapshot and one immutable evidence snapshot, each identified by content digest. A frozen candidate anchor is retained throughout the run to detect joint drift.
+
+Each round proceeds through: deterministic observation; frontier/lane selection; bounded scientific reasoning; at most one registered intervention; source and no-op audit; execution; paired evaluation; and promotion or rejection. A round targets either the evidence frontier or the hypothesis frontier, not both. If the measured observation does not localize a supported causal surface, the round routes to evidence collection or stops rather than authorizing a code or training change.
+
+pLSE promotion requires improved discrimination on the live candidate frontier plus non-regression on the frozen anchor, non-target metrics and a success bank. METEOR promotion requires a held-out molecular endpoint, correct-versus-shuffled spectrum identity response, candidate validity/diversity and non-regression checks. Training loss, reward or pLSE score alone cannot serve as the success endpoint for a METEOR checkpoint. All promotion comparisons bind the exact parent and candidate artifacts, evaluator, split and source digests.
+
+\subsection*{Causal controls for spectrum and reasoning dependence}
+
+Spectrum dependence is assessed on matched candidate pools using three conditions: the correct recipient spectrum; a no-spectrum control; and a shuffled spectrum from a distinct molecule group matched for adduct and neutral mass within \result{window}. The shuffled donor is fixed before model evaluation. Spectral lift is the molecule-group-averaged difference between correct-spectrum and no-spectrum performance; identity lift is the corresponding difference between correct and shuffled spectra.
+
+For reasoning-specific evaluation, we use a factorial six-arm design crossing parent versus pilot checkpoint with normal fragmentation reasoning, no reasoning and molecule-group-shuffled reasoning. Cases and prompts are identical across arms except for the preregistered intervention. Effects are computed after equal-weight aggregation by molecule group. The primary normal-arm improvement must exceed both the no-reasoning and shuffled-reasoning effects while satisfying all non-target gates.
+
+\subsection*{Cross-generation and external-generator evaluation}
+
+For hypothesis frontier \(j\) and evidence frontier \(i\), we compute
+\[
+A_{ij}=\mathrm{Disc}(E_i,\mathcal{H}_j),
+\]
+where \(\mathrm{Disc}\) is \result{frozen primary discrimination metric: pairwise GT win rate, AUROC or rank-based metric}. The full cross-generation matrix is evaluated after all included frontier snapshots have been frozen; it is not used to select intermediate model updates.
+
+External transfer uses candidate sets produced by \result{final accessible external methods}. External candidate generation is performed without using the final ORBIT evidence frontier for sampling or reranking. The same canonicalization, deduplication and formula/mass controls are applied before pLSE scoring. Statistical comparison of initial and final evidence frontiers uses paired molecule-group tests.
+
+\subsection*{Structural resolution and abstention}
+
+ORBIT-MS separates candidate ranking from the decision to report a unique structure. A calibration set disjoint from the final test set maps evidence margins and ambiguity diagnostics to predefined resolution thresholds. Depending on available evidence, a spectrum may yield: a unique two-dimensional structure hypothesis; a bounded candidate set; a formula or structural-class assignment; or an unresolved result.
+
+We report accuracy--coverage curves for unique decisions, candidate-set coverage for unresolved sets, calibration error and false-resolution rate. Stereochemical assignments are not claimed from MS/MS unless independently supported. Reporting terminology for biological data follows established metabolomics annotation guidance.\cite{Schymanski2014,Alseekh2021}
+
+\subsection*{Independent mouse metabolomics cohort}
+
+The private mouse cohort comprises \datatodo{sample count, tissue(s), condition(s), biological replicates and acquisition runs}. LC--MS/MS data were acquired on \datatodo{instrument} in \datatodo{ion mode(s)} with \datatodo{acquisition method and collision-energy regime}. Raw files were converted and processed using \datatodo{software/version}. Blank, low-quality, chimeric and duplicate features were filtered using a protocol frozen before ORBIT analysis.
+
+The cohort is divided analytically into an anchor subset and a dark subset. Anchor spectra have independent reference evidence that is hidden from ORBIT until after prediction and are used for blinded external evaluation. Dark spectra lack an exact accepted spectral-library annotation under the frozen search protocol. The existence of a computational structure in PubChem, HMDB or another database does not by itself convert a dark spectrum into a validated identification.
+
+Dark spectra are prioritized for case study by reproducibility across biological samples, evidence specificity, candidate-space contraction and absence of an exact library hit. Any claim of structural identification requires \methodtodo{final orthogonal evidence hierarchy: synthetic standard, coelution/retention time, MSn, NMR or other applicable confirmation}. Without such evidence, outputs are labelled as putative structures, candidate sets or classes at the corresponding confidence level. Animal ethics and original sample provenance will be reported as \methodtodo{protocol/institution/approval number, if applicable to the source study}.
+
+\subsection*{Statistics}
+
+Unless otherwise stated, the molecule group is the statistical unit. Repeated spectra of one molecule are collapsed before population-level inference. Primary effect sizes are reported with \result{95\% or 99\% confidence intervals}. Paired comparisons use \result{group bootstrap and/or exact/Monte Carlo sign-flip tests}, with family-wise error controlled across preregistered confirmatory endpoints by \result{Bonferroni or final correction}. Minimum independent-group support is specified before analysis. No test-set result is used for hyperparameter selection or evidence-program modification.
+
+For stratified analyses, adduct, neutral-mass band, peak richness, instrument family and collision-energy strata are used only when the corresponding acquisition metadata are observed and source-verifiable. Missing or default-prior metadata do not silently create measured strata.
+
+\subsection*{Data availability}
+
+MassSpecGym and other public benchmark data are available from their cited repositories. The mouse LC--MS/MS data will be deposited in \datatodo{MassIVE/GNPS/MetaboLights accession before publication, subject to source-study permissions}. Processed candidate pools, split manifests, evidence certificates and figure source data will be released with the manuscript.
+
+\subsection*{Code availability}
+
+The ORBIT-MS source code is under active development at \texttt{https://github.com/wangyu-sd/orbit-ms}. A frozen release containing the exact hypothesis/evidence snapshots, evaluation manifests and reproducible analysis commands used in the manuscript will be archived at \result{Zenodo DOI/release tag}. External software is cited at the version used for each experiment.
+
+\section*{Acknowledgements}
+\result{Funding acknowledgements and collaborators.}
+
+\section*{Funding}
+\result{Grant numbers and funding agencies.}
+
+\section*{Author contributions}
+\result{Author contribution statement using CRediT-style roles.}
+
+\section*{Competing interests}
+The authors declare \result{final competing-interests statement}.
+
+\section*{Additional information}
+Correspondence and requests for materials should be addressed to \result{corresponding author}.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\section*{Extended Data figure legends}
+
+\noindent\textbf{Extended Data Figure 1 | Dataset composition and leakage audit.}
+Molecule-group composition, structural-distance distributions, pretraining exclusion audit and candidate-source provenance for every benchmark split.
+
+\noindent\textbf{Extended Data Figure 2 | Reaction-basis coverage and search diagnostics.}
+Coverage of reaction families across chemical classes, reaction-state counts, explicit safety-cap truncation and distinction between chemistry-basis gaps and search limits.
+
+\noindent\textbf{Extended Data Figure 3 | Acquisition-condition robustness.}
+Performance stratified by adduct, neutral mass, peak richness, instrument family and collision energy where acquisition metadata are observed.
+
+\noindent\textbf{Extended Data Figure 4 | Same-formula and near-isomer benchmark.}
+Complete paired distributions of GT rank, pairwise win rate, false-strong rate, MCES and Tanimoto across hard-decoy strata.
+
+\noindent\textbf{Extended Data Figure 5 | Fragmentation-evidence ablations.}
+Mass-only, opportunity-normalized, generic-cut, reaction-centre, charge/H accounting and full trajectory evidence under identical candidate pools.
+
+\noindent\textbf{Extended Data Figure 6 | Reciprocal-run stability.}
+Replicate runs, seed sensitivity, accepted/rejected move distributions, frozen-anchor retention and intervention provenance.
+
+\noindent\textbf{Extended Data Figure 7 | Full cross-generator transfer matrix.}
+Initial and adapted pLSE evidence frontiers evaluated against every external candidate source and hardness stratum.
+
+\noindent\textbf{Extended Data Figure 8 | Calibration and abstention.}
+Reliability curves, accuracy--coverage, candidate-set coverage, false-resolution rate and ambiguity examples.
+
+\noindent\textbf{Extended Data Figure 9 | Mouse cohort quality control and reproducibility.}
+Sample/run metadata, blanks, feature filtering, library overlap, recurrent-spectrum network and anchor/dark subset construction.
+
+\noindent\textbf{Extended Data Figure 10 | Complete evidence certificates for mouse case studies.}
+Peak tables, candidate structures, atom-lineage trajectories, alternative explanations, orthogonal validation and explicit unresolved alternatives.
+
+\end{document}
