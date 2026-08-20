@@ -1,75 +1,87 @@
 # Figure Plan
 
-The revised main text uses **five** primary figures. Each figure must establish one scientific proposition. Agent architecture, detailed CoT tests and implementation diagnostics belong in Extended Data or Supplementary Information.
+The main text uses **five** primary figures. Each figure must establish one scientific proposition before showing implementation detail. Agent architecture, detailed CoT tests and low-level protocol diagnostics belong in Extended Data or Supplementary Information.
 
-## Figure 1 — A cross-model evidence bottleneck
+The visual story should read as a scientific progression even without the manuscript text:
 
-**Message:** increasingly faithful molecular alternatives systematically erode the discriminative power of fixed spectral evidence.
+`better hypotheses → evidence bottleneck → discriminative fragments → experimental evidence → adaptive evidence → testable dark-spectrum hypotheses`.
 
-This figure must not be a METEOR-only phenomenon.
+## Figure 1 — Better molecular hypotheses create an evidence bottleneck
 
-- **a** One spectrum with GT, easy alternatives and hard same-formula/near-isomer alternatives.
+**Message:** advances in molecular hypothesis generation move structure elucidation from a generation-limited to an evidence-limited regime.
+
+This figure must look like a field-level phenomenon, not a METEOR benchmark.
+
+- **a** Conceptual regime shift: easy/implausible alternatives in a generation-limited regime versus close same-formula alternatives in an evidence-limited regime.
 - **b** Candidate difficulty across at least two independent candidate sources plus matched database candidates: MCES, Morgan Tanimoto, same-formula and scaffold relation.
 - **c** Multiple frozen evidence systems evaluated on the same difficulty strata: exact mass, forward-spectrum similarity, external fragmentation-aware comparator(s), initial pLSE.
 - **d** Molecule-group candidate fidelity versus separability after matching pool size/formula/mass constraints.
-- **e** Representative case where peaks that separate an early decoy become shared among late alternatives.
+- **e** Representative spectrum where peaks that exclude an early decoy become shared among later alternatives.
 
 **Critical control:** do not infer the phenomenon from arbitrarily selecting harder negatives. Candidate-set size and precursor constraints must be matched.
 
-## Figure 2 — Candidate-specific fragmentation evidence
+**Visual priority:** panel a should be immediately understandable to a non-specialist editor. Avoid leading with a heatmap or benchmark table.
 
-**Message:** fragmentation becomes a useful structural-evidence object when the support is atom-traceable and specific relative to competing molecules.
+## Figure 2 — Discriminative fragments resolve close molecular alternatives
 
-This is the scientific centre of the manuscript.
+**Message:** the structural information in a spectrum is concentrated in fragments that distinguish competing hypotheses, not necessarily in the most intense or most broadly explained peaks.
 
-- **a** Definition: candidate → legal trajectories → peak support `s_jp` → competitor-relative specificity `d_jp` → candidate score.
-- **b** External/standard comparator panel under identical hard candidate pools: exact mass, opportunity-normalized matching, forward-spectrum similarity, CFM-ID/SIRIUS-derived or other executable fragmentation-aware score, pLSE.
+This is the chemical centre of the manuscript.
+
+- **a** Conceptual distinction: candidate support versus competitor-relative structural specificity, linked to one atom-traceable trajectory.
+- **b** Comparator panel under identical hard candidate pools: exact mass, opportunity-normalized matching, forward-spectrum similarity, CFM-ID/SIRIUS-derived or other executable fragmentation-aware score, pLSE.
 - **c** Same-formula and near-isomer GT rank / pairwise win / false-strong distributions.
 - **d** Mechanistic ablation ladder: isolated peak coverage → candidate-relative specificity → reaction-centre eligibility → atom/charge/H accounting → full trajectory authority.
 - **e–g** Three chemically distinct case studies with large structures, spectra, atom lineage, bond changes and exact m/z/ppm.
-- **h** Discriminative margin versus global explained intensity.
+- **h** Fraction of discriminative margin captured versus fraction of total observed/explained intensity.
 
 **Critical claim:** broad peak coverage is neither necessary nor sufficient for structural discrimination.
 
-## Figure 3 — Experimental spectrum versus chemical prior
+**Visual priority:** structures and decisive peaks should dominate the figure; equations and architecture should not.
 
-**Message:** chemically plausible explanations are not automatically experimental evidence.
+## Figure 3 — Experimental spectra distinguish evidence from chemical plausibility
 
-- **a** Chemical-World / Spectral-Reality matched views of the same structure prior.
+**Message:** a chemically plausible explanation is not automatically experimental evidence; useful evidence is the part of the observation that changes the relative support of competing structures.
+
+- **a** Matched structure-only and spectrum-conditioned views of the same chemical fragmentation prior. Keep the internal labels Chemical-World/Spectral-Reality out of the main visual if possible.
 - **b** Correct / no-spectrum / mass-adduct-matched shuffled-spectrum controls.
-- **c** Spectral lift and identity lift for METEOR ranking and pLSE candidate-specific evidence.
+- **c** Spectral lift and identity lift for molecular ranking and discriminative fragmentation evidence.
 - **d** Evidence-authority decomposition: spectrum-specific, shared, unsupported, beyond trace authority.
-- **e** One candidate set where chemical priors are similar but the true spectrum changes the supported hypothesis.
+- **e** One candidate set where chemical plausibility is similar across alternatives but the true spectrum changes the supported hypothesis.
 
 **Move out of main figure:** parent/pilot × normal/no-CoT/shuffled-CoT six-arm experiment → Extended Data Figure 6.
 
-## Figure 4 — Reciprocal adaptation, transfer and calibrated resolution
+## Figure 4 — Evidence must adapt as molecular hypotheses become harder
 
-**Message:** adapting both sides gives a measurable benefit beyond adapting either side alone, the gain survives external candidate distributions, and uncertainty is represented explicitly.
+**Message:** the evidence needed to resolve a spectrum changes with the hypothesis space; adaptation restores discrimination and transfers beyond the candidate generator that exposed the failure.
 
-- **a** Factorial endpoint design: `(H0,E0)`, `(HT,E0)`, `(H0,ET)`, `(HT,ET)`.
-- **b** Main held-out endpoint and interaction effect `Δ_int`.
-- **c** Reciprocal gated adaptation versus fixed-side and ungated/blind alternation controls.
+- **a** Initial evidence loses discrimination on later/harder hypotheses, followed by recovery with adapted evidence.
+- **b** Factorial endpoint design: `(H0,E0)`, `(HT,E0)`, `(H0,ET)`, `(HT,ET)` and interaction effect `Δ_int`.
+- **c** Gated adaptation versus fixed-side and ungated/blind alternation controls.
 - **d** Post-freeze cross-generation challenge–recovery matrix `A_ij`.
-- **e** External-generator/retrieval transfer: initial versus final pLSE.
+- **e** External-generator/retrieval transfer: initial versus adapted pLSE.
 - **f** Generator recall versus conditional discrimination versus end-to-end resolution.
-- **g** Risk-controlled structural candidate sets: empirical coverage, set size, resolvable and unresolved examples.
+- **g** Calibrated/risk-controlled structural candidate sets: empirical coverage, set size, resolvable and unresolved examples.
 
 **Critical control:** the cross-generation matrix is descriptive. The factorial endpoint experiment carries the causal claim.
 
-## Figure 5 — Independent mouse deployment
+**Visual priority:** panel a should communicate the scientific result before the reader encounters the ORBIT protocol.
 
-**Message:** adaptive fragmentation evidence narrows previously unlabelled biological spectra while preserving the distinction between hypothesis and identification.
+## Figure 5 — From dark spectra to testable molecular hypotheses
 
-- **a** Cohort design with blinded anchor and dark-spectrum branches.
-- **b** Blinded anchor: generator recall, conditional discrimination, risk-controlled end-to-end resolution, applicable baselines.
-- **c** Dark-spectrum candidate-space contraction: formula-compatible pool → evidence-supported risk-controlled set.
+**Message:** the practical output of evidence-bounded structure elucidation is not a forced SMILES but a molecular hypothesis at the resolution justified by the experiment, with explicit alternatives and evidence.
+
+- **a** Independent mouse cohort with blinded anchor and dark-spectrum branches.
+- **b** Blinded anchor: generator recall, conditional discrimination and end-to-end resolution with applicable baselines.
+- **c** Dark-spectrum candidate-space contraction: formula-compatible population → evidence-supported structural set.
 - **d** Recurrence/reproducibility across independent mouse samples.
 - **e** Deep resolved/strongly narrowed case with atom-traceable evidence and orthogonal validation.
-- **f** Deep unresolved isomer case.
+- **f** Deep unresolved isomer case showing that non-resolution is a scientifically valid outcome.
 - **g** Biological association only if predefined, replicated and independently supported.
 
-**Nature-main-track extension:** if prospective MSn/CE experiment selection is completed, it can become a new Figure 5 or Figure 6 and move the mouse deployment later.
+**Narrative requirement:** the resolved and unresolved cases should be visually parallel so that both outcomes appear as consequences of the same evidence principle.
+
+**Nature-main-track extension:** if prospective MSn/CE experiment selection is completed, it can become a new final figure showing `ambiguity → missing evidence → new measurement → candidate contraction`.
 
 ## Extended Data
 
@@ -89,6 +101,7 @@ This is the scientific centre of the manuscript.
 - Use a white background, sparse panels and large molecular structures/spectra.
 - Avoid dense multi-agent diagrams and decorative AI icons.
 - Reuse one or two anchor spectra across Figures 1–3 so the scientific logic is visually continuous.
-- Encode scientific roles consistently: observed spectrum, candidate hypothesis, candidate-specific evidence and unresolved alternatives.
+- Encode scientific roles consistently: observed spectrum, candidate hypothesis, discriminative evidence and unresolved alternatives.
 - Molecular structures, atom labels and reaction arrows must be interpretable at journal print size.
-- Do not use a heatmap or training curve as the visual centre of the paper; the key panels should show chemistry and held-out structural discrimination.
+- Do not use a heatmap, architecture diagram or training curve as the visual centre of the paper; the key panels should show chemistry, structural alternatives and the information supplied by the experiment.
+- Figure titles and panel headings should describe scientific findings, not implementation modules.
