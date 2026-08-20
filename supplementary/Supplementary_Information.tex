@@ -1,0 +1,79 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{longtable}
+\usepackage[super,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\title{\textbf{Supplementary Information}\\
+Molecular structure elucidation by co-evolving hypotheses and evidence}
+\author{Author names to be finalized}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Supplementary Note 1: Benchmark construction and leakage control}
+Report the complete spectrum sources, molecule standardization, molecule-group construction, MCES/Tanimoto leakage audit, structure-only pretraining exclusions, spectrum-level duplication audit and candidate-source provenance.
+
+\section*{Supplementary Note 2: METEOR training and candidate generation}
+Report the final METEOR architecture, chemistry-specific vocabulary, mass-aware conditioning, peak-token spectrum encoder, training stages, optimization hyperparameters, decoding algorithm, candidate validity filtering and checkpoint selection protocol. Clearly separate structure-only chemical adaptation, Chemical-World pretraining, Spectral-Reality fine-tuning and evidence post-training.
+
+\section*{Supplementary Note 3: pLSE reaction basis}
+List every active reaction family and its evidentiary authority. For each family report substrate/reaction-centre eligibility, charge/adduct scope, electron/proton/hydrogen-transfer bookkeeping, atom-mapping requirements, product-ion identity rules, mass-balance checks and source provenance. Distinguish active executable chemistry from diagnostic-only or shadow reaction families.
+
+\section*{Supplementary Note 4: Search and evidence scoring}
+Report reaction-state identity, state deduplication, best-first or closure search, safety caps, frontier truncation diagnostics, theoretical-fragment deduplication, peak assignment, candidate opportunity correction and the complete frozen pLSE scoring equation.
+
+\section*{Supplementary Note 5: ORBIT reciprocal protocol}
+Provide the full state machine, frozen-start identities, observation packet, allowed intervention registry, Principal/Verifier boundaries, change receipt, four-role evaluation, six-arm METEOR causal evaluation, frozen-anchor and success-bank logic, promotion certificates and replay/tamper checks.
+
+\section*{Supplementary Note 6: Statistical analysis}
+Provide preregistered endpoints, molecule-group aggregation, bootstrap/sign-flip procedures, multiple-testing correction, minimum support for strata, calibration analysis and treatment of repeated spectra.
+
+\section*{Supplementary Note 7: External generator transfer}
+Report exact software versions, checkpoints, inference settings and candidate filtering for each external generator. Demonstrate that the final pLSE frontier was not used to generate or rerank external candidates before the transfer evaluation.
+
+\section*{Supplementary Note 8: Mouse metabolomics cohort}
+Report the source study, animal/sample metadata, ethics, LC--MS/MS acquisition, raw-data conversion, feature detection, blank/QC filtering, spectrum cleaning, anchor/dark definition, library-search settings, recurrence criteria and orthogonal validation.
+
+\section*{Supplementary Table 1: Dataset and split statistics}
+\begin{longtable}{lllll}
+\toprule
+Dataset & Role & Spectra & Molecule groups & Notes\\
+\midrule
+MassSpecGym & Train & [RESULT] & [RESULT] & frozen benchmark split\\
+MassSpecGym & Validation & [RESULT] & [RESULT] & model/evidence calibration\\
+MassSpecGym & Test & [RESULT] & [RESULT] & official held-out evaluation\\
+Mouse anchor & External & [RESULT] & [RESULT] & blinded labels\\
+Mouse dark & External & [RESULT] & [RESULT] & no accepted exact library hit\\
+\bottomrule
+\end{longtable}
+
+\section*{Supplementary Table 2: Candidate frontier statistics}
+For each METEOR/external frontier report candidate count, validity, uniqueness, exact-formula fraction, nearest incorrect MCES/Tanimoto and ground-truth support.
+
+\section*{Supplementary Table 3: pLSE reaction families}
+For each active family report scope, atom-mapped authority, charge carrier, allowed transfers, evidence source and held-out GT--decoy contribution.
+
+\section*{Supplementary Table 4: Main discrimination metrics}
+Complete top-1/top-$k$, pairwise GT win, AUROC, selection regret, false-strong rate, MCES and Tanimoto metrics for all evidence models and candidate sources.
+
+\section*{Supplementary Table 5: Six-arm causal reasoning experiment}
+Report parent/pilot $\times$ normal/no-CoT/shuffled-CoT results, group-level effect sizes, confidence intervals, sign-flip $P$ values, multiplicity-adjusted thresholds and non-target gates.
+
+\section*{Supplementary Table 6: ORBIT round ledger}
+For every round report target frontier, causal hypothesis, discriminating experiment, intervention, parent/candidate digest, live result, frozen-anchor result, success-bank result and final disposition.
+
+\section*{Supplementary Table 7: External-generator transfer}
+Complete initial-versus-adapted pLSE results on each independent generator and hard-decoy stratum.
+
+\section*{Supplementary Table 8: Mouse prioritized hypotheses}
+For each prioritized spectrum report feature ID, precursor, formula, candidate set, evidence margin, recurrent samples, annotation level, orthogonal evidence and final claim boundary.
+
+\bibliographystyle{unsrtnat}
+\bibliography{../references}
+
+\end{document}
