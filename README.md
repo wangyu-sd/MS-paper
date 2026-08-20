@@ -26,6 +26,7 @@ The title intentionally avoids claiming that experimental evidence itself co-evo
 - `references.bib` — core peer-reviewed literature used by the central argument.
 - `supplementary/Supplementary_Information.tex` — detailed benchmark, chemistry, adaptation, calibration and mouse reporting shell.
 - `internal/CLAIM_EVIDENCE_MATRIX.md` — claim → experiment → statistical unit → control → artifact contract.
+- `internal/EXPERIMENT_EXECUTION_PLAN.md` — **step-by-step execution plan** from dataset/snapshot freezing through Figures 1–5, mouse validation and the prospective MSn/CE Nature extension, including inputs, controls, metrics, statistics, artifacts and go/no-go gates.
 - `internal/RESULTS_PLACEHOLDERS.md` — canonical checklist of results needed to remove manuscript placeholders.
 - `internal/FIGURE_PLAN.md` — panel-level plan for Figures 1–5 and Extended Data.
 - `internal/MOUSE_COHORT_PROTOCOL.md` — rules for using the private unlabelled mouse spectra without inflating annotation confidence.
