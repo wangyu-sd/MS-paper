@@ -1,135 +1,128 @@
 # Figure Plan
 
-The main text uses **six** primary figures. The ordering is intentional: the first figure establishes the core scientific object contributed by the paper, the second shows why that object becomes necessary as molecular hypotheses improve, Figures 3–4 establish causal and adaptive properties, and Figures 5–6 carry the work into metabolomics-scale resource construction and biological discovery. Agent architecture, detailed CoT tests and low-level protocol diagnostics belong in Extended Data or Supplementary Information.
+The main text uses **six** primary figures. The paper is organized around one scientific object and one adaptive mechanism:
 
-The visual story should read as a scientific progression even without the manuscript text:
+- **scientific object:** fragment-mass fingerprints (FMFs) as structure-derived, experimentally sampled molecular evidence;
+- **adaptive mechanism:** agent-driven scientific evolution of the executable FMF / fragmentation-evidence program under an immutable verification boundary.
 
-`discriminative fragmentation evidence → evidence bottleneck → experimental evidence → counterexample-driven adaptation → dark-metabolome map → biological discovery`.
+The visual story should read:
 
-## Figure 1 — Discriminative fragmentation evidence resolves molecular alternatives
+`FMF structural code → candidate-relative evidence → evidence bottleneck → spectrum-specific evidence → agent-evolved FMF program → dark-metabolome resource → biological discovery`.
 
-**Message:** the structural information in a tandem mass spectrum is concentrated in observations that distinguish competing molecular hypotheses, not necessarily in the most intense, most numerous or most broadly explained fragments.
+Agent architecture, Research OS/UI, LLM routing, token/runtime infrastructure and generic software diagrams do **not** belong in the main figures.
 
-This is the chemical and conceptual centre of the manuscript and should appear before the field-level bottleneck analysis.
+## Figure 1 — Fragment-mass fingerprints encode discriminative molecular identity
 
-- **a** One intuitive real-spectrum example with a ground-truth structure and close alternatives. Show the evidence hierarchy directly: structure-derived fragment-mass support → competitor-relative specificity → atom-traceable chemical authority.
-- **b** Real-spectrum bridge analysis: ground-truth versus same-formula best-decoy fragment-mass support and candidate-relative margin under identical pools.
-- **c** Comparator panel under identical hard candidate pools: exact mass, opportunity-normalized matching, forward-spectrum similarity, CFM-ID/SIRIUS-derived or other executable fragmentation-aware score, fragment-mass support, candidate-relative evidence and pLSE authority layers.
-- **d** Same-formula and near-isomer GT rank / pairwise win / false-strong distributions.
-- **e** Ablation ladder: fragment-mass support → candidate specificity → reaction-centre eligibility → atom/charge/H accounting → full trajectory authority, including fragment-space size / overgeneration controls.
-- **f–h** Three chemically distinct case studies with large structures, spectra, decisive m/z values, atom lineage, bond changes and evidence certificates; include one explicitly unresolved case.
-- **i** Fraction of discriminative margin captured versus fraction of observed/explained intensity and theoretical fragment-space size.
+**Message:** a small subset of structure-supported fragment masses carries substantial molecular identity information, but shared fragment masses do not distinguish close alternatives.
 
-**Critical claim:** fragment support is not equivalent to structural evidence. Broad peak coverage and broad theoretical reachability are neither necessary nor sufficient for discrimination.
+- **a** Define the FMF for molecule $M$ under executable program $G$: $F_G(M)=\{m_i\}$, optionally retaining source/provenance and authority. Show a few supported masses rather than a dense mechanistic graph.
+- **b** Intrinsic resolving-power experiment across the large structure pool: Top-1 / information bits versus number of sampled FMF masses; include isobaric-only retrieval.
+- **c** Database-scaling result: precursor-only ambiguity grows with chemical-space size whereas sparse FMF matching contracts the candidate set.
+- **d** Real-spectrum bridge: GT versus same-formula best-decoy FMF support, GT rank and GT-best-decoy margin on measured MS/MS.
+- **e** FMF composition / depth ablation showing that more theoretical fragments are not automatically more informative; test depth-1, depth<=2 and full-lattice support.
+- **f** Candidate-relative discrimination: shared masses versus GT-specific masses for one intuitive same-formula case.
+- **g–h** Two deep chemical examples, including one correctly resolved case and one explicitly unresolved case.
 
-**Visual priority:** the first panel should let a non-specialist editor understand within seconds why one peak can be more structurally informative than many shared peaks. Structures and spectra should dominate; equations and architecture should not.
+**Critical claim:** FMF is not merely a database fingerprint. It is the structure-derived mass-support layer from which candidate-relative experimental evidence is constructed.
+
+**Critical control:** synthetic self-retrieval and measured-spectrum evaluation must be visually and statistically separated.
 
 ## Figure 2 — Better molecular hypotheses expose an evidence bottleneck
 
-**Message:** advances in molecular hypothesis generation systematically move structure elucidation from a generation-limited regime towards an evidence-limited regime in which close alternatives share much of the observable fragmentation support.
+**Message:** as incorrect candidates approach the true structure, their FMFs increasingly overlap and fixed evidence loses discriminative margin.
 
-Having established the evidence object in Figure 1, this figure explains why it becomes increasingly important.
+- **a** Conceptual regime shift from implausible alternatives to close same-formula / local-connectivity alternatives.
+- **b** Candidate difficulty across independent generators and matched database candidates using structure-only metrics.
+- **c** Shared FMF support rises and candidate-specific FMF support falls with candidate similarity.
+- **d** Multiple frozen evidence systems on identical difficulty strata: exact mass, forward-spectrum similarity, external fragmentation-aware comparator(s), FMF support and initial pLSE/evidence snapshot.
+- **e** Molecule-group candidate fidelity versus GT-best-decoy separability after matching candidate-set size and precursor constraints.
+- **f** One spectrum followed across easy and hard candidate populations to show how previously discriminative masses become shared.
 
-- **a** Conceptual regime shift: easy/implausible alternatives in a generation-limited regime versus close same-formula alternatives in an evidence-limited regime.
-- **b** Candidate difficulty across at least two independent candidate sources plus matched database candidates: MCES, Morgan Tanimoto, same-formula and scaffold relation.
-- **c** Multiple frozen evidence systems evaluated on the same difficulty strata: exact mass, forward-spectrum similarity, external fragmentation-aware comparator(s), initial pLSE / initial evidence model.
-- **d** Molecule-group candidate fidelity versus GT–best-decoy separability after matching pool size, formula and precursor constraints.
-- **e** Shared-versus-specific fragment-mass support as candidate similarity increases.
-- **f** Representative spectrum in which peaks that exclude an early decoy become shared among later near-isomeric alternatives.
+**Critical claim:** better candidate generation can shift metabolite elucidation from generation-limited to evidence-limited.
 
-**Critical control:** do not infer the phenomenon by arbitrarily selecting harder negatives. Candidate-set size and precursor constraints must be matched, and the trend must reproduce across independent candidate sources.
+**Critical control:** hardness cannot be created by arbitrary negative mining; the trend must reproduce across independent candidate sources with matched candidate counts and precursor constraints.
 
-**Visual priority:** this should look like a field-level regime shift, not a METEOR benchmark.
+## Figure 3 — Experimental spectra distinguish FMF evidence from chemical possibility
 
-## Figure 3 — Experimental spectra distinguish evidence from chemical plausibility
+**Message:** structure-derived FMF support is a chemical prior; experimental evidence is the subset of measured observations that changes the relative support of competing molecular hypotheses.
 
-**Message:** a chemically plausible fragment or fragmentation path is not automatically experimental evidence; useful evidence is the part of the measured observation that changes the relative support of competing structures.
+- **a** Structure-derived FMF / reaction-space prior versus spectrum-conditioned evidence view.
+- **b** Correct-spectrum / no-spectrum / matched shuffled-spectrum controls on identical candidates.
+- **c** Spectral lift and identity lift in GT rank, GT-best-decoy margin and candidate-specific FMF evidence.
+- **d** Evidence-authority decomposition: mass-supported, candidate-specific, trajectory-certified, shared, unsupported and not-evaluated/truncated.
+- **e** Representative candidate set where the chemical prior is similar across alternatives but only the correct measured spectrum changes the supported hypothesis.
 
-- **a** Matched structure-only and spectrum-conditioned views of the same chemical fragmentation prior. Keep the internal labels Chemical-World/Spectral-Reality out of the main visual if possible.
-- **b** Correct / no-spectrum / mass-adduct-matched shuffled-spectrum controls.
-- **c** Spectral lift and identity lift for molecular ranking and discriminative fragmentation evidence.
-- **d** Evidence-authority decomposition: spectrum-specific, shared, unsupported and beyond trace authority.
-- **e** One candidate set where chemical plausibility is similar across alternatives but the true spectrum changes the supported hypothesis.
+**Move out of main figure:** language-form CoT controls and UI/agent observability → Extended Data / Supplementary.
 
-**Move out of main figure:** parent/pilot × normal/no-CoT/shuffled-CoT six-arm experiment → Extended Data Figure 6.
+## Figure 4 — Agent-driven evolution improves the executable FMF evidence program
 
-## Figure 4 — Counterexamples adapt fragmentation evidence to harder hypotheses
+**Message:** hard molecular counterexamples can drive causal, auditable improvement of the program that generates and interprets FMF evidence, without allowing the LLM to define scientific truth.
 
-**Message:** hard molecular alternatives expose specific failures of a fixed evidence model; bounded, verified revisions recover discrimination and transfer beyond the candidate source that exposed the failure.
+This figure must show the **scientific evolution loop**, not a generic multi-agent architecture.
 
-The scientific object is adaptation of the executable evidence model, not the agent architecture itself.
+- **a** One real failure: an experimentally informative GT-specific mass is missing, or an over-broad rule creates shared accidental support. Localize the failure to a mutable FMF / CID / ERSF algorithm surface.
+- **b** Typed scientific mutation contract: parent program, failure evidence, hypothesis, causal claim, exact edit, predicted gain/regression, falsification test and compute budget. The LLM proposes the edit but does not choose the scientific objective or promotion outcome.
+- **c** Immutable verification boundary: atom/H/charge/electron conservation, exact-mass closure, atom lineage, no spectrum-created chemistry edges, evaluator/dataset receipts, protected-split firewall and frozen promotion authority.
+- **d** Replay/ablation causal credit on one frozen evaluator receipt: associated-only → replay-supported → ablation-supported. Show that budget inflation or evaluator drift cannot receive causal credit.
+- **e** Scientific memory: only replay/ablation-supported lessons from mutation-eligible screen/discovery data can seed later mutations; held-out/external/prospective evidence may support or refute a lesson but never re-enter adaptive mutation.
+- **f** Evolution trajectory across generations: GT-decoy discrimination / FMF specificity versus complexity or runtime, with accepted and rejected mutations distinguished.
+- **g** Ablations: no-agent/random mutation, no causal replay, no reusable scientific memory, ungated evolution and full scientific-RSI loop.
+- **h** External transfer of the evolved FMF evidence program to independent molecule groups / candidate sources / datasets.
 
-- **a** Initial evidence loses discrimination on later/harder hypotheses, followed by recovery with adapted evidence.
-- **b** Failure decomposition into missing informative support, overgenerated/shared support and insufficient chemical authority.
-- **c** Factorial endpoint design: `(H0,E0)`, `(HT,E0)`, `(H0,ET)`, `(HT,ET)` and interaction effect `Δ_int`.
-- **d** Gated adaptation versus fixed-side and ungated/blind alternation controls.
-- **e** Post-freeze cross-generation challenge–recovery matrix `A_ij`.
-- **f** External-generator/retrieval transfer: initial versus adapted evidence model.
-- **g** Generator recall versus conditional discrimination versus end-to-end resolution.
-- **h** Calibrated/risk-controlled structural candidate sets: empirical coverage, set size, resolvable and unresolved examples.
+**Critical claim:** the paper is not claiming that an LLM can certify chemistry. The claim is that LLM-proposed typed program edits can yield replay-confirmed, transferable scientific improvements when deterministic scientific authority remains outside the mutable search space.
 
-**Critical control:** the cross-generation matrix is descriptive. The factorial endpoint experiment and external transfer carry the causal/generalization claims.
+**Critical validation:** PR #43 implements this P5 substrate; PR #44 explicitly leaves the frozen replay/ablation/external-transfer scientific benchmark open. The final figure requires those benchmark results before any self-improvement claim is promoted.
 
-**Visual priority:** panel a should communicate the scientific result before the reader encounters any ORBIT protocol details.
+**Move to Extended Data:** independent reviewer → repair actor → fresh evaluation lifecycle; full mutation operator catalogue; runtime/ledger details; complete cross-generation matrices if visually dense.
 
 ## Figure 5 — Evidence-bounded mapping of the dark metabolome
 
-**Message:** the practical output of structure elucidation at metabolomics scale is an evidence-bounded molecular map, not a forced unique SMILES for every dark spectrum.
+**Message:** the practical output at metabolomics scale is a high-throughput evidence-bounded molecular resource, not a forced unique SMILES for every dark spectrum.
 
-This figure upgrades the previous small mouse case-study panel into a resource-scale result.
+- **a** Independent metabolomics cohort(s): all MS/MS → frozen QC → exact-library-hit removal → blinded anchors + dark spectra.
+- **b** Blinded-anchor generator recall, conditional discrimination and end-to-end resolution with peer-reviewed baselines.
+- **c** Resource-wide resolution landscape: unresolved → formula/class → molecular family → bounded candidate set → high-confidence putative 2D structure → orthogonally confirmed identity.
+- **d** Candidate-space contraction and calibrated set-size / false-resolution distributions.
+- **e** Chemical-space / molecular-family organization of dark spectra, with structural similarity and evidence level encoded separately.
+- **f** Recurrence and reproducibility across biological samples / cohorts.
+- **g** Parallel resolved and unresolved evidence dossiers.
 
-- **a** Independent metabolomics cohort(s) and frozen dark-spectrum construction: all MS/MS → quality-controlled spectra → exact-library-hit removal → blinded anchors + dark spectra.
-- **b** Blinded-anchor validation: generator recall, conditional discrimination, end-to-end resolution and applicable peer-reviewed baselines.
-- **c** Resource-wide resolution landscape: unresolved → formula → structural family → bounded candidate set → high-confidence putative 2D structure → orthogonally confirmed structure.
-- **d** Candidate-space contraction across the dark resource, including calibrated set-size distributions and false-resolution control.
-- **e** Chemical-space / molecular-family organization of previously dark spectra, with evidence level encoded independently of molecular similarity.
-- **f** Recurrence and reproducibility of prioritized dark features across biological samples / cohorts.
-- **g** Parallel deep examples: one resolved/strongly narrowed case and one unresolved isomer case, both with explicit evidence and alternatives.
-
-**Critical claim:** the resource must expose uncertainty rather than convert every spectrum into a structure prediction. Exact structures are claimed only at the evidence level justified by the frozen protocol and orthogonal validation.
-
-**Resource deliverable:** release spectrum identifiers, formula / candidate-family assignments, candidate sets, discriminative masses, evidence authority, resolution level, reproducibility and validation status.
+**Resource deliverable:** spectrum provenance, precursor information, FMF-supported/discriminative masses, candidate set, evidence authority, unresolved alternatives, calibrated resolution, recurrence and validation status.
 
 ## Figure 6 — Dark-metabolome mapping reveals previously hidden biology
 
-**Message:** organizing dark spectra by evidence-bounded molecular structure reveals a reproducible biological pattern that was inaccessible when the same features remained chemically unresolved.
+**Message:** structural organization of the dark-metabolome resource exposes one reproducible biological programme that could not be interpreted reliably from chemically anonymous features alone.
 
-The exact biological finding must be data-driven rather than pre-scripted, but the figure should be designed around one coherent discovery rather than a catalogue of associations.
+- **a** Resource-wide discovery of one coherent molecular family / transformation series / metabolite programme associated with a predefined biological context.
+- **b** Replication in independent biological samples or an external cohort where available.
+- **c** Structural organization of the family, including shared scaffold / repeated transformations / discriminative fragment-mass evidence.
+- **d** Select 2–4 anchor metabolites or spectra from a frozen discovery criterion.
+- **e** Authentic-standard validation with matched MS/MS and RT/coelution; targeted MSn or spike-in for hard isomers when necessary.
+- **f** One focused biological validation only when it directly tests the resource-derived biological hypothesis.
+- **g** Integrated biological model constrained to the validated structural resolution.
 
-- **a** Resource-wide screen identifying one reproducible molecular family, structural transformation series or metabolite programme associated with a predefined tissue, condition, genotype or phenotype.
-- **b** Replication of the family-level / metabolite-level pattern across independent biological samples or an independent cohort where available.
-- **c** Structural organization of the discovery: shared scaffold / transformation series / discriminative fragments connecting the previously dark features.
-- **d** Selection of 2–4 anchor metabolites or spectra that carry the biological interpretation.
-- **e** Orthogonal structure validation for representative anchors using authentic standards, matched MS/MS and RT/co-elution; targeted MSn or spike-in where informative.
-- **f** Focused biological validation appropriate to the discovery, only if scientifically justified by the source cohort (for example perturbation, isotope tracing, microbiome dependence or pathway-context validation).
-- **g** Integrated model linking the newly resolved molecular family to the biological process without overextending beyond the validated evidence.
-
-**Critical claim:** Figure 6 must show that the resource enabled a biological conclusion that could not be made reliably from unannotated features alone. A large number of annotations without a coherent biological discovery is not sufficient.
-
-**Nature-main-track extension:** if prospective experiment selection is completed, one panel can show `ambiguity → predicted missing discriminative evidence → targeted MSn/CE measurement → candidate contraction` as a direct demonstration that ORBIT changes the experimental elucidation workflow.
+**Critical claim:** a large annotation resource alone is insufficient. Figure 6 must show a biological conclusion enabled by the structural organization of previously dark spectra.
 
 ## Extended Data
 
 1. Dataset composition, split and pretraining leakage audit.
-2. Complete hard-decoy benchmark and real-spectrum fragment-mass support diagnostics.
-3. Candidate-difficulty matching and evidence-bottleneck sensitivity analyses.
-4. Reaction-basis coverage, search truncation and fragment-space overgeneration diagnostics.
-5. Full fragmentation-evidence ablations and evidence-authority decomposition.
-6. Parent/pilot × normal/no-reasoning/shuffled-reasoning six-arm causal analysis.
-7. Reciprocal-run replicates, fixed-side/ungated controls and full cross-generation matrix.
-8. External transfer, generator recall, conditional discrimination, conformal/risk-controlled candidate sets and calibration.
-9. Dark-metabolome resource QC, library overlap, blinded-anchor evaluation, recurrence and resolution-level audit.
-10. Complete dark-spectrum evidence dossiers and orthogonal validation.
-11. Resource-wide biological association statistics, multiple-testing control and replication.
-12. Full standard / RT / MSn validation records for Figure 6 anchor metabolites.
+2. Full synthetic FMF resolving-power/database-scaling/robustness analyses.
+3. Complete real-spectrum FMF benchmark and same-formula candidate diagnostics.
+4. Candidate-difficulty matching and evidence-bottleneck sensitivity analyses.
+5. FMF depth/source/lattice-size and mechanistic-authority ablations.
+6. Correct/no/shuffled-spectrum and structured-reasoning controls.
+7. Scientific-RSI mutation catalogue, falsification contracts, replay/ablation details and budget controls.
+8. ScientificLesson memory boundary, independent review/repair/fresh-evaluation lifecycle and protected-data firewall tests.
+9. Full evolution replicates, random/no-memory/no-replay/ungated controls and external transfer.
+10. Dark-metabolome resource QC, blinded-anchor evaluation and recurrence.
+11. Complete dark-spectrum evidence dossiers and standards/RT/MSn validation.
+12. Resource-wide biological association, multiple-testing control, replication and negative controls.
 
 ## Visual principles
 
-- Use a white background, sparse panels and large molecular structures/spectra.
-- Avoid dense multi-agent diagrams and decorative AI icons.
-- Reuse one or two anchor spectra across Figures 1–3 so the scientific logic is visually continuous.
-- Encode scientific roles consistently: observed spectrum, candidate hypothesis, fragment-mass support, discriminative evidence, chemical authority and unresolved alternatives.
-- Molecular structures, atom labels and reaction arrows must be interpretable at journal print size.
-- Do not use a heatmap, architecture diagram or training curve as the visual centre of the paper; key panels should show chemistry, structural alternatives, evidence supplied by the experiment and the biological structure exposed by the resource.
-- Figure titles and panel headings should describe scientific findings, not implementation modules.
-- Figures 5–6 should visually resemble metabolomics discovery/resource figures rather than model benchmark figures.
+- White background, restrained typography, large molecular structures and spectra.
+- Do not make an agent architecture diagram the centre of Figure 4; lead with one falsifying chemical counterexample and one exact program revision.
+- Reuse anchor spectra across Figures 1–4 to make the scientific progression visually continuous.
+- Distinguish structure-derived FMF support, measured spectral evidence, candidate specificity and mechanistic authority consistently.
+- `NOT_EVALUATED`, truncation and unsupported chemistry must never be rendered as candidate contradiction.
+- Figures 5–6 should visually resemble metabolomics resource/discovery figures rather than AI benchmark figures.
