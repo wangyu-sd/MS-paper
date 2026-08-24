@@ -1,13 +1,14 @@
 # Figure Plan
 
-The main text uses **six** primary figures. The paper is organized around one scientific object and one adaptive mechanism:
+The main text uses **six** primary figures. The paper is organized around one scientific object, one adaptive mechanism and one biological payoff:
 
 - **scientific object:** fragment-mass fingerprints (FMFs) as structure-derived, experimentally sampled molecular evidence;
-- **adaptive mechanism:** agent-driven scientific evolution of the executable FMF / fragmentation-evidence program under an immutable verification boundary.
+- **adaptive mechanism:** agent-driven scientific evolution of the executable FMF / fragmentation-evidence program under an immutable verification boundary;
+- **biological payoff:** evidence-bounded structural organization of dark metabolomic features into molecular families and transformation series that can be tested across tissues, conditions and targeted validation experiments.
 
 The visual story should read:
 
-`FMF structural code → candidate-relative evidence → evidence bottleneck → spectrum-specific evidence → agent-evolved FMF program → dark-metabolome resource → biological discovery`.
+`FMF structural code → candidate-relative evidence → evidence bottleneck → spectrum-specific evidence → agent-evolved FMF program → dark-metabolome resource → biological programme`.
 
 Agent architecture, Research OS/UI, LLM routing, token/runtime infrastructure and generic software diagrams do **not** belong in the main figures.
 
@@ -77,31 +78,43 @@ This figure must show the **scientific evolution loop**, not a generic multi-age
 
 ## Figure 5 — Evidence-bounded mapping of the dark metabolome
 
-**Message:** the practical output at metabolomics scale is a high-throughput evidence-bounded molecular resource, not a forced unique SMILES for every dark spectrum.
+**Message:** the practical output at metabolomics scale is not only more annotations, but a high-throughput structural resource that turns anonymous features into evidence-qualified molecular families while preserving uncertainty.
 
 - **a** Independent metabolomics cohort(s): all MS/MS → frozen QC → exact-library-hit removal → blinded anchors + dark spectra.
 - **b** Blinded-anchor generator recall, conditional discrimination and end-to-end resolution with peer-reviewed baselines.
 - **c** Resource-wide resolution landscape: unresolved → formula/class → molecular family → bounded candidate set → high-confidence putative 2D structure → orthogonally confirmed identity.
 - **d** Candidate-space contraction and calibrated set-size / false-resolution distributions.
-- **e** Chemical-space / molecular-family organization of dark spectra, with structural similarity and evidence level encoded separately.
-- **f** Recurrence and reproducibility across biological samples / cohorts.
-- **g** Parallel resolved and unresolved evidence dossiers.
+- **e** Molecular-family organization of dark spectra defined from structure/FMF relationships **without biological labels**; encode evidence level separately from structural similarity.
+- **f** Tissue/condition distribution and recurrence of those frozen molecular families; show whether family-level aggregation reveals coherent co-regulation that isolated peaks obscure.
+- **g** Candidate structural-transformation series connecting previously anonymous features. Repeated mass/graph changes are shown as candidate relationships, not automatically labelled as enzymatic reactions.
+- **h** Parallel resolved and unresolved evidence dossiers.
 
-**Resource deliverable:** spectrum provenance, precursor information, FMF-supported/discriminative masses, candidate set, evidence authority, unresolved alternatives, calibrated resolution, recurrence and validation status.
+**Resource deliverable:** spectrum provenance, precursor information, FMF-supported/discriminative masses, candidate set, evidence authority, unresolved alternatives, calibrated resolution, recurrence, family membership, biological distribution summaries and validation status.
 
-## Figure 6 — Dark-metabolome mapping reveals previously hidden biology
+**Biological principle:** Figure 5 should establish that structural resolution changes the unit of biological analysis from isolated anonymous peaks to evidence-qualified molecular families.
 
-**Message:** structural organization of the dark-metabolome resource exposes one reproducible biological programme that could not be interpreted reliably from chemically anonymous features alone.
+## Figure 6 — Structural organization of the dark metabolome reveals biological programmes
 
-- **a** Resource-wide discovery of one coherent molecular family / transformation series / metabolite programme associated with a predefined biological context.
-- **b** Replication in independent biological samples or an external cohort where available.
-- **c** Structural organization of the family, including shared scaffold / repeated transformations / discriminative fragment-mass evidence.
-- **d** Select 2–4 anchor metabolites or spectra from a frozen discovery criterion.
+**Message:** one coherent biological conclusion emerges because dark features have been structurally organized, not merely because more peaks received names.
+
+The exact biological result must be data-driven. Prioritize the strongest result among three prespecified levels:
+
+1. **tissue/compartment programme:** a molecular family is reproducibly restricted to, or enriched in, one tissue/compartment;
+2. **condition programme:** a structurally coherent family or transformation series changes together across a genotype, treatment, disease or phenotype;
+3. **origin/pathway programme:** dedicated perturbation or tracing resolves dietary, microbial or host contribution or places the family in a candidate metabolic pathway.
+
+- **a** Resource-wide tissue/condition map identifying the principal evidence-qualified family or metabolite programme.
+- **b** Replication across independent biological samples or an external cohort where available.
+- **c** Structural/FMF organization of the family, including shared scaffold and repeated candidate transformations linking previously dark features.
+- **d** Select 2–4 anchor metabolites or spectra using a frozen discovery criterion.
 - **e** Authentic-standard validation with matched MS/MS and RT/coelution; targeted MSn or spike-in for hard isomers when necessary.
-- **f** One focused biological validation only when it directly tests the resource-derived biological hypothesis.
-- **g** Integrated biological model constrained to the validated structural resolution.
+- **f** Source-attribution experiment when the cohort supports it: diet intervention, antibiotic/gnotobiotic microbiome perturbation, isotope tracing, genotype or pathway perturbation.
+- **g** One focused functional/pathway assay only when directly motivated by the resource-derived biological hypothesis and adequately supported anchor structures.
+- **h** Integrated model constrained to the experimentally supported structural and causal resolution; explicitly retain unresolved branches.
 
-**Critical claim:** a large annotation resource alone is insufficient. Figure 6 must show a biological conclusion enabled by the structural organization of previously dark spectra.
+**Critical claim:** tissue restriction does not prove origin; co-abundance does not prove a pathway; repeated mass differences do not prove enzymatic reactions. Figure 6 should progress from descriptive organization → replicated association → source/causal evidence only when each layer has the appropriate experiment.
+
+**Nature-level payoff:** the strongest version is not “ORBIT annotated N spectra” but “ORBIT structurally organized a previously anonymous molecular programme, enabling a reproducible biological relationship and a targeted experiment that could not be formulated from the unannotated peaks alone.”
 
 ## Extended Data
 
@@ -115,8 +128,8 @@ This figure must show the **scientific evolution loop**, not a generic multi-age
 8. ScientificLesson memory boundary, independent review/repair/fresh-evaluation lifecycle and protected-data firewall tests.
 9. Full evolution replicates, random/no-memory/no-replay/ungated controls and external transfer.
 10. Dark-metabolome resource QC, blinded-anchor evaluation and recurrence.
-11. Complete dark-spectrum evidence dossiers and standards/RT/MSn validation.
-12. Resource-wide biological association, multiple-testing control, replication and negative controls.
+11. Molecular-family definitions, tissue/condition maps, family-level co-variation, candidate transformation series, metadata-permutation controls and evidence-level sensitivity analyses.
+12. Complete anchor standards/RT/MSn validation plus diet/microbiome/isotope/genotype/pathway evidence where available; retain negative and unresolved source-attribution results.
 
 ## Visual principles
 
@@ -126,3 +139,4 @@ This figure must show the **scientific evolution loop**, not a generic multi-age
 - Distinguish structure-derived FMF support, measured spectral evidence, candidate specificity and mechanistic authority consistently.
 - `NOT_EVALUATED`, truncation and unsupported chemistry must never be rendered as candidate contradiction.
 - Figures 5–6 should visually resemble metabolomics resource/discovery figures rather than AI benchmark figures.
+- In Figure 6, use biological metadata only after structural family construction is frozen, so the visual logic itself communicates that the biology was discovered from the resource rather than used to define it.
