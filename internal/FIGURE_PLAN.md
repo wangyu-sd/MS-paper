@@ -1,89 +1,104 @@
 # Figure Plan
 
-The main text uses **six** primary figures. The paper is organized around one scientific object, one long-horizon adaptive mechanism and one biological payoff:
+The main text uses **six** primary figures. The paper is organized around one scientific representation, one reason that static inference fails, one experimental grounding principle, one long-horizon learning mechanism and one biological payoff:
 
-- **scientific object:** fragment-mass fingerprints (FMFs) as structure-derived, experimentally sampled molecular evidence;
-- **adaptive mechanism:** long-horizon agent co-evolution between the executable FMF/pLSE evidence program and the post-pretraining METEOR hypothesis/reasoning program, driven by durable challenge–recovery cycles under an immutable scientific boundary;
-- **biological payoff:** evidence-bounded structural organization of dark metabolomic features into molecular families and transformation series that can be tested across tissues, conditions and targeted validation experiments.
+- **representation:** fragment-mass fingerprints (FMFs) provide a structure-derived mass-support space on which molecular alternatives can be compared;
+- **challenge:** increasingly faithful molecular hypotheses create progressively harder evidence demands rather than monotonically simplifying identification;
+- **grounding:** experimental spectra, not chemical plausibility or model prose, determine which FMF support becomes discriminative evidence;
+- **long-horizon learning:** a scientific agent persists across challenge–degradation–repair–recovery–transfer cycles, revising either the executable FMF/pLSE program or the post-pretraining METEOR reasoning program while scientific authority remains immutable;
+- **deployment:** evidence seeking carries each dark spectrum only to the structural resolution justified by the available experiment;
+- **biological payoff:** evidence-bounded molecular families and transformation series expose biological programmes that anonymous peaks cannot support reliably.
 
 The visual story should read:
 
-`FMF structural code → candidate-relative evidence → evidence bottleneck → spectrum-specific evidence → challenge–recovery co-evolution → dark-spectrum campaigns/resource → biological programme`.
+`representation → harder challenge → experimental grounding → long-horizon learning → evidence-seeking dark-metabolome map → biological programme`.
 
 Agent architecture, Research OS/UI, LLM routing, token/runtime infrastructure and generic software diagrams do **not** belong in the main figures.
 
-## Figure 1 — Fragment-mass fingerprints encode discriminative molecular identity
+## Figure 1 — Fragment-mass fingerprints encode molecular identity
 
-**Message:** a small subset of structure-supported fragment masses carries substantial molecular identity information, but shared fragment masses do not distinguish close alternatives.
+**Scientific question:** what representation does the agent reason over?
 
-- **a** Define the FMF for molecule $M$ under executable program $G$: $F_G(M)=\{m_i\}$, optionally retaining source/provenance and authority. Show a few supported masses rather than a dense mechanistic graph.
+**Message:** a small subset of structure-supported fragment masses contains substantial molecular identity information, but shared fragment masses do not distinguish close alternatives.
+
+- **a** Define the FMF for molecule $M$ under executable program $G$: $F_G(M)=\{m_i\}$, retaining source/provenance and authority where available. Show a few supported masses rather than a dense mechanistic graph.
 - **b** Intrinsic resolving-power experiment across the large structure pool: Top-1 / information bits versus number of sampled FMF masses; include isobaric-only retrieval.
 - **c** Database-scaling result: precursor-only ambiguity grows with chemical-space size whereas sparse FMF matching contracts the candidate set.
 - **d** Real-spectrum bridge: GT versus same-formula best-decoy FMF support, GT rank and GT-best-decoy margin on measured MS/MS.
-- **e** FMF composition / depth ablation showing that more theoretical fragments are not automatically more informative; test depth-1, depth<=2 and full-lattice support.
+- **e** FMF composition/depth ablation showing that more theoretical fragments are not automatically more informative; test depth-1, depth<=2 and full-lattice support.
 - **f** Candidate-relative discrimination: shared masses versus GT-specific masses for one intuitive same-formula case.
 - **g–h** Two deep chemical examples, including one correctly resolved case and one explicitly unresolved case.
 
-**Critical claim:** FMF is not merely a database fingerprint. It is the structure-derived mass-support layer from which candidate-relative experimental evidence is constructed.
+**Critical claim:** FMF is not merely a database fingerprint. It is the structure-derived scientific representation from which candidate-relative experimental evidence is constructed.
 
 **Critical control:** synthetic self-retrieval and measured-spectrum evaluation must be visually and statistically separated.
 
-## Figure 2 — Better molecular hypotheses expose an evidence bottleneck
+## Figure 2 — Improved molecular hypotheses create progressively harder evidence challenges
+
+**Scientific question:** why is a static spectrum-to-structure model insufficient?
 
 **Message:** as incorrect candidates approach the true structure, their FMFs increasingly overlap and fixed evidence loses discriminative margin.
 
-- **a** Conceptual regime shift from implausible alternatives to close same-formula / local-connectivity alternatives.
+- **a** Conceptual regime shift from implausible alternatives to close same-formula/local-connectivity alternatives.
 - **b** Candidate difficulty across independent generators and matched database candidates using structure-only metrics.
 - **c** Shared FMF support rises and candidate-specific FMF support falls with candidate similarity.
 - **d** Multiple frozen evidence systems on identical difficulty strata: exact mass, forward-spectrum similarity, external fragmentation-aware comparator(s), FMF support and initial pLSE/evidence snapshot.
 - **e** Molecule-group candidate fidelity versus GT-best-decoy separability after matching candidate-set size and precursor constraints.
 - **f** One spectrum followed across easy and hard candidate populations to show how previously discriminative masses become shared.
 
-**Critical claim:** better candidate generation can shift metabolite elucidation from generation-limited to evidence-limited.
+**Critical claim:** better molecular hypothesis generation can create harder scientific challenges and move metabolite elucidation from generation-limited to evidence-limited.
 
 **Critical control:** hardness cannot be created by arbitrary negative mining; the trend must reproduce across independent candidate sources with matched candidate counts and precursor constraints.
 
-## Figure 3 — Experimental spectra distinguish FMF evidence from chemical possibility
+## Figure 3 — Experimental spectra ground discriminative FMF evidence
 
-**Message:** structure-derived FMF support is a chemical prior; experimental evidence is the subset of measured observations that changes the relative support of competing molecular hypotheses.
+**Scientific question:** what determines whether the agent has learned the right evidence?
 
-- **a** Structure-derived FMF / reaction-space prior versus spectrum-conditioned evidence view.
+**Message:** structure-derived FMF support is chemical possibility; experimental evidence is the subset of measured observations that changes the relative support of competing molecular hypotheses.
+
+- **a** Structure-derived FMF/reaction-space prior versus spectrum-conditioned evidence view.
 - **b** Correct-spectrum / no-spectrum / matched shuffled-spectrum controls on identical candidates.
 - **c** Spectral lift and identity lift in GT rank, GT-best-decoy margin and candidate-specific FMF evidence.
 - **d** Evidence-authority decomposition: mass-supported, candidate-specific, trajectory-certified, shared, unsupported and not-evaluated/truncated.
 - **e** Representative candidate set where the chemical prior is similar across alternatives but only the correct measured spectrum changes the supported hypothesis.
 
-**Move out of main figure:** language-form CoT controls and UI/agent observability → Extended Data / Supplementary.
+**Critical claim:** the scientific verifier is not another language model. Useful evidence must remain bound to the identity of the experiment and, where reaction-level authority is claimed, to executable chemistry.
 
-## Figure 4 — Long-horizon agent co-evolution recovers from harder molecular challenges
+**Move out of main figure:** detailed CoT language-form controls and UI/agent observability → Extended Data / Supplementary.
 
-**Message:** repeated challenge → degradation → targeted repair → recovery → transfer → new challenge cycles can improve both molecular hypothesis reasoning and executable FMF evidence without allowing either mutable model to redefine scientific truth.
+## Figure 4 — A long-horizon scientific agent learns through molecular challenge and recovery
 
-This figure must show the **scientific challenge–recovery object**, not a generic multi-agent architecture.
+**Scientific question:** how does the system improve when the scientific problem itself becomes harder?
+
+**Message:** the long-horizon object is not a longer trajectory or monotonically increasing score, but repeated challenge → degradation → targeted repair → recovery → transfer → new challenge cycles in which harder molecular hypotheses and executable evidence falsify each other.
+
+This figure must show the **scientific learning loop**, not a generic multi-agent architecture.
 
 - **a** Define a durable `ChallengeSet`: one spectrum, close candidate alternatives, candidate-similarity class, FMF/pLSE evidence gap, METEOR reasoning gap and creation/resolution round. Show sources such as METEOR hard decoys, same-formula/same-scaffold alternatives, pLSE counterexamples, ERSF disagreement and unresolved spectra.
 - **b** One asymmetric challenge cycle: improved METEOR candidate fidelity creates a harder local alternative set and causes a measurable fall in FMF/pLSE discrimination; failure attribution chooses the mutable side rather than round-robin mutation.
-- **c** Two typed mutation surfaces. Evidence side: $P=(G_{chem},S_{search},E_{evidence},I_{impl})$. Hypothesis side: $M=(P_{frozen},C_{spectrum},R_{cot},T_{post},D_{decode})$, with molecular pretraining immutable. Show the CoT program as typed states (ObservedEvidence → CandidateHypotheses → MechanisticConstraints → DiscriminativePredictions → UnresolvedAmbiguities → CounterfactualPredictions → NextEvidenceRequest → FinalCandidateDistribution), not free-form prose.
+- **c** Two typed scientific programs. Evidence side: $P=(G_{chem},S_{search},E_{evidence},I_{impl})$. Hypothesis side: $M=(P_{frozen},C_{spectrum},R_{cot},T_{post},D_{decode})$, with molecular pretraining immutable. Show the CoT program as typed states (ObservedEvidence → CandidateHypotheses → MechanisticConstraints → DiscriminativePredictions → UnresolvedAmbiguities → CounterfactualPredictions → NextEvidenceRequest → FinalCandidateDistribution), not free-form prose.
 - **d** Immutable verification boundary and falsification contract: exact edit, predicted gain/regression, fresh discovery evaluation, chemistry/evaluator receipts, protected-data firewall and no self-promotion.
 - **e** Replay/ablation/transfer causal-credit hierarchy: associated → replay-supported → ablation-supported → transfer-supported. Scientific memory can seed later mutations only from mutation-eligible evidence.
-- **f** Long-horizon challenge–recovery trajectory across rounds: candidate fidelity, candidate distinguishability, recovery rounds and cost. Show repeated recovery followed by a genuinely harder challenge rather than only monotonic benchmark gain.
+- **f** Long-horizon challenge–recovery trajectory across rounds: candidate fidelity, candidate distinguishability, recovery rounds and recovery cost. Show repeated recovery followed by a genuinely harder challenge rather than only monotonic benchmark gain.
 - **g** Causal ablations: fixed both sides, pLSE/FMF-only evolution, METEOR-only evolution, random/no-agent mutation, no replay, no reusable scientific memory and ungated/weakened verification.
 - **h** Cross-generation and cross-family transfer: recovered edits must improve unseen challenge families / independent candidate sources after freeze; report reintroduced-failure rate.
 
-**Primary co-evolution endpoints:** challenge introduction rate, recovery rate, rounds-to-recovery, cross-generation transfer, cross-family transfer, reintroduced failure rate, GT-best-decoy margin, ambiguity-set size and total compute/training cost.
+**Primary long-horizon endpoints:** challenge introduction rate, recovery rate, rounds-to-recovery, cross-generation transfer, cross-family transfer, reintroduced failure rate, GT-best-decoy margin, ambiguity-set size and total compute/training cost.
 
-**Critical claim:** the paper does not claim that two LLM agents make each other smarter. The claim is that harder molecular hypotheses and executable evidence create falsifiable counterexamples for each other, and that bounded program edits can yield replay-confirmed, transferable recovery while the scientific authority remains immutable.
+**Critical claim:** ORBIT is not claimed to be intelligent because it runs for a long time or contains multiple workers. The claim is that it persists across changing molecular problems, detects when current evidence or reasoning becomes insufficient, revises the responsible executable scientific program, verifies whether the revision caused recovery, and reuses only causally supported lessons in the next challenge.
 
-**Critical validation:** PR #45 currently defines the long-horizon H0–H7 architecture but is plan-only. The final main-text co-evolution claim requires H5 challenge–recovery and H6 replay/ablation/transfer benchmarks to be implemented and frozen. H0–H4 runtime completeness alone is not scientific evidence.
+**Critical validation:** PR #45 defines the long-horizon H0–H7 architecture but is plan-only. The final main-text claim requires H5 challenge–recovery and H6 replay/ablation/transfer benchmarks to be implemented and frozen. Runtime durability alone is not scientific evidence.
 
 **Move to Extended Data:** durable campaign/restart mechanics, worker capability ceilings, independent reviewer → repair actor → fresh evaluation lifecycle, full mutation operator catalogue and dense cross-generation matrices.
 
-## Figure 5 — Evidence-bounded mapping of the dark metabolome
+## Figure 5 — Long-horizon evidence seeking maps the dark metabolome
 
-**Message:** the practical output at metabolomics scale is a high-throughput resource built from evidence-seeking dark-spectrum campaigns, not a forced unique SMILES for every spectrum.
+**Scientific question:** what does long-horizon scientific intelligence enable at metabolomics scale?
+
+**Message:** each dark spectrum is treated as an evidence-seeking scientific campaign that can resolve, narrow or explicitly abstain; the resulting resource preserves both structural hypotheses and what evidence is still missing.
 
 - **a** Independent metabolomics cohort(s): all MS/MS → frozen QC → exact-library-hit removal → blinded anchors + dark spectra.
-- **b** DarkSpectrumCampaign inset: candidate proposal → FMF/pLSE evidence → posterior/ambiguity → choose next discriminating computation/evidence → belief update → stop. Valid terminal states are resolved-supported, narrowed hypotheses, unresolved-insufficient-evidence, out-of-scope and budget-exhausted.
+- **b** DarkSpectrumCampaign: candidate proposal → FMF/pLSE evidence → posterior/ambiguity → choose next discriminating computation/evidence → belief update → stop. Valid terminal states are resolved-supported, narrowed hypotheses, unresolved-insufficient-evidence, out-of-scope and budget-exhausted.
 - **c** Blinded-anchor generator recall, conditional discrimination and end-to-end resolution with peer-reviewed baselines.
 - **d** Resource-wide resolution landscape: unresolved → formula/class → molecular family → bounded candidate set → high-confidence putative 2D structure → orthogonally confirmed identity; include calibrated set-size / false-resolution distributions.
 - **e** Molecular-family organization of dark spectra defined from structure/FMF relationships **without biological labels**; encode evidence level separately from structural similarity.
@@ -93,11 +108,13 @@ This figure must show the **scientific challenge–recovery object**, not a gene
 
 **Campaign boundary:** an algorithmic failure discovered during a dark-spectrum or prospective campaign may create a separate discovery-phase improvement campaign, but protected/prospective evidence from the original case must not become adaptive mutation input.
 
-**Resource deliverable:** spectrum provenance, precursor information, FMF-supported/discriminative masses, candidate set, evidence authority, unresolved alternatives, calibrated resolution, recurrence, family membership, biological distribution summaries and validation status.
+**Resource deliverable:** spectrum provenance, precursor information, FMF-supported/discriminative masses, candidate set, evidence authority, unresolved alternatives, remaining evidence requirement, calibrated resolution, recurrence, family membership, biological distribution summaries and validation status.
 
-**Biological principle:** Figure 5 should establish that structural resolution changes the unit of biological analysis from isolated anonymous peaks to evidence-qualified molecular families.
+**Biological principle:** Figure 5 changes the unit of biological analysis from isolated anonymous peaks to evidence-qualified molecular families without pretending that every spectrum has reached exact structural identity.
 
 ## Figure 6 — Structural organization of the dark metabolome reveals biological programmes
+
+**Scientific question:** why does the long-horizon system matter for metabolomics biology?
 
 **Message:** one coherent biological conclusion emerges because dark features have been structurally organized, not merely because more peaks received names.
 
@@ -118,7 +135,7 @@ The exact biological result must be data-driven. Prioritize the strongest result
 
 **Critical claim:** tissue restriction does not prove origin; co-abundance does not prove a pathway; repeated mass differences do not prove enzymatic reactions. Figure 6 should progress from descriptive organization → replicated association → source/causal evidence only when each layer has the appropriate experiment.
 
-**Nature-level payoff:** the strongest version is not “ORBIT annotated N spectra” but “ORBIT structurally organized a previously anonymous molecular programme, enabling a reproducible biological relationship and a targeted experiment that could not be formulated from the unannotated peaks alone.”
+**Nature-level payoff:** the strongest version is not “ORBIT annotated N spectra” but “a long-horizon scientific agent structurally organized a previously anonymous molecular programme, enabling a reproducible biological relationship and a targeted experiment that could not be formulated from the unannotated peaks alone.”
 
 ## Extended Data
 
@@ -127,7 +144,7 @@ The exact biological result must be data-driven. Prioritize the strongest result
 3. Complete real-spectrum FMF benchmark and same-formula candidate diagnostics.
 4. Candidate-difficulty matching and evidence-bottleneck sensitivity analyses.
 5. FMF depth/source/lattice-size and mechanistic-authority ablations.
-6. Correct/no/shuffled-spectrum and structured-reasoning controls.
+6. Correct/no/shuffled-spectrum and typed-reasoning controls.
 7. Long-horizon campaign contracts, pLSE/METEOR typed mutation surfaces, falsification contracts and worker capability boundaries.
 8. Replay/ablation/transfer causal receipts, ScientificLesson memory boundary, independent review/repair/fresh-evaluation lifecycle and protected-data firewall tests.
 9. Full challenge–recovery replicates, fixed-side/random/no-memory/no-replay/ungated controls, recovery cost and cross-family/external transfer.
