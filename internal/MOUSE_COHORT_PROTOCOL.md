@@ -2,6 +2,17 @@
 
 The private mouse spectra are scientifically valuable only if the manuscript preserves the distinction between **external deployment**, **blinded validation** and **ground-truth structural identification**.
 
+## Role in the current manuscript
+
+The cohort feeds two sections and must satisfy both:
+
+- **§3 (atlas).** The mouse corpus is the organism-scale half of the atlas, alongside the repository corpus. Its contribution is entity count, recurrence and composition.
+- **§5 (biology).** The principal biological association is drawn from it.
+
+It is **not** the site of system validation. Calibration is established in §2 against public library growth, on chemistry independent of this cohort. Do not use mouse anchors to calibrate and then report mouse results as validated.
+
+**Open action:** the cohort's location and provenance are unconfirmed in the current workspace. Freeze the manifest (§1 below) before Phase 4 of the execution plan.
+
 ## 1. Freeze the cohort before ORBIT analysis
 
 Create an immutable manifest containing:
@@ -43,15 +54,16 @@ Dark does **not** mean “molecule absent from every chemical database.” A str
 
 ## 3. Annotation depth
 
-Track every spectrum through a hierarchy:
+Track every spectrum through the same hierarchy used throughout the manuscript, where the level is **computed from which candidates the evidence eliminates**, not assigned:
+
 1. unresolved spectrum;
 2. molecular formula;
 3. chemical class / structural family;
-4. risk-controlled bounded candidate set;
-5. unique putative 2D structure at the frozen structural-risk threshold;
+4. bounded isomer set at the frozen elimination stringency;
+5. unique putative 2D structure at that stringency;
 6. orthogonally confirmed structure.
 
-Do not merge levels 5 and 6.
+Do not merge levels 5 and 6. Levels 1–5 are statements of controlled reliability; only level 6 is an identification.
 
 ## 4. Separate generator and evidence failures
 
@@ -89,17 +101,16 @@ Possible evidence includes:
 
 The latter evidence types can support a hypothesis but must not be relabelled as standard-confirmed identification.
 
-## 7. Main Figure 5 reporting
+## 7. Where cohort results appear
 
-Figure 5 should contain:
-- cohort design and blinded anchor/dark split;
-- anchor candidate recall, conditional discrimination and risk-controlled end-to-end resolution;
-- candidate-space contraction in the dark subset;
-- recurrence across samples;
-- at least one complete evidence dossier with orthogonal support;
-- at least one unresolved isomer case.
+Cohort results are split across two figures and must not be merged back into one deployment figure:
 
-Do not use “annotation depth increased” as the sole biological result.
+- **Figure 3** — the mouse corpus's contribution to entity count, recurrence and composition, reported alongside the repository corpus.
+- **Figure 5** — the biological association, anchor validation dossiers with orthogonal support, and at least one explicitly unresolved isomer case.
+
+Blinded anchor analysis (candidate recall, conditional discrimination, end-to-end resolution, false-resolution rate) is reported in **Extended Data**, not the main text, because §2 already establishes calibration on independent chemistry and the main text should not re-litigate it.
+
+Do not use "annotation depth increased" as a biological result.
 
 ## 8. Biology
 
@@ -114,13 +125,13 @@ A biological association enters the main text only when:
 
 Otherwise Figure 5 remains a deployment and structural-discovery analysis.
 
-## 9. Nature-main-track extension
+## 9. Evidence-guided acquisition is out of scope
 
-If follow-up material is available, prioritized ambiguous mouse spectra are strong candidates for evidence-guided acquisition:
+The loop `ambiguous MS2 → freeze surviving candidate set → select most discriminating MSn/CE action → acquire new measurement → quantify contraction` requires instrument time that the current budget does not include. It is **removed from the manuscript** and appears only as a stated future direction in the Discussion.
 
-`ambiguous MS2 → freeze surviving candidate set → select most discriminating MSn/CE action → acquire new measurement → quantify candidate-space contraction`.
+What survives from it, and must be delivered, is the *prediction* half: for every unresolved entry the atlas states the specific measurement that would resolve it. This is a computed output, costs nothing, and is what converts the atlas into a prioritized experimental agenda. Do not describe it as if the measurement had been performed.
 
-This is the preferred route for converting adaptive evidence interpretation into a prospective experimental-discovery result.
+Prioritized ambiguous mouse spectra should nonetheless be recorded in the release, so that the acquisition experiment is immediately executable by us or by others once instrument time exists.
 
 ## 10. Release plan
 

@@ -4,101 +4,87 @@ Nature-level manuscript workspace for ORBIT-MS.
 
 ## Working proposition
 
-**A plausible molecular structure is not an elucidated molecular structure. As molecular hypotheses become increasingly realistic, structure elucidation can shift from a generation-limited to an evidence-limited regime in which the central challenge is identifying which experimental observations distinguish one plausible structure from its alternatives.**
+**What blocks the use of unidentified spectra is not that structure predictions are imperfect, but that their output form carries no reliable information about its own limits. Simulating the physical fragmentation process changes the output form: candidates are eliminated by peaks they cannot produce, what survives is a statement rather than a rank, and the reliability of that statement can be calibrated against chemistry the system has never seen.**
 
-ORBIT-MS addresses this regime with adaptive, candidate-specific fragmentation evidence.
+The manuscript delivers two inseparable contributions:
 
-The manuscript is written as a **target final paper**, not a progress report. Missing results remain explicitly marked in `main.tex` as:
+1. **the system** — an executable fragmentation model (pLSE) plus a verifiable reasoning model (METEOR) that together return the most specific structural statement a spectrum supports, with calibrated confidence;
+2. **the atlas** — the resource produced by applying that system to mouse and repository-scale dark spectra, and the biology it makes visible.
 
-- `[RESULT: ...]` — a numerical/statistical result that must come from a frozen experiment;
-- `[DATA: ...]` — cohort/dataset information still to be bound;
-- `[METHOD: ...]` — a protocol detail that must be frozen before submission.
-
-No placeholder should be filled from memory, a transient training log or an exploratory notebook. Every replacement should map to an immutable artifact in the claim–evidence matrix.
+Neither stands alone. Calibration is the hinge: without it the system is one more scorer, and without the system the atlas is a pile of guesses. This is the argument that must survive review.
 
 ## Current title
 
-**An evidence bottleneck in molecular structure elucidation**
+**Simulating molecular fragmentation resolves the structural composition of the dark metabolome**
 
-The manuscript is intentionally framed around a scientific phenomenon rather than a model architecture. The central conceptual distinction is:
+First clause is the system, second clause is the finding. Do not restore a title that leads with the agent — automated rule evolution is an enabling method (Section 3 paragraph 4 and ED6), not the headline.
 
-**spectral reproduction ≠ chemical support ≠ structural discrimination.**
+## Result distribution
 
-## Files
+Nature research Articles in this area run roughly **1 part method to 4 parts finding**. Gentry 2024 devotes Fig. 1 to the method and Figs. 2–5 to findings about the world; the same holds for DeepMet. The previous draft of this manuscript was 4 parts method to 2 parts finding, which is a methods paper with a discovery appendix.
 
-- `main.tex` — complete target manuscript with Introduction, **five** Results, Discussion, Methods, main-figure legends and Extended Data legends.
-- `references.bib` — core peer-reviewed literature used by the central argument.
-- `supplementary/Supplementary_Information.tex` — detailed benchmark, chemistry, adaptation, calibration and mouse reporting shell.
-- `internal/CLAIM_EVIDENCE_MATRIX.md` — claim → experiment → statistical unit → control → artifact contract.
-- `internal/EXPERIMENT_EXECUTION_PLAN.md` — step-by-step execution plan from dataset/snapshot freezing through Figures 1–5, mouse validation and the prospective MSn/CE extension.
-- `internal/RESULTS_PLACEHOLDERS.md` — canonical checklist of results needed to remove manuscript placeholders.
-- `internal/FIGURE_PLAN.md` — panel-level plan for Figures 1–5 and Extended Data.
-- `internal/MOUSE_COHORT_PROTOCOL.md` — rules for using the private unlabelled mouse spectra without inflating annotation confidence.
-- `internal/LITERATURE_POSITIONING.md` — peer-reviewed competitive positioning and claim boundaries.
+The current structure is **1 system : 1 resource : 3 findings**. Preserve this ratio. Benchmark ablations, hard-decoy analyses, shuffled-spectrum controls and the agent's challenge–recovery dynamics live in Methods and Extended Data. Main-text space belongs to statements about the world.
 
 ## Manuscript architecture
 
-1. **Better molecular hypotheses create an evidence bottleneck.**
-2. **Discriminative fragments resolve close molecular alternatives.**
-3. **Experimental spectra distinguish evidence from chemical plausibility.**
-4. **Evidence must adapt as molecular hypotheses become harder.**
-5. **From dark spectra to testable molecular hypotheses.**
+| § | Section | Figure | Role |
+|---|---|---|---|
+| 1 | Physical fragmentation modelling resolves spectra that spectral similarity cannot | Fig. 1 | system |
+| 2 | Structural confidence calibrated against prospective library growth | Fig. 2 | hinge |
+| 3 | A structural atlas of the mouse and repository-scale dark metabolome | Fig. 3 | resource + finding |
+| 4 | Dark structural families partition by biological origin | Fig. 4 | finding |
+| 5 | A structurally defined metabolite family associated with a phenotype | Fig. 5 | finding |
 
-The five sections form one scientific chain:
+The chain: `mechanistic elimination → computed resolution level → calibrated confidence → usable atlas → composition of the dark metabolome → origin → biology`.
 
-`better hypotheses → weaker fixed discrimination → discriminative evidence → spectrum-specific evidence → adaptive evidence → evidence-bounded real-world hypotheses`.
+## Draft conventions
 
-Structured CoT is not a central manuscript claim; its six-arm causal analysis is supporting Extended Data.
+`main.tex` is written in target-final form. Missing results stay marked as:
+
+- `[RESULT: ...]` — a number that must come from a frozen experiment;
+- `[DATA: ...]` — cohort/dataset information still to be bound;
+- `[METHOD: ...]` — a protocol detail that must be frozen before submission.
+
+No placeholder may be filled from memory, a transient training log or an exploratory notebook. Every replacement maps to an immutable artifact in the claim–evidence matrix.
+
+## Files
+
+- `main.tex` — target manuscript: Introduction, five Results sections, Discussion, Methods, Extended Data legends.
+- `references.bib` — peer-reviewed literature carrying the central argument.
+- `supplementary/Supplementary_Information.tex` — supporting experiments, in the order they must be executed.
+- `internal/CLAIM_EVIDENCE_MATRIX.md` — claim → experiment → statistical unit → controls → artifact contract.
+- `internal/EXPERIMENT_EXECUTION_PLAN.md` — execution order, cost and dependency for every experiment.
+- `internal/FIGURE_PLAN.md` — panel-level plan for Figures 1–5 and ED1–11.
+- `internal/RESULTS_PLACEHOLDERS.md` — checklist mapping every placeholder to its source experiment.
+- `internal/MOUSE_COHORT_PROTOCOL.md` — rules for the private mouse spectra.
+- `internal/LITERATURE_POSITIONING.md` — competitive positioning and claim boundaries.
 
 ## Scientific object
 
-The core pLSE object is not global peak coverage. For candidate `M_j` and peak `p`, the manuscript distinguishes:
+For candidate `M` and peak `p`, the manuscript distinguishes three things and must never conflate them:
 
-1. **candidate support** — whether `M_j` has a trace-valid, mass-compatible fragmentation trajectory supporting `p`;
-2. **candidate specificity** — whether that support exceeds the best support available to the competing candidates;
-3. **candidate score** — the aggregation of positive candidate-specific evidence with explicit accidental-match opportunity control.
+1. **support** — `M` has an atom-balanced, mass-compatible fragmentation trajectory reaching `p`;
+2. **specificity** — that support exceeds the best support available to competing candidates;
+3. **elimination** — no trajectory of `M` reaches `p`, so `M` is excluded.
 
-Because the deterministic reaction basis is incomplete, failure to explain a peak is not automatically negative evidence.
-
-## Narrative hierarchy
-
-Only three concepts should dominate the main text:
-
-- **evidence bottleneck** — the field-level phenomenon;
-- **discriminative fragmentation evidence** — the scientific object;
-- **adaptive evidence** — the solution principle.
-
-Implementation terms such as METEOR, pLSE, Chemical-World/Spectral-Reality, reciprocal runtime, conformal calibration and agent governance remain subordinate to these three concepts.
-
-## Critical causal controls
-
-The paper must not use a cross-generation heatmap alone to claim co-adaptation. The principal endpoint compares:
-
-- `(H0,E0)` — initial hypothesis and evidence;
-- `(HT,E0)` — adapted hypothesis only;
-- `(H0,ET)` — adapted evidence only;
-- `(HT,ET)` — both adapted;
-
-plus fixed-side and ungated/blind-alternation controls. The interaction effect is the principal test of reciprocal benefit.
+Elimination is the operation that makes the output a statement rather than a rank, because eliminations compose across peaks and are machine-checkable. It is also the operation that can be wrong: the deterministic reaction basis is incomplete, so failure to explain a peak is only negative evidence to the extent that the model covers the relevant chemistry. This is why elimination stringency is calibrated to a measured rate of excluding true structures rather than assumed sound.
 
 ## Resolution policy
 
-Generator recall and evidence discrimination are reported separately:
+Every spectrum receives the **most specific true statement** its surviving candidate set admits:
 
-- `P(GT ∈ C_K)` — generator/candidate recall;
-- conditional discrimination given GT is present;
-- end-to-end structural resolution.
+`unique structure` → `bounded isomer set` → `substructure or chemical class` → `formula only` → `unresolved`
 
-The system should return calibrated or risk-controlled structural candidate sets rather than force one answer from every spectrum. A dark-spectrum prediction is **not** called an identified metabolite without the corresponding orthogonal evidence level.
+The level is **computed from the evidence**, not assigned by convention. This is the operational contribution against the established human-assigned confidence-level scheme, and it must be stated that way rather than as a new confidence score.
 
-## Nature-main-track extension
+Generator recall and evidence discrimination are always reported separately: `P(GT ∈ C_K)`, conditional discrimination given GT present, and end-to-end resolution. A dark-spectrum prediction is never called an identified metabolite without the corresponding orthogonal evidence.
 
-The preferred additional experiment is evidence-guided acquisition:
+## Cost constraints binding this design
 
-`ambiguous MS2 → select most discriminating MSn/CE measurement → acquire new spectrum → quantify candidate-space contraction`.
-
-If completed prospectively, this would extend the paper from adaptive evidence interpretation to sequential hypothesis–experiment co-design.
+- **No new MS acquisition.** No targeted MSn campaigns, no new biological sampling, no perturbation experiments performed here.
+- **Authentic standards only**, and only for structures that are commercially available.
+- Consequences: biological origin attribution mines public perturbation datasets that others already acquired (§4); prospective validation uses public library growth rather than new measurements (§2); the evidence-guided acquisition loop is removed from the manuscript and retained only as a stated future direction.
 
 ## Citation policy
 
-The central argument is grounded in peer-reviewed work. Preprints can be acknowledged as frontier context but should not carry essential scientific claims. The comparator landscape should include mature fragmentation/spectrum methods such as SIRIUS/CSI:FingerID, CFM-ID and FIORA in addition to modern inverse/generative methods where executable and technically comparable.
+The central argument is grounded in peer-reviewed work. Preprints may provide frontier context but must not carry essential claims. The comparator set must include mature fragmentation and spectrum methods (SIRIUS/CSI:FingerID, CFM-ID) alongside modern generative methods, and must acknowledge that mechanistic fragmentation models are reported as *less* accurate than learned models under in-distribution evaluation. The claim of this paper is not that mechanism is more accurate; it is that mechanism yields eliminations that can be calibrated, which is what a resource requires.
