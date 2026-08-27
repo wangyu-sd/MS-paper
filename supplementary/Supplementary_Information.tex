@@ -1,86 +1,285 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
+
 \usepackage[margin=1in]{geometry}
 \usepackage{mathptmx}
-\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{microtype}
 \usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage{longtable}
 \usepackage[super,sort&compress]{natbib}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
 
-\title{\textbf{Supplementary Information}\\
-An evidence bottleneck in molecular structure elucidation}
-\author{Author names to be finalized}
+\onehalfspacing
+
+\newcommand{\result}[1]{\textbf{\textcolor{blue}{[RESULT: #1]}}}
+\newcommand{\methodtodo}[1]{\textbf{\textcolor{purple}{[METHOD: #1]}}}
+\newcommand{\datatodo}[1]{\textbf{\textcolor{teal}{[DATA: #1]}}}
+
+\renewcommand{\thesection}{Supplementary Note \arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
+\title{\textbf{Supplementary Information}\\[4pt]
+\large Simulating molecular fragmentation resolves the structural composition of the dark metabolome}
+\author{}
 \date{}
 
 \begin{document}
 \maketitle
 
-\section*{Supplementary Note 1: Benchmark construction, candidate difficulty and leakage control}
-Report all spectrum sources, molecular standardization, molecule-group construction, candidate-source provenance, MCES/Tanimoto difficulty bins, candidate-count/formula/mass matching, pretraining exclusions, spectrum duplication audit and final development/calibration/test boundaries.
+\tableofcontents
+\newpage
 
-\section*{Supplementary Note 2: Candidate-specific fragmentation evidence}
-Provide the exact frozen definitions of trajectory quality, peak support, candidate-relative specificity, opportunity correction and the final pLSE aggregation equation. Report the mass-tolerance policy, global assignment objective and explicit policy for unsupported peaks. Explain why incomplete reaction coverage does not authorize blanket negative evidence.
+\section{Scope and reading order}
 
-\section*{Supplementary Note 3: pLSE reaction basis and trace authority}
-List every active reaction family and its evidence authority. For each family report reaction-centre eligibility, charge/adduct scope, electron/proton/hydrogen-transfer bookkeeping, atom mapping, product/co-product identity, mass-balance checks and provenance. Distinguish executable chemistry from diagnostic-only and shadow mechanisms.
+This document contains the supporting experiments in the order they must be executed, not in the order they are cited. Supplementary Notes 2 and 3 are decision experiments: their outcomes determine whether the analyses in Notes 5--11 are performed as described. Each note states its purpose, its pass criterion and the consequence of failure, so that a reader can distinguish a supporting analysis from a load-bearing one.
 
-\section*{Supplementary Note 4: Reaction-state search and computational diagnostics}
-Report ion-state identity, ion-neutral-complex handling, state deduplication, best-first/closure search, safety caps, frontier truncation, reaction-state counts, theoretical-fragment deduplication and distinction between search truncation and chemistry-basis incompleteness.
+Every quantity marked \result{} must be bound to an immutable artifact recorded in the claim--evidence matrix. No value is transferred from a training log or an exploratory analysis.
 
-\section*{Supplementary Note 5: Fragmentation and spectrum comparators}
-Report exact versions, parameters and interfaces for exact-mass, opportunity-normalized, forward-spectrum, CFM-ID/SIRIUS-derived and other final peer-reviewed comparator methods. All comparator analyses must use identical spectra and candidate pools.
+\section{Corpus construction, snapshots and leakage control}
 
-\section*{Supplementary Note 6: METEOR and Chemical-World/Spectral-Reality training}
-Report the final METEOR architecture, chemistry-specific vocabulary, continuous mass conditioning, peak-token spectrum encoder, training stages and checkpoint selection. Clearly separate structure-only adaptation, Chemical-World proposal supervision, Spectral-Reality experimental supervision and evidence-guided post-training.
+\subsection{Library snapshot reconstruction}
+\methodtodo{Reconstruction of GNPS, MassBank and MoNA at the freeze and evaluation dates; per-structure first-appearance date; depositing accession and laboratory; handling of re-deposited and revised entries; treatment of structures whose first appearance cannot be dated.}
 
-\section*{Supplementary Note 7: Spectrum-identity and structured-reasoning controls}
-Report correct/no-spectrum/shuffled-spectrum construction and the parent/pilot $\times$ normal/no-reasoning/shuffled-reasoning six-arm analysis. Include molecule-group aggregation, bootstrap/sign-flip inference, multiplicity correction and non-target gates. The six-arm analysis is supporting implementation evidence rather than a principal manuscript claim.
+Structures whose deposition date cannot be established are excluded from the prospective set rather than assumed recent. Table~\ref{tab:snapshots} reports snapshot composition.
 
-\section*{Supplementary Note 8: Reciprocal adaptation and endpoint controls}
-Provide the ORBIT state machine, frozen snapshot identities and exact promotion gates. Report the factorial endpoint design $(H_0,E_0)$, $(H_T,E_0)$, $(H_0,E_T)$ and $(H_T,E_T)$, the interaction effect, fixed-side controls, ungated/blind-alternation control, replicate runs, frozen anchors and success-bank preservation. The cross-generation matrix is computed only after snapshot freeze.
-
-\section*{Supplementary Note 9: External transfer and risk-controlled structural sets}
-Report exact external candidate-source versions and inference settings, demonstrate that pLSE was not used to sample/rerank them, and provide same-formula/near-isomer transfer results. Report generator recall, conditional discrimination, end-to-end resolution and the final split-conformal/risk-control procedure with empirical coverage and set-size diagnostics.
-
-\section*{Supplementary Note 10: Mouse metabolomics cohort}
-Report source study, animal/sample metadata, ethics, LC--MS/MS acquisition, raw-data conversion, feature detection, blank/QC filtering, spectrum cleaning, blinded-anchor construction, frozen library-search definition of dark spectra, recurrence criteria and orthogonal validation. Provide complete alternative-candidate dossiers for all structure-level case studies.
-
-\section*{Supplementary Table 1: Dataset and split statistics}
-\begin{longtable}{lllll}
+\begin{table}[h]
+\centering
+\caption{Library snapshot composition at freeze and evaluation dates.}
+\label{tab:snapshots}
+\begin{tabular}{lrrr}
 \toprule
-Dataset & Role & Spectra & Molecule groups & Notes\\
+Source & Structures at freeze & Structures at evaluation & New in interval \\
 \midrule
-MassSpecGym & Train & [RESULT] & [RESULT] & frozen benchmark split\\
-MassSpecGym & Calibration/validation & [RESULT] & [RESULT] & evidence/risk calibration\\
-MassSpecGym & Test & [RESULT] & [RESULT] & final held-out evaluation\\
-Mouse anchor & External & [RESULT] & [RESULT] & blinded reference identities\\
-Mouse dark & External & [RESULT] & [RESULT] & no accepted exact library hit\\
+GNPS & \result{n} & \result{n} & \result{n} \\
+MassBank & \result{n} & \result{n} & \result{n} \\
+MoNA & \result{n} & \result{n} & \result{n} \\
+Union (deduplicated) & \result{n} & \result{n} & \result{n} \\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\section*{Supplementary Table 2: Candidate-source and difficulty statistics}
-For every METEOR and external candidate source report candidate count, validity, uniqueness, same-formula fraction, nearest incorrect MCES/Tanimoto, scaffold relation and ground-truth support.
+\subsection{Spectral corpora}
+\methodtodo{Provenance, spectrum counts, adduct, instrument and collision-energy distributions for the repository corpus, the mouse cohort, the benchmark corpora and the calibration split.}
 
-\section*{Supplementary Table 3: pLSE reaction families and authority}
-For each active family report scope, atom-mapped authority, charge carrier, allowed transfers, source provenance, search frequency and held-out GT--decoy contribution.
+\subsection{Definition of the dark subset}
+\methodtodo{The frozen library-search protocol: search engine and version, tolerances, scoring, acceptance threshold, and the validation showing that the threshold does not admit false library hits at a rate that would contaminate the dark subset.}
 
-\section*{Supplementary Table 4: Hard-decoy benchmark}
-Report GT rank, pairwise win, AUROC/rank metric, false-strong rate, same-formula and near-isomer performance for all external comparators and pLSE ablations.
+The dark subset is defined by absence of an accepted spectral-library match under this protocol. Dark does not mean the structure is absent from every chemical database; a molecule may exist in PubChem or HMDB while its experimental spectrum remains unannotated. This distinction is preserved throughout.
 
-\section*{Supplementary Table 5: Structured-reasoning six-arm control}
-Report parent/pilot $\times$ normal/no-reasoning/shuffled-reasoning results, group-level effects, confidence intervals, sign-flip $P$ values, multiplicity-adjusted thresholds and non-target gates.
+\subsection{Leakage audit}
+\methodtodo{Exact-structure and close-analogue overlap between every evaluation set and every pretraining corpus, including the molecular corpora used for METEOR pretraining and any simulator-generated training data. Analogue exclusion at Tanimoto $\geq 0.7$ or MCES $< 10$.}
 
-\section*{Supplementary Table 6: ORBIT adaptation ledger and factorial endpoints}
-For every promoted/rejected round report target, causal diagnosis, intervention and frozen-control outcome. Separately report $(H_0,E_0)$, $(H_T,E_0)$, $(H_0,E_T)$, $(H_T,E_T)$ and the interaction effect on the common final endpoint.
+Simulator-generated training data requires specific attention: pseudo-spectra generated from structures that appear in an evaluation set constitute leakage even though no experimental spectrum was shared.
 
-\section*{Supplementary Table 7: External-generator transfer and structural-set calibration}
-Complete initial-versus-adapted pLSE results on each external source plus generator recall, conditional discrimination, empirical candidate-set coverage and set-size distribution.
+\section{Decision experiment 1: constructibility of the prospective set}
 
-\section*{Supplementary Table 8: Mouse prioritized hypotheses}
-For each prioritized spectrum report feature ID, precursor, formula, initial candidate pool, risk-controlled final set, candidate-specific evidence, recurrence, annotation level, orthogonal evidence and final claim boundary.
+\textbf{Purpose.} Establish whether a blinded prospective assessment can be built from library growth.
 
-\section*{Optional Supplementary Note 11: Evidence-guided acquisition}
-If prospective acquisition is completed, report the experiment-action space, information-gain/candidate-contraction objective, baseline acquisition policy, frozen ambiguous cases, selected MSn/CE measurements and prospective candidate-space contraction.
+\textbf{Procedure.} Intersect structures deposited between the freeze and evaluation snapshots with spectra present but unannotated in the repository corpus at freeze. Exclude any structure whose close analogue existed at freeze. Audit depositing laboratories for independence from this work.
+
+\textbf{Pass criterion.} At least 300 qualifying spectra spanning at least three chemical superclasses and five depositing groups.
+
+\textbf{Consequence of failure.} Calibration reverts to held-out library spectra with a scaffold-disjoint stress test, and the atlas is presented as a large-scale application rather than as a released resource. This changes the manuscript and must be reported to all authors before proceeding.
+
+\result{Insert qualifying spectrum count, superclass and depositing-group coverage, and exclusion accounting.}
+
+\section{Decision experiment 2: the soundness--resolution trade-off}
+
+\textbf{Purpose.} Establish whether mechanistic elimination can be operated at a controlled false-exclusion rate while still resolving a useful fraction of spectra.
+
+\textbf{Procedure.} On leakage-controlled benchmark spectra with known answers and matched candidate pools, sweep elimination stringency. At each setting record the rate at which the true structure is eliminated and the resulting distribution over resolution levels.
+
+\textbf{Pass criterion.} At a false-exclusion rate of at most 5\%, at least 40\% of spectra resolve to a unique structure, a bounded isomer set, or a chemical class.
+
+\textbf{Consequence of failure.} Mechanistic elimination is not reliable enough to define the output object. The manuscript reverts to candidate-relative scoring with conformal prediction sets, and Sections 1 and 2 are rewritten accordingly.
+
+\result{Insert the full stringency sweep, the selected operating point and its justification.}
+
+\section{The fragmentation model}
+
+\subsection{Dissociation event enumeration}
+\methodtodo{Reaction-centre eligibility; bond-cleavage and rearrangement classes represented; atom, charge and hydrogen-transfer accounting; search depth, branching control and termination; deduplication of equivalent trajectories.}
+
+\subsection{Support, specificity and elimination}
+For a candidate $M$ and observed peak $p$, the model returns whether some atom-balanced trajectory of $M$ reaches a fragment whose exact mass matches $p$ within tolerance. Three distinct quantities follow and are never conflated:
+
+\begin{enumerate}
+\item \textbf{support} --- such a trajectory exists;
+\item \textbf{specificity} --- the support exceeds the best support available to competing candidates in the same pool;
+\item \textbf{elimination} --- no trajectory of $M$ reaches $p$, so $M$ is excluded at the operating stringency.
+\end{enumerate}
+
+Elimination is the operation that makes the output composable. It is also the operation that can be wrong, because the reaction basis is incomplete: absence of a trajectory is evidence of impossibility only to the extent that the model covers the relevant chemistry. Supplementary Note 4 quantifies this directly, and the operating stringency is chosen from that measurement rather than assumed.
+
+\subsection{Accidental-match opportunity control}
+\methodtodo{Correction for the probability that a candidate supports a peak by coincidence, as a function of support-set size, mass tolerance and peak density. Without this control, candidates with large support sets are favoured for reasons unrelated to identity.}
+
+\subsection{Trajectory authority}
+\methodtodo{Levels of mechanistic authority: mass-compatible support, atom-balanced trajectory, and trajectory consistent with an established gas-phase mechanism. Only the highest level supports a reaction-level claim in the main text.}
+
+\subsection{Computational cost}
+\result{Insert per-candidate enumeration time, memory, scaling with heavy-atom count, and total cost of the atlas run.}
+
+\section{Structural resolution levels}
+
+\subsection{Definition}
+Given the surviving candidate set, the reported statement is the most specific true description that set admits:
+
+\begin{enumerate}
+\item unique structure --- exactly one candidate survives;
+\item bounded isomer set --- several survive and are enumerated;
+\item substructure or chemical class --- survivors share a common substructure or class assignment;
+\item molecular formula only --- survivors share only the formula;
+\item unresolved --- no statement above formula is supported.
+\end{enumerate}
+
+\subsection{Relation to established reporting conventions}
+\methodtodo{Mapping onto the community confidence-level scheme, and explicit statement of the difference: the community levels are assigned by human judgement after annotation, whereas these levels are computed from which candidates the measurement eliminates. The two are reported side by side so that readers can translate.}
+
+\subsection{Confidence model and calibration}
+\methodtodo{Definition of the confidence that the reported statement contains the true structure; features used; fitting procedure; the disjoint calibration split; the estimator used for calibration error and its confidence intervals.}
+
+The calibration mapping is fitted only on the calibration split and is frozen before the prospective evaluation. It is never refitted after seeing prospective outcomes.
+
+\section{Prospective validation}
+
+\subsection{Freeze protocol}
+\methodtodo{Artifacts frozen and hashed before prospective evaluation: model weights, fragmentation rule set, candidate-generation configuration, calibration mapping, evaluation code. Verification that the frozen artifacts reproduce the calibration-split results exactly.}
+
+\subsection{Independence audit}
+\methodtodo{Verification that depositing laboratories are independent of this work; exclusion of any structure whose determination could have been influenced by our predictions; treatment of structures deposited by consortia in which authors participate.}
+
+\subsection{Results}
+\result{Insert calibration error, containment at threshold, stratification by structural distance from the frozen library, by chemical class, by instrument and by collision energy.}
+
+\subsection{Comparator calibration}
+\methodtodo{Comparator scores mapped to confidences by the same procedure and evaluated on the identical prospective set. Comparators are given their best available calibration, not a naive score-to-probability transform.}
+
+\result{Insert comparator calibration errors and the comparison to mechanistic elimination.}
+
+\section{The hypothesis model}
+
+\subsection{Architecture and training}
+\methodtodo{Backbone, size, checkpoint lineage, chemistry-specific vocabulary, peak-level spectrum conditioning, molecular pretraining corpora, and the boundary separating frozen pretraining from the mutable post-training programme.}
+
+\subsection{Verifiable reasoning traces}
+\methodtodo{Trace grammar; the claims each step makes; the verification performed against the fragmentation model for each claim type; treatment of unverifiable steps.}
+
+\subsection{Verification and accuracy}
+\result{Insert accuracy of verified versus unverified traces at matched confidence, and the failure taxonomy with counts.}
+
+\subsection{Training diagnostics}
+\methodtodo{Per-field loss, token-level accuracy and teacher-forced exact match by trace operation; corpus-switch dynamics; the redundancy audit that motivated the current trace design and the leakage it removed.}
+
+These diagnostics are reported for completeness and reproducibility. They are not evidence of scientific improvement; only held-out molecular endpoints are.
+
+\section{Automated fragmentation-rule evolution}
+
+\subsection{Failure localization}
+\methodtodo{How a verification failure is attributed to a specific rule or rule gap; the receipt recording that attribution.}
+
+\subsection{Typed revisions and acceptance gates}
+\methodtodo{The permitted revision types; the requirement that a revision be bounded; the acceptance gates: fresh deterministic evaluation on data not used to propose the revision, causal replay, ablation, cross-family transfer, and absence of regression elsewhere.}
+
+Low-cost worker models may propose revisions. They may not accept them. Acceptance is decided by deterministic evaluation against frozen receipts.
+
+\subsection{Results}
+\result{Insert coverage growth by chemical class, effect on resolution rate, number of proposed and rejected revisions, and worker-model cost.}
+
+\subsection{Factorial adaptation control}
+\methodtodo{The $(H_0,E_0)$, $(H_T,E_0)$, $(H_0,E_T)$, $(H_T,E_T)$ endpoint comparison and the interaction effect, retained as acceptance evidence for the evolution procedure rather than as a manuscript claim.}
+
+\section{Atlas construction}
+
+\subsection{Entity collapsing}
+\methodtodo{Rules for collapsing adducts, in-source fragments, isotopologues, charge states and redundant acquisitions onto a single molecular entity; validation of these rules on known compounds with known ion forms; the residual error rate of collapsing and its effect on the entity count.}
+
+The entity count is the headline number of Section 3 and is only as good as this validation. Report the count with an uncertainty interval derived from the measured collapsing error rate, not as a point estimate.
+
+\subsection{Recurrence}
+\methodtodo{Criteria for an entity to be counted as recurrent; independence of datasets; treatment of datasets sharing samples or laboratories.}
+
+\subsection{Per-entry record schema}
+\methodtodo{Fields released for every atlas entry: representative spectrum, surviving candidate set, eliminating peaks, supporting trajectories, resolution level, calibrated confidence, recurrence, source datasets, and for unresolved entries the measurement that would resolve them.}
+
+\section{Composition of the dark metabolome}
+
+\subsection{Distance to known metabolite space}
+\methodtodo{The frozen reference metabolite set; the preregistered transformation vocabulary; how distance is computed for entities resolved below unique-structure level; sensitivity to the choice of reference set.}
+
+Entities resolved only to class level cannot be assigned a transformation distance and are reported separately rather than imputed.
+
+\subsection{Chemical class composition}
+\methodtodo{Class assignment procedure; comparison against reference library composition; identification of classes absent from library coverage; correction for ionization and detectability bias, which affects what enters the corpus at all.}
+
+\subsection{Transformation series}
+\methodtodo{Construction of candidate transformation series from structural relationships; the explicit rule that a mass difference plus a structural relationship does not establish an enzymatic reaction; what would be required to make that claim.}
+
+\section{Biological origin attribution}
+
+\subsection{Dataset assembly}
+\methodtodo{Query over repository metadata for mouse datasets containing germ-free or gnotobiotic controls, antibiotic treatment or defined dietary intervention; manual verification of every included accession against its publication; exclusion criteria; final inventory with sample counts and platforms.}
+
+Automated metadata parsing identifies candidates only. Every included dataset is manually verified against its associated publication, because repository metadata frequently misdescribes experimental design.
+
+\subsection{Presence/absence modelling}
+\methodtodo{Detection model per entity per sample; batch, platform and laboratory controls; handling of missing-not-at-random detection; the statistical model producing an attribution.}
+
+\subsection{Positive controls and nulls}
+\methodtodo{Panel of metabolites with established microbial, dietary or host origin; required recovery rate before any dark attribution is interpreted; label-permutation null.}
+
+\result{Insert positive-control recovery rate and permutation null distribution.}
+
+\subsection{Boundary of the claim}
+Attribution establishes dependence on a perturbation, not biosynthetic route. Manuscript language uses microbiota-dependent, diet-dependent and host-associated throughout, and families consistent with more than one origin are reported as unresolved rather than assigned to the most likely.
+
+\section{Biological association analysis}
+
+\subsection{Freezing}
+\methodtodo{Family definitions and transformation graphs hashed before any association testing; the record demonstrating that freezing preceded testing.}
+
+\subsection{Statistical model}
+\methodtodo{Biological replicate as the unit of inference; covariates; the family-level test statistic; multiplicity control across preregistered endpoints; replication criterion.}
+
+\subsection{Sensitivity}
+\methodtodo{Association as a function of confidence and resolution-level thresholds; metadata-permutation control; leave-one-cohort-out analysis.}
+
+An association that survives only at permissive confidence thresholds is reported as such rather than presented at its most favourable threshold.
+
+\section{Orthogonal structure validation}
+
+\subsection{Anchor selection}
+\methodtodo{The frozen discovery criterion used to select anchors before any standard is purchased; restriction to commercially available compounds; the record showing selection preceded purchase.}
+
+\subsection{Acceptance criteria}
+\methodtodo{Precursor mass, MS/MS similarity and retention/coelution criteria for standard-confirmed identification; the chromatographic conditions; treatment of diastereomers and other alternatives that co-elute.}
+
+\subsection{Results including failures}
+\result{Insert per-anchor outcome, including anchors that failed to confirm and the reason.}
+
+Anchors that fail to confirm are reported. An unconfirmed anchor is informative about the system's error modes and its omission would misrepresent the validation rate.
+
+\subsection{Unresolved cases}
+\methodtodo{For at least one representative case: the surviving isomer set, the evidence that eliminated all other candidates, why the survivors cannot be separated by the available data, and the specific measurement that would separate them.}
+
+\section{Limitations}
+
+\begin{enumerate}
+\item \textbf{Mechanistic completeness is empirical.} Elimination stringency is calibrated to a measured false-exclusion rate. Chemistry poorly covered by the fragmentation model is protected by lower reported confidence, not by a guarantee.
+\item \textbf{The prospective set is not a random sample.} It contains chemistry that independent laboratories chose to characterize during the freeze interval, which over-represents tractable and biologically topical compounds.
+\item \textbf{Origin attribution establishes dependence.} No biosynthetic experiment was performed here.
+\item \textbf{Detectability bias.} The atlas describes molecules that ionize and fragment under the acquisition conditions represented in the corpus. It is not a census of the metabolome.
+\item \textbf{Structures above the reference-standard level are hypotheses.} They are reported with calibrated confidence and are not identifications.
+\item \textbf{No new measurement was acquired.} Evidence-guided acquisition, in which the system selects the next experiment and that experiment is performed, is described as a future direction and is not demonstrated.
+\end{enumerate}
+
+\section{Supplementary tables}
+
+\methodtodo{S1 corpus inventory; S2 leakage audit; S3 prospective set composition and independence audit; S4 stringency sweep; S5 comparator configurations and versions; S6 rule-evolution receipts; S7 atlas entry schema; S8 uncharacterized recurrent families; S9 perturbation dataset inventory with manual verification status; S10 anchor dossiers.}
 
 \bibliographystyle{unsrtnat}
 \bibliography{../references}

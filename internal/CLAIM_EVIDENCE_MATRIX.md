@@ -1,43 +1,74 @@
 # Claim–Evidence Matrix
 
-This file is the internal truth contract for the manuscript. `main.tex` is intentionally written in target-final form, but no central claim is submission-ready until its evidence cell is bound to an immutable artifact.
+Internal truth contract. `main.tex` is written in target-final form; no claim is submission-ready until its evidence cell is bound to an immutable artifact.
 
-The manuscript is now centred on **adaptive candidate-specific fragmentation evidence**, not on LLM reasoning or agent architecture.
+The manuscript is centred on **mechanistic elimination producing calibrated structural statements**, and on the **atlas** that becomes possible once those statements exist. It is not centred on LLM reasoning, agent architecture, or on beating de novo generators at exact-match accuracy.
 
-| ID | Target manuscript claim | Primary display | Required experiment | Statistical unit | Minimum controls | Final artifact |
-|---|---|---|---|---|---|---|
-| **C1** | Static spectral evidence loses discriminative power as molecular alternatives become harder, across candidate generators and evidence systems. | Fig. 1 | Cross-generator, cross-evidence-system hardness audit with matched candidate-set size/formula/mass constraints. | molecule group | ≥2 independent candidate sources; ≥2 frozen evidence systems; leakage audit; matched pool size | `TBD:C1_evidence_bottleneck` |
-| **C2** | Candidate-specific atom-traceable fragmentation evidence outperforms mass-only and non-candidate-specific fragmentation/simulation evidence on hard same-formula alternatives. | Fig. 2 | Hard-decoy benchmark with external fragmentation/forward comparators and mechanistic ablations. | molecule group | exact mass; opportunity-normalized; forward-spectrum; CFM-ID/SIRIUS-derived or other executable comparator; generic-cut; pLSE ablations | `TBD:C2_candidate_specific_evidence` |
-| **C3** | The decisive evidence depends on the experimental spectrum rather than chemical prior alone. | Fig. 3 | Correct / no-spectrum / mass-adduct-matched shuffled-spectrum evaluation on frozen candidate pools. | molecule group | distinct shuffled donor; same adduct; neutral-mass matching; frozen chemical prior | `TBD:C3_spectral_identity_lift` |
-| **C4** | Reciprocal adaptation improves the final held-out endpoint beyond adapting either hypothesis or evidence alone. | Fig. 4 | Factorial endpoint evaluation of `(H0,E0)`, `(HT,E0)`, `(H0,ET)`, `(HT,ET)` plus interaction effect. | molecule group | identical final cases/pools; frozen snapshots; fixed-side controls | `TBD:C4_factorial_adaptation` |
-| **C5** | Gated reciprocal adaptation is more stable than ungated/blind alternation and exhibits post-freeze challenge–recovery dynamics. | Fig. 4 / ED7 | Gated vs ungated control + complete cross-generation matrix computed after snapshot freeze. | molecule group / run | frozen anchor; non-target; success bank; replicate runs; rejected moves retained | `TBD:C5_gated_challenge_recovery` |
-| **C6** | Adapted pLSE transfers to candidate distributions produced outside ORBIT. | Fig. 4 | External-generator/retrieval candidate benchmark. | molecule group | no pLSE-guided generation/reranking; identical standardization; same-formula/near-isomer strata | `TBD:C6_external_transfer` |
-| **C7** | Structural uncertainty can be represented by risk-controlled candidate sets, while generator recall and conditional discrimination remain separately measurable. | Fig. 4 | Independent calibration + final held-out prediction-set evaluation. | molecule group | disjoint calibration split; candidate recall reported separately; ambiguous-isomer controls | `TBD:C7_risk_controlled_resolution` |
-| **C8** | The mouse cohort validates deployment on real unlabelled spectra without lowering structural-identification standards. | Fig. 5 | Blinded anchor evaluation + frozen dark-spectrum analysis. | anchor molecule group; biological replicate for recurrence | hidden anchor labels; blanks/QC; frozen library-hit exclusion | `TBD:C8_mouse_deployment` |
-| **C9** | Selected dark mouse hypotheses are supported by orthogonal evidence or are explicitly retained as unresolved candidate sets. | Fig. 5 / ED10 | Authentic standard, coelution/RT, targeted MSn, blinded reveal, NMR or other preregistered orthogonal validation. | molecular hypothesis | full alternative-candidate dossier; evidence-level reporting | `TBD:C9_mouse_validation` |
-| **C10 (Nature-extension)** | Evidence-guided acquisition prospectively selects a new MS measurement that reduces residual molecular ambiguity. | Future main/ED only if completed | Ambiguous MS2 → preregistered experiment selection → prospective MSn/CE acquisition → candidate-space contraction. | molecular case | fixed candidate set before acquisition; baseline acquisition policy; blinded outcome where feasible | `TBD:C10_active_acquisition` |
+## Section 1 — Physical fragmentation modelling (Fig. 1)
+
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C1** | Mechanistic, candidate-relative elimination discriminates close structural alternatives where spectral similarity does not. | Matched-pool benchmark against exact-mass matching, forward-spectrum similarity, CFM-ID and SIRIUS/CSI:FingerID on identical spectra and identical candidate pools. | molecule group | matched candidate-set size, formula and mass constraint; difficulty strata by MCES/Morgan/scaffold defined without spectral scores; full leakage audit | `TBD:C1_mechanistic_discrimination` |
+| **C2** | The discriminative evidence is bound to the measured spectrum, not to chemical plausibility. | Correct / absent / shuffled-spectrum evaluation on frozen candidate pools. | molecule group | shuffled donor from a distinct molecule group matched for adduct, neutral mass, acquisition and peak richness; chemical prior held fixed | `TBD:C2_spectral_identity` |
+| **C3** | METEOR reasoning traces are verifiable step-by-step, and verification predicts structural accuracy. | Per-step verification of trace claims against pLSE; accuracy of verified vs unverified traces at matched confidence. | trace / molecule group | matched confidence bins; failure taxonomy; held-out molecules | `TBD:C3_trace_verification` |
+
+**Boundary rules.** Peak matching is not mechanism validation — a reaction-level claim requires the atom/bond/charge trace. Global spectrum similarity is not candidate-specific evidence. Mechanism plausibility is not candidate discrimination.
+
+## Section 2 — Calibration (Fig. 2)
+
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C4** | Structural resolution level is computed from the evidence, and the soundness–resolution trade-off is controllable. | Sweep elimination stringency; measure rate of excluding the true structure against the resulting resolution-level distribution. | molecule group | mass tolerance, intensity threshold, noise-peak and acquisition-metadata sensitivity; disjoint calibration split | `TBD:C4_soundness_resolution` |
+| **C5** | Reported confidence is calibrated on chemistry the frozen system never saw. | Freeze the complete system against a historical library snapshot; evaluate on spectra dark at that time whose structures were independently deposited before the evaluation snapshot. | spectrum / structure | no structure or close analogue present at freeze; depositing-laboratory independence audit; stratification by structural distance from the frozen library; comparator methods scored on the identical set | `TBD:C5_prospective_calibration` |
+
+**C5 is the credibility spine of the manuscript.** If it fails, the atlas cannot be released as a resource and the paper reverts to a benchmark study. Execute it before committing to Sections 3–5.
+
+## Section 3 — Atlas (Fig. 3)
+
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C6** | Structural resolution collapses dark features onto a far smaller number of distinct molecular entities, giving the first structure-based estimate of the size of the dark metabolome. | Adduct / in-source-fragment / isotopologue / charge-state collapsing followed by structural merging across the mouse and repository corpora. | molecular entity | collapsing validated on known compounds with known ion forms; recurrence across independent datasets; sensitivity to confidence threshold | `TBD:C6_entity_count` |
+| **C7** | A substantial fraction of the dark metabolome lies outside one interpretable transformation of any characterized metabolite. | Distance-to-known-metabolite analysis over resolved entities; chemical-class composition against reference libraries. | molecular entity | reference metabolite set frozen; transformation vocabulary preregistered; class assignment restricted to entities resolved at or above class level | `TBD:C7_composition` |
+| **C8** | Automated fragmentation-rule evolution extends coverage beyond the curated rule set and is what makes repository-scale resolution possible. | Coverage growth by chemical class and its effect on resolution rate, with rejected revisions retained. | rule / chemical class | fresh deterministic evaluation, causal replay, ablation and cross-family transfer required for acceptance; no regression elsewhere; low-cost workers restricted to proposal | `TBD:C8_rule_evolution` |
+
+C8 is **supporting**, reported in one paragraph and ED6. It must not expand into a main figure.
+
+## Section 4 — Biological origin (Fig. 4)
+
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C9** | Resolved dark structural families partition by biological origin using perturbation data already deposited by others. | Presence/absence modelling of family members across public germ-free/gnotobiotic, antibiotic and dietary-intervention mouse datasets. | structural family / dataset | positive-control panel of metabolites with established origin; label-permutation null; batch and platform controls; families consistent with multiple origins left unresolved | `TBD:C9_origin_attribution` |
+
+**Boundary rule.** This establishes *dependence*, not biosynthetic route. Manuscript language must say microbiota-dependent, diet-dependent or host-associated, never "microbially synthesized", unless a biosynthetic experiment exists.
+
+## Section 5 — Biology (Fig. 5)
+
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C10** | A structurally defined dark family is reproducibly associated with a biological contrast, and the association is carried by the family rather than by any single feature. | Association testing after family freezing; per-feature vs family-level evidence; replication in independent cohorts. | biological sample | families frozen before any association testing; multiplicity control across preregistered endpoints; metadata-permutation control; sensitivity to confidence and resolution-level thresholds | `TBD:C10_biological_association` |
+| **C11** | Selected anchors are confirmed by authentic standards; unresolved anchors are retained as bounded isomer sets with their discriminating measurement stated. | Authentic standard MS/MS and retention/coelution matching for commercially available anchors. | molecular hypothesis | anchors selected from a frozen discovery criterion before purchase; complete alternative-candidate dossier; explicit level reporting | `TBD:C11_anchor_validation` |
+
+**Boundary rule.** Levels 5 (unique putative structure at threshold) and 6 (orthogonally confirmed) are never merged.
 
 ## Submission gates
 
-### Minimum strong methods paper gate
-C1–C8 must be complete, with C9 containing at least several strong validation cases if the mouse dark-spectrum application is a major conclusion.
+**Minimum gate.** C1–C7 and C10 complete, C11 with at least two standard-confirmed anchors.
 
-### Nature-main-track gate
-C1–C9 should be exceptionally strong. C10 is the preferred additional result because it converts adaptive evidence interpretation into true sequential hypothesis–experiment co-design.
+**Nature-main-track gate.** C5 exceptionally strong, including comparator calibration on the identical prospective set. C6 and C7 must yield numbers the field does not currently have. C9 must survive its permutation null.
 
-## Supporting, non-central claim
+## Removed from the manuscript
 
-The structured CoT six-arm experiment is retained as an implementation-level causal control in Extended Data. It is **not** a central Nature claim and is not required to define the scientific novelty of ORBIT-MS.
+- **Evidence-guided acquisition (former C10).** Requires new MS acquisition, which is out of budget. Retained only as a stated future direction in the Discussion.
+- **Factorial co-evolution endpoint (former C4/C5).** The `(H0,E0)/(HT,E0)/(H0,ET)/(HT,ET)` design and gated-vs-ungated controls move to ED6 as acceptance evidence for rule evolution, not as a main claim.
+- **Structured CoT six-arm causal control.** Implementation-level, Extended Data only.
+- **Intrinsic FMF retrieval / information-bit scaling.** Property of a representation, not a finding about the world. Methods and ED2 only.
 
-## Claim-boundary rules
+## Standing claim-boundary rules
 
-1. **Peak matching is not mechanism validation.** A reaction-level claim requires the corresponding atom-/bond-/charge-level trace.
-2. **Mechanism plausibility is not candidate discrimination.** Figure 2 must evaluate the same spectrum against matched competing structures.
-3. **Global spectrum similarity is not candidate-specific evidence.** Simulation may be a comparator but cannot substitute for GT–decoy selectivity.
-4. **Chemical prior is not experimental evidence.** Figure 3 requires no-spectrum and shuffled-spectrum controls.
-5. **Repeated spectra are not independent samples.** Population inference occurs after molecule-group aggregation.
-6. **Training improvement is not scientific improvement.** Loss, token accuracy and pLSE reward cannot substitute for held-out molecular endpoints.
-7. **Cross-generation heatmaps do not by themselves prove co-evolution.** The factorial endpoint comparison is the principal causal control.
-8. **Generator failure is not evidence failure.** Candidate recall, conditional discrimination and end-to-end resolution must be reported separately.
-9. **Dark-spectrum predictions are not identifications.** Mouse claims require explicit confidence terminology and orthogonal validation for structure-level identification.
-10. **Experimental evidence does not literally evolve unless a new measurement is acquired.** Until C10 is complete, manuscript language should refer to adaptive evidence interpretation/modeling rather than co-evolving experimental evidence.
+1. Repeated spectra are not independent samples; population inference occurs after molecule-group aggregation.
+2. Training improvement is not scientific improvement; loss and token accuracy cannot substitute for held-out molecular endpoints.
+3. Generator failure is not evidence failure; candidate recall, conditional discrimination and end-to-end resolution are reported separately.
+4. Dark-spectrum predictions are not identifications.
+5. A mass difference alone does not establish an enzymatic reaction.
+6. Mechanistic completeness is empirical, not provable; elimination stringency is calibrated to a measured false-exclusion rate and reported as such.
+7. Do not claim mechanism is more accurate than learned models. Published in-distribution comparisons say the opposite. The claim is that mechanism yields calibratable eliminations.
