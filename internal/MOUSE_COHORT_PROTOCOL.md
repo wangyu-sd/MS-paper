@@ -1,142 +1,229 @@
 # Mouse Cohort Protocol
 
-The private mouse spectra are scientifically valuable only if the manuscript preserves the distinction between **external deployment**, **blinded validation** and **ground-truth structural identification**.
+The private mouse spectra support the Nature story only if the manuscript preserves a strict separation between **census construction**, **external structural validation** and **biological inference**.
 
-## Role in the current manuscript
+## Role in the manuscript
 
-The cohort feeds two sections and must satisfy both:
+The cohort contributes to three distinct analyses:
 
-- **§3 (atlas).** The mouse corpus is the organism-scale half of the atlas, alongside the repository corpus. Its contribution is entity count, recurrence and composition.
-- **§5 (biology).** The principal biological association is drawn from it.
+- **Figure 2 — census.** Mouse dark spectra contribute to the organism-scale structural-entity count and recurrence analysis.
+- **Figure 4 — source organization.** Where compatible perturbation metadata exist, mouse datasets contribute to microbiota/diet/host dependence analysis together with public cohorts.
+- **Figure 5 — biological value.** The principal feature-versus-family biological comparison and the deeply characterized family may use the mouse cohort if phenotype/contrast definitions predate ORBIT outputs.
 
-It is **not** the site of system validation. Calibration is established in §2 against public library growth, on chemistry independent of this cohort. Do not use mouse anchors to calibrate and then report mouse results as validated.
+The cohort is **not** the primary calibration set. Figure 1 credibility is established on independent known-structure and prospective library-growth chemistry.
 
-**Open action:** the cohort's location and provenance are unconfirmed in the current workspace. Freeze the manifest (§1 below) before Phase 4 of the execution plan.
+---
 
-## 1. Freeze the cohort before ORBIT analysis
+## 1. Freeze the cohort before atlas analysis
 
 Create an immutable manifest containing:
 - raw-file identities and hashes;
-- biological sample IDs and replicate structure;
+- biological sample IDs;
+- biological replicate structure;
+- experimental groups/phenotypes;
 - acquisition metadata;
 - preprocessing/QC version;
 - blank/QC labels;
 - feature/spectrum identifiers;
-- the exact library-search protocol used to define the dark subset.
+- the frozen library-search protocol defining the dark subset.
 
-Do not select the “best-looking” spectra after seeing ORBIT outputs and then call the result a cohort-level validation.
+No structural family, phenotype subgroup or “representative” case is selected before the manifest is frozen.
 
-## 2. Construct two analysis branches
+---
 
-### Anchor branch
-Spectra with independent structure/reference support that can be hidden from ORBIT.
+## 2. Separate three branches
 
-Purpose:
-- blinded external candidate recall;
-- conditional discrimination given the reference is in the candidate set;
-- risk-controlled end-to-end resolution;
-- false-resolution rate;
-- domain-shift analysis.
+### A. Known-anchor branch
+Spectra with independent structure/reference support hidden from ORBIT.
 
-The hidden reference must not be exposed to candidate generation, pLSE development or structural-set calibration.
+Use only for:
+- external domain-shift diagnostics;
+- candidate recall;
+- conditional evidence performance;
+- false-resolution audit.
 
-### Dark branch
-Spectra with no accepted exact spectral-library annotation under the frozen search protocol.
+These results belong in Extended Data because Figure 1 already carries the primary credibility claim.
 
-Purpose:
-- candidate-space contraction;
-- risk-controlled structural sets;
-- reproducibility across biological samples;
-- auditable molecular hypotheses;
-- prioritization for orthogonal validation or targeted follow-up.
+### B. Dark-census branch
+Spectra lacking an accepted spectral-library match under the frozen search protocol.
 
-Dark does **not** mean “molecule absent from every chemical database.” A structure may exist in PubChem/HMDB while its experimental spectrum remains unannotated.
+Use for:
+- feature-to-entity collapse;
+- structural resolution distribution;
+- recurrence;
+- structural-family construction.
 
-## 3. Annotation depth
+Dark means “unannotated under the frozen spectral-library protocol”, not “absent from PubChem/HMDB”.
 
-Track every spectrum through the same hierarchy used throughout the manuscript, where the level is **computed from which candidates the evidence eliminates**, not assigned:
+### C. Biological-analysis branch
+The subset of biological samples with a predefined contrast/phenotype and sufficient replication.
 
-1. unresolved spectrum;
-2. molecular formula;
-3. chemical class / structural family;
-4. bounded isomer set at the frozen elimination stringency;
-5. unique putative 2D structure at that stringency;
-6. orthogonally confirmed structure.
+Use for:
+- anonymous feature-level analysis;
+- frozen structural-family analysis;
+- paired comparison of biological reproducibility.
 
-Do not merge levels 5 and 6. Levels 1–5 are statements of controlled reliability; only level 6 is an identification.
+The same samples, covariates and preprocessing must be used in both analysis arms.
 
-## 4. Separate generator and evidence failures
+---
 
-For every blinded anchor analysis report:
-- whether the reference structure is present in the generated candidate set;
-- the rank/set result conditional on reference presence;
-- the end-to-end resolution result.
+## 3. Structural resolution hierarchy
 
-Do not describe a missing reference candidate as a pLSE/evidence-ranking error.
+Track every entity through:
 
-## 5. Case-study eligibility
+1. unresolved;
+2. formula only;
+3. chemical class / shared substructure;
+4. bounded isomer set;
+5. unique putative 2D structure under the frozen operating point;
+6. reference-standard-confirmed structure.
 
-A dark-spectrum case enters the main text only if it has:
-- recurrent detection across independent samples or another preregistered reason for prioritization;
-- a compact but non-trivial candidate set containing close alternatives;
-- at least one candidate-specific high-authority evidence path, or a scientifically important unresolved outcome;
-- a complete alternative-candidate dossier;
-- explicit statement of what remains unresolved.
+Levels 5 and 6 are never merged.
 
-Prefer cases illustrating distinct outcomes: one strongly narrowed/resolved, one deliberately unresolved and one orthogonally validated if available.
+For Figure 2 census, report counts at every level so the entity total is not misread as a number of unique identifications.
 
-## 6. Orthogonal validation hierarchy
+---
 
-Structure-level “identification” should normally require a reference standard with matching MS/MS and retention/coelution or another comparably strong orthogonal route.
+## 4. Entity collapsing
 
-Possible evidence includes:
+Mouse data are especially vulnerable to feature inflation from:
+- adducts;
+- isotopologues;
+- charge states;
+- in-source fragments;
+- multiple collision-energy acquisitions;
+- technical replicates.
+
+The collapsing rules are validated on known compounds before use on the dark branch. The measured over-/under-merging error contributes directly to uncertainty in the Figure 2 entity count.
+
+Structural merging must never use phenotype labels.
+
+---
+
+## 5. Family freezing before biology
+
+A structural family is defined using chemistry only:
+- bounded structural core / graph relation;
+- frozen structural-distance rule;
+- confidence/resolution threshold;
+- recurrence rule.
+
+Hash family membership before any phenotype/source association is tested.
+
+Do not:
+- merge features because they co-vary biologically;
+- split a family because one subgroup gives a stronger P value;
+- tune structural thresholds to maximize biological significance.
+
+---
+
+## 6. Figure 5 paired analysis
+
+The primary question is no longer “can we find one significant family?”
+
+It is:
+
+> **Does replacing anonymous dark features with frozen structural families systematically improve reproducibility of biological inference?**
+
+Run the same cohort twice:
+
+### Feature arm
+Each dark feature is an independent analyte.
+
+### Structural-family arm
+Features are aggregated or jointly modelled under frozen structural-family membership.
+
+Pre-register one primary global endpoint, preferably:
+- cross-cohort replication rate; or
+- effect-sign concordance across independent cohorts.
+
+Secondary endpoints may include:
+- multiplicity-controlled association yield;
+- effect-size stability;
+- variance explained/predictive stability where statistically appropriate.
+
+The principal family case is selected only after this global comparison is frozen.
+
+---
+
+## 7. Biological inference rules
+
+- Biological samples are the unit of inference.
+- Technical spectra never inflate n.
+- Multiplicity is controlled over the preregistered family/endpoint universe.
+- Covariates and exclusion rules are fixed before association testing.
+- Leave-one-cohort-out and metadata-permutation controls are required for the main family claim.
+- An association surviving only under permissive structural-confidence thresholds is reported as threshold-sensitive.
+
+If structural-family analysis does not systematically improve on feature analysis, Figure 5 must be reframed rather than replaced by one cherry-picked positive family.
+
+---
+
+## 8. Case-study eligibility
+
+A principal dark family enters Figure 5 only if it has:
+- frozen family definition;
+- recurrence across independent biological samples/datasets;
+- acceptable structural resolution/confidence;
+- multiplicity-controlled biological association;
+- independent replication or leave-one-cohort-out stability;
+- a complete alternative-structure dossier.
+
+Prefer a family that connects multiple previously anonymous features into one coherent programme.
+
+---
+
+## 9. Orthogonal validation
+
+Structure-level “identification” normally requires:
 - authentic/synthetic standard;
-- retention time/coelution;
-- targeted MSn;
-- isotope/adduct consistency;
-- independent curated reference revealed only after blind prediction;
-- NMR where material permits;
-- biological recurrence;
-- database/literature consistency.
+- matched MS/MS;
+- retention/coelution or comparably strong orthogonal evidence.
 
-The latter evidence types can support a hypothesis but must not be relabelled as standard-confirmed identification.
+Anchor selection criteria are frozen before purchase.
 
-## 7. Where cohort results appear
+Report:
+- successful anchors;
+- failed anchors;
+- ambiguous anchors;
+- alternatives that remain.
 
-Cohort results are split across two figures and must not be merged back into one deployment figure:
+A failed standard is a result, not a reason to remove the case from the denominator.
 
-- **Figure 3** — the mouse corpus's contribution to entity count, recurrence and composition, reported alongside the repository corpus.
-- **Figure 5** — the biological association, anchor validation dossiers with orthogonal support, and at least one explicitly unresolved isomer case.
+---
 
-Blinded anchor analysis (candidate recall, conditional discrimination, end-to-end resolution, false-resolution rate) is reported in **Extended Data**, not the main text, because §2 already establishes calibration on independent chemistry and the main text should not re-litigate it.
+## 10. Source attribution
 
-Do not use "annotation depth increased" as a biological result.
+If mouse perturbation data are used for Figure 4:
+- germ-free/gnotobiotic, antibiotic and dietary datasets are harmonized separately;
+- positive-control metabolites must recover expected dependence;
+- label permutation must destroy attribution;
+- batch/platform/study effects are modelled;
+- mixed and unresolved families remain explicit.
 
-## 8. Biology
+Use “microbiota-dependent”, “diet-dependent” and “host-associated”. Do not infer a biosynthetic route from dependence alone.
 
-Do not manufacture a biological story from annotation output.
+---
 
-A biological association enters the main text only when:
-- the biological comparison existed independently of ORBIT hypothesis selection;
-- biological replicates, not spectra, are the statistical unit;
-- multiple testing is controlled;
-- the association survives reasonable annotation-confidence/risk thresholds;
-- the chemistry is plausible and preferably orthogonally validated.
+## 11. Evidence-guided acquisition
 
-Otherwise Figure 5 remains a deployment and structural-discovery analysis.
+No new targeted acquisition is assumed.
 
-## 9. Evidence-guided acquisition is out of scope
+For unresolved entities, the released atlas may contain:
+- surviving alternatives;
+- discriminating peak/path evidence;
+- the additional MSn/CE/orthogonal measurement predicted to separate them.
 
-The loop `ambiguous MS2 → freeze surviving candidate set → select most discriminating MSn/CE action → acquire new measurement → quantify contraction` requires instrument time that the current budget does not include. It is **removed from the manuscript** and appears only as a stated future direction in the Discussion.
+This is a **predicted experimental agenda**, not a performed validation.
 
-What survives from it, and must be delivered, is the *prediction* half: for every unresolved entry the atlas states the specific measurement that would resolve it. This is a computed output, costs nothing, and is what converts the atlas into a prioritized experimental agenda. Do not describe it as if the measurement had been performed.
+---
 
-Prioritized ambiguous mouse spectra should nonetheless be recorded in the release, so that the acquisition experiment is immediately executable by us or by others once instrument time exists.
-
-## 10. Release plan
+## 12. Release plan
 
 Before publication:
-- deposit raw/processed spectra when permissions allow;
-- release a de-identified manifest linking manuscript feature IDs to repository accessions;
-- publish frozen candidate pools and evidence certificates;
-- archive the frozen ORBIT release, calibration procedure and evaluation configuration.
+- deposit raw/processed spectra when permissions permit;
+- release de-identified sample/feature manifests;
+- release structural-entity and family membership tables;
+- release per-entry resolution/confidence/evidence records;
+- archive frozen candidate pools and evaluation configuration;
+- publish the exact feature-versus-family biological-analysis code.
