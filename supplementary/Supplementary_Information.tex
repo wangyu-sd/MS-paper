@@ -23,7 +23,7 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 
 \title{\textbf{Supplementary Information}\\[4pt]
-\large A structural census of the dark metabolome}
+\large A molecular fragmentation world reveals the organization of the dark metabolome}
 \author{}
 \date{}
 
@@ -35,7 +35,7 @@
 
 \section{Scope and reading order}
 
-This document contains the supporting experiments for five linked claims: credible bounded structural measurement, a feature-to-entity census, global chemical organization, biological-source partition and the biological value of structural-family analysis. The notes follow evidentiary dependency rather than main-figure order. Decision experiments on prospective validation, the soundness--resolution operating point and entity collapsing are load-bearing: a failure changes the main-text claim rather than merely moving a panel to supplementary material.
+This document contains the supporting experiments for two coupled contributions: a shared molecular fragmentation World supporting Free, Guided and Inverse inference, and the use of the resulting evidence hierarchy to resolve and analyse dark chemistry at scale. The notes follow evidentiary dependency rather than main-figure order. World semantics, evidence levels and biological family definitions are frozen before the downstream analyses they support.
 
 Every quantity marked \result{} must be bound to an immutable artifact recorded in the claim--evidence matrix. No value is transferred from a training log or an exploratory analysis.
 
@@ -99,10 +99,13 @@ Simulator-generated training data requires specific attention: pseudo-spectra ge
 
 \result{Insert the full stringency sweep, the selected operating point and its justification.}
 
-\section{The fragmentation model}
+\section{The molecular fragmentation World}
 
-\subsection{Dissociation event enumeration}
-\methodtodo{Reaction-centre eligibility; bond-cleavage and rearrangement classes represented; atom, charge and hydrogen-transfer accounting; search depth, branching control and termination; deduplication of equivalent trajectories.}
+\subsection{State, transitions and observation semantics}
+\methodtodo{Canonical WGV release; bond-electron state; explicit atom/H identity; formal charge and radicals; exact mass; ionization microstates; charged and neutral coproducts; sparse electron-flow actions; multi-branch siblings; branch-local STOP; reconvergent path handling; observation model; engineering censoring and residual frontier mass.}
+
+\subsection{Chemical legality and learned preference}
+\methodtodo{Hard constraints for atom/electron/charge/H/mass/formula/valence conservation and materialization; definition of legal action masks; learned transition propensity and branch probability; distinction between executable chemistry and validated mechanism.}
 
 \subsection{Support, specificity and elimination}
 For a candidate $M$ and observed peak $p$, the model returns whether some atom-balanced trajectory of $M$ reaches a fragment whose exact mass matches $p$ within tolerance. Three distinct quantities follow and are never conflated:
@@ -124,18 +127,25 @@ Elimination is the operation that makes the output composable. It is also the op
 \subsection{Computational cost}
 \result{Insert per-candidate enumeration time, memory, scaling with heavy-atom count, and total cost of the atlas run.}
 
-\section{Structural resolution levels}
+\section{World-based structural evidence hierarchy}
 
 \subsection{Definition}
-Given the surviving candidate set, the reported statement is the most specific true description that set admits:
-
+Each spectrum or candidate may reach progressively stronger evidence:
 \begin{enumerate}
-\item unique structure --- exactly one candidate survives;
-\item bounded isomer set --- several survive and are enumerated;
-\item substructure or chemical class --- survivors share a common substructure or class assignment;
-\item molecular formula only --- survivors share only the formula;
-\item unresolved --- no statement above formula is supported.
+\item precursor mass / molecular-formula compatibility;
+\item chemically valid molecular structure;
+\item reachability in the learned fragmentation World;
+\item executable reaction-path support for observed evidence;
+\item candidate-specific discriminative evidence;
+\item bidirectional spectrum--structure consistency under World replay;
+\item calibrated bounded structural statement;
+\item authentic-standard confirmation.
 \end{enumerate}
+
+These levels are frozen before repository-scale deployment. Stronger evidence is expected to increase reliability while reducing coverage; both quantities are reported.
+
+\subsection{Bounded structural output}
+At the calibrated operating point the reported structural statement may be a unique putative structure, bounded isomer set, shared substructure or class, molecular formula only, or unresolved. Only authentic-standard evidence is termed identification.
 
 \subsection{Relation to established reporting conventions}
 \methodtodo{Mapping onto the community confidence-level scheme, and explicit statement of the difference: the community levels are assigned by human judgement after annotation, whereas these levels are computed from which candidates the measurement eliminates. The two are reported side by side so that readers can translate.}
@@ -161,39 +171,42 @@ The calibration mapping is fitted only on the calibration split and is frozen be
 
 \result{Insert comparator calibration errors and the comparison to mechanistic elimination.}
 
-\section{The hypothesis model}
+\section{Free, Guided and Inverse inference}
 
-\subsection{Architecture and training}
-\methodtodo{Backbone, size, checkpoint lineage, chemistry-specific vocabulary, peak-level spectrum conditioning, molecular pretraining corpora, and the boundary separating frozen pretraining from the mutable post-training programme.}
+\subsection{Shared World representation}
+\methodtodo{Shared graph/frontier/spectrum encoders; task-mode conditioning; checkpoint lineage; state dimensions; target-spectrum firewall for Free; shared versus task-specific heads.}
 
-\subsection{Verifiable reasoning traces}
-\methodtodo{Trace grammar; the claims each step makes; the verification performed against the fragmentation model for each claim type; treatment of unverifiable steps.}
+\subsection{Free inference}
+\methodtodo{Subtrajectory-balance/GFlowNet objective; multibranch probability flow; sibling/STOP normalization; observation likelihood; training data and censoring handling.}
 
-\subsection{Verification and accuracy}
-\result{Insert accuracy of verified versus unverified traces at matched confidence, and the failure taxonomy with counts.}
+\subsection{Guided inference}
+\methodtodo{Spectrum-conditioned frontier/value model; DAgger on current-policy states; goal-conditioned IQL; matched-budget planning; explanatory-path endpoints and no-chemistry-change constraint relative to Free.}
 
-\subsection{Training diagnostics}
-\methodtodo{Per-field loss, token-level accuracy and teacher-forced exact match by trace operation; corpus-switch dynamics; the redundancy audit that motivated the current trace design and the leakage it removed.}
+\subsection{Inverse inference}
+\methodtodo{Heavy-atom construction state; canonical graph identity; formula/charge/H/valence masks; conditional GFlowNet/SMC; posterior diversity; forward World replay and bidirectional consistency.}
 
-These diagnostics are reported for completeness and reproducibility. They are not evidence of scientific improvement; only held-out molecular endpoints are.
+\subsection{Optional language-model reasoning interface}
+\methodtodo{If METEOR language-model traces are retained in the final system, define their role only as a candidate/hypothesis interface to the canonical WGV system; specify which trace claims are checked against the World and which are not used for online chemistry decisions.}
 
-\section{Automated fragmentation-rule evolution}
+Language-model trace quality is a supporting diagnostic. Main scientific claims are based on held-out World/Guided/Inverse endpoints and downstream evidence, not token-level reasoning accuracy.
+
+\section{Outer-loop scientific program evolution}
 
 \subsection{Failure localization}
-\methodtodo{How a verification failure is attributed to a specific rule or rule gap; the receipt recording that attribution.}
+\methodtodo{How systematic World/Guided/Inverse failures are assigned to state representation, action language, observation model, search or training objective; receipt format and failure clustering.}
 
 \subsection{Typed revisions and acceptance gates}
-\methodtodo{The permitted revision types; the requirement that a revision be bounded; the acceptance gates: fresh deterministic evaluation on data not used to propose the revision, causal replay, ablation, cross-family transfer, and absence of regression elsewhere.}
+\methodtodo{Allowed program/state/action/algorithm changes; deterministic chemistry compilation; local causal replay; ablation; cross-family transfer; molecule-disjoint held-out gate; regression checks.}
 
-Low-cost worker models may propose revisions. They may not accept them. Acceptance is decided by deterministic evaluation against frozen receipts.
+Low-cost worker models or LLM agents may propose revisions. They cannot accept them. Promotion requires frozen deterministic/scientific evaluation.
 
 \subsection{Results}
-\result{Insert coverage growth by chemical class, effect on resolution rate, number of proposed and rejected revisions, and worker-model cost.}
+\result{Insert proposed/rejected/promoted revision counts, scientific KPI changes by revision class and compute cost.}
 
-\subsection{Factorial adaptation control}
-\methodtodo{The $(H_0,E_0)$, $(H_T,E_0)$, $(H_0,E_T)$, $(H_T,E_T)$ endpoint comparison and the interaction effect, retained as acceptance evidence for the evolution procedure rather than as a manuscript claim.}
+\section{Repository-scale dark-matter resolution}
 
-\section{Atlas construction}
+\subsection{Evidence-level assignment}
+\methodtodo{Frozen thresholds for all World-based evidence levels; handling of unresolved and resource-censored cases; per-spectrum evidence receipts; strongest-evidence assignment rule.}
 
 \subsection{Entity collapsing}
 \methodtodo{Rules for collapsing adducts, in-source fragments, isotopologues, charge states and redundant acquisitions onto a single molecular entity; validation of these rules on known compounds with known ion forms; the residual error rate of collapsing and its effect on the entity count.}
@@ -206,7 +219,7 @@ The entity count is the headline number of Figure 2 and is only as good as this 
 \subsection{Per-entry record schema}
 \methodtodo{Fields released for every atlas entry: representative spectrum, surviving candidate set, eliminating peaks, supporting trajectories, resolution level, calibrated confidence, recurrence, source datasets, and for unresolved entries the measurement that would resolve them.}
 
-\section{Structural census and chemical organization of the dark metabolome}
+\section{Structural organization of high-evidence dark chemistry}
 
 \subsection{Distance to known metabolite space}
 \methodtodo{The frozen reference metabolite set; the preregistered transformation vocabulary; how distance is computed for entities resolved below unique-structure level; sensitivity to the choice of reference set.}
