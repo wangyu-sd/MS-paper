@@ -2,7 +2,7 @@
 
 Every `[RESULT: ...]` and `[DATA: ...]` in `main.tex` must map to a frozen experiment in `EXPERIMENT_EXECUTION_PLAN.md` and an immutable artifact in `CLAIM_EVIDENCE_MATRIX.md`.
 
-The manuscript has been restructured; regenerate the literal placeholder count after each major prose revision rather than carrying forward the previous “73” count.
+Current target manuscript count after the census rewrite: **110 result/data placeholders** (107 `RESULT` + 3 `DATA`) plus 18 `METHOD` placeholders. Recount after any major prose revision.
 
 ---
 
