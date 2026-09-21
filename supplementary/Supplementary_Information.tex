@@ -23,7 +23,7 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 
 \title{\textbf{Supplementary Information}\\[4pt]
-\large A molecular fragmentation world reveals the organization of the dark metabolome}
+\large A molecular fragmentation world reveals the dark metabolome}
 \author{}
 \date{}
 
@@ -101,11 +101,20 @@ Simulator-generated training data requires specific attention: pseudo-spectra ge
 
 \section{The molecular fragmentation World}
 
-\subsection{State, transitions and observation semantics}
-\methodtodo{Canonical WGV release; bond-electron state; explicit atom/H identity; formal charge and radicals; exact mass; ionization microstates; charged and neutral coproducts; sparse electron-flow actions; multi-branch siblings; branch-local STOP; reconvergent path handling; observation model; engineering censoring and residual frontier mass.}
+\subsection{Closed chemical state}
+\methodtodo{Bond--electron state; atom identity; explicit H; formal charge/radicals; exact mass; ionization/adduct state; charged and neutral connected components; acquisition conditions; canonical state identity.}
 
-\subsection{Chemical legality and learned preference}
-\methodtodo{Hard constraints for atom/electron/charge/H/mass/formula/valence conservation and materialization; definition of legal action masks; learned transition propensity and branch probability; distinction between executable chemistry and validated mechanism.}
+\subsection{Autoregressive single-electron event language}
+\methodtodo{Source selection from atoms/occupied bonds; atom-versus-bond target decision; sequential target atom pointers; 1e transfer; learned STOP/REPEAT/NEW event control; relation between repeated 1e events and conventional 2e pair transfer; accumulation of multi-event transformations before deterministic compilation; absence of reaction-template enumeration.}
+
+\subsection{Chemical compiler and legality}
+\methodtodo{Atom/electron/charge/H/mass conservation; bond-electron symmetry; supported valence/materialization checks; treatment of compiler rejection; distinction between executable chemistry and validated mechanism.}
+
+\subsection{Multi-branch reaction DAG and probability mass}
+\methodtodo{Sibling reaction branches; branch-local STOP; reconvergent paths; canonical DAG aggregation; frontier scheduling; explicit decomposition of sampled policy mass into valid, invalid, event-budget-censored, unsampled and STOP outcomes; probability-conservation checks; censoring as unresolved rather than chemical failure.}
+
+\subsection{Partial observation semantics}
+The experimental tandem mass spectrum is treated as a partial observation of the latent fragmentation World. Legal generated states that are not observed are not automatically labelled false. Likewise, reaction regions that remain unsampled or are censored by computational budget are not interpreted as chemically impossible.
 
 \subsection{Support, specificity and elimination}
 For a candidate $M$ and observed peak $p$, the model returns whether some atom-balanced trajectory of $M$ reaches a fragment whose exact mass matches $p$ within tolerance. Three distinct quantities follow and are never conflated:
@@ -171,24 +180,22 @@ The calibration mapping is fitted only on the calibration split and is frozen be
 
 \result{Insert comparator calibration errors and the comparison to mechanistic elimination.}
 
-\section{Free, Guided and Inverse inference}
+\section{Free, Guided and Inverse inference over one World}
 
 \subsection{Shared World representation}
-\methodtodo{Shared graph/frontier/spectrum encoders; task-mode conditioning; checkpoint lineage; state dimensions; target-spectrum firewall for Free; shared versus task-specific heads.}
+\methodtodo{Shared molecular/fragment graph encoding; task-mode conditioning; spectrum peak-graph encoding when applicable; checkpoint lineage; strict absence of target-spectrum input from Free inference.}
 
 \subsection{Free inference}
-\methodtodo{Subtrajectory-balance/GFlowNet objective; multibranch probability flow; sibling/STOP normalization; observation likelihood; training data and censoring handling.}
+\methodtodo{Teacher-free autoregressive electron-event rollout; Subtrajectory Balance/GFlowNet objective; multibranch probability flow; observation-derived positive evidence; ordered-transition endpoints; unresolved/censored probability accounting.}
 
 \subsection{Guided inference}
-\methodtodo{Spectrum-conditioned frontier/value model; DAgger on current-policy states; goal-conditioned IQL; matched-budget planning; explanatory-path endpoints and no-chemistry-change constraint relative to Free.}
+\methodtodo{Spectrum-conditioned graph policy/value over the same executable World; frontier prioritization under matched compute; auxiliary IQL objective on sampled transitions; exact production checkpoint/inference path. Explicitly state that DAgger and HER are not currently part of production rollout unless implemented before manuscript freeze.}
 
 \subsection{Inverse inference}
-\methodtodo{Heavy-atom construction state; canonical graph identity; formula/charge/H/valence masks; conditional GFlowNet/SMC; posterior diversity; forward World replay and bidirectional consistency.}
+\methodtodo{Factorized graph-construction policy; action-kind/element/charge/radical/attachment/pair/bond-order predictions; hard formula/charge/H/valence constraints; canonical partial-state merging; leaf--parent--precursor ordered-fragment shaping; SMC posterior maintenance; completed-candidate forward World replay.}
 
-\subsection{Optional language-model reasoning interface}
-\methodtodo{If METEOR language-model traces are retained in the final system, define their role only as a candidate/hypothesis interface to the canonical WGV system; specify which trace claims are checked against the World and which are not used for online chemistry decisions.}
-
-Language-model trace quality is a supporting diagnostic. Main scientific claims are based on held-out World/Guided/Inverse endpoints and downstream evidence, not token-level reasoning accuracy.
+\subsection{Bidirectional evidence}
+\methodtodo{Candidate replay through Free/Guided World; mass/intensity/ordered-transition support; candidate-specific discrimination; unresolved World probability mass; definition of the bidirectional consistency endpoint used in the manuscript.}
 
 \section{Outer-loop scientific program evolution}
 
