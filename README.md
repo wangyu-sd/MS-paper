@@ -2,116 +2,219 @@
 
 Nature-level manuscript workspace for ORBIT-MS.
 
-## Working proposition
+## Central proposition
 
-**The dark metabolome is not an unstructured residue of unidentified spectral features. It is a recurrent, chemically organized and biologically partitioned layer of small-molecule chemistry whose scale and structure have been obscured because spectra are counted as features rather than resolved into bounded structural entities.**
+**A tandem mass spectrum is a partial observation of a latent gas-phase molecular fragmentation world. Rather than learning a direct spectrum-to-structure shortcut, ORBIT-MS learns this world and performs prediction, explanation and inverse structure inference inside the same conservation-preserving chemical process.**
 
-ORBIT-MS is the enabling measurement system, not the headline. It converts a tandem mass spectrum into the most specific structural statement supported by the measurement by combining candidate generation with a conservation-preserving fragmentation World and calibrated candidate elimination. The manuscript then uses those statements to answer four field-level questions:
+The manuscript has two inseparable layers.
 
-1. **How large is the dark metabolome once redundant spectral features are collapsed onto structural entities?**
-2. **How is dark chemistry organized relative to characterized metabolism?**
-3. **Do recurrent dark structural families partition by biological source?**
-4. **Does structural family resolution expose reproducible biology that anonymous feature-level analysis misses?**
+### 1. A new inference paradigm
 
-The paper succeeds at Nature only if the answers to those questions are strong. Benchmark accuracy, calibration, World learning, agent evolution and reasoning traces are credibility/supporting evidence.
+ORBIT-MS learns a probabilistic **molecular fragmentation world**:
+
+`molecule + ionization + collision conditions → latent multi-branch reaction world → partial spectral observation`.
+
+The same world supports three conditional inference modes:
+
+- **World / Free:** what fragmentation networks can this molecule produce?
+- **Verifier / Guided:** which reaction paths best explain the observed spectrum under a fixed computational budget?
+- **Generator / Inverse:** which molecular structures can generate this observation and remain consistent when replayed through the same World?
+
+This is the WGV-RL contribution. It is not three independent models. It is **one chemical world, three modes of inference**.
+
+### 2. A new scientific object
+
+The WGV system converts dark spectra into structural statements supported by progressively stronger evidence:
+
+`mass/formula compatibility → World reachability → executable path support → candidate-specific evidence → bidirectional spectrum–structure consistency → calibrated structural statement → authentic-standard confirmation`.
+
+This evidence hierarchy makes it possible to resolve dark chemistry at repository scale without pretending that every spectrum identifies one unique molecule. The resulting high-evidence structural population is then used to ask what the dark metabolome contains, how it is organized and what biology it encodes.
 
 ## Current title
 
-**A structural census of the dark metabolome**
+**A molecular fragmentation world reveals the organization of the dark metabolome**
 
-Alternative title if chemical-space organization becomes the strongest result:
+Alternative if the World results become the dominant contribution:
 
-**The structural organization of the dark metabolome**
+**Learning a molecular fragmentation world for mass-spectral inference**
 
-Do not lead the title with ORBIT-MS, the agent, the language model or fragmentation simulation.
+Alternative if the biological organization becomes overwhelmingly strong:
+
+**A molecular fragmentation world reveals the dark metabolome**
+
+The preferred title retains both the methodological paradigm and the scientific consequence.
+
+## Scientific model
+
+The core generative picture is:
+
+[
+M,c ightarrow mathcal{W}(M,c) ightarrow S_{mathrm{obs}}
+]
+
+where:
+- (M) is molecular structure;
+- (c) is ionization/collision/instrument condition;
+- (mathcal{W}) is the latent probabilistic fragmentation reaction world;
+- (S_{mathrm{obs}}) is an incomplete experimental observation of that world.
+
+Therefore:
+
+[
+S_{mathrm{obs}} 
+eq mathcal{W}
+]
+
+and:
+
+[
+	ext{unobserved fragmentation} 
+eq 	ext{false fragmentation}.
+]
+
+This distinction is fundamental to the paper.
+
+## WGV as conditional inference over one world
+
+[
+egin{aligned}
+	ext{Free:} &quad p(mathcal{T},Smid M,c) \
+	ext{Guided:} &quad p(mathcal{T}mid M,S_{mathrm{obs}},c) \
+	ext{Inverse:} &quad p(M,mathcal{T}mid S_{mathrm{obs}},c)
+end{aligned}
+]
+
+where (mathcal{T}) denotes fragmentation trajectories/networks.
+
+### Free / World
+Learns a multi-branch probabilistic reaction network rather than a single predicted spectrum or one preferred mechanism.
+
+### Guided / Verifier
+Uses the observed spectrum to allocate computation toward reaction branches with the greatest explanatory/discriminative value. Chemical probability and evidential value are intentionally separated.
+
+### Inverse / Generator
+Maintains multiple molecular hypotheses rather than collapsing immediately to Top-1. Completed candidates must be replayed through the same World and evaluated for forward consistency.
+
+## Why RL is necessary
+
+The latent fragmentation world is combinatorial. Exhaustive expansion is impossible.
+
+RL therefore solves a scientific resource-allocation problem:
+
+> **Where should limited computation be spent in a large chemical reaction world?**
+
+- SubTB/GFlowNet distributes flow across multiple plausible Free trajectories.
+- Guided IQL/DAgger learns long-horizon value under spectrum conditioning.
+- Inverse GFlowNet/SMC maintains diverse posterior molecular hypotheses.
+- Frontier planning allocates compute without redefining chemistry.
+
+This is not “RL to raise a score”. It is adaptive inference over a constrained chemical world.
+
+## Chemistry and learning have different roles
+
+**Chemistry defines legality; learning defines preference.**
+
+Hard constraints include:
+- atom/element conservation;
+- electron conservation;
+- formal charge;
+- explicit H identity and transfer;
+- exact mass;
+- valence;
+- formula/inventory closure;
+- typed transition materializability.
+
+These are not reward penalties that the policy may trade away. Invalid actions are removed from the executable action space.
+
+Learning estimates:
+- event propensity;
+- branch probability;
+- long-horizon explanatory value;
+- posterior molecular probability;
+- compute allocation.
+
+## Evidence hierarchy
+
+The paper should never collapse every result into “annotation accuracy”.
+
+Every dark-spectrum result is assigned the strongest evidence level it actually reaches:
+
+1. precursor mass / formula compatible;
+2. structurally valid candidate;
+3. reachable in the learned World;
+4. observed peaks supported by executable trajectories;
+5. candidate-specific discriminative evidence;
+6. spectrum → molecule → World → spectrum consistency;
+7. calibrated bounded structural statement;
+8. authentic-standard confirmation.
+
+Main figures must report how much dark chemistry reaches each level.
 
 ## Main-text architecture
 
-The manuscript is organized as **1 credibility figure + 4 discovery figures**.
+The manuscript is organized as **2 method-capability figures + 3 discovery figures**.
 
-| § | Section | Figure | Scientific question |
+| § | Section | Figure | Role |
 |---|---|---|---|
-| 1 | A calibrated fragmentation World turns dark spectra into bounded structural statements | Fig. 1 | Why can the census be trusted? |
-| 2 | The dark metabolome contains far fewer recurrent chemical entities than spectral features imply | Fig. 2 | How large is it? |
-| 3 | Dark chemistry forms a structured landscape beyond known metabolism | Fig. 3 | How is it chemically organized? |
-| 4 | Biological sources partition dark chemical space | Fig. 4 | Where does it come from? |
-| 5 | Structural families reveal biological programmes hidden at feature level | Fig. 5 | What biology becomes visible? |
+| 1 | A molecular fragmentation world unifies prediction, explanation and inverse inference | Fig. 1 | paradigm |
+| 2 | World-based inference establishes graded structural evidence | Fig. 2 | capability / credibility |
+| 3 | High-evidence inference resolves the dark metabolome at scale | Fig. 3 | large-scale discovery |
+| 4 | Resolved dark chemistry reveals structural and biological organization | Fig. 4 | chemical/source discovery |
+| 5 | Dark molecular families reveal biology hidden from feature-level metabolomics | Fig. 5 | biological discovery |
 
 The chain is:
 
-`dark spectra → bounded structural statements → structural entities → recurrent chemical families → biological source → reproducible biological programme`.
+`partial spectral observation → fragmentation World → W/G/V inference → graded structural evidence → high-evidence dark structures → chemical families → biological organization`.
 
-Prospective library-growth calibration is no longer a standalone main figure. It is the credibility spine of Fig. 1 and receives complete treatment in Extended Data.
+## Figure-level questions
 
-## Headline numbers
+1. **What is the hidden object behind a spectrum?**  
+   A latent probabilistic fragmentation world.
 
-Three numbers determine whether the paper has a Nature-scale result:
+2. **What new inference capabilities does one shared World provide?**  
+   Forward prediction, spectrum-guided explanation, inverse structure inference and bidirectional verification.
 
-1. **Census contraction**
-   `N dark features → N recurrent structural entities`, with uncertainty from validated entity collapsing.
-2. **Chemical novelty**
-   the fraction of recurrent entities/families that lie outside the predefined neighbourhood of characterized metabolism.
-3. **Biological organization**
-   the fraction of recurrent structural families that show reproducible source or phenotype organization, and the gain in cross-cohort reproducibility obtained by structural-family analysis relative to anonymous features.
+3. **How much dark chemistry can be resolved, and at what evidence level?**  
+   Repository-scale evidence hierarchy and entity/family census.
 
-These are not targets to optimize after looking at the data. Definitions, denominators and analysis thresholds are frozen before confirmatory analysis.
+4. **How is resolved dark chemistry organized?**  
+   Near-known versus remote structural families plus microbiota/diet/host dependence.
 
-## Scientific object
+5. **Does structure change biological inference?**  
+   Frozen structural families versus anonymous feature-level analysis, followed by one deeply validated programme.
 
-For candidate `M` and observed peak `p`, distinguish:
+## Agent role
 
-1. **support** — an atom/electron/charge-consistent fragmentation trajectory of `M` can produce `p`;
-2. **specificity** — that support distinguishes `M` from competing structures;
-3. **elimination** — under a calibrated operating point, the evidence is sufficient to exclude `M`.
+The LLM/MS-agent remains outside online WGV inference.
 
-The output is not forced to be a single structure. Each spectrum receives the most specific bounded statement supported by the evidence:
+[
+	ext{systematic failure}
+ightarrow
+	ext{hypothesis}
+ightarrow
+	ext{program/state/action/algorithm revision}
+ightarrow
+	ext{typed compiler + held-out gates}
+ightarrow
+	ext{new World}
+]
 
-`unique putative structure → bounded isomer set → shared substructure / chemical class → formula only → unresolved`.
+The agent evolves the scientific program; it does not replace the reproducible chemical state, policy or transition model.
 
-Only orthogonal reference-standard validation is called an identification.
+## Nature-level success criteria
 
-## Credibility hierarchy
+The paper should demonstrate all three layers:
 
-The main text asks readers to believe an atlas built from model-derived structural statements. Therefore:
+### Paradigm
+A shared learned fragmentation World supports Free, Guided and Inverse inference better than disconnected/direct alternatives.
 
-- exact and analogue leakage audits are mandatory;
-- generator recall, conditional discrimination and end-to-end resolution are reported separately;
-- elimination soundness is measured, not assumed;
-- the complete system and calibration mapping are frozen before prospective library-growth evaluation;
-- prospective outcomes are stratified by structural distance from the frozen library;
-- comparator methods receive the same candidate pools and their own fair calibration;
-- entity collapsing is validated on known compounds before dark-entity counts are reported;
-- family definitions are frozen before origin or phenotype testing;
-- biological samples, not spectra, are the unit of biological inference.
+### Evidence
+World-based bidirectional inference produces more reliable, auditable and calibrated structural conclusions than similarity/rank alone.
 
-## Result distribution
+### Discovery
+Applying this evidence hierarchy at scale reveals reproducible dark structural families and biological organization not visible at feature level.
 
-Main-text space belongs to statements about the world.
-
-**Main text**
-- bounded structural measurement and prospective credibility;
-- census size and recurrence;
-- chemical-space organization;
-- source partition;
-- global family-level biological gain plus one deeply characterized example.
-
-**Extended Data / Supplementary**
-- full comparator benchmark;
-- spectrum-shuffle and trace-verification controls;
-- World/action-space ablations;
-- rule/program evolution;
-- structured-CoT controls;
-- complete calibration stratifications;
-- entity-collapsing sensitivity;
-- complete origin/association models;
-- all standard-validation dossiers.
-
-## Cost constraints
-
-- No new discovery-scale MS acquisition is assumed.
-- Public perturbation data are used for source attribution.
-- Authentic standards are reserved for a small set of frozen anchors.
-- Evidence-guided acquisition remains a future direction; the released atlas may state the measurement predicted to resolve an ambiguous entry, but must not imply that measurement was performed.
+If the paper only shows a better W/G/V benchmark, it becomes a methods paper. If it only shows an atlas, it underuses the methodological novelty. The Nature story requires both.
 
 ## Draft conventions
 
@@ -121,26 +224,15 @@ Main-text space belongs to statements about the world.
 - `[DATA: ...]` — cohort or dataset information still to be bound;
 - `[METHOD: ...]` — protocol detail that must be frozen.
 
-No placeholder is filled from memory, a transient training log or an exploratory notebook.
-
-## Files
-
-- `main.tex` — target Nature Article.
-- `internal/FIGURE_PLAN.md` — panel-level design for Figs. 1–5 and Extended Data.
-- `internal/CLAIM_EVIDENCE_MATRIX.md` — claim → experiment → unit → controls → artifact.
-- `internal/EXPERIMENT_EXECUTION_PLAN.md` — kill-risk-first execution order.
-- `internal/RESULTS_PLACEHOLDERS.md` — result-to-artifact checklist.
-- `internal/LITERATURE_POSITIONING.md` — competitive and claim-boundary logic.
-- `internal/MOUSE_COHORT_PROTOCOL.md` — cohort freezing and biological-inference rules.
-- `supplementary/Supplementary_Information.tex` — supporting analyses and reproducibility details.
+No placeholder is filled from memory, transient logs or exploratory notebooks.
 
 ## Standing claim boundaries
 
-1. Dark spectra are not synonymous with molecules absent from chemical databases.
-2. Spectral features are not molecular entities.
-3. Recurrence across spectra is not recurrence across independent biological datasets.
-4. A structural relationship is not evidence of an enzymatic reaction.
-5. Source attribution establishes perturbation dependence, not biosynthetic origin in the mechanistic sense.
-6. A model-derived unique structure is not a reference-standard identification.
-7. Mechanistic completeness is empirical; missing trajectories cannot be treated as absolute impossibility without calibration.
-8. Training loss, selector accuracy and agent progress are not scientific endpoints.
+1. A spectrum is a partial observation of the fragmentation world, not a complete negative label over all unobserved states.
+2. W/G/V share one chemical world but optimize different conditional objectives.
+3. Chemical legality is hard-constrained; RL learns preference and compute allocation.
+4. Candidate recall, evidence discrimination and end-to-end recovery are separate endpoints.
+5. Dark-spectrum predictions are not automatically identifications.
+6. Structural relationships are not biosynthetic mechanisms.
+7. Source attribution establishes dependence, not synthesis.
+8. Training loss and agent progress are not scientific endpoints.
