@@ -31,119 +31,125 @@
 \newcommand{\figureonetodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.56\textwidth}{%
-\textbf{A | Spectrum as partial observation}\\[3pt]
-\textbullet~Precursor + ionization / collision condition\\
-\textbullet~Latent multi-branch fragmentation World\\
-\textbullet~Only part of the World is observed as MS/MS\\[2pt]
-\centering $M,c \rightarrow \mathcal{W}(M,c) \rightarrow S_{\rm obs}$
+\paneltodo{0.38\textwidth}{%
+\textbf{A | Core concept}\\[3pt]
+\textbullet~Precursor molecule + acquisition condition\\
+\textbullet~Latent gas-phase fragmentation World\\
+\textbullet~Observed MS/MS is only a partial observation\\[2pt]
+\centering $M,c \rightarrow \mathcal W_{\rm frag} \rightarrow S_{\rm obs}$\\[2pt]
+\raggedright
+\textit{Purpose: define the scientific object of the paper.}
 }
 \hfill
-\paneltodo{0.38\textwidth}{%
-\textbf{B | One World, three queries}\\[3pt]
-\textbullet~Free: $p(\mathcal T,S\mid M,c)$\\
-\textbullet~Guided: $p(\mathcal T\mid M,S_{\rm obs},c)$\\
-\textbullet~Inverse: $p(M,\mathcal T\mid S_{\rm obs},c)$\\
-\textbullet~All share one chemical state / transition system
+\paneltodo{0.52\textwidth}{%
+\textbf{B | Does the World recover real fragmentation?}\\[3pt]
+\textbullet~One benchmark molecule with an observed fragmentation hierarchy / MSn transitions\\
+\textbullet~World rollout with matched ions, matched edges and complete chains highlighted\\
+\textbullet~Quantify intensity-weighted coverage, ordered-transition recall and complete-chain rate\\
+\textbullet~Compare against simpler forward / single-path baselines where appropriate\\[2pt]
+\textit{Purpose: show that the World models fragmentation topology, not only peak masses.}
 }
 
 \vspace{5pt}
 
-\paneltodo{0.30\textwidth}{%
-\textbf{C | Autoregressive 1e chemistry}\\[3pt]
-\textbullet~source $\rightarrow$ target $\rightarrow$ 1e\\
-\textbullet~STOP / REPEAT / NEW\\
-\textbullet~2 repeated 1e events recover a 2e transfer\\
-\textbullet~No fragmentation-template catalogue
+\paneltodo{0.45\textwidth}{%
+\textbf{C | Can the World resolve hard structures?}\\[3pt]
+\textbullet~One spectrum + GT + same-formula / near-isomer decoys\\
+\textbullet~For each candidate show intensity coverage, ordered-transition recall and complete-chain rate\\
+\textbullet~Highlight GT-specific fragmentation topology that decoys cannot reproduce\\[2pt]
+\textit{Purpose: show why World evidence helps discriminate difficult structural alternatives.}
 }
 \hfill
-\paneltodo{0.34\textwidth}{%
-\textbf{D | Probability-mass semantics}\\[3pt]
-\textbullet~valid chemistry\\
-\textbullet~invalid chemistry\\
-\textbullet~censored / unsampled mass\\
-\textbullet~learned STOP\\[2pt]
-\centering $P_{\rm valid}+P_{\rm invalid}+P_{\rm censored}+P_{\rm unsampled}+P_{\rm stop}=1$
-}
-\hfill
-\paneltodo{0.30\textwidth}{%
-\textbf{E | Multi-branch reaction DAG}\\[3pt]
-\textbullet~Sibling fragmentation branches\\
-\textbullet~Branch-local STOP\\
-\textbullet~Reconvergent canonical states\\
-\textbullet~Conditional and path probability
+\paneltodo{0.45\textwidth}{%
+\textbf{D | Structural reliability increases with World evidence}\\[3pt]
+\textbullet~Group predictions by increasing evidence completeness: peak support; + ordered transitions; + complete-chain support; + low unresolved World mass\\
+\textbullet~Plot GT containment / correct-candidate rate across groups\\
+\textbullet~Optional inset: historical prospective validation on later-revealed chemistry\\[2pt]
+\textit{Purpose: empirically connect richer World evidence to more reliable structural conclusions.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.94\textwidth}{%
-\textbf{F | Outer-loop scientific evolution}\\[3pt]
-failure $\rightarrow$ bounded proposal $\rightarrow$ typed chemistry compiler / conservation checks $\rightarrow$ molecule-disjoint held-out gate $\rightarrow$ promoted World\\
-\textit{Keep this as a thin supporting strip; the agent is outside online chemistry inference.}
+\textbf{E | Repository-scale resolution of dark spectra}\\[3pt]
+\textbullet~Large funnel / Sankey: dark spectra $\rightarrow$ candidate generation succeeds $\rightarrow$ World-evaluable candidates $\rightarrow$ World-discriminative evidence $\rightarrow$ calibrated structural statements\\
+\textbullet~Final outputs: unique putative structure | bounded isomer set | shared substructure / class | unresolved\\
+\textbullet~Keep denominators and unresolved cases visible at every step\\[2pt]
+\textit{Purpose: provide the headline result --- how much dark chemistry becomes structured molecular knowledge.}
 }
-\caption{\textbf{Figure 1 layout placeholder | A molecular fragmentation world unifies prediction, explanation and inverse inference.}
-Top: latent World and W/G/V queries. Middle: electron-event language, probability semantics and reaction DAG. Bottom: supporting outer-loop evolution.}
+
+\vspace{5pt}
+
+\paneltodo{0.94\textwidth}{%
+\textbf{F | Representative dark chemistry}\\[3pt]
+\textbullet~3--4 compact examples: unique structure | bounded isomer set | remote recurrent family | standard-confirmed anchor if available\\
+\textbullet~For each example show structure, evidence type, recurrence and novelty / distance-to-known\\[2pt]
+\textit{Purpose: make the repository-scale result chemically concrete.}
+}
+\caption{\textbf{Figure 1 layout placeholder | A molecular fragmentation world enables high-evidence resolution of dark spectra.}
+Panel A defines the core concept. Panels B--D show that the World captures fragmentation, resolves difficult structures and supports reliable reporting. Panels E--F show the scale and chemical form of dark-spectrum resolution.}
 \end{figure}
 }
 
 \newcommand{\figuretwotodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.45\textwidth}{%
-\textbf{A | Free World performance}\\[3pt]
-\textbullet~Reaction-network example\\
-\textbullet~Observed mass coverage\\
-\textbullet~Intensity-weighted coverage\\
-\textbullet~Ordered-transition / multistage coverage
+\paneltodo{0.30\textwidth}{%
+\textbf{A | Autoregressive 1e event language}\\[3pt]
+\textbullet~Generate chemistry as source $\rightarrow$ target $\rightarrow$ 1e transfer\\
+\textbullet~STOP / REPEAT / NEW control the event sequence\\
+\textbullet~Repeated 1e events recover 2e transfer; distinct targets permit radical / rearrangement chemistry\\[2pt]
+\textit{Purpose: explain the elementary action language of the World.}
 }
 \hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{B | Guided vs Free under matched compute}\\[3pt]
-\textbullet~Same molecule / chemistry / budget\\
-\textbullet~Only Guided observes the spectrum\\
-\textbullet~Coverage vs expanded states\\
-\textbullet~States or wall time to matched coverage
-}
-
-\vspace{5pt}
-
-\paneltodo{0.38\textwidth}{%
-\textbf{C | Inverse posterior structures}\\[3pt]
-\textbullet~Spectrum $\rightarrow$ multiple candidates\\
-\textbullet~Exact / Recall@K\\
-\textbullet~Best similarity / MCES\\
-\textbullet~Validity + posterior diversity
+\paneltodo{0.30\textwidth}{%
+\textbf{B | Multi-branch reaction DAG}\\[3pt]
+\textbullet~One precursor expands into sibling reaction branches\\
+\textbullet~STOP is branch-local\\
+\textbullet~Different trajectories may reconverge to one canonical fragment state\\
+\textbullet~Separate edge probability from state reach probability\\[2pt]
+\textit{Purpose: explain why fragmentation is modelled as a probabilistic reaction network, not a single path.}
 }
 \hfill
-\paneltodo{0.52\textwidth}{%
-\textbf{D | Bidirectional consistency}\\[3pt]
-\centering $S_{\rm obs}\rightarrow M\rightarrow\mathcal W(M)\rightarrow\hat S$\\[3pt]
+\paneltodo{0.34\textwidth}{%
+\textbf{C | Probability-mass semantics}\\[3pt]
+\centering $P_{\rm valid}+P_{\rm invalid}+P_{\rm censored}+P_{\rm unsampled}+P_{\rm stop}=1$\\
 \raggedright
-\textbullet~GT vs same-formula / near-isomer decoys\\
-\textbullet~Executable path and intensity support\\
-\textbullet~Ordered-transition consistency\\
-\textbullet~Unresolved World probability mass
+\textbullet~invalid = chemical failure\\
+\textbullet~censored = computation truncated\\
+\textbullet~unsampled = unexplored\\
+\textbullet~stop = learned termination\\[2pt]
+\textit{Purpose: preserve uncertainty instead of redistributing it to successful branches.}
 }
 
 \vspace{5pt}
 
-\paneltodo{0.58\textwidth}{%
-\textbf{E | Graded structural evidence}\\[3pt]
-formula $\rightarrow$ valid graph $\rightarrow$ World reachable $\rightarrow$ path support\\
-$\rightarrow$ candidate-specific evidence $\rightarrow$ bidirectional consistency\\
-$\rightarrow$ calibrated bounded statement $\rightarrow$ authentic standard\\[3pt]
-\textbullet~Overlay decreasing coverage and increasing reliability
+\paneltodo{0.45\textwidth}{%
+\textbf{D | Free and Guided inference}\\[3pt]
+\textbullet~Free: expand the fragmentation World from the molecule alone\\
+\textbullet~Guided: use the observed spectrum to prioritize frontier expansion under matched compute\\
+\textbullet~Plot coverage versus expansions / states / wall time\\[2pt]
+\textit{Purpose: show how spectrum conditioning improves evidence-directed exploration without changing chemical legality.}
 }
 \hfill
-\paneltodo{0.32\textwidth}{%
-\textbf{F | Prospective credibility}\\[3pt]
-\textbullet~Historical freeze date\\
-\textbullet~Dark at freeze, identified later\\
-\textbullet~Containment / calibration\\
-\textbullet~Structural-distance shift
+\paneltodo{0.45\textwidth}{%
+\textbf{E | Inverse molecular inference}\\[3pt]
+\textbullet~Use observed fragments / transitions to guide partial graph construction\\
+\textbullet~Show leaf $\rightarrow$ parent $\rightarrow$ precursor shaping where available\\
+\textbullet~Maintain multiple molecular candidates and replay completed candidates through the World\\[2pt]
+\textit{Purpose: formulate structure elucidation as inversion through the fragmentation World.}
 }
-\caption{\textbf{Figure 2 layout placeholder | World-based inference establishes graded structural evidence.}
-Top: Free and Guided capability. Middle: inverse posterior and bidirectional verification. Bottom: evidence hierarchy and prospective calibration.}
+
+\vspace{5pt}
+
+\paneltodo{0.94\textwidth}{%
+\textbf{F | Key ablations}\\[3pt]
+\textbullet~Conceptually essential variants only: no multibranch World | no spectrum guidance | no ordered-transition shaping | no forward replay / no shared World semantics\\
+\textbullet~Report the metric directly tied to the removed mechanism\\[2pt]
+\textit{Purpose: identify which ingredients are essential to the fragmentation-World paradigm.}
+}
+\caption{\textbf{Figure 2 layout placeholder | Learning and inverting a probabilistic fragmentation world.}
+Panels A--C explain the gas-phase reaction representation; panels D--E explain Free, Guided and Inverse inference over the same World; panel F tests the essential design choices.}
 \end{figure}
 }
 
@@ -151,169 +157,167 @@ Top: Free and Guided capability. Middle: inverse posterior and bidirectional ver
 \begin{figure}[p]
 \centering
 \paneltodo{0.94\textwidth}{%
-\textbf{A | Repository-scale evidence funnel}\\[3pt]
-all dark spectra $\rightarrow$ formula compatible $\rightarrow$ World reachable $\rightarrow$ executable path support\\
-$\rightarrow$ candidate-specific evidence $\rightarrow$ bidirectional consistency $\rightarrow$ calibrated bounded structure\\[3pt]
-\textbullet~Show denominator at every step\\
-\textbullet~Keep unresolved and computationally censored branches visible
+\textbf{A | From dark spectra to structural entities}\\[3pt]
+\textbullet~Show the transformation from dark spectra to structural statements, collapsed structural entities and recurrent families\\
+\textbullet~Keep spectra, statements and entities explicitly distinct\\[2pt]
+\textit{Purpose: define the chemical resolution scale beyond the headline funnel in Figure 1.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.45\textwidth}{%
-\textbf{B | Spectral observations to structural entities}\\[3pt]
-\textbullet~Adduct / isotope / charge-state collapse\\
-\textbullet~In-source fragment / redundant acquisition collapse\\
-\textbullet~Over- and under-merging validation\\
-\textbullet~Entity-count uncertainty
+\textbf{B | Feature inflation collapses to molecular entities}\\[3pt]
+\textbullet~Merge adducts, isotopologues, charge states, redundant acquisitions and in-source fragments\\
+\textbullet~Include over-merging / under-merging validation and count uncertainty\\[2pt]
+\textit{Purpose: explain why structural-entity counts are more chemically meaningful than raw feature counts.}
 }
 \hfill
 \paneltodo{0.45\textwidth}{%
 \textbf{C | Recurrence across independent datasets}\\[3pt]
-\textbullet~Independent datasets / laboratories only\\
-\textbullet~Entity / family recurrence distribution\\
-\textbullet~Separate single-study and recurrent chemistry
+\textbullet~Plot entity / family recurrence across independent datasets or laboratories\\
+\textbullet~Separate one-study chemistry from recurrent chemistry\\[2pt]
+\textit{Purpose: show that resolved dark chemistry is reproducible rather than dataset-specific noise.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.45\textwidth}{%
-\textbf{D | Evidence strength vs recurrence}\\[3pt]
-\textbullet~Recurrence category on x-axis\\
-\textbullet~Evidence level / reliability on y-axis\\
-\textbullet~Test whether recurrent chemistry is more resolvable
+\textbf{D | Distance to known chemistry}\\[3pt]
+\textbullet~Use a frozen characterized-metabolite reference space\\
+\textbullet~Plot distance-to-reference distribution\\
+\textbullet~Partition into near-known halo and remote families\\[2pt]
+\textit{Purpose: test whether the dark metabolome merely extends known chemistry or contains remote regimes.}
 }
 \hfill
 \paneltodo{0.45\textwidth}{%
-\textbf{E | Near-known vs remote chemistry}\\[3pt]
-\textbullet~Frozen characterized-metabolite reference\\
-\textbullet~Distance-to-known distribution\\
-\textbullet~Near-known halo / remote families / insufficient resolution
+\textbf{E | Structural landscape of resolved dark chemistry}\\[3pt]
+\textbullet~Map known metabolites and resolved dark entities in one structure-based space\\
+\textbullet~Show family clusters, near-known regions and remote recurrent islands\\[2pt]
+\textit{Purpose: visualize the chemical organization of the resolved dark metabolome.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.94\textwidth}{%
-\textbf{F | Representative high-evidence dark chemistry}\\[3pt]
-3--5 examples only: World-resolved structure | bounded isomer set | remote recurrent family | standard-confirmed anchor\\
-For each example show: structure + evidence level + recurrence + remaining uncertainty.
+\textbf{F | Representative remote recurrent families}\\[3pt]
+\textbullet~Show 3--5 families with structures / bounded statements, recurrence and World evidence\\
+\textbullet~Choose examples that are both recurrent and chemically distant from known references\\[2pt]
+\textit{Purpose: give concrete examples of non-trivial dark chemistry revealed at scale.}
 }
-\caption{\textbf{Figure 3 layout placeholder | High-evidence inference resolves the dark metabolome at scale.}
-The full-width evidence funnel is the dominant panel; lower panels define entities, recurrence, novelty and representative chemistry.}
+\caption{\textbf{Figure 3 layout placeholder | The dark metabolome contains recurrent and remote molecular families.}
+This figure moves from entity construction and recurrence to novelty relative to known chemistry, then visualizes the global structural organization of the resolved dark metabolome.}
 \end{figure}
 }
 
 \newcommand{\figurefourtodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.58\textwidth}{%
-\textbf{A | Structural landscape}\\[3pt]
-\textbullet~Known metabolites + high-evidence dark entities\\
-\textbullet~Structural relationships, not spectral embedding alone\\
-\textbullet~Near-known halo and remote recurrent islands\\
-\textbullet~Use family boundaries / density, not a network hairball
+\paneltodo{0.94\textwidth}{%
+\textbf{A | Perturbation cohorts and evidence base}\\[3pt]
+\textbullet~Summarize germ-free / gnotobiotic, antibiotic and defined-diet cohorts\\
+\textbullet~Show study count, biological sample count and platform\\[2pt]
+\textit{Purpose: define the biological evidence base used for source / dependence analysis.}
+}
+
+\vspace{5pt}
+
+\paneltodo{0.38\textwidth}{%
+\textbf{B | Positive controls}\\[3pt]
+\textbullet~Recover expected signals from known microbiota-linked or diet-linked metabolites\\
+\textbullet~Use as a compact sanity-check before interpreting dark chemistry\\[2pt]
+\textit{Purpose: establish trust in the biological attribution analysis.}
 }
 \hfill
-\paneltodo{0.32\textwidth}{%
-\textbf{B | Recurrent family architecture}\\[3pt]
-\textbullet~Family-size distribution\\
-\textbullet~Recurrence distribution\\
-\textbullet~Near-known vs remote composition
+\paneltodo{0.52\textwidth}{%
+\textbf{C | Biological labels across dark molecular families}\\[3pt]
+\textbullet~Summarize microbiota-dependent, diet-dependent, host-associated, mixed and unresolved families\\
+\textbullet~Report at family level rather than single-feature level\\[2pt]
+\textit{Purpose: show that resolved dark chemistry carries biological-source structure.}
+}
+
+\vspace{5pt}
+
+\paneltodo{0.52\textwidth}{%
+\textbf{D | Structural map annotated by biological source}\\[3pt]
+\textbullet~Reuse the coordinates from Figure 3E\\
+\textbullet~Overlay the source labels from panel C on the same structural landscape\\[2pt]
+\textit{Purpose: show whether biological source partitions chemical space in a structured way.}
+}
+\hfill
+\paneltodo{0.38\textwidth}{%
+\textbf{E | Structure--source coupling statistics}\\[3pt]
+\textbullet~Quantify local autocorrelation, motif / class enrichment and cross-study consistency\\
+\textbullet~Include permutation / null comparisons\\[2pt]
+\textit{Purpose: provide quantitative support for the visual organization in panel D.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.94\textwidth}{%
-\textbf{C | Public perturbation evidence}\\[3pt]
-germ-free / gnotobiotic | antibiotic | defined diet\\
-Show manually verified study count, biological sample count and platform for each branch.
+\textbf{F | Worked family example}\\[3pt]
+\textbullet~One remote family with recurrence, perturbation effect, biological-source label and structural evidence\\
+\textbullet~Use dependent / associated language unless direct biosynthetic evidence exists\\[2pt]
+\textit{Purpose: connect the global source organization to a concrete family-level case.}
 }
-
-\vspace{5pt}
-
-\paneltodo{0.58\textwidth}{%
-\textbf{D | Source dependence over chemical space}\\[3pt]
-\textbullet~Reuse exactly the coordinates from panel A\\
-\textbullet~Overlay microbiota-dependent / diet-dependent / host-associated\\
-\textbullet~Keep mixed and unresolved families visible
-}
-\hfill
-\paneltodo{0.32\textwidth}{%
-\textbf{E | Structure--source coupling}\\[3pt]
-\textbullet~Local label autocorrelation\\
-\textbullet~Motif / class enrichment\\
-\textbullet~Cross-study consistency\\
-\textbullet~Permutation null
-}
-
-\vspace{5pt}
-
-\paneltodo{0.94\textwidth}{%
-\textbf{F | Worked remote family}\\[3pt]
-family structures + recurrence across datasets + perturbation effect + source-dependence label + evidence level\\
-Use dependent / associated language; do not imply biosynthesis without direct evidence.
-}
-\caption{\textbf{Figure 4 layout placeholder | Resolved dark chemistry reveals structural and biological organization.}
-Panels A and D use the same chemical-space coordinates so biological source can be read directly against structural organization.}
+\caption{\textbf{Figure 4 layout placeholder | Biological source organizes dark chemical space.}
+This figure defines the perturbation evidence base, validates the attribution analysis and then shows that dark molecular families carry reproducible biological-source structure across chemical space.}
 \end{figure}
 }
 
 \newcommand{\figurefivetodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.47\textwidth}{%
-\textbf{A | Global feature-versus-family test}\\[3pt]
-\textbullet~Same samples / preprocessing / covariates\\
-\textbullet~Anonymous features vs frozen structural families\\
-\textbullet~Primary endpoint: replication or sign concordance\\
-\textbullet~Show paired effect with confidence interval
+\paneltodo{0.48\textwidth}{%
+\textbf{A | Global feature-versus-family analysis}\\[3pt]
+\textbullet~Use the same samples, preprocessing and covariates\\
+\textbullet~Compare anonymous features with resolved molecular families\\
+\textbullet~Choose one primary endpoint: cross-cohort replication or effect-sign concordance\\[2pt]
+\textit{Purpose: test whether family-level structural resolution improves biological reproducibility.}
 }
 \hfill
-\paneltodo{0.43\textwidth}{%
-\textbf{B | Reproducibility gain}\\[3pt]
-\textbullet~Replication\\
-\textbullet~Effect-sign concordance\\
-\textbullet~Multiplicity-controlled yield\\
-\textbullet~Effect stability across all eligible contrasts
+\paneltodo{0.42\textwidth}{%
+\textbf{B | Reproducibility gain across all eligible contrasts}\\[3pt]
+\textbullet~Plot paired cohort / contrast-level gains\\
+\textbullet~Include replication, sign concordance, multiplicity-controlled yield and effect stability\\[2pt]
+\textit{Purpose: show that the gain is systematic rather than anecdotal.}
 }
 
 \vspace{5pt}
 
-\paneltodo{0.39\textwidth}{%
+\paneltodo{0.40\textwidth}{%
 \textbf{C | Principal biological programme}\\[3pt]
-\textbullet~Discovery cohort\\
-\textbullet~Independent replication\\
-\textbullet~Sample-level effects\\
-\textbullet~Adjusted significance / effect CI
+\textbullet~One strongest representative family-level programme\\
+\textbullet~Discovery cohort + independent replication cohort(s)\\
+\textbullet~Effect size and adjusted significance\\[2pt]
+\textit{Purpose: anchor the global result in a concrete biological example.}
 }
 \hfill
-\paneltodo{0.51\textwidth}{%
+\paneltodo{0.50\textwidth}{%
 \textbf{D | Family chemistry}\\[3pt]
-\textbullet~Molecular structures / bounded statements\\
-\textbullet~Evidence level + confidence + recurrence\\
-\textbullet~Interpretable structural differences\\
-\textbullet~Do not draw a pathway without biosynthetic evidence
+\textbullet~Show structures / bounded structural statements of family members\\
+\textbullet~Include World evidence, recurrence and interpretable structural differences\\[2pt]
+\textit{Purpose: connect the biological programme to resolved family-level chemistry.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.45\textwidth}{%
 \textbf{E | Authentic-standard anchors}\\[3pt]
-\textbullet~Sample vs standard MS/MS overlay\\
-\textbullet~Retention / coelution\\
-\textbullet~Precursor agreement\\
-\textbullet~Clearly mark standard-confirmed evidence
+\textbullet~Sample-versus-standard MS/MS overlays\\
+\textbullet~Retention / coelution and precursor agreement\\
+\textbullet~Keep orthogonal validation visually distinct from model-derived evidence\\[2pt]
+\textit{Purpose: experimentally anchor selected family members.}
 }
 \hfill
 \paneltodo{0.45\textwidth}{%
-\textbf{F | Explicitly unresolved member}\\[3pt]
-\textbullet~Surviving isomer set\\
-\textbullet~Evidence eliminating alternatives\\
-\textbullet~Why current MS/MS cannot separate survivors\\
-\textbullet~Predicted next discriminating measurement
+\textbf{F | Explicitly unresolved case}\\[3pt]
+\textbullet~Show surviving isomers and the evidence that ruled out alternatives\\
+\textbullet~Explain why current MS/MS cannot separate the survivors\\
+\textbullet~Indicate the next discriminating measurement\\[2pt]
+\textit{Purpose: make residual uncertainty explicit rather than forcing a unique structure.}
 }
-\caption{\textbf{Figure 5 layout placeholder | Dark molecular families reveal biology hidden from feature-level metabolomics.}
-The global paired analysis comes first; one replicated programme then connects biological effect, molecular family, orthogonal standards and residual uncertainty.}
+\caption{\textbf{Figure 5 layout placeholder | Molecular families improve the reproducibility and interpretability of dark-metabolome biology.}
+This figure first compares anonymous features with molecular-family analysis globally, then connects one replicated biological programme to its chemistry, orthogonal validation and residual uncertainty.}
 \end{figure}
 }
 
