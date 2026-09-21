@@ -4,87 +4,143 @@ Nature-level manuscript workspace for ORBIT-MS.
 
 ## Working proposition
 
-**What blocks the use of unidentified spectra is not that structure predictions are imperfect, but that their output form carries no reliable information about its own limits. Simulating the physical fragmentation process changes the output form: candidates are eliminated by peaks they cannot produce, what survives is a statement rather than a rank, and the reliability of that statement can be calibrated against chemistry the system has never seen.**
+**The dark metabolome is not an unstructured residue of unidentified spectral features. It is a recurrent, chemically organized and biologically partitioned layer of small-molecule chemistry whose scale and structure have been obscured because spectra are counted as features rather than resolved into bounded structural entities.**
 
-The manuscript delivers two inseparable contributions:
+ORBIT-MS is the enabling measurement system, not the headline. It converts a tandem mass spectrum into the most specific structural statement supported by the measurement by combining candidate generation with a conservation-preserving fragmentation World and calibrated candidate elimination. The manuscript then uses those statements to answer four field-level questions:
 
-1. **the system** — an executable fragmentation model (pLSE) plus a verifiable reasoning model (METEOR) that together return the most specific structural statement a spectrum supports, with calibrated confidence;
-2. **the atlas** — the resource produced by applying that system to mouse and repository-scale dark spectra, and the biology it makes visible.
+1. **How large is the dark metabolome once redundant spectral features are collapsed onto structural entities?**
+2. **How is dark chemistry organized relative to characterized metabolism?**
+3. **Do recurrent dark structural families partition by biological source?**
+4. **Does structural family resolution expose reproducible biology that anonymous feature-level analysis misses?**
 
-Neither stands alone. Calibration is the hinge: without it the system is one more scorer, and without the system the atlas is a pile of guesses. This is the argument that must survive review.
+The paper succeeds at Nature only if the answers to those questions are strong. Benchmark accuracy, calibration, World learning, agent evolution and reasoning traces are credibility/supporting evidence.
 
 ## Current title
 
-**Simulating molecular fragmentation resolves the structural composition of the dark metabolome**
+**A structural census of the dark metabolome**
 
-First clause is the system, second clause is the finding. Do not restore a title that leads with the agent — automated rule evolution is an enabling method (Section 3 paragraph 4 and ED6), not the headline.
+Alternative title if chemical-space organization becomes the strongest result:
 
-## Result distribution
+**The structural organization of the dark metabolome**
 
-Nature research Articles in this area run roughly **1 part method to 4 parts finding**. Gentry 2024 devotes Fig. 1 to the method and Figs. 2–5 to findings about the world; the same holds for DeepMet. The previous draft of this manuscript was 4 parts method to 2 parts finding, which is a methods paper with a discovery appendix.
+Do not lead the title with ORBIT-MS, the agent, the language model or fragmentation simulation.
 
-The current structure is **1 system : 1 resource : 3 findings**. Preserve this ratio. Benchmark ablations, hard-decoy analyses, shuffled-spectrum controls and the agent's challenge–recovery dynamics live in Methods and Extended Data. Main-text space belongs to statements about the world.
+## Main-text architecture
 
-## Manuscript architecture
+The manuscript is organized as **1 credibility figure + 4 discovery figures**.
 
-| § | Section | Figure | Role |
+| § | Section | Figure | Scientific question |
 |---|---|---|---|
-| 1 | Physical fragmentation modelling resolves spectra that spectral similarity cannot | Fig. 1 | system |
-| 2 | Structural confidence calibrated against prospective library growth | Fig. 2 | hinge |
-| 3 | A structural atlas of the mouse and repository-scale dark metabolome | Fig. 3 | resource + finding |
-| 4 | Dark structural families partition by biological origin | Fig. 4 | finding |
-| 5 | A structurally defined metabolite family associated with a phenotype | Fig. 5 | finding |
+| 1 | A calibrated fragmentation World turns dark spectra into bounded structural statements | Fig. 1 | Why can the census be trusted? |
+| 2 | The dark metabolome contains far fewer recurrent chemical entities than spectral features imply | Fig. 2 | How large is it? |
+| 3 | Dark chemistry forms a structured landscape beyond known metabolism | Fig. 3 | How is it chemically organized? |
+| 4 | Biological sources partition dark chemical space | Fig. 4 | Where does it come from? |
+| 5 | Structural families reveal biological programmes hidden at feature level | Fig. 5 | What biology becomes visible? |
 
-The chain: `mechanistic elimination → computed resolution level → calibrated confidence → usable atlas → composition of the dark metabolome → origin → biology`.
+The chain is:
 
-## Draft conventions
+`dark spectra → bounded structural statements → structural entities → recurrent chemical families → biological source → reproducible biological programme`.
 
-`main.tex` is written in target-final form. Missing results stay marked as:
+Prospective library-growth calibration is no longer a standalone main figure. It is the credibility spine of Fig. 1 and receives complete treatment in Extended Data.
 
-- `[RESULT: ...]` — a number that must come from a frozen experiment;
-- `[DATA: ...]` — cohort/dataset information still to be bound;
-- `[METHOD: ...]` — a protocol detail that must be frozen before submission.
+## Headline numbers
 
-No placeholder may be filled from memory, a transient training log or an exploratory notebook. Every replacement maps to an immutable artifact in the claim–evidence matrix.
+Three numbers determine whether the paper has a Nature-scale result:
 
-## Files
+1. **Census contraction**
+   `N dark features → N recurrent structural entities`, with uncertainty from validated entity collapsing.
+2. **Chemical novelty**
+   the fraction of recurrent entities/families that lie outside the predefined neighbourhood of characterized metabolism.
+3. **Biological organization**
+   the fraction of recurrent structural families that show reproducible source or phenotype organization, and the gain in cross-cohort reproducibility obtained by structural-family analysis relative to anonymous features.
 
-- `main.tex` — target manuscript: Introduction, five Results sections, Discussion, Methods, Extended Data legends.
-- `references.bib` — peer-reviewed literature carrying the central argument.
-- `supplementary/Supplementary_Information.tex` — supporting experiments, in the order they must be executed.
-- `internal/CLAIM_EVIDENCE_MATRIX.md` — claim → experiment → statistical unit → controls → artifact contract.
-- `internal/EXPERIMENT_EXECUTION_PLAN.md` — execution order, cost and dependency for every experiment.
-- `internal/FIGURE_PLAN.md` — panel-level plan for Figures 1–5 and ED1–11.
-- `internal/RESULTS_PLACEHOLDERS.md` — checklist mapping every placeholder to its source experiment.
-- `internal/MOUSE_COHORT_PROTOCOL.md` — rules for the private mouse spectra.
-- `internal/LITERATURE_POSITIONING.md` — competitive positioning and claim boundaries.
+These are not targets to optimize after looking at the data. Definitions, denominators and analysis thresholds are frozen before confirmatory analysis.
 
 ## Scientific object
 
-For candidate `M` and peak `p`, the manuscript distinguishes three things and must never conflate them:
+For candidate `M` and observed peak `p`, distinguish:
 
-1. **support** — `M` has an atom-balanced, mass-compatible fragmentation trajectory reaching `p`;
-2. **specificity** — that support exceeds the best support available to competing candidates;
-3. **elimination** — no trajectory of `M` reaches `p`, so `M` is excluded.
+1. **support** — an atom/electron/charge-consistent fragmentation trajectory of `M` can produce `p`;
+2. **specificity** — that support distinguishes `M` from competing structures;
+3. **elimination** — under a calibrated operating point, the evidence is sufficient to exclude `M`.
 
-Elimination is the operation that makes the output a statement rather than a rank, because eliminations compose across peaks and are machine-checkable. It is also the operation that can be wrong: the deterministic reaction basis is incomplete, so failure to explain a peak is only negative evidence to the extent that the model covers the relevant chemistry. This is why elimination stringency is calibrated to a measured rate of excluding true structures rather than assumed sound.
+The output is not forced to be a single structure. Each spectrum receives the most specific bounded statement supported by the evidence:
 
-## Resolution policy
+`unique putative structure → bounded isomer set → shared substructure / chemical class → formula only → unresolved`.
 
-Every spectrum receives the **most specific true statement** its surviving candidate set admits:
+Only orthogonal reference-standard validation is called an identification.
 
-`unique structure` → `bounded isomer set` → `substructure or chemical class` → `formula only` → `unresolved`
+## Credibility hierarchy
 
-The level is **computed from the evidence**, not assigned by convention. This is the operational contribution against the established human-assigned confidence-level scheme, and it must be stated that way rather than as a new confidence score.
+The main text asks readers to believe an atlas built from model-derived structural statements. Therefore:
 
-Generator recall and evidence discrimination are always reported separately: `P(GT ∈ C_K)`, conditional discrimination given GT present, and end-to-end resolution. A dark-spectrum prediction is never called an identified metabolite without the corresponding orthogonal evidence.
+- exact and analogue leakage audits are mandatory;
+- generator recall, conditional discrimination and end-to-end resolution are reported separately;
+- elimination soundness is measured, not assumed;
+- the complete system and calibration mapping are frozen before prospective library-growth evaluation;
+- prospective outcomes are stratified by structural distance from the frozen library;
+- comparator methods receive the same candidate pools and their own fair calibration;
+- entity collapsing is validated on known compounds before dark-entity counts are reported;
+- family definitions are frozen before origin or phenotype testing;
+- biological samples, not spectra, are the unit of biological inference.
 
-## Cost constraints binding this design
+## Result distribution
 
-- **No new MS acquisition.** No targeted MSn campaigns, no new biological sampling, no perturbation experiments performed here.
-- **Authentic standards only**, and only for structures that are commercially available.
-- Consequences: biological origin attribution mines public perturbation datasets that others already acquired (§4); prospective validation uses public library growth rather than new measurements (§2); the evidence-guided acquisition loop is removed from the manuscript and retained only as a stated future direction.
+Main-text space belongs to statements about the world.
 
-## Citation policy
+**Main text**
+- bounded structural measurement and prospective credibility;
+- census size and recurrence;
+- chemical-space organization;
+- source partition;
+- global family-level biological gain plus one deeply characterized example.
 
-The central argument is grounded in peer-reviewed work. Preprints may provide frontier context but must not carry essential claims. The comparator set must include mature fragmentation and spectrum methods (SIRIUS/CSI:FingerID, CFM-ID) alongside modern generative methods, and must acknowledge that mechanistic fragmentation models are reported as *less* accurate than learned models under in-distribution evaluation. The claim of this paper is not that mechanism is more accurate; it is that mechanism yields eliminations that can be calibrated, which is what a resource requires.
+**Extended Data / Supplementary**
+- full comparator benchmark;
+- spectrum-shuffle and trace-verification controls;
+- World/action-space ablations;
+- rule/program evolution;
+- structured-CoT controls;
+- complete calibration stratifications;
+- entity-collapsing sensitivity;
+- complete origin/association models;
+- all standard-validation dossiers.
+
+## Cost constraints
+
+- No new discovery-scale MS acquisition is assumed.
+- Public perturbation data are used for source attribution.
+- Authentic standards are reserved for a small set of frozen anchors.
+- Evidence-guided acquisition remains a future direction; the released atlas may state the measurement predicted to resolve an ambiguous entry, but must not imply that measurement was performed.
+
+## Draft conventions
+
+`main.tex` is target-final prose. Missing evidence remains explicit:
+
+- `[RESULT: ...]` — numerical/statistical result from a frozen artifact;
+- `[DATA: ...]` — cohort or dataset information still to be bound;
+- `[METHOD: ...]` — protocol detail that must be frozen.
+
+No placeholder is filled from memory, a transient training log or an exploratory notebook.
+
+## Files
+
+- `main.tex` — target Nature Article.
+- `internal/FIGURE_PLAN.md` — panel-level design for Figs. 1–5 and Extended Data.
+- `internal/CLAIM_EVIDENCE_MATRIX.md` — claim → experiment → unit → controls → artifact.
+- `internal/EXPERIMENT_EXECUTION_PLAN.md` — kill-risk-first execution order.
+- `internal/RESULTS_PLACEHOLDERS.md` — result-to-artifact checklist.
+- `internal/LITERATURE_POSITIONING.md` — competitive and claim-boundary logic.
+- `internal/MOUSE_COHORT_PROTOCOL.md` — cohort freezing and biological-inference rules.
+- `supplementary/Supplementary_Information.tex` — supporting analyses and reproducibility details.
+
+## Standing claim boundaries
+
+1. Dark spectra are not synonymous with molecules absent from chemical databases.
+2. Spectral features are not molecular entities.
+3. Recurrence across spectra is not recurrence across independent biological datasets.
+4. A structural relationship is not evidence of an enzymatic reaction.
+5. Source attribution establishes perturbation dependence, not biosynthetic origin in the mechanistic sense.
+6. A model-derived unique structure is not a reference-standard identification.
+7. Mechanistic completeness is empirical; missing trajectories cannot be treated as absolute impossibility without calibration.
+8. Training loss, selector accuracy and agent progress are not scientific endpoints.
