@@ -2,7 +2,7 @@
 
 Every `[RESULT: ...]` and `[DATA: ...]` in `main.tex` must map to a frozen experiment in `EXPERIMENT_EXECUTION_PLAN.md` and an immutable artifact in `CLAIM_EVIDENCE_MATRIX.md`.
 
-Recount literal placeholders after the main-text rewrite. Do not carry forward counts from the census-only version.
+Current target manuscript count after the WGV rewrite: **128 result/data placeholders** (126 `RESULT` + 2 `DATA`) plus 18 `METHOD` placeholders. Recount after any major prose revision.
 
 ---
 
