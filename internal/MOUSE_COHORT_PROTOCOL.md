@@ -4,14 +4,15 @@ The private mouse spectra support the Nature story only if the manuscript preser
 
 ## Role in the manuscript
 
-The cohort contributes to three distinct analyses:
+The mouse cohort supports the **discovery half** of the WGV paper after the World/evidence hierarchy is frozen.
 
-- **Figure 2 — census.** Mouse dark spectra contribute to the organism-scale structural-entity count and recurrence analysis.
-- **Figure 4 — source organization.** Where compatible perturbation metadata exist, mouse datasets contribute to microbiota/diet/host dependence analysis together with public cohorts.
-- **Figure 5 — biological value.** The principal feature-versus-family biological comparison and the deeply characterized family may use the mouse cohort if phenotype/contrast definitions predate ORBIT outputs.
+- **Figure 3 — high-evidence dark resolution.** Mouse dark spectra contribute to the repository-scale evidence funnel, entity collapse and recurrence analysis.
+- **Figure 4 — structural and biological organization.** Where perturbation metadata permit, mouse datasets contribute to microbiota/diet/host dependence over frozen structural families.
+- **Figure 5 — biological value.** The same biological samples are analysed as anonymous features and as frozen structural families to test whether structure improves reproducibility; the principal programme may be drawn from this cohort if it satisfies the preregistered criteria.
 
-The cohort is **not** the primary calibration set. Figure 1 credibility is established on independent known-structure and prospective library-growth chemistry.
+The cohort is **not** used to define World chemistry, tune evidence thresholds or calibrate prospective reliability. Those are established before dark-corpus deployment.
 
+---
 ---
 
 ## 1. Freeze the cohort before atlas analysis
