@@ -23,7 +23,7 @@
 \renewcommand{\thefigure}{S\arabic{figure}}
 
 \title{\textbf{Supplementary Information}\\[4pt]
-\large Simulating molecular fragmentation resolves the structural composition of the dark metabolome}
+\large A structural census of the dark metabolome}
 \author{}
 \date{}
 
@@ -35,7 +35,7 @@
 
 \section{Scope and reading order}
 
-This document contains the supporting experiments in the order they must be executed, not in the order they are cited. Supplementary Notes 2 and 3 are decision experiments: their outcomes determine whether the analyses in Notes 5--11 are performed as described. Each note states its purpose, its pass criterion and the consequence of failure, so that a reader can distinguish a supporting analysis from a load-bearing one.
+This document contains the supporting experiments for five linked claims: credible bounded structural measurement, a feature-to-entity census, global chemical organization, biological-source partition and the biological value of structural-family analysis. The notes follow evidentiary dependency rather than main-figure order. Decision experiments on prospective validation, the soundness--resolution operating point and entity collapsing are load-bearing: a failure changes the main-text claim rather than merely moving a panel to supplementary material.
 
 Every quantity marked \result{} must be bound to an immutable artifact recorded in the claim--evidence matrix. No value is transferred from a training log or an exploratory analysis.
 
@@ -95,7 +95,7 @@ Simulator-generated training data requires specific attention: pseudo-spectra ge
 
 \textbf{Pass criterion.} At a false-exclusion rate of at most 5\%, at least 40\% of spectra resolve to a unique structure, a bounded isomer set, or a chemical class.
 
-\textbf{Consequence of failure.} Mechanistic elimination is not reliable enough to define the output object. The manuscript reverts to candidate-relative scoring with conformal prediction sets, and Sections 1 and 2 are rewritten accordingly.
+\textbf{Consequence of failure.} The current bounded-statement measurement is not reliable enough to underwrite the census. Figure 1 is redesigned around calibrated candidate sets rather than elimination, and downstream entity counting is repeated under that output definition.
 
 \result{Insert the full stringency sweep, the selected operating point and its justification.}
 
@@ -198,7 +198,7 @@ Low-cost worker models may propose revisions. They may not accept them. Acceptan
 \subsection{Entity collapsing}
 \methodtodo{Rules for collapsing adducts, in-source fragments, isotopologues, charge states and redundant acquisitions onto a single molecular entity; validation of these rules on known compounds with known ion forms; the residual error rate of collapsing and its effect on the entity count.}
 
-The entity count is the headline number of Section 3 and is only as good as this validation. Report the count with an uncertainty interval derived from the measured collapsing error rate, not as a point estimate.
+The entity count is the headline number of Figure 2 and is only as good as this validation. Report the count with an uncertainty interval derived from the measured collapsing error rate, not as a point estimate.
 
 \subsection{Recurrence}
 \methodtodo{Criteria for an entity to be counted as recurrent; independence of datasets; treatment of datasets sharing samples or laboratories.}
@@ -206,7 +206,7 @@ The entity count is the headline number of Section 3 and is only as good as this
 \subsection{Per-entry record schema}
 \methodtodo{Fields released for every atlas entry: representative spectrum, surviving candidate set, eliminating peaks, supporting trajectories, resolution level, calibrated confidence, recurrence, source datasets, and for unresolved entries the measurement that would resolve them.}
 
-\section{Composition of the dark metabolome}
+\section{Structural census and chemical organization of the dark metabolome}
 
 \subsection{Distance to known metabolite space}
 \methodtodo{The frozen reference metabolite set; the preregistered transformation vocabulary; how distance is computed for entities resolved below unique-structure level; sensitivity to the choice of reference set.}
@@ -237,18 +237,23 @@ Automated metadata parsing identifies candidates only. Every included dataset is
 \subsection{Boundary of the claim}
 Attribution establishes dependence on a perturbation, not biosynthetic route. Manuscript language uses microbiota-dependent, diet-dependent and host-associated throughout, and families consistent with more than one origin are reported as unresolved rather than assigned to the most likely.
 
-\section{Biological association analysis}
+\section{Feature-versus-family biological analysis}
 
 \subsection{Freezing}
-\methodtodo{Family definitions and transformation graphs hashed before any association testing; the record demonstrating that freezing preceded testing.}
+\methodtodo{Structural-family definitions and biological contrasts hashed before any association testing; the record demonstrating that family membership and the primary global comparison endpoint were frozen before phenotype analysis.}
 
-\subsection{Statistical model}
-\methodtodo{Biological replicate as the unit of inference; covariates; the family-level test statistic; multiplicity control across preregistered endpoints; replication criterion.}
+\subsection{Paired feature-versus-family analysis}
+\methodtodo{Run identical samples, preprocessing and covariates in two arms: anonymous dark features and frozen structural families. Pre-register one primary global endpoint, preferably cross-cohort replication rate or effect-sign concordance. Report the paired difference over the complete eligible family/contrast universe rather than selected positives.}
+
+\result{Insert the primary feature-versus-family global effect with confidence interval and denominator.}
+
+\subsection{Principal programme and replication}
+\methodtodo{Selection rule for the principal family after the global comparison is frozen; biological replicate as unit; covariates; multiplicity control; independent replication; leave-one-cohort-out criterion.}
 
 \subsection{Sensitivity}
-\methodtodo{Association as a function of confidence and resolution-level thresholds; metadata-permutation control; leave-one-cohort-out analysis.}
+\methodtodo{Global and principal-family results as a function of confidence/resolution thresholds; metadata permutation; family-definition perturbation; cohort exclusion.}
 
-An association that survives only at permissive confidence thresholds is reported as such rather than presented at its most favourable threshold.
+A family-level biological claim that appears only after changing family membership or confidence thresholds is reported as exploratory rather than confirmatory.
 
 \section{Orthogonal structure validation}
 
