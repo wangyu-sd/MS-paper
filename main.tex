@@ -25,7 +25,7 @@
   Figure artwork and final numerical values to be inserted.}}
   \end{center}}
 
-\title{\textbf{A molecular fragmentation world reveals the organization of the dark metabolome}}
+\title{\textbf{A molecular fragmentation world reveals the dark metabolome}}
 \author{Author names and affiliations to be finalized}
 \date{}
 
@@ -151,14 +151,39 @@ The framework nevertheless changes the role of mass-spectral AI. Rather than ask
 \subsection*{Leakage control}
 \methodtodo{Exact-structure and close-analogue overlap between all evaluation chemistry and molecular/spectral pretraining corpora, including simulator-generated data; structural standardization; MCES/Tanimoto criteria and treatment of salts/stereochemistry.}
 
-\subsection*{Conservation-preserving molecular fragmentation World}
-\methodtodo{Canonical WGV release and checkpoint lineage; bond-electron state; explicit H identity; formal charge/radicals; exact atom/component mass; charged and neutral connected components; ionization ensemble; sparse autoregressive electron-flow actions; multi-branch sibling expansion; branch-local STOP; reconvergent DAG flow; observation model; censoring semantics; probability conservation; direct-spectrum and single-path baselines.}
+\subsection*{A conservation-preserving molecular fragmentation World}
+For a precursor molecule \(M\) under acquisition condition \(c\), ORBIT-MS represents gas-phase fragmentation as a latent stochastic reaction world \(\mathcal{W}(M,c)\), rather than identifying the observed spectrum with the reaction process itself. A World state is a closed bond--electron representation containing atom identities, explicit hydrogens, atomic numbers, formal charge and radical state, a symmetric bond--electron matrix, exact monoisotopic masses, charged and neutral connected components, the current ionization/adduct state and acquisition metadata. Neutral coproducts remain part of the closed chemical state even when they are not directly observed. The experimental spectrum is treated as a partial observation generated from this latent reaction world; absence of a peak is therefore not used as a generic negative label for an otherwise legal World state.
 
-\subsection*{Free, Guided and Inverse inference}
-\methodtodo{Free SubTB/GFlowNet objective without target-spectrum access; Guided spectrum cross-attention, current-policy DAgger, goal-conditioned IQL and matched-budget planning; Inverse heavy-atom construction, canonical graph states, formula/charge/H/valence masks, conditional GFlowNet/SMC and forward World replay; shared versus task-specific encoders/heads; unified replay and behaviour-policy recording.}
+Elementary transformations are generated autoregressively as single-electron events rather than selected from a catalogue of fragmentation templates. At each event, the policy selects an electron source from an atom or currently occupied bond, chooses whether the target is an atom or a bond, predicts the target atom(s), and transfers one electron. It then chooses whether to stop the elementary event, repeat the preceding electron transfer, or generate a new electron event. Two repeated single-electron transfers in the same direction recover an ordinary two-electron pair transfer, whereas distinct electron destinations permit homolytic and multi-electron rearrangement patterns to emerge from the same action language. The accumulated electron events are applied simultaneously to the parent bond--electron state by a deterministic compiler. Atom identity, total valence-electron count, charge and bond-electron symmetry are conserved exactly; products that cannot be materialized under the supported valence model are rejected. The maximum number of electron events used during sampling is an engineering compute guard that scales with molecular size and is not interpreted as a chemical reaction-depth limit.
+
+The World is expanded as a multi-branch probabilistic reaction network. Policy STOP is represented as one terminal sibling branch and does not delete competing reaction branches. Distinct electron-event trajectories may reconverge to the same canonical chemical state; their path probabilities are retained separately during execution and summed when constructing the canonical reaction DAG. Frontier scheduling determines which unresolved branch receives the next unit of computation, not which chemistry is allowed to exist.
+
+Crucially, probability mass is not renormalized only over successful materialized products. At each sampled state, the policy mass is partitioned into
+\[
+P_{\mathrm{stop}}+
+P_{\mathrm{valid}}+
+P_{\mathrm{invalid}}+
+P_{\mathrm{censored}}+
+P_{\mathrm{unsampled}}=1.
+\]
+\(P_{\mathrm{invalid}}\) denotes sampled electron-event trajectories rejected by the chemistry compiler or materializer; \(P_{\mathrm{censored}}\) denotes trajectories that attempted to continue beyond an event or execution budget; and \(P_{\mathrm{unsampled}}\) denotes policy mass not represented by the finite Monte Carlo sample. Invalid mass is treated as failed chemistry, whereas censored and unsampled mass remain unresolved. They are never reassigned to successful children. World probability estimates are therefore reported together with halted, invalid, censored and unresolved probability mass, allowing chemical failure, computational incompleteness and learned termination to remain distinct.
+
+\subsection*{Free, Guided and Inverse inference over one World}
+The three WGV modes share the same chemical state and transition semantics but answer different conditional questions.
+
+\paragraph{Free World inference.}
+Free inference estimates the fragmentation distribution of a molecule without reading the target spectrum at inference time. The policy generates autoregressive electron-event transitions and branch-local STOP probabilities, and Subtrajectory Balance is used to train probability flow across multiple compatible trajectories rather than optimizing a single best path. Training uses molecule--spectrum aligned data as observational evidence, including observed fragment masses, intensities and ordered parent--child transitions, but the target spectrum is not an input to the Free policy. Generated but unobserved legal states remain unlabeled unless a separate observation model supports a negative claim.
+
+\paragraph{Guided spectrum-conditioned inference.}
+Guided inference conditions the same World policy on the observed spectrum. The current production verifier uses graph--spectrum conditioning and a learned guided value to prioritize unresolved frontier states and electron-event proposals under a fixed expansion budget; it does not alter the chemistry compiler or the set of legal transitions. An auxiliary goal-conditioned IQL objective is trained on sampled Guided transitions, but the present production rollout is controlled by the spectrum-conditioned graph policy/value rather than by a separately loaded IQL controller. DAgger and hindsight goal relabelling are therefore not claimed as active components of the current production inference path. Free and Guided are compared under matched chemistry and matched computational budgets so that any gain can be attributed to observation-conditioned allocation of computation.
+
+\paragraph{Inverse molecular inference.}
+Inverse inference constructs molecular hypotheses from the precursor formula/mass constraints and the observed spectrum. A factorized graph neural policy predicts construction action type, element, formal charge, radical state, attachment or atom-pair pointers and bond order without enumerating the complete graph-edit action space. Formula inventory, charge-aware valence, exact hydrogen closure, connectivity and materializability are enforced by hard masks and the construction executor. Canonical partial-graph identities merge equivalent states reached through different construction histories. During training and proposal shaping, ordered fragmentation evidence can be represented as leaf--parent--precursor progress so that a partial molecular graph is rewarded for continuously explaining an observed fragmentation hierarchy rather than for matching isolated peak masses. Sequential Monte Carlo maintains multiple candidate modes, and every completed candidate is finally replayed through the forward fragmentation World to obtain bidirectional spectrum--structure evidence.
 
 \subsection*{World-based structural evidence hierarchy}
-\methodtodo{Operational definitions and frozen thresholds for mass/formula compatibility, chemical validity, World reachability, executable path support, candidate-specific evidence, bidirectional consistency, calibrated bounded structural statement and authentic-standard confirmation; separation of generator recall from conditional evidence; treatment of incomplete observations and unobserved World states.}
+Structural inference is reported as a hierarchy of evidence rather than as a single candidate score. The frozen levels are: precursor mass or formula compatibility; chemically valid molecular structure; reachability in the learned fragmentation World; executable paths supporting observed fragment evidence; candidate-specific discrimination against structural alternatives; bidirectional spectrum--structure consistency after forward World replay; a calibrated bounded structural statement; and authentic-standard confirmation. Generator recall is reported separately from evidence quality so that failure to propose the true structure is not counted as a World-verification error.
+
+World evidence additionally records how completely the relevant reaction space was explored. For a candidate, supported observations are interpreted together with invalid, event-budget-censored and unsampled policy probability mass. A candidate supported only by a small explored fraction of its policy mass is not treated as equivalent to one for which the compatible reaction world is extensively resolved. Evidence thresholds and any summary statistic using unresolved probability mass are frozen on known-structure development/calibration data before repository-scale dark-spectrum analysis.
 
 \subsection*{Soundness--resolution operating point}
 \methodtodo{Calibration cohort; stringency sweep; false-exclusion endpoint; confidence mapping; operating-point selection before atlas analysis; bootstrap/clustered uncertainty; sensitivity to mass tolerance, peak threshold and acquisition metadata.}
@@ -229,7 +254,7 @@ Bond-electron state; explicit atom and H identities; exact mass; charged and neu
 Subtrajectory-balance/GFlowNet training; multibranch siblings; branch-local STOP; reconvergent flow; probability conservation; calibration; observed mass/intensity/transition coverage; direct-spectrum and single-path baselines.
 
 \noindent\textbf{Extended Data Figure 4 | Guided spectrum-conditioned inference.}
-Free-versus-Guided matched-budget comparisons; DAgger and IQL; frontier representation; goal conditioning; explanatory path coverage; coverage-vs-compute; target-spectrum leakage firewall.
+Free-versus-Guided matched-budget comparisons; spectrum-conditioned graph/value policy; auxiliary IQL training diagnostics; frontier representation; explanatory path coverage; coverage-vs-compute; target-spectrum leakage firewall; explicit statement that DAgger/HER are not part of the current production rollout.
 
 \noindent\textbf{Extended Data Figure 5 | Inverse molecular inference.}
 Heavy-atom construction; canonical state merging; charge/formula/H/valence constraints; GFlowNet/SMC; Exact/Recall@K; structural similarity; posterior diversity; ablations; forward World replay.
