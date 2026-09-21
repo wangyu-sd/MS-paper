@@ -2,144 +2,153 @@
 
 Every `[RESULT: ...]` and `[DATA: ...]` in `main.tex` must map to a frozen experiment in `EXPERIMENT_EXECUTION_PLAN.md` and an immutable artifact in `CLAIM_EVIDENCE_MATRIX.md`.
 
-Current target manuscript count after the census rewrite: **110 result/data placeholders** (107 `RESULT` + 3 `DATA`) plus 18 `METHOD` placeholders. Recount after any major prose revision.
+Recount literal placeholders after the main-text rewrite. Do not carry forward counts from the census-only version.
 
 ---
 
-## Abstract + Introduction
+## Abstract
 
-Fill last. The abstract should contain only frozen summaries of:
-- prospective credibility (C1/C2);
-- census contraction (C4);
-- recurrence (C5);
-- remote/near-known organization (C7/C8);
-- source organization (C10/C11);
-- global family-level biological gain (C12);
-- anchor validation (C14).
+Fill last from frozen results only.
 
-No training or engineering number belongs in the abstract.
+The abstract should contain:
+- one World/Free result;
+- one Guided matched-budget result;
+- one Inverse recovery result;
+- one evidence-hierarchy/prospective result;
+- dark-resolution scale;
+- structural/biological organization;
+- family-level biological gain;
+- standard-validation outcome if available.
+
+No training-loss, selector-MRR or agent-activity number belongs in the abstract.
 
 ---
 
-## §1 — A calibrated fragmentation World turns dark spectra into bounded structural statements
+## §1 — A molecular fragmentation world unifies prediction, explanation and inverse inference
 
 | Placeholder | Source | Notes |
 |---|---|---|
-| benchmark cohort / denominator | E4 | molecule-disjoint, leakage-audited |
-| soundness–resolution operating point | E1 | selected on calibration split |
-| fraction resolved above formula | E1 | with false-exclusion denominator |
-| prospective cohort size | E2/E6 | independence audit required |
-| prospective containment / calibration error | E6 | with CI |
-| performance vs structural distance | E6 | essential distribution-shift result |
-| comparator calibrated performance | E7 | same prospective set |
-| same-formula discrimination | E4 | supporting, not headline |
-| worked-case ppm / trajectory evidence | E8 | frozen case-selection rule |
-| resolution-level distribution | E1/E6 | categories sum to full denominator |
+| World held-out cohort | E1/E4 | molecule-disjoint |
+| World vs direct predictor result | E1 | compare compatible outputs honestly |
+| multibranch vs single-path result | E2 | same transition model and compute |
+| probability conservation | E2/E4 | report censoring separately |
+| legal-action/conservation rate | E3 | hard gate |
+| representative multibranch case | E2 | show sibling + reconvergent paths |
+| shared-World ablation | E1/E5/E6 | demonstrate coupling is not only architectural |
+| compute-allocation result | E5 | matched budget |
 
 ---
 
-## §2 — The dark metabolome contains far fewer recurrent chemical entities than spectral features imply
+## §2 — World-based inference establishes graded structural evidence
 
 | Placeholder | Source | Notes |
 |---|---|---|
-| mouse corpus count | E9 | DATA |
-| repository dark spectrum/feature count | E9 | after frozen dark-search protocol |
-| structurally usable statement count | E10 | state resolution threshold |
-| final structural entity count | E10 | with interval from E3 collapsing error |
-| feature-to-entity contraction factor | E10 | headline number |
-| over-/under-merging validation | E3 | ED5 |
-| recurrent entity count | E11 | independent datasets, not spectra |
-| recurrence distribution | E11 | show denominator |
-| resolution-depth counts/fractions | E12 | unique/isomer/class/formula/unresolved |
+| Free mass/intensity/transition coverage | E4 | target spectrum hidden |
+| Guided matched-budget gain | E5 | primary Guided result |
+| Guided compute saving | E5 | states/wall time |
+| Inverse Exact/Recall@K | E6 | molecule-disjoint |
+| Inverse best similarity/MCES | E6 | |
+| Inverse diversity/validity | E6 | |
+| GT-vs-hard-decoy bidirectional separation | E7 | same-formula stratum required |
+| evidence-level reliability gradient | E9 | stronger level vs accuracy/containment |
+| prospective cohort size | E10 | DATA |
+| prospective containment/calibration | E10 | with CI |
+| distance-shift calibration | E10 | |
+| comparator calibration | E10 | fair calibration |
 
 ---
 
-## §3 — Dark chemistry forms a structured landscape beyond known metabolism
+## §3 — High-evidence inference resolves the dark metabolome at scale
 
 | Placeholder | Source | Notes |
 |---|---|---|
-| frozen reference-metabolite set size | E13 | DATA |
-| near-known threshold / definition | E14 | frozen before counting |
-| fraction in near-known halo | E16 | denominator excludes insufficient-resolution entries |
-| fraction in remote recurrent families | E16 | headline novelty number |
-| insufficient-resolution fraction | E16 | must remain explicit |
-| structural-distance distribution | E15 | with alternative metric sensitivity |
-| recurrent remote family count | E18 | frozen ranking rule |
-| family-size / recurrence statistics | E15/E18 | |
-| class enrichment/depletion | E17 | acquisition sensitivity |
-| representative remote families | E18 | recurrence + structural uncertainty shown |
+| total dark spectra/features | E11 | frozen dark protocol |
+| count/fraction at each evidence level | E11 | full denominator |
+| high-evidence structural entity count | E11/E12 | with uncertainty |
+| collapse validation | E12 | over-/under-merging |
+| feature-to-entity contraction | E12 | secondary to evidence funnel |
+| recurrent entity/family count | E13 | independent datasets |
+| evidence×recurrence relation | E14 | |
+| near-known fraction | E18 | frozen boundary |
+| remote recurrent family fraction | E18 | |
+| insufficient-resolution fraction | E18 | |
 
 ---
 
-## §4 — Biological sources partition dark chemical space
+## §4 — Resolved dark chemistry reveals structural and biological organization
 
 | Placeholder | Source | Notes |
 |---|---|---|
-| perturbation accession/sample counts | E20 | DATA; every accession manually verified |
-| positive-control recovery | E21 | hard interpretation gate |
-| permutation null | E21 | |
-| source-attributed family counts/fractions | E22 | include mixed + unresolved |
-| fraction with reproducible source dependence | E22 | headline |
-| structure–source coupling statistic | E23 | primary Figure 4 result |
-| microbiota-dependent chemistry | E23 | motif/class result |
-| diet-dependent chemistry | E23 | |
-| worked-family cross-dataset effect | E22/E23 | dependence, not biosynthesis |
+| structural-family count / size distribution | E17/E18 | |
+| remote family count | E18/E19 | |
+| perturbation dataset counts | E20 | DATA, manually verified |
+| positive-control result | E21 | gate |
+| permutation null | E21/E23 | |
+| microbiota-dependent fraction | E22 | |
+| diet-dependent fraction | E22 | |
+| host-associated fraction | E22 | |
+| mixed/unresolved fraction | E22 | |
+| structure-source coupling statistic | E23 | primary Fig.4 inferential result |
+| worked-family recurrence/source result | E22/E23 | no biosynthesis claim |
 
 ---
 
-## §5 — Structural families reveal biological programmes hidden at feature level
+## §5 — Dark molecular families reveal biology hidden from feature-level metabolomics
 
 | Placeholder | Source | Notes |
 |---|---|---|
-| primary global feature-vs-family endpoint | E24/E25 | preregistered before comparison |
-| family-level vs feature-level replication result | E25 | paired comparison |
-| effect-sign concordance result | E25 | secondary unless chosen primary |
-| multiplicity-controlled association yield | E25 | secondary unless chosen primary |
-| number of eligible contrasts/cohorts | E24 | DATA |
-| principal family | E26 | selected only after global analysis frozen |
-| phenotype/contrast | E26 | |
-| replicated effect sizes | E26/E27 | cohort-level estimates |
-| family member count / structural edits | E26 | structural relationship, not reaction |
+| eligible cohorts/contrasts | E24 | DATA |
+| primary feature-vs-family endpoint | E25 | preregistered |
+| paired global gain | E25 | with CI |
+| replication result | E25 | |
+| sign-concordance result | E25 | |
+| multiplicity-controlled association yield | E25 | secondary unless primary |
+| principal family | E26 | selected after global analysis frozen |
+| discovery + replication effects | E26/E27 | |
+| family member count / structural edits | E26 | not pathway |
 | anchor count | E28 | frozen before purchase |
-| standard-confirmed / failed count | E29 | failures stay denominator |
+| standard pass/fail count | E29 | failures in denominator |
 | unresolved isomer count | E30 | |
-| predicted discriminating measurement | E30 | clearly marked as not performed |
+| predicted discriminating measurement | E30 | explicitly not performed |
 
 ---
 
 ## Discussion
 
-Discussion may only synthesize already frozen results. Reserve placeholders for:
-- census contraction relation;
-- remote-family fraction;
-- source-organized fraction;
-- feature-versus-family biological gain;
-- proportion of census at each structural resolution level.
+Discussion may summarize only frozen results:
+- value of latent-World modelling;
+- W/G/V conditional inference;
+- evidence hierarchy;
+- dark-resolution scale;
+- recurrent/remote organization;
+- source organization;
+- feature-to-family biological gain.
 
-Do not introduce a new analysis in Discussion.
+No new analysis appears first in Discussion.
 
 ---
 
 ## Filling rules
 
-1. Freeze before looking at headline outputs.
-2. Denominator accompanies every fraction.
-3. Effect sizes carry uncertainty.
-4. Entity counts carry collapsing uncertainty.
-5. Unresolved entries remain in denominators.
-6. Generator/candidate recall is reported separately from conditional evidence performance.
-7. Biological samples, not spectra, are units of biological inference.
-8. Negative standard-validation outcomes are reported.
-9. Abstract is filled last.
-10. No value is copied from a training log or exploratory notebook.
+1. Freeze before looking.
+2. Denominator with every fraction.
+3. Uncertainty with every effect.
+4. Target spectrum never enters Free inference.
+5. Compute budgets are censoring, not chemical depth.
+6. Candidate recall is separate from evidence quality.
+7. Evidence levels are fixed before dark-corpus analysis.
+8. Structural families are frozen before phenotype/source analysis.
+9. Negative/failed anchors remain in denominator.
+10. No number from a training log becomes a manuscript result.
 
 ## Escalation triggers
 
 Re-plan the Nature framing if:
-- E1 cannot produce a useful soundness–resolution operating point;
-- E2 cannot construct a credible prospective cohort;
-- E3 produces entity-count uncertainty too wide for a meaningful census;
-- E16 shows essentially all resolvable dark chemistry is a trivial near-known halo;
-- E21 positive controls fail;
-- E25 shows no systematic gain from family-level biological analysis;
-- the mouse cohort provenance cannot be frozen.
+- latent/multibranch World adds no scientific information beyond direct prediction;
+- Guided gives no matched-budget advantage;
+- Inverse does not recover useful/diverse structures;
+- stronger evidence levels do not correspond to higher reliability;
+- too little dark chemistry reaches strong evidence;
+- remote/recurrent families are negligible;
+- source labels do not organize structural space;
+- family analysis gives no systematic biological advantage.
