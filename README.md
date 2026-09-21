@@ -32,17 +32,13 @@ This evidence hierarchy makes it possible to resolve dark chemistry at repositor
 
 ## Current title
 
-**A molecular fragmentation world reveals the organization of the dark metabolome**
+**A molecular fragmentation world reveals the dark metabolome**
 
-Alternative if the World results become the dominant contribution:
+Alternative if the manuscript later becomes predominantly methodological:
 
 **Learning a molecular fragmentation world for mass-spectral inference**
 
-Alternative if the biological organization becomes overwhelmingly strong:
-
-**A molecular fragmentation world reveals the dark metabolome**
-
-The preferred title retains both the methodological paradigm and the scientific consequence.
+The preferred title keeps the new fragmentation-world paradigm and the large-scale dark-metabolome consequence in one concise statement.
 
 ## Scientific model
 
