@@ -1,262 +1,450 @@
 # Figure Plan
 
-Five main figures. The narrative is **2 capability figures + 3 discovery figures**.
+Five main figures. The paper is designed as **2 capability figures + 3 discovery figures**.
 
-The visual chain must be obvious without reading the paper:
+The visual chain is:
 
-`partial spectrum → latent fragmentation World → Free/Guided/Inverse inference → graded structural evidence → dark-matter resolution → chemical families → biology`.
+`partial spectrum → fragmentation World → W/G/V inference → graded structural evidence → high-evidence dark chemistry → structural/source organization → biology`.
 
-Implementation details such as optimizer names, agent prompts and low-level training losses belong in Extended Data unless they are necessary to understand the scientific mechanism.
+Each main figure should read as one visual argument rather than six independent panels. Panel widths below are approximate fractions of the usable figure width and are intended to guide the final Illustrator/Figma/PowerPoint composition.
 
 ---
 
-## Figure 1 | A molecular fragmentation world unifies prediction, explanation and inverse inference
+# Figure 1 | A molecular fragmentation world unifies prediction, explanation and inverse inference
 
-**Purpose:** establish the conceptual object of the paper. A spectrum is a partial observation of a latent gas-phase fragmentation world, not the object being directly modelled.
+## Overall composition
 
-### a. Spectrum as partial observation
-Show a molecule under fixed ionization/collision conditions producing a latent multi-branch gas-phase reaction network. Only a subset of charged products is observed as peaks. Neutral coproducts, low-abundance branches and unobserved states remain part of the World.
+**Three horizontal bands.**
 
-Visual statement:
+- **Top row (about 42% of figure height):** A 57% width + B 43% width.
+- **Middle row (about 38%):** C 31% + D 35% + E 31%.
+- **Bottom strip (about 15%):** F full width.
+- Leave ~5% for panel labels/spacing.
+
+**Dominant panel:** A.  
+The editor should understand “spectrum = partial observation of a fragmentation world” before reading any other panel.
+
+## A | Spectrum as partial observation — 57% width
+
+**Visual form:** mechanistic schematic, not a flowchart full of text.
+
+Draw:
+1. one precursor molecule;
+2. several ionization microstates;
+3. a multi-branch gas-phase reaction network;
+4. charged fragments and neutral coproducts;
+5. an observation/instrument layer;
+6. the resulting sparse MS/MS spectrum.
+
+Use solid edges for explored/materialized chemistry and faint/dashed edges for valid but unobserved/unresolved regions.
+
+Place the equation prominently:
+
 [
-M,c ightarrow mathcal W(M,c) ightarrow S_{mathrm{obs}}
+M,c ightarrow mathcal W(M,c) ightarrow S_{mathrm{obs}}.
 ]
 
-Explicitly annotate:
-- ionization microstates;
-- electron-flow events;
-- H transfer;
-- charged + neutral components;
-- competing branches;
-- STOP/halted probability;
-- observation/instrument layer.
+Key visual message:
 
-The key caption sentence is:
-**A tandem mass spectrum is an incomplete observation of a probabilistic molecular fragmentation world.**
+> The spectrum is a partial observation of the latent reaction world.
 
-### b. One World, three modes of inference
-Place one central **Fragmentation World** and three queries around it:
+Do **not** imply that every unobserved World state is false.
 
-**Free / prediction**
+## B | One World, three modes of inference — 43% width
+
+**Visual form:** central World with three directional query arrows.
+
+Center:
+**Molecular Fragmentation World**
+
+Around it:
+
+- **Free / prediction:** molecule → reaction network / spectrum
+  [
+  p(mathcal T,Smid M,c)
+  ]
+- **Guided / explanation:** molecule + spectrum → explanatory subnetwork
+  [
+  p(mathcal Tmid M,S_{mathrm{obs}},c)
+  ]
+- **Inverse / structure inference:** spectrum → molecular posterior → World replay
+  [
+  p(M,mathcal Tmid S_{mathrm{obs}},c)
+  ]
+
+Keep the visual symmetrical enough that these look like three queries over one object, not three disconnected models.
+
+## C | Autoregressive 1e event language — 31% width
+
+**Visual form:** three small electron-pushing microexamples.
+
+Show the primitive:
+
 [
-p(mathcal T,Smid M,c)
+	ext{source} ightarrow 	ext{target} ightarrow 1e
 ]
-Molecule → probabilistic fragmentation network → predicted spectrum.
 
-**Guided / explanation**
+followed by:
+
 [
-p(mathcal Tmid M,S_{mathrm{obs}},c)
+	ext{STOP / REPEAT / NEW}.
 ]
-Molecule + observed spectrum → explanatory subnetwork / evidence paths.
 
-**Inverse / structure inference**
+Examples:
+- two repeated same-direction 1e events → conventional 2e transfer;
+- different electron destinations → homolytic/radical event;
+- sequential distinct events → rearrangement.
+
+Caption phrase:
+**Elementary electron events, not a fragmentation-template catalogue.**
+
+## D | Probability-mass semantics — 35% width
+
+**Visual form:** probability ledger / flow partition.
+
+Show a single parent state splitting into:
+
+- valid reaction mass;
+- invalid chemistry mass;
+- event-budget-censored mass;
+- unsampled mass;
+- learned STOP mass.
+
+Equation:
+
 [
-p(M,mathcal Tmid S_{mathrm{obs}},c)
+P_{m valid}+P_{m invalid}+P_{m censored}
++P_{m unsampled}+P_{m stop}=1.
 ]
-Spectrum → multiple molecular hypotheses → World consistency.
 
-Use the phrase:
-**One chemical world, three modes of inference.**
+Use visual grouping:
+- chemistry failure = terminal failure;
+- STOP = learned terminal chemistry;
+- censored/unsampled = unresolved epistemic mass.
 
-### c. Chemistry defines legality; learning defines preference
-Compact executor panel:
-- atom conservation;
-- electron conservation;
-- charge;
-- explicit H;
-- exact mass;
-- valence/formula closure.
+This panel should make the principle obvious:
 
-Invalid actions do not receive a penalty; they are not executable.
+> Uncomputed is not impossible, and failed chemistry is not redistributed to successful hypotheses.
 
-Beside this, show learned quantities:
-- transition propensity;
-- branch probability;
-- frontier value;
-- posterior molecular probability.
+## E | Multi-branch reaction DAG — 31% width
 
-### d. Multi-branch probabilistic reaction world
-Worked precursor example showing:
-- multiple sibling fragmentation branches;
+**Visual form:** compact reaction DAG.
+
+Show:
+- one precursor;
+- 3–4 sibling reactions;
 - branch-local STOP;
-- reconvergent paths into the same fragment state;
-- probability-flow conservation.
+- one deeper branch;
+- two distinct trajectories reconverging to one canonical state.
 
-Contrast against a single-path mechanism or a direct structure→spectrum predictor.
+Annotate:
+- conditional probability on edges;
+- path probability;
+- summed reach probability at reconvergent node.
 
-### e. Adaptive inference under finite compute
-Show a large latent reaction frontier. Free distributes probability over plausible branches; Guided reallocates expansion toward spectrum-relevant branches; Inverse SMC/GFlowNet preserves multiple molecular modes.
+Avoid a large network hairball.
 
-Do not draw generic “RL” arrows. The scientific message is **adaptive allocation of finite computation in a combinatorial chemical world**.
+## F | Outer-loop scientific evolution — full-width strip
 
-### f. Outer-loop scientific evolution
-Small supporting panel only:
-systematic W/G/V failure → agent proposes bounded change → typed compiler/conservation tests → held-out gate → promoted World.
+**Visual form:** thin left-to-right strip.
 
-The agent remains outside online inference.
+[
+	ext{systematic failure}
+ightarrow
+	ext{bounded agent proposal}
+ightarrow
+	ext{typed compiler + conservation checks}
+ightarrow
+	ext{held-out gate}
+ightarrow
+	ext{promoted World}.
+]
 
-*Main claims:* spectrum-as-partial-observation; shared World; three conditional inference modes; hard chemistry/learned preference.
+Keep visually subordinate. The agent is not the online chemistry policy.
 
 ---
 
-## Figure 2 | World-based inference establishes graded structural evidence
+# Figure 2 | World-based inference establishes graded structural evidence
 
-**Purpose:** demonstrate what the WGV paradigm enables that direct prediction/ranking does not.
+## Overall composition
 
-### a. Free World performance
-On a molecule-disjoint cohort, quantify:
+**Three rows, two columns.**
+
+- **Top row:** A 50% + B 50%.
+- **Middle row:** C 44% + D 56%.
+- **Bottom row:** E 63% + F 37%.
+
+**Dominant panels:** D and E.  
+The reader should leave the figure understanding why World-based inference creates stronger evidence than candidate ranking.
+
+## A | Free World performance — 50%
+
+**Visual form:** one reaction-network example + 2–3 compact quantitative distributions.
+
+Show:
 - observed mass coverage;
 - intensity-weighted coverage;
-- parent→child transition coverage;
-- multistage contribution;
-- probability conservation;
-- coverage-vs-expanded-states AUC.
+- ordered parent-child transition coverage;
+- multistage-added coverage;
+- probability conservation.
 
-Show the learned World as a network, not only a spectrum cosine score.
+Prefer paired distributions / ECDFs over bars.
 
-### b. Guided explanation under matched compute
-Free and Guided receive the same molecule and compute budget; only Guided receives the target spectrum.
+The network example should visually link observed peaks to World states.
 
-Compare:
-- intensity/mass/path coverage;
-- states expanded to reach matched coverage;
-- wall time;
-- explanatory-path coherence.
+## B | Guided explanation under matched compute — 50%
 
-The claim is not that Guided changes chemistry. It changes **where computation is spent**.
+**Visual form:** paired coverage-versus-compute curves.
 
-### c. Inverse posterior structure inference
-Spectrum → multiple candidate structures.
+Same molecule, chemistry and compute budget:
+- Free;
+- Guided.
 
-Report:
-- Recall@K / Exact@K;
-- best structural similarity/MCES;
-- posterior diversity;
-- formula/chemical validity;
-- candidate collapse/ESS where relevant.
+Only Guided sees the target spectrum.
 
-Show several posterior modes, not one Top-1 molecule.
+Primary plots:
+- intensity/path coverage vs expanded states;
+- states or wall time needed to reach matched coverage.
 
-### d. Bidirectional consistency
-For generated candidates:
+Optional inset:
+one frontier where Guided chooses an evidence-bearing branch that Free postpones.
+
+Do not label DAgger/HER as production components unless implemented before manuscript freeze.
+
+## C | Inverse posterior structure inference — 44%
+
+**Visual form:** spectrum on left → 4–6 candidate molecular structures on right.
+
+For each candidate show:
+- posterior/evidence weight;
+- formula validity;
+- structural distance to GT in benchmark illustration.
+
+Below/adjacent:
+- Exact/Recall@K;
+- best Tanimoto/MCES;
+- diversity or ESS.
+
+The visual point is **multi-modal posterior**, not Top-1 generation.
+
+## D | Bidirectional consistency — 56%
+
+**Visual form:** closed-loop mechanistic comparison.
+
 [
 S_{mathrm{obs}}
 ightarrow M
 ightarrow mathcal W(M)
-ightarrow hat S
+ightarrow hat S.
 ]
 
-Compare correct versus hard-decoy candidates using:
-- forward intensity/path coverage;
-- candidate-specific evidence;
-- cycle/trajectory consistency.
+Use one GT and 2–3 same-formula/near-isomer decoys.
 
-This panel is the bridge from “prediction” to “evidence”.
+For each candidate show:
+- executable paths supporting discriminative peaks;
+- intensity/path consistency;
+- unresolved World probability mass;
+- ordered-transition consistency.
 
-### e. Evidence hierarchy
-A single vertical ladder:
+This should be the strongest “why the answer is credible” panel.
+
+## E | Evidence hierarchy — 63%
+
+**Visual form:** horizontal ladder/funnel spanning most of the width.
+
+Levels:
 
 1. mass/formula compatible;
-2. structurally valid;
-3. World-reachable;
+2. chemically valid;
+3. World reachable;
 4. executable path support;
-5. candidate-specific discriminative evidence;
-6. bidirectional spectrum–structure consistency;
-7. calibrated bounded structural statement;
+5. candidate-specific evidence;
+6. bidirectional consistency;
+7. calibrated bounded statement;
 8. authentic-standard confirmation.
 
-For the benchmark/prospective cohort, show what fraction reaches each level.
+Overlay two quantities across the ladder:
+- **coverage** decreases;
+- **reliability/containment** increases.
 
-### f. Prospective credibility
-Historical library freeze → system frozen → spectra dark at freeze → structures independently deposited later.
+A small unresolved-mass icon can indicate World exploration completeness.
 
-Report:
-- containment at stated confidence;
-- calibration error;
-- structural-distance shift;
-- fair comparator calibration.
+## F | Prospective credibility — 37%
 
-*Main claim:* WGV converts structure prediction into auditable, graded evidence.
+**Visual form:** historical timeline above, calibration plot below.
 
-*Move to ED:* detailed DAgger/IQL/SubTB ablations, policy losses, action-space ablations, full calibration tables.
+Timeline:
+freeze library/system → dark-at-freeze spectra → later independent structure deposition → blind evaluation.
+
+Plot:
+reported confidence vs observed containment, plus structural-distance stratification.
+
+Comparator calibration should be compact and fair.
 
 ---
 
-## Figure 3 | High-evidence inference resolves the dark metabolome at scale
+# Figure 3 | High-evidence inference resolves the dark metabolome at scale
 
-**Purpose:** show what becomes possible once evidence, not rank, is the output.
+## Overall composition
 
-### a. Repository-scale resolution funnel
+**Four visual bands.**
+
+- **Top:** A full width, ~25% height.
+- **Second row:** B 50% + C 50%.
+- **Third row:** D 50% + E 50%.
+- **Bottom:** F full-width example strip.
+
+**Dominant panel:** A.
+
+## A | Repository-scale evidence funnel — full width
+
+**Visual form:** Sankey/funnel.
+
+Start with all eligible dark spectra and move through:
+
 [
-	ext{dark spectra}
+	ext{mass/formula}
 ightarrow
-	ext{formula-level}
+	ext{World reachable}
 ightarrow
-	ext{class/substructure}
+	ext{path supported}
 ightarrow
-	ext{bounded isomer sets}
+	ext{candidate specific}
 ightarrow
-	ext{World-resolved structures}
+	ext{bidirectional}
 ightarrow
-	ext{standard-confirmed anchors}
+	ext{calibrated bounded structure}.
 ]
 
-Every level has a denominator. Do not imply that all lower levels are unique structures.
+At every stage show:
+- numerator/denominator;
+- unresolved branch;
+- computationally censored branch where relevant.
 
-### b. Feature-to-entity contraction
-Validate and apply collapsing of:
+Do not make the funnel visually imply that every spectrum must progress to a unique structure.
+
+## B | Spectral observations to structural entities — 50%
+
+**Visual form:** collapse Sankey.
+
+Show contribution from:
 - adducts;
 - isotopologues;
 - charge states;
 - in-source fragments;
 - redundant acquisitions.
 
-Show dark spectral observations → bounded structural entities with uncertainty.
+End at high-evidence structural entities with an uncertainty interval.
 
-### c. Recurrence across independent datasets
-Number of entities/families recurring across 1, 2, 3, ... independent datasets/laboratories.
+Inset:
+known-compound over-/under-merging validation.
 
-This separates reproducible dark chemistry from one-study artefacts.
+## C | Recurrence across independent datasets — 50%
 
-### d. Evidence level versus recurrence
-Ask whether recurrent chemistry receives stronger structural evidence than singletons. This can become a central result if positive.
+**Visual form:** ECDF/rank-frequency distribution.
 
-### e. Near-known versus remote chemistry
-Using a frozen characterized-metabolite reference and frozen structural-distance definition, partition high-evidence recurrent entities into:
+x-axis:
+number of independent datasets/laboratories.
+
+y-axis:
+fraction/count of entities/families.
+
+Differentiate:
+- single-study;
+- recurrent;
+- highly recurrent.
+
+## D | Evidence level versus recurrence — 50%
+
+**Visual form:** ordinal distribution / ridge / violin / box-free distribution.
+
+x-axis:
+recurrence category.
+
+y-axis:
+evidence level or reliability.
+
+Test whether recurrent chemistry is more structurally resolvable.
+
+## E | Near-known versus remote chemistry — 50%
+
+**Visual form:** distance-to-known distribution with frozen threshold.
+
+Partition:
 - near-known halo;
 - remote recurrent families;
 - insufficient-resolution cases.
 
-### f. Representative high-evidence dark entities
-3–5 examples spanning:
-- high-confidence World-resolved candidate;
+If possible, pair a density curve with a small structural map rather than using a pie chart.
+
+## F | Representative high-evidence dark chemistry — full-width strip
+
+Show 3–5 cases:
+- World-resolved structure;
 - bounded isomer set;
 - remote recurrent family member;
 - standard-confirmed anchor if available.
 
-*Main claims:* a large fraction of dark chemistry can be moved to stronger structural evidence levels; the resulting population is recurrent and chemically interpretable.
+For each:
+structure + representative spectrum/evidence icon + recurrence + evidence level + remaining uncertainty.
 
 ---
 
-## Figure 4 | Resolved dark chemistry reveals structural and biological organization
+# Figure 4 | Resolved dark chemistry reveals structural and biological organization
 
-**Purpose:** move from “we resolved dark spectra” to “we learned something about dark chemistry”.
+## Overall composition
 
-### a. Structural landscape
-Global graph/layout of high-evidence recurrent entities and characterized metabolites based on structural relationships.
+**A and D are the main visual anchors and should reuse the same coordinate system.**
 
-Show:
-- known metabolite neighbourhood;
+- **Top:** A 60% + B 40%.
+- **Middle strip:** C full width.
+- **Bottom:** D 60% + E 40%.
+- **Footer:** F full width.
+
+## A | Structural landscape — 60%
+
+**Visual form:** global structure-based map/graph.
+
+Include:
+- characterized metabolites;
+- high-evidence recurrent dark entities;
+- family boundaries;
 - near-known halo;
-- remote recurrent islands/families.
+- remote islands.
 
-### b. Recurrent family architecture
-Family-size and recurrence distributions. Highlight repeated remote families rather than isolated candidate structures.
+Do not use spectral embeddings alone for this panel.
 
-### c. Public perturbation design
-Compact map of germ-free/gnotobiotic, antibiotic and diet perturbation datasets with manually verified study/sample counts.
+Use density contours/family hulls rather than plotting every edge.
 
-### d. Source dependence over chemical space
+## B | Recurrent family architecture — 40%
+
+**Visual form:** two compact distributions.
+
+Possible:
+- family size distribution;
+- recurrence distribution;
+- remote vs near-known composition.
+
+Prefer ECDF/ridgeline/dot distributions to bars.
+
+## C | Public perturbation evidence — full-width strip
+
+**Visual form:** cohort design strip.
+
+Three branches:
+- germ-free/gnotobiotic;
+- antibiotic;
+- defined diet.
+
+For each:
+number of studies, samples and platforms.
+
+This is evidence provenance, not a result-heavy panel.
+
+## D | Source dependence over chemical space — 60%
+
+Reuse A's map coordinates.
+
 Overlay:
 - microbiota-dependent;
 - diet-dependent;
@@ -264,108 +452,142 @@ Overlay:
 - mixed;
 - unresolved.
 
-The central visual should show biological source partitioning the structural landscape, not a detached pie chart.
+The reader should visually see whether source labels partition the structural landscape.
 
-### e. Structure–source coupling
-Quantify:
+## E | Structure–source coupling — 40%
+
+**Visual form:** statistical distributions with nulls.
+
+Show:
 - local source-label autocorrelation;
-- class/motif enrichment;
+- motif/class enrichment;
 - cross-study effect consistency;
-- permutation null.
+- permutation distribution/confidence interval.
 
-### f. Worked remote family
-One recurrent family showing:
-- bounded structures;
-- independent dataset recurrence;
-- perturbation effects;
-- source label;
-- evidence level.
+## F | Worked remote family — full-width strip
 
-Use “dependent/associated”, not “biosynthesized”, unless direct evidence exists.
+Show:
+- 3–6 bounded structures;
+- independent-dataset recurrence;
+- perturbation effect mini-plots;
+- source-dependence label;
+- evidence levels.
 
-*Main claim:* the newly resolved dark chemical population has non-random structural and biological organization.
+Use “dependent/associated”, not “biosynthesized”, absent direct evidence.
 
 ---
 
-## Figure 5 | Dark molecular families reveal biology hidden from feature-level metabolomics
+# Figure 5 | Dark molecular families reveal biology hidden from feature-level metabolomics
 
-**Purpose:** demonstrate that structural resolution changes biological discovery.
+## Overall composition
 
-### a. Global paired feature-versus-family analysis
-Same samples, same preprocessing, same covariates:
-- anonymous dark features;
+**Three rows, two columns.**
+
+- **Top:** A 52% + B 48%.
+- **Middle:** C 45% + D 55%.
+- **Bottom:** E 50% + F 50%.
+
+**Dominant panel:** A.  
+The paper needs a global biological principle before a case study.
+
+## A | Global feature-versus-family analysis — 52%
+
+**Visual form:** paired global result.
+
+Same samples, preprocessing and covariates:
+- anonymous features;
 - frozen structural families.
 
-Pre-register one primary global endpoint:
+Primary endpoint should be visually dominant:
 - cross-cohort replication rate, or
 - effect-sign concordance.
 
-### b. Reproducibility gain
-Across all eligible contrasts/families, show paired distribution of:
-- replication;
-- sign concordance;
-- multiplicity-controlled association yield;
-- effect stability.
+Prefer paired cohort/family dots and confidence intervals.
 
-Do not rely on one successful family.
+## B | Reproducibility gain — 48%
 
-### c. Principal biological programme
-One strongest pre-defined family after the global analysis is frozen.
+**Visual form:** distributions across all eligible contrasts.
 
 Show:
-- biological sample-level effects;
-- independent cohort estimates;
-- adjusted significance.
+- replication;
+- sign concordance;
+- multiplicity-controlled yield;
+- effect-size stability.
 
-### d. Family chemistry
-Structures/bounded statements for family members with:
+Avoid a single aggregate bar.
+
+## C | Principal biological programme — 45%
+
+**Visual form:** biological sample-level effect + cohort meta-effect.
+
+Show:
+- discovery cohort;
+- replication cohort(s);
+- adjusted significance;
+- effect direction/CI.
+
+## D | Family chemistry — 55%
+
+Show the molecular family:
+- structures or bounded statements;
 - evidence level;
-- confidence;
 - recurrence;
+- confidence;
 - interpretable structural differences.
 
-Avoid calling a structural series a pathway without direct biosynthetic evidence.
+Structural adjacency should not be labelled as an enzymatic pathway without evidence.
 
-### e. Authentic-standard anchors
-Sample vs standard:
-- precursor;
-- MS/MS;
-- retention/coelution.
+## E | Authentic-standard anchors — 50%
 
-Report failures in ED and denominator.
+**Visual form:** sample vs standard.
 
-### f. Explicitly unresolved member
-Show surviving isomers and the additional experiment predicted to distinguish them.
+- MS/MS overlay;
+- retention/coelution;
+- precursor match;
+- acceptance criteria.
 
-*Main claim:* WGV-based structural evidence converts anonymous dark features into reproducible molecular programmes.
+Keep the standard-confirmed evidence visually distinct from model-derived evidence.
 
----
+## F | Explicitly unresolved member — 50%
 
-# Extended Data
+Show:
+- surviving isomer set;
+- evidence eliminating other candidates;
+- why current MS/MS cannot separate survivors;
+- predicted next measurement.
 
-| # | Title | Contents |
-|---|---|---|
-| ED1 | Corpora, splits, leakage and observation model | Data provenance; molecule-disjoint splits; library snapshots; exact/analogue leakage; instrument/adduct distributions; dark-subset definition |
-| ED2 | Fragmentation World state, actions and conservation | BE state; exact mass; explicit H; charged/neutral coproducts; sparse electron events; ionization ensemble; materialization; conservation tests |
-| ED3 | Free World learning and probabilistic network evaluation | SubTB/GFlowNet; multibranch probability flow; STOP/censoring; coverage; calibration; compute scaling; direct predictor baselines |
-| ED4 | Guided inference | DAgger/IQL; matched-budget Free vs Guided; frontier representations; explanatory paths; coverage-vs-compute; no target leakage into Free |
-| ED5 | Inverse structure inference | Construction GFlowNet/SMC; canonical state merge; formula/charge/H constraints; Exact@K; similarity; diversity; posterior/cycle diagnostics |
-| ED6 | Evidence hierarchy and prospective calibration | Hard-decoy discrimination; cycle consistency; bounded statements; historical library-growth validation; comparator calibration |
-| ED7 | Outer-loop program evolution | Failure localization; typed changes; rejected/promoted revisions; causal replay; held-out gates; compute |
-| ED8 | Dark-resolution scale and entity collapse | Evidence-level funnel; collapse validation; uncertainty; recurrence; census sensitivity |
-| ED9 | Structural landscape and source attribution | Near/remote definitions; reference-set sensitivity; family graph; public perturbations; positive controls; permutation nulls |
-| ED10 | Feature-versus-family biology | Complete global paired results; replication; concordance; multiplicity; threshold sensitivity; leave-one-cohort-out |
-| ED11 | Standard validation and unresolved dossiers | All anchors including failures; spectra; retention; candidate alternatives; predicted discriminating measurements |
+This is a required honesty panel, not a limitation footnote.
 
 ---
 
-## Visual style
+# Extended Data allocation
 
-- Low saturation.
-- No decorative network hairballs.
-- Use reaction-network visuals only when probability flow or mechanistic branching is readable.
-- Prefer distributions, paired comparisons and uncertainty intervals over bars.
-- Every fraction carries a denominator.
-- Every structure carries its evidence level.
-- Every biological effect uses biological samples/cohort estimates, not spectra as pseudo-replicates.
-- Main figures should remain understandable without the acronyms SubTB, IQL, DAgger or SMC.
+| ED | Main purpose |
+|---|---|
+| ED1 | Corpora, molecule-disjoint splits, leakage, library snapshots and observation contract |
+| ED2 | Bond-electron state, explicit H/charge, 1e event language, compiler and conservation |
+| ED3 | Free World training, multibranch DAG, STOP/valid/invalid/censored/unsampled mass and direct/single-path baselines |
+| ED4 | Guided matched-budget inference, spectrum-conditioned value policy and auxiliary IQL diagnostics |
+| ED5 | Factorized inverse construction, leaf→parent→precursor shaping, SMC, Recall@K and posterior diversity |
+| ED6 | Evidence hierarchy, hard-decoy bidirectional tests and prospective calibration |
+| ED7 | Outer-loop scientific program evolution and held-out promotion gates |
+| ED8 | Complete dark-resolution funnel, entity-collapse validation and recurrence sensitivity |
+| ED9 | Structural-landscape robustness, near/remote definitions and biological-source attribution |
+| ED10 | Complete feature-versus-family biological analysis |
+| ED11 | All authentic-standard successes/failures and unresolved dossiers |
+
+---
+
+# Visual style
+
+- Low-saturation palette.
+- No generic AI icons, glowing nodes or decorative gradients.
+- Reaction arrows should look chemically meaningful, not like generic network arrows.
+- Molecule bond lengths and line weights should be consistent across panels.
+- Use the same structural-map coordinates in Fig.4A and Fig.4D.
+- Prefer distributions, ECDFs, paired dots and confidence intervals over bars.
+- Avoid heatmaps unless the matrix structure itself is scientifically essential.
+- Every fraction includes its denominator.
+- Every structural example includes its evidence level.
+- Every biological panel uses biological samples/cohort estimates, not spectra as pseudo-replicates.
+- Main figures should be understandable without knowing the acronyms SubTB, IQL, SMC or WGV.
