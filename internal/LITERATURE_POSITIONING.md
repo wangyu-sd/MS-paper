@@ -1,227 +1,287 @@
 # Literature Positioning
 
-This document defines the manuscript's scientific lane and the claims that must not drift during writing.
+This manuscript should not be positioned as another spectrum-to-structure predictor or another metabolomics atlas.
 
-## The field-level gap
+Its methodological proposition is:
 
-Untargeted metabolomics has repeatedly established that most detected tandem spectra remain unidentified. What the field still cannot state is:
+> **A tandem mass spectrum is a partial observation of a latent gas-phase fragmentation world. Molecular structure inference should therefore proceed through a learned chemical world rather than by a direct spectrum-to-structure shortcut.**
 
-- how many distinct chemical entities those dark features represent;
-- how many are recurrent across independent datasets;
-- whether they are mostly near-neighbours of characterized metabolism or occupy recurrent remote structural families;
-- whether those structural families partition by biological source;
-- whether resolving anonymous features into structural families improves biological inference.
+Its scientific consequence is:
 
-This is the paper's scientific gap.
-
-The manuscript therefore does **not** lead with “we built a better structure-elucidation model”. It leads with:
-
-> **The dark metabolome is a measurable, recurrent and biologically organized chemical layer rather than an unstructured residue of unidentified spectral features.**
-
-ORBIT-MS is the enabling measurement system.
+> **World-based inference yields graded structural evidence strong enough to resolve dark chemistry at scale and reveal its structural and biological organization.**
 
 ---
 
-## Nature precedents: what made them broad-interest papers
+## 1. Direct prediction versus inference through a world
 
-### Reverse metabolomics
-The important contribution was not merely the number of newly observed compounds. The work established a general discovery strategy that connected designed chemistry, public metabolomics and human biology.
+Most scalable MS methods learn one of several direct mappings:
 
-**Lesson:** a scalable discovery operation becomes Nature-scale when it changes what biological questions can be asked.
+- structure → spectrum;
+- spectrum → fingerprint/class;
+- spectrum → candidate rank;
+- spectrum → molecular structure.
 
-### DeepMet
-The central claim was not benchmark rank. It was that metabolite chemical space contains learnable regularities that can anticipate future metabolites, with newly observed molecules serving as evidence for that principle.
+These mappings can be highly predictive, but they usually do not represent the latent reaction process as the common causal object shared by forward and inverse inference.
 
-**Lesson:** the headline should be a statement about chemical space, not about model architecture.
+ORBIT-MS instead introduces:
 
-### Implication for this manuscript
-The corresponding field-level statement is not “mechanistic elimination works”. It is:
+[
+M,c ightarrow mathcal W(M,c) ightarrow S_{m obs}
+]
 
-> **Once dark spectra are converted into bounded structural entities, their global scale, chemical organization and biological partition become measurable.**
+where (mathcal W) is a latent probabilistic reaction world and the observed spectrum is incomplete evidence about it.
 
-Figures 2–5 must carry that statement.
-
----
-
-## Why “a structural census” is distinct from annotation-rate papers
-
-Repository-scale annotation and molecular networking are established capabilities. GNPS/MASST/ReDU, suspect-library propagation, COSMIC, SIRIUS/CSI:FingerID, MetDNA-like reaction propagation and modern learned models all expand the fraction of spectra connected to known chemistry.
-
-That literature does not make a validated claim that:
-
-`N spectral features = N distinct molecules`.
-
-It also generally cannot state how uncertainty in structural annotation propagates into a molecule-level census.
-
-The manuscript's census contribution therefore requires three things simultaneously:
-
-1. bounded structural outputs rather than forced unique identities;
-2. validated feature/adduct/isotope/in-source collapsing;
-3. uncertainty on the entity count.
-
-If those are not credible, “census” is not a defensible word.
+The key novelty is not “we also simulate fragmentation”. It is that **prediction, explanation and inverse inference are queries to the same learned world**.
 
 ---
 
-## De novo generation is not the competitive axis
+## 2. Why the partial-observation formulation matters
 
-Modern de novo MS structure generation is advancing rapidly, but reported accuracies are highly split- and leakage-dependent. The manuscript should not enter a headline Top-1 race.
+An experimental spectrum does not enumerate every chemically possible fragmentation state.
 
-METEOR / inverse generation is a candidate-supply component. The scientific endpoints remain:
+A generated state may be absent because of:
+- low occupancy;
+- competing branches;
+- ionization microstate;
+- collision condition;
+- instrument response;
+- censoring/detection threshold.
 
-- candidate recall;
-- conditional structural discrimination;
-- bounded structural resolution;
-- downstream census/organization/biology.
+Therefore:
+[
+	ext{unobserved} 
+eq 	ext{chemically false}.
+]
 
-A stronger generator improves coverage but does not change the paper's central proposition.
+This distinguishes the World formulation from objectives that treat every unobserved predicted peak as a conventional false positive.
 
----
-
-## Mechanistic fragmentation: the dangerous claim boundary
-
-The literature does not support a general claim that mechanistic fragmentation is more accurate than black-box learned spectral models in distribution.
-
-Therefore do not write:
-- “physics is more accurate”;
-- “mechanistic simulation outperforms neural spectrum prediction in general”;
-- “absence of a simulated fragment proves impossibility”.
-
-The defensible role of the fragmentation World is narrower and more useful:
-
-- it provides explicit atom/electron/charge/H-conserving trajectories;
-- candidate-specific evidence is auditable;
-- eliminations can be assigned an empirical false-exclusion rate;
-- uncertainty can be propagated into a bounded structural statement.
-
-The paper wins only if this credibility is sufficient to support Figures 2–5.
+The manuscript should be careful: this does not imply every unobserved World state is correct. It means negativity must be mediated by an observation model or empirical calibration rather than assumed from absence.
 
 ---
 
-## Analogue propagation and the “near-known halo”
+## 3. WGV is one world, not three independent models
 
-Similarity to characterized metabolites is one of the most productive discovery priors in metabolomics. Suspect libraries, molecular networking, reaction-network propagation, reverse metabolomics and learned metabolite priors all exploit this fact.
+The three modes are:
 
-Do not frame this as a weakness.
+[
+egin{aligned}
+	ext{Free:}&quad p(mathcal T,Smid M,c),\
+	ext{Guided:}&quad p(mathcal Tmid M,S_{m obs},c),\
+	ext{Inverse:}&quad p(M,mathcal Tmid S_{m obs},c).
+end{aligned}
+]
 
-Instead, Figure 3 asks an empirical question:
+This is the conceptual advantage over separately training:
+- one spectrum simulator;
+- one explanation model;
+- one de novo generator;
+- one unrelated reranker.
 
-> **What fraction of recurrent dark chemistry lies inside the neighbourhood that existing analogue-based strategies are designed to reach, and what fraction forms recurrent structural families outside it?**
-
-The “near-known halo” and “remote recurrent families” are measurements, not rhetorical categories. Their definitions must be frozen before the fraction is calculated.
-
----
-
-## DreaMS / representation learning
-
-Large-scale self-supervised spectral representations demonstrate that unannotated spectra have learnable organization and make repository-scale analysis tractable.
-
-Our distinction is not that spectral organization did not exist. It is:
-
-> spectral similarity organizes observations; structural resolution attempts to identify the chemical entities and relations underlying those observations.
-
-Figure 2 must therefore avoid claiming that recurrence or clustering itself is novel. Figure 3's contribution is the structural interpretation of recurrent dark chemistry.
+The scientific test is whether shared World semantics improve or stabilize these tasks under matched evaluation, not whether a diagram contains shared weights.
 
 ---
 
-## Biological-source literature
+## 4. Why RL/GFlowNet is scientifically motivated
 
-Microbiome, diet and host metabolism already produce strong perturbation signatures in metabolomics. The paper does not claim to invent source attribution.
+The fragmentation world is combinatorial and multi-modal.
 
-The new question is whether **previously anonymous recurrent structural families** partition under these perturbations in a chemically coherent way.
+The task is not always:
+[
+argmax_	au R(	au).
+]
 
-Required language:
-- microbiota-dependent;
-- diet-dependent;
-- host-associated;
-- mixed/unresolved.
+Free fragmentation requires multiple plausible paths and probability flow.
+Inverse inference requires multiple plausible molecular structures.
+Guided explanation requires long-horizon compute allocation toward evidence-bearing branches.
 
-Avoid:
-- microbially synthesized;
-- host biosynthetic product;
-- pathway intermediate;
+This motivates:
+- GFlowNet/SubTB for many valid trajectories;
+- Guided IQL/DAgger for spectrum-conditioned long-horizon value;
+- SMC/GFlowNet for diverse inverse posterior hypotheses;
+- search/planning for finite compute allocation.
 
-unless direct biosynthetic experiments support those terms.
+Do not sell the paper as “RL improves the score”. Sell it as:
 
----
-
-## Biological association: case study is not enough
-
-Many metabolomics papers can associate an unidentified feature with a phenotype. A single significant dark family is therefore not a Nature-level endpoint.
-
-Figure 5 must first test a general principle:
-
-> **Does replacing anonymous features with frozen structural-family objects systematically improve cross-cohort reproducibility or association coherence?**
-
-Only after that global paired test is frozen should one principal family be used as a mechanistic/chemical case study.
-
-This is the key upgrade from the previous manuscript design.
+> **RL allocates finite computation over a large constrained chemical world.**
 
 ---
 
-## Prospective library growth
+## 5. Chemistry is not the reward
 
-Historical library growth remains the strongest credibility experiment because it approximates a prospective test without new acquisition:
+A central credibility distinction is:
 
-- freeze the system and available chemistry at time T0;
-- identify spectra that are dark under T0;
-- evaluate against structures deposited later by independent groups.
+> **Chemistry defines legality; learning defines preference.**
 
-This is not the scientific headline. It is the reason readers may trust the subsequent atlas.
+Atom, electron, charge, H, mass, formula and valence constraints are executable constraints.
 
-If the prospective cohort is small or heavily biased, report that limitation and reduce its visual weight rather than overclaiming prospectivity.
+This differs from approaches where chemically impossible outputs are merely discouraged by a loss term.
 
----
-
-## What is genuinely new if the experiments succeed
-
-1. **A validated feature-to-entity structural census of the dark metabolome.**
-2. **A quantitative decomposition of recurrent dark chemistry into near-known and remote structural regimes.**
-3. **Identification of recurrent structural families poorly represented by current libraries.**
-4. **A global link between dark chemical structure and perturbation-defined biological source.**
-5. **Evidence that structural-family analysis changes biological inference relative to anonymous-feature analysis.**
-6. **A bounded, prospectively calibrated structural reporting scheme that makes the above analyses defensible.**
-
-The order matters. Items 1–5 are discoveries about the chemical world; item 6 is enabling methodology.
+The paper must not overclaim that hard constraints guarantee correct mechanisms. They guarantee bookkeeping/legal consistency, while event propensity and mechanistic likelihood remain learned/empirical.
 
 ---
 
-## What is not new
+## 6. Fragmentation models and mechanistic precedent
 
-Do not claim novelty for:
-- public repository mining;
-- molecular networking;
-- library search;
-- fragmentation modelling itself;
-- de novo structure generation itself;
-- self-supervised spectral embeddings;
-- confidence sets as a statistical concept;
-- the observation that MS/MS cannot distinguish all isomers;
-- host/microbiome/diet perturbation metabolomics;
-- association testing of unknown features.
+Mechanistic and semi-mechanistic fragmentation methods are well established. The manuscript must not claim to invent:
+- fragmentation trees;
+- reaction-rule fragmentation;
+- electron-flow representations;
+- mechanistic peak explanation.
 
-Novelty must come from the combination that creates a new measurable object: the recurrent structurally bounded dark metabolome.
+The novel combination is:
+1. a shared learned probabilistic World;
+2. multi-branch latent network rather than one route;
+3. partial-observation semantics;
+4. bidirectional use for inverse structure inference;
+5. RL-based adaptive compute allocation;
+6. evidence hierarchy derived from forward/backward consistency.
+
+Do not claim mechanism is universally more accurate than neural spectrum prediction.
+
+---
+
+## 7. De novo generation is not the whole problem
+
+Modern de novo structure generators map spectra to molecular candidates, increasingly with formula or graph constraints.
+
+ORBIT-MS should not compete only on Top-1.
+
+Its distinctive question is:
+
+> **Can a generated molecule survive replay through the same chemical world that defines forward fragmentation?**
+
+Therefore the important comparison includes:
+- Recall@K;
+- structural diversity;
+- chemical validity;
+- forward World consistency;
+- candidate-specific mechanistic evidence;
+- calibrated bounded output.
+
+The posterior set is more important than a single rank-1 guess for ambiguous spectra.
+
+---
+
+## 8. Evidence hierarchy as the bridge to dark metabolomics
+
+The World paradigm matters scientifically only if stronger evidence levels correspond to stronger structural reliability.
+
+The paper therefore builds:
+
+[
+	ext{formula}
+ightarrow
+	ext{World reachability}
+ightarrow
+	ext{executable support}
+ightarrow
+	ext{candidate-specific evidence}
+ightarrow
+	ext{bidirectional consistency}
+ightarrow
+	ext{calibrated structural statement}
+ightarrow
+	ext{standard confirmation}.
+]
+
+This is the bridge from AI methodology to repository-scale science.
+
+The manuscript should report both:
+- reliability conditional on evidence level;
+- coverage/fraction of dark spectra reaching each level.
+
+---
+
+## 9. Relationship to DeepMet and reverse metabolomics
+
+DeepMet demonstrates that known metabolite structure space contains learnable regularities that can anticipate unobserved metabolites.
+
+Reverse metabolomics demonstrates that starting from molecular structures and searching public metabolomes can connect chemistry to human biology.
+
+Our distinct proposition is:
+
+> **learn the fragmentation world linking molecules to observations, invert that world to obtain high-evidence structures from dark spectra, then study the resulting chemical population.**
+
+The dark-metabolome analysis must reveal a global property, not merely several additional molecules.
+
+---
+
+## 10. Relationship to DreaMS and large-scale spectral organization
+
+Large-scale representation learning shows that hundreds of millions of spectra contain organization in spectral space.
+
+Our question is complementary:
+
+> **What molecular structures and reaction-consistent relationships underlie recurrent dark spectral organization?**
+
+Do not claim that large-scale spectral clustering or recurrence is novel.
+
+The manuscript contribution is moving from:
+[
+	ext{spectral organization}
+]
+to:
+[
+	ext{graded structural evidence and molecular organization}.
+]
+
+---
+
+## 11. Why dark-metabolome analysis must follow evidence, not precede it
+
+A dark-metabolome atlas built from weak rank-1 predictions is vulnerable to compounding false structure.
+
+Therefore the paper first validates the evidence hierarchy, then freezes it, then runs the dark corpus.
+
+This ordering is scientifically important:
+- no phenotype labels influence structural inference;
+- no dark-corpus success tunes evidence thresholds;
+- no “interesting” family changes the World after the fact.
+
+The atlas is a consequence of the inference paradigm, not a training dataset for it.
+
+---
+
+## 12. Nature-level proposition
+
+The Nature-level story is strongest if all three statements hold:
+
+### Paradigm
+**Molecular fragmentation can be represented as a learnable probabilistic world that supports forward, conditional and inverse inference.**
+
+### Evidence
+**Inference through this world produces stronger, auditable and calibrated structural evidence than direct ranking alone.**
+
+### Discovery
+**At repository scale, this evidence reveals recurrent dark molecular families and biological organization hidden from feature-level metabolomics.**
+
+Any one statement alone is smaller:
+- paradigm only → methods paper;
+- evidence only → annotation paper;
+- discovery only → atlas/resource paper.
+
+The combined chain is the manuscript.
+
+---
+
+## 13. Claims not to make
+
+Do not claim:
+- every World trajectory is a validated physical mechanism;
+- every unobserved state is real;
+- mechanistic models universally beat neural predictors;
+- RL discovers chemistry without priors/constraints;
+- WGV uniquely identifies every molecule;
+- a structural family is a metabolic pathway;
+- microbiota dependence proves microbial biosynthesis;
+- a model-resolved unique structure equals authentic-standard identification.
 
 ---
 
 ## Editorial test
 
-Before submission, the first five figure titles should answer five questions an editor can understand without knowing ORBIT-MS:
+An editor should be able to extract the paper in one sentence:
 
-1. Can these structural statements be trusted?
-2. How large is the dark metabolome?
-3. How is dark chemistry organized?
-4. Where is that chemistry biologically dependent?
-5. Does structural resolution reveal biology that feature-level analysis misses?
+> **The authors learn a probabilistic molecular fragmentation world, use it for forward, explanatory and inverse inference, and thereby obtain sufficiently strong structural evidence to reveal the organization of previously dark metabolomic chemistry.**
 
-If a figure title instead contains an implementation term, the hierarchy has probably drifted back toward a methods paper.
-
----
-
-## Citation policy
-
-- Peer-reviewed literature carries essential claims.
-- Current/preprint work may define frontier context but cannot carry a load-bearing historical claim.
-- Comparator values used in main figures are recomputed on the manuscript's own frozen cohorts whenever possible.
-- Do not quote incompatible benchmark numbers side by side as if they were comparable.
-- Literature that contradicts a convenient framing is cited explicitly rather than omitted.
+If the abstract instead reads like a list of ORBIT-MS modules or an atlas inventory, the hierarchy has drifted.
