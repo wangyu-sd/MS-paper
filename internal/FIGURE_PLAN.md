@@ -16,8 +16,8 @@ Each main figure should read as one visual argument rather than six independent 
 
 **Three horizontal bands.**
 
-- **Top row (about 42% of figure height):** A 57% width + B 43% width.
-- **Middle row (about 38%):** C 31% + D 35% + E 31%.
+- **Top row:** A 56% width + B 38% width.
+- **Middle row:** C 30% + D 34% + E 30%.
 - **Bottom strip (about 15%):** F full width.
 - Leave ~5% for panel labels/spacing.
 
@@ -170,9 +170,9 @@ Keep visually subordinate. The agent is not the online chemistry policy.
 
 **Three rows, two columns.**
 
-- **Top row:** A 50% + B 50%.
-- **Middle row:** C 44% + D 56%.
-- **Bottom row:** E 63% + F 37%.
+- **Top row:** A 45% + B 45%.
+- **Middle row:** C 38% + D 52%.
+- **Bottom row:** E 58% + F 32%.
 
 **Dominant panels:** D and E.  
 The reader should leave the figure understanding why World-based inference creates stronger evidence than candidate ranking.
@@ -290,8 +290,8 @@ Comparator calibration should be compact and fair.
 **Four visual bands.**
 
 - **Top:** A full width, ~25% height.
-- **Second row:** B 50% + C 50%.
-- **Third row:** D 50% + E 50%.
+- **Second row:** B 45% + C 45%.
+- **Third row:** D 45% + E 45%.
 - **Bottom:** F full-width example strip.
 
 **Dominant panel:** A.
@@ -396,9 +396,9 @@ structure + representative spectrum/evidence icon + recurrence + evidence level 
 
 **A and D are the main visual anchors and should reuse the same coordinate system.**
 
-- **Top:** A 60% + B 40%.
+- **Top:** A 58% + B 32%.
 - **Middle strip:** C full width.
-- **Bottom:** D 60% + E 40%.
+- **Bottom:** D 58% + E 32%.
 - **Footer:** F full width.
 
 ## A | Structural landscape — 60%
@@ -483,9 +483,9 @@ Use “dependent/associated”, not “biosynthesized”, absent direct evidence
 
 **Three rows, two columns.**
 
-- **Top:** A 52% + B 48%.
-- **Middle:** C 45% + D 55%.
-- **Bottom:** E 50% + F 50%.
+- **Top:** A 47% + B 43%.
+- **Middle:** C 39% + D 51%.
+- **Bottom:** E 45% + F 45%.
 
 **Dominant panel:** A.  
 The paper needs a global biological principle before a case study.
