@@ -1,336 +1,548 @@
 # Experiment Execution Plan
 
-Execution is ordered by **what can invalidate the Nature story earliest and cheapest**, not by manuscript order.
+The manuscript now depends on a two-stage proof:
 
-The current paper requires four independent scientific pillars:
+1. **Paradigm/capability:** a shared molecular fragmentation World must support useful Free, Guided and Inverse inference and produce stronger evidence than direct ranking.
+2. **Discovery:** that evidence hierarchy must resolve enough dark chemistry at scale to reveal structural and biological organization.
 
-1. bounded structural measurement is trustworthy;
-2. feature counts collapse to a defensible structural census;
-3. recurrent dark chemistry has non-trivial global organization;
-4. structural-family analysis exposes reproducible biology.
-
-If any pillar fails, reframe before spending heavily downstream.
+Execution is ordered by what can invalidate this combined Nature story earliest.
 
 ---
 
-## Phase 0 — Freeze definitions and inventory
+# Phase 0 — Freeze system semantics and data boundaries
 
-### E0.1 Library snapshots
-Reconstruct GNPS/MassBank/MoNA at a historical freeze date and at the evaluation date. Record per-structure first appearance, accession and depositing group.
+## E0.1 Canonical WGV release
+Freeze the exact PR81-derived system used for all manuscript experiments:
+- World state schema;
+- explicit atom/H/charge/electron/exact-mass semantics;
+- charged + neutral component bookkeeping;
+- sparse electron-flow action language;
+- ionization ensemble;
+- Free/Guided/Inverse task conditions;
+- action masks and typed chemistry compiler;
+- model sizes/checkpoints;
+- inference budgets;
+- code commit hashes.
 
-### E0.2 Corpus inventory
-Freeze manifests for repository spectra, mouse spectra, benchmark/calibration sets and all public perturbation cohorts. Record raw-file hashes, sample identities, acquisition metadata and preprocessing versions.
+No later manuscript result may silently switch action/state semantics.
 
-### E0.3 Leakage audit
-Audit exact-structure and close-analogue overlap between all evaluation chemistry and:
-- molecular pretraining corpora;
-- spectrum-model training corpora;
-- simulator-generated training data;
-- candidate libraries available at the freeze date.
+## E0.2 Data splits
+Freeze:
+- molecule-disjoint training/calibration/test partitions;
+- public library snapshots;
+- repository dark corpus;
+- mouse cohort;
+- perturbation cohorts.
 
-### E0.4 Dark-subset definition
-Freeze the exact spectral-library search protocol and threshold that define “dark”. Validate false accepted library hits on known spectra.
+## E0.3 Leakage audit
+Audit exact structures and close analogues against:
+- molecular pretraining;
+- spectral training;
+- synthetic/simulated spectra;
+- route/action supervision;
+- candidate libraries.
 
-### E0.5 Structural-entity definition
-Before viewing dark-atlas counts, freeze rules for:
+## E0.4 Observation contract
+Freeze what counts as:
+- observed mass;
+- observed intensity;
+- ordered parent→child transition;
+- unobserved/unlabeled;
+- negative evidence.
+
+The default rule is:
+[
+	ext{unobserved World state} 
+eq 	ext{false state}.
+]
+
+---
+
+# Phase 1 — WGV paradigm gates
+
+These experiments decide whether the paper can lead with a fragmentation-world paradigm.
+
+## E1 — World versus direct spectrum prediction
+
+Compare the learned multibranch World against a direct structure→spectrum baseline under matched molecule-disjoint data and compute.
+
+Primary World endpoints:
+- observed mass coverage;
+- intensity-weighted coverage;
+- ordered-transition coverage;
+- multistage-added coverage;
+- probability conservation;
+- coverage-vs-expanded-states AUC.
+
+Direct predictor endpoints:
+- conventional spectral similarity;
+- peak/intensity metrics where applicable.
+
+The purpose is not to force one metric across incompatible outputs. Test whether representing the latent reaction world yields additional experimentally testable structure that direct prediction cannot provide.
+
+**Gate:** the World must add meaningful transition/path-level explanatory power while maintaining competitive spectral observation quality.
+
+---
+
+## E2 — Multi-branch versus single-path World
+
+Same transition model; same compute budget.
+
+Compare:
+- full sibling expansion + branch-local STOP + reconvergent flow;
+- greedy/single-child rollout;
+- optional beam-like path baseline.
+
+Primary endpoints:
+- observed mass/intensity coverage;
+- ordered-transition coverage;
+- number of experimentally supported sibling branches;
+- censored frontier mass;
+- probability-flow conservation.
+
+**Gate:** the multibranch representation must provide measurable value beyond a single mechanism/path story.
+
+---
+
+## E3 — Chemical legality audit
+
+Challenge the state/action system with:
+- random legal actions;
+- deliberately invalid mass/formula/charge/valence/H actions;
+- forward/inverse round trips;
+- neutral coproduct retention;
+- H-group compression equivalence;
+- canonical inverse-state merge.
+
+Report:
+- atom conservation;
+- electron conservation;
+- charge conservation;
+- exact-mass conservation;
+- formula/H closure;
+- RDKit/materialization success;
+- inverse round-trip identity where defined.
+
+**Gate:** hard chemistry violations must be rejected by the action/compiler layer rather than learned statistically.
+
+---
+
+# Phase 2 — Free / Guided / Inverse scientific capability
+
+## E4 — Free World evaluation
+
+Run the frozen Free World on a molecule-disjoint held-out cohort.
+
+Report:
+- case-level and transition-level coverage;
+- intensity-weighted coverage;
+- multistage contribution;
+- calibration/NLL/Brier/ECE of branch/STOP probabilities where supported;
+- compute/throughput;
+- action-space ceiling separately from realized-network coverage.
+
+Do not use target spectrum as policy input.
+
+---
+
+## E5 — Guided matched-budget comparison
+
+Free and Guided use:
+- identical molecule;
+- identical chemistry/action space;
+- identical maximum expansions/wall time.
+
+Only Guided receives the target spectrum.
+
+Primary endpoints:
+- intensity-weighted coverage-vs-budget AUC;
+- ordered-transition coverage;
+- states needed to reach matched coverage;
+- coherent explanatory path coverage;
+- wall time.
+
+Ablations:
+- no DAgger;
+- no goal conditioning;
+- weak mean frontier summary versus Set Transformer;
+- greedy versus value-guided expansion.
+
+**Gate:** Guided must improve explanation or compute efficiency under matched resources.
+
+---
+
+## E6 — Inverse molecule recovery
+
+Molecule-disjoint evaluation.
+
+Report:
+- chemical validity;
+- formula validity;
+- Exact@1/@5/@10 or Recall@K;
+- best Tanimoto/MCES@K;
+- posterior diversity;
+- number of unique canonical states;
+- SMC ESS / collapse diagnostics;
+- runtime.
+
+Compare against:
+- direct de novo model where executable;
+- retrieval-only baseline;
+- construction without World guidance;
+- no forward-replay baseline.
+
+**Gate:** Inverse must recover a useful diverse posterior, not merely valid molecules.
+
+---
+
+## E7 — Bidirectional structure evidence
+
+Construct matched GT + hard-decoy candidate pools.
+
+For every candidate:
+[
+S ightarrow M ightarrow mathcal W(M) ightarrow hat S.
+]
+
+Measure:
+- World forward likelihood/flow;
+- mass coverage;
+- intensity coverage;
+- parent-child path support;
+- candidate-specific discriminative evidence;
+- cycle/bidirectional consistency.
+
+Stratify:
+- same formula;
+- near isomers;
+- same scaffold;
+- remote decoys.
+
+**Gate:** stronger bidirectional evidence must separate GT from hard alternatives beyond mass/formula compatibility alone.
+
+---
+
+# Phase 3 — Evidence hierarchy and credibility
+
+## E8 — Freeze evidence levels
+
+Before repository-scale analysis, freeze definitions for:
+
+1. mass/formula compatible;
+2. chemically valid candidate;
+3. World-reachable;
+4. executable path support;
+5. candidate-specific evidence;
+6. bidirectional consistency;
+7. calibrated bounded statement;
+8. authentic-standard confirmation.
+
+Do not tune these levels on the dark corpus.
+
+---
+
+## E9 — Reliability by evidence level
+
+On known-structure cohorts, measure:
+- true-structure containment;
+- exact recovery;
+- calibration;
+- candidate-set size;
+- structural-distance error;
+
+as a function of evidence level.
+
+Primary claim:
+[
+	ext{stronger evidence level} Rightarrow 	ext{higher structural reliability}
+]
+with explicit coverage trade-offs.
+
+---
+
+## E10 — Prospective library-growth validation
+
+Reconstruct historical GNPS/MassBank/MoNA snapshot.
+
+Eligibility:
+- dark/unannotated at freeze;
+- structure first deposited later;
+- no exact or close analogue available at freeze;
+- depositing group independent of this work.
+
+Freeze WGV and calibration before revealing outcomes.
+
+Report:
+- containment;
+- calibration error;
+- structural-distance stratification;
+- evidence-level distribution;
+- comparator calibration.
+
+This is the main external credibility experiment.
+
+---
+
+# Phase 4 — Repository-scale dark-matter resolution
+
+## E11 — Frozen dark-corpus inference
+
+Run the frozen WGV pipeline over all eligible dark spectra.
+
+For every spectrum record:
+- strongest evidence level reached;
+- bounded structural statement;
+- surviving candidates;
+- World paths/receipts;
+- confidence;
+- compute/censoring status.
+
+Headline output is an **evidence-level funnel**, not one annotation rate.
+
+---
+
+## E12 — Entity collapsing
+
+Freeze and validate:
 - adduct collapse;
 - isotope collapse;
 - charge-state collapse;
 - in-source-fragment handling;
-- redundant acquisition collapse;
-- merging by unique structure / bounded isomer set / shared structural statement.
+- redundant acquisition collapse.
+
+Measure over-/under-merging on known compounds and propagate uncertainty into dark-entity counts.
 
 ---
 
-# Phase 1 — Three go/no-go experiments
+## E13 — Recurrence
 
-## E1 — Soundness–resolution curve
-On leakage-controlled known-structure spectra with matched candidate pools, sweep the structural-elimination operating point.
+Define independent dataset/laboratory units.
 
-Report:
-- false exclusion of the true structure;
-- unique/isomer-set/class/formula/unresolved fractions;
-- candidate recall separately from conditional evidence performance;
-- sensitivity to mass tolerance, noise peaks and acquisition metadata.
+For every high-evidence entity/family:
+- recurrence count;
+- independent dataset count;
+- organism/tissue breadth where appropriate.
 
-**Pass condition:** a practically useful fraction of spectra can be resolved above formula while keeping false exclusion low enough to support a resource. Do not hard-code a favourable threshold after looking; freeze the selected operating point from the calibration set.
-
-**Failure:** replace elimination-defined outputs with calibrated/conformal candidate sets and rewrite Figure 1.
+Technical spectra are never independent replicates.
 
 ---
 
-## E2 — Prospective-set constructibility
-Construct the historical-library-growth cohort:
-- dark under the freeze snapshot;
-- structure first deposited after freeze;
-- no exact or close analogue available at freeze;
-- depositing group independent of this work.
+## E14 — Evidence × recurrence interaction
 
-Report count, chemical coverage and structural-distance distribution.
+Test whether recurring dark chemistry tends to achieve stronger evidence than singletons.
 
-**Pass condition:** large/diverse enough to estimate prospective containment and calibration with meaningful confidence intervals.
-
-**Failure:** prospective validation becomes supporting rather than headline credibility; use scaffold-disjoint held-out evaluation and explicitly weaken claims.
+This can strengthen the resource claim by showing that the most reproducible dark signals are also the most structurally resolvable.
 
 ---
 
-## E3 — Entity-collapsing validity
-Run the proposed feature-to-entity pipeline on known compounds for which multiple adducts, isotopologues, charge states, in-source fragments and replicate acquisitions are available.
+# Phase 5 — Structural organization of resolved dark chemistry
 
-Primary endpoints:
-- over-merging rate;
-- under-merging rate;
-- entity-count bias;
-- uncertainty propagation from collapsing error.
+## E15 — Freeze known-metabolite reference space
 
-**Pass condition:** collapsing error is low enough that the final census interval is scientifically informative.
+Freeze characterized metabolites, structural standardization and distance metrics.
 
-**Failure:** do not report a headline “number of dark molecules”; restrict the paper to structural-family organization.
+## E16 — Freeze near-known boundary
 
----
-
-# Phase 2 — Figure 1: credibility of structural statements
-
-## E4 — Matched-pool structural discrimination
-Identical spectra and candidate pools for:
-- exact precursor/formula matching;
-- forward-spectrum similarity;
-- CFM-ID;
-- SIRIUS/CSI:FingerID or executable comparable system;
-- ORBIT-MS structural statement pipeline.
-
-Report same-formula and near-isomer strata separately.
-
-## E5 — Spectrum-identity controls
-Correct spectrum / matched shuffled spectrum / no-spectrum control with chemical priors fixed.
-
-## E6 — Prospective validation
-Freeze model, fragmentation World/rules, candidate generator, calibration mapping and evaluation code before revealing E2 outcomes.
-
-Report:
-- containment versus stated confidence;
-- calibration error;
-- performance by structural distance from freeze chemistry;
-- chemical class, instrument and collision energy strata.
-
-## E7 — Comparator calibration
-Give each comparator a fair calibration mapping fitted only on its calibration set, then evaluate on the identical prospective cohort.
-
-## E8 — Worked evidence cases
-Preselect cases by frozen difficulty criteria, not aesthetic appeal:
-- one unique-resolution success;
-- one bounded-isomer outcome;
-- one failure/unresolved outcome.
-
----
-
-# Phase 3 — Figure 2: structural census
-
-## E9 — Repository and mouse dark-subset run
-Run the frozen structural pipeline over the complete eligible dark corpora. No phenotype/source labels may be exposed to candidate selection or entity definition.
-
-## E10 — Feature-to-entity collapse
-Apply the frozen E0.5 rules. Propagate E3 error into a confidence interval for total entity count.
-
-Primary outputs:
-- dark feature/spectrum count;
-- structurally usable statement count;
-- distinct structural entity count;
-- feature-to-entity contraction factor.
-
-## E11 — Recurrence
-For every entity/family, count recurrence across **independent datasets**, not spectra.
-
-Audit:
-- shared samples;
-- duplicated datasets;
-- same laboratory re-depositions;
-- technical replicates.
-
-## E12 — Resolution-depth census
-Partition the recurrent census into:
-- unique putative structures;
-- bounded isomer sets;
-- substructure/classes;
-- formula-only;
-- unresolved.
-
-Never relabel the first category as confirmed identification.
-
----
-
-# Phase 4 — Figure 3: chemical organization
-
-## E13 — Freeze reference metabolite space
-Freeze the characterized-metabolite reference set before calculating dark-space distance.
-
-## E14 — Freeze near/remote definition
 Predefine:
-- structural-distance metric(s);
-- permitted interpretable transformation vocabulary;
-- threshold defining the “near-known halo”.
+- structural-distance threshold(s);
+- allowed transformation vocabulary;
+- handling of bounded isomer/class statements.
 
-Run sensitivity with at least one independent structural-distance definition.
+## E17 — Global structural landscape
 
-## E15 — Global structural landscape
-Build a structural relationship graph / embedding for recurrent entities and characterized metabolites using structural information, not only spectral embeddings.
+Build structure-based graph/embedding over:
+- characterized metabolites;
+- high-evidence recurrent dark entities.
 
 Quantify:
-- density and family-size distributions;
-- nearest-reference distance;
-- recurrence as a function of distance;
-- uncertainty as a function of structural resolution.
+- nearest-known distance;
+- local density;
+- family size;
+- recurrence;
+- evidence level.
 
-## E16 — Near-known versus remote census
-Primary Figure 3 headline:
-- fraction in near-known halo;
-- fraction in remote recurrent families;
-- fraction excluded because resolution is insufficient to assign a precise distance.
+## E18 — Near-known versus remote families
 
-## E17 — Chemical-class composition
-Compare recurrent dark chemistry with reference libraries. Stratify/sensitivity-test by acquisition mode where possible.
+Report:
+- near-known halo fraction;
+- remote recurrent family fraction;
+- insufficient-resolution fraction.
 
-## E18 — Remote recurrent families
-Freeze ranking criteria based on recurrence and resolution before selecting representative families for the main figure.
+Use sensitivity analyses across reference sets/metrics.
 
-## E19 — World/program coverage analysis
-Measure how World/action/program evolution changes coverage across chemical classes and whether the gain transfers to the census. Keep this in ED6 unless it changes a headline scientific count.
+## E19 — Representative remote families
+
+Select by frozen combination of:
+- evidence strength;
+- recurrence;
+- distance from known chemistry;
+- family size.
+
+Do not select based on biological significance.
 
 ---
 
-# Phase 5 — Figure 4: biological-source organization
+# Phase 6 — Biological-source organization
 
-## E20 — Perturbation-dataset assembly
-Identify public mouse datasets with:
-- germ-free/gnotobiotic controls;
-- antibiotic perturbation;
-- defined dietary perturbation.
+## E20 — Public perturbation inventory
 
-Every accession must be manually verified against the associated publication.
+Manually verify mouse datasets containing:
+- germ-free/gnotobiotic contrasts;
+- antibiotics;
+- defined diet perturbation.
+
+Freeze sample manifests and study metadata.
 
 ## E21 — Positive-control gate
-Known metabolites with established perturbation dependence are processed through the identical harmonization/attribution pipeline.
 
-Require:
-- correct effect direction/recovery;
-- label-permutation null;
-- acceptable between-study heterogeneity.
+Known source-dependent metabolites must recover expected perturbation directions.
 
-Interpret no dark family before this passes.
+Include:
+- label permutation;
+- study permutation where appropriate;
+- between-study heterogeneity.
 
-## E22 — Family source attribution
-Using frozen structural families from Phase 4, classify evidence as:
+## E22 — Family source dependence
+
+Using structural families frozen in Phase 5, classify:
 - microbiota-dependent;
 - diet-dependent;
 - host-associated;
 - mixed;
 - unresolved.
 
-Model study/platform/batch explicitly.
-
 ## E23 — Structure–source coupling
-Test whether source assignments are non-randomly organized over structural space:
-- motif/class enrichment;
-- local source-label autocorrelation;
-- cross-dataset effect consistency.
 
-This is the central Figure 4 result, not the raw category count.
+Test:
+- local source-label autocorrelation on structural graph;
+- motif/class enrichment;
+- cross-study effect consistency;
+- permutation null.
+
+This is the main Figure 4 inferential endpoint.
 
 ---
 
-# Phase 6 — Figure 5: global biological value
+# Phase 7 — Biological value of structural families
 
-## E24 — Freeze biological contrasts and family definitions
-Before any feature-versus-family comparison:
+## E24 — Freeze contrasts and family membership
+
+Before outcome analysis:
 - hash family membership;
-- pre-register eligible cohorts/phenotypes;
-- select the primary global comparison metric.
+- freeze eligible biological contrasts/cohorts;
+- pre-register one primary global endpoint.
 
 Preferred primary endpoints:
-- cross-cohort effect-sign concordance;
-- independent replication rate;
-- family-level multiplicity-controlled association yield.
+- cross-cohort replication rate;
+- effect-sign concordance.
 
-Use one primary endpoint and treat the others as secondary.
+## E25 — Paired feature-versus-family test
 
-## E25 — Feature-versus-family global comparison
-Run the same biological data twice:
-1. anonymous spectral features;
-2. frozen structural families.
+Same samples, preprocessing and covariates.
 
-Do not change preprocessing, samples or covariates between arms.
+Arm A:
+anonymous dark features.
 
-This is a paired analysis. Report the distribution across all eligible families/contrasts, not only positive examples.
+Arm B:
+frozen structural families.
 
-## E26 — Principal biological programme
-Only after E25 is frozen, select the strongest pre-defined family meeting:
-- recurrent structural membership;
-- independent-cohort replication;
-- acceptable structural confidence;
-- biological effect robustness.
+Report:
+- primary endpoint;
+- replication;
+- sign concordance;
+- multiplicity-controlled association yield;
+- effect stability.
 
-## E27 — Independent replication and sensitivity
+**Gate:** structural-family analysis must show a systematic advantage; one cherry-picked family is insufficient.
+
+## E26 — Principal programme
+
+Only after E25 is frozen, select a family satisfying:
+- high evidence;
+- recurrence;
+- replicated biological effect;
+- robust family membership.
+
+## E27 — Replication / sensitivity
+
 Require:
-- independent cohort or dataset;
-- leave-one-cohort-out analysis;
+- independent cohort or leave-one-cohort-out;
 - metadata permutation;
-- confidence-threshold sensitivity.
+- confidence/evidence threshold sensitivity;
+- family-definition perturbation sensitivity.
 
-## E28 — Standard-anchor selection
-Freeze anchor criteria before purchase. Restrict to commercially available compounds.
+---
 
-## E29 — Orthogonal validation
-For every selected anchor, report:
-- precursor mass;
-- MS/MS match;
+# Phase 8 — Orthogonal anchors
+
+## E28 — Freeze anchor-selection rule
+Commercially available structures only.
+
+## E29 — Authentic-standard validation
+Report:
+- precursor;
+- MS/MS;
 - retention/coelution;
-- alternative structures;
-- success or failure.
+- pass/fail;
+- remaining alternatives.
 
 Failures stay in the denominator.
 
-## E30 — Explicit unresolved case
-For at least one family member, show:
+## E30 — Explicit unresolved dossier
+For at least one representative high-evidence case:
 - surviving isomers;
-- evidence eliminating all others;
+- evidence eliminating the rest;
 - why current data cannot separate survivors;
-- specific additional measurement predicted to resolve them.
+- predicted next measurement.
 
 ---
 
-# Parallel engineering track — does not define the paper's scientific chronology
+# Parallel outer-loop agent track
 
-The ORBIT-MS code can continue developing in parallel:
+The MS-agent may improve:
+- World state representation;
+- action language;
+- training objective;
+- search/planning;
+- candidate construction;
+- observation model.
 
-- conservation-preserving fragmentation World;
-- mass-aware/H-aware state and action representation;
-- Free/Guided/Inverse policies;
-- candidate generation;
-- verified reasoning;
-- programme/rule evolution;
-- compute optimization.
+But every proposal must pass:
+1. typed compilation;
+2. conservation tests;
+3. local causal replay;
+4. molecule-disjoint paired gate;
+5. full held-out scientific KPI gate.
 
-Engineering promotion uses scientific held-out KPIs, but manuscript claims are only promoted when they improve or enable C1–C14.
+Agent activity is not itself a paper endpoint.
 
 ---
 
 # Critical path
 
-`Phase 0 → (E1 || E2 || E3) → Fig.1 credibility → Fig.2 census → Fig.3 chemical organization → Fig.4 source organization → Fig.5 global biology → standards`
+[
+E0 ightarrow (E1,E2,E3) ightarrow (E4,E5,E6,E7)
+ightarrow (E8,E9,E10)
+ightarrow E11	ext{--}E14
+ightarrow E15	ext{--}E19
+ightarrow E20	ext{--}E23
+ightarrow E24	ext{--}E27
+ightarrow E29.
+]
 
-Standards should be ordered as soon as E28 freezes because procurement may dominate calendar time.
+The paper should not begin full dark-corpus biological interpretation before the evidence hierarchy is frozen.
 
 ---
 
 # Standing execution rules
 
-1. Freeze definitions before looking at headline counts.
-2. Report every numerator with its denominator.
-3. Propagate uncertainty in entity counting.
-4. Keep unresolved entries in all denominators.
-5. Separate candidate recall from evidence discrimination.
-6. Biological sample is the inferential unit for biology.
-7. Families are frozen before phenotype/source testing.
-8. A negative result changes the story; it is not hidden by moving thresholds.
-9. No main-text number comes from a training log.
-10. The strongest Nature story is determined by the resulting census/organization/biology, not by the complexity of the model.
+1. One World, three conditional inference modes.
+2. Free never reads the target spectrum.
+3. Chemistry legality is hard-constrained.
+4. Unobserved is not automatically negative.
+5. Compute budgets are censoring, not chemical depth.
+6. Candidate recall and evidence quality are separate.
+7. Evidence levels are frozen before dark-corpus analysis.
+8. Biological families are frozen before phenotype/source testing.
+9. Negative results remain in denominators.
+10. No training-log number becomes a scientific claim without frozen held-out evaluation.
