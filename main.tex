@@ -94,62 +94,46 @@ Panel A defines the core concept. Panels B--D show that the World captures fragm
 \newcommand{\figuretwotodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.30\textwidth}{%
-\textbf{A | Autoregressive 1e event language}\\[3pt]
-\textbullet~Generate chemistry as source $\rightarrow$ target $\rightarrow$ 1e transfer\\
-\textbullet~STOP / REPEAT / NEW control the event sequence\\
-\textbullet~Repeated 1e events recover 2e transfer; distinct targets permit radical / rearrangement chemistry\\[2pt]
-\textit{Purpose: explain the elementary action language of the World.}
-}
-\hfill
-\paneltodo{0.30\textwidth}{%
-\textbf{B | Multi-branch reaction DAG}\\[3pt]
-\textbullet~One precursor expands into sibling reaction branches\\
-\textbullet~STOP is branch-local\\
-\textbullet~Different trajectories may reconverge to one canonical fragment state\\
-\textbullet~Separate edge probability from state reach probability\\[2pt]
-\textit{Purpose: explain why fragmentation is modelled as a probabilistic reaction network, not a single path.}
-}
-\hfill
-\paneltodo{0.34\textwidth}{%
-\textbf{C | Probability-mass semantics}\\[3pt]
-\centering $P_{\rm valid}+P_{\rm invalid}+P_{\rm censored}+P_{\rm unsampled}+P_{\rm stop}=1$\\
-\raggedright
-\textbullet~invalid = chemical failure\\
-\textbullet~censored = computation truncated\\
-\textbullet~unsampled = unexplored\\
-\textbullet~stop = learned termination\\[2pt]
-\textit{Purpose: preserve uncertainty instead of redistributing it to successful branches.}
+\paneltodo{0.94\textwidth}{%
+\textbf{A | WGV overview}\\[3pt]
+\textbullet~Observed MS/MS $\rightarrow$ spectrum-conditioned Generator \(G\) $\rightarrow$ independent molecular hypotheses\\
+\textbullet~For each candidate, spectrum-conditioned Verifier \(V\) proposes coherent electron events while spectrum-blind World \(W\) scores the same traces\\
+\textbullet~The exact bond--electron executor materializes explicit charged products; event and peak evidence are aggregated to rerank candidates\\[2pt]
+\textit{Purpose: define the production WGV computation graph.}
 }
 
 \vspace{5pt}
 
-\paneltodo{0.45\textwidth}{%
-\textbf{D | Free and Guided inference}\\[3pt]
-\textbullet~Free: expand the fragmentation World from the molecule alone\\
-\textbullet~Guided: use the observed spectrum to prioritize frontier expansion under matched compute\\
-\textbullet~Plot coverage versus expansions / states / wall time\\[2pt]
-\textit{Purpose: show how spectrum conditioning improves evidence-directed exploration without changing chemical legality.}
+\paneltodo{0.44\textwidth}{%
+\textbf{B | Molecular generator \(G\)}\\[3pt]
+\textbullet~Peak-relation spectrum encoder + partial-graph state encoder + molecular-goal representation\\
+\textbullet~Graph--spectrum cross-attention followed by factorized legal graph actions\\
+\textbullet~Action kind $\rightarrow$ atom state $\rightarrow$ attachment/pair $\rightarrow$ bond order; independent ancestral sampling at inference\\[2pt]
+\textit{Purpose: show how a spectrum conditions iterative molecular construction.}
 }
 \hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{E | Inverse molecular inference}\\[3pt]
-\textbullet~Use observed fragments / transitions to guide partial graph construction\\
-\textbullet~Show leaf $\rightarrow$ parent $\rightarrow$ precursor shaping where available\\
-\textbullet~Maintain multiple molecular candidates and replay completed candidates through the World\\[2pt]
-\textit{Purpose: formulate structure elucidation as inversion through the fragmentation World.}
+\paneltodo{0.50\textwidth}{%
+\textbf{C | Verifier \(V\), World \(W\) and exact execution}\\[3pt]
+\textbullet~\(P2\): target peak $\rightarrow$ soft atom-retention and charge intent\\
+\textbullet~\(V\): \(M,S,p,c\rightarrow q_V(a\mid M,S,p,c)\); \(W\): \(M,c\rightarrow p_W(a\mid M,c)\) with no observed spectrum\\
+\textbullet~Matched coherent-event factorization: source $\rightarrow$ 1e/2e $\rightarrow$ target atom/bond $\rightarrow$ continue/stop\\
+\textbullet~Executor: event \(a\rightarrow\) BE update $\rightarrow$ explicit charged fragments and \(m/z\)\\
+\textbullet~World evidence combines \(p_W/q_V\) correction with observed-peak agreement\\[2pt]
+\textit{Purpose: show the mechanistic core of ORBIT-MS.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.94\textwidth}{%
-\textbf{F | Key ablations}\\[3pt]
-\textbullet~Conceptually essential variants only: no multibranch World | no spectrum guidance | no ordered-transition shaping | no forward replay / no shared World semantics\\
-\textbullet~Report the metric directly tied to the removed mechanism\\[2pt]
-\textit{Purpose: identify which ingredients are essential to the fragmentation-World paradigm.}
+\textbf{D | Training objectives}\\[3pt]
+\textbullet~\(G\): paired spectrum--precursor teacher graph actions\\
+\textbullet~\(P2\): weak composition/charge supervision + executor-supported latent products\\
+\textbullet~\(V\): exact-executor target-peak reward + group-relative policy gradient\\
+\textbullet~\(W\): spectrum-blind likelihood replay of executor-supported \(V\) traces\\[2pt]
+\textit{Purpose: separate the four supervision sources without conflating proposal learning, chemistry execution and forward-World learning.}
 }
-\caption{\textbf{Figure 2 layout placeholder | Learning and inverting a probabilistic fragmentation world.}
-Panels A--C explain the gas-phase reaction representation; panels D--E explain Free, Guided and Inverse inference over the same World; panel F tests the essential design choices.}
+\caption{\textbf{Figure 2 layout placeholder | Generator, verifier and spectrum-blind fragmentation World in ORBIT-MS.}
+Panel A gives the end-to-end WGV computation graph, panels B--C expand the molecular generator and coherent fragmentation model, and panel D summarizes the distinct training objectives.}
 \end{figure}
 }
 
@@ -344,9 +328,9 @@ M,c \rightarrow \mathcal{W}(M,c) \rightarrow S_{\mathrm{obs}}.
 \]
 This formulation separates chemical possibility from experimental visibility and makes the latent reaction world, rather than a vector of spectral bins, the shared object of inference.
 
-ORBIT-MS implements this idea as a World--Generator--Verifier system. The World learns Free fragmentation, \(p(\mathcal{T},S\mid M,c)\), without access to a target spectrum. The Verifier performs Guided inference, \(p(\mathcal{T}\mid M,S_{\mathrm{obs}},c)\), allocating finite computation toward branches that explain or discriminate the observed evidence. The Generator performs Inverse inference, \(p(M,\mathcal{T}\mid S_{\mathrm{obs}},c)\), maintaining multiple molecular hypotheses that must remain chemically valid and are replayed through the same forward World. These are not three unrelated scorers: they are three conditional queries to one chemical process.
+ORBIT-MS implements this idea as a World--Generator--Verifier (WGV) system with an explicit chemical executor. The Generator \(G\) proposes molecular hypotheses from the observed spectrum by iterative, spectrum-conditioned graph construction. For a candidate molecule and an observed fragment peak, the Verifier \(V\) proposes a coherent electron-redistribution event conditioned on the measured spectrum, whereas the spectrum-blind World \(W\) scores the same event using only the molecular state and acquisition context. A deterministic bond--electron executor applies the proposed event and materializes explicit charged products, allowing candidate structures to be ranked by combining inverse-generation confidence with forward fragmentation evidence.
 
-The combinatorial size of this world makes reinforcement learning a natural inference mechanism rather than an end in itself. Free fragmentation requires probability flow over many valid trajectories; Guided explanation requires long-horizon allocation of a finite expansion budget; Inverse inference requires a diverse posterior over molecular structures rather than a single winner. GFlowNet, offline value learning, data aggregation and sequential Monte Carlo therefore determine where computation is spent, while chemistry determines which actions are legal. Atom, electron, charge, hydrogen, exact-mass, formula and valence constraints are enforced by the executor rather than traded against reward.
+The three learned components are optimized under different supervision while sharing the same executable chemistry. \(G\) is trained primarily from paired spectrum--precursor structures compiled into factorized graph-construction actions. \(V\) is optimized online with a group-relative policy-gradient objective whose rewards are computed only after exact event execution and comparison with a selected observed peak. \(W\) is trained by replaying executor-supported \(V\) traces without access to the measured fragment spectrum. Hard masks and the executor, rather than learned rewards, enforce electron availability, shell and bond-capacity constraints, molecular inventory and graph-construction validity. Canonical molecular generation uses independent ancestral samples rather than beam search, particle filtering or resampling.
 
 This shared World also changes the form of structural evidence. A candidate can progress from mass or formula compatibility to chemical validity, World reachability, executable path support, candidate-specific discriminative evidence and bidirectional spectrum--structure consistency. Because stronger evidence can be evaluated against known structures and calibrated prospectively, the output need not collapse every spectrum to an unjustified rank-1 identity. Instead, the system reports the strongest bounded structural statement supported by the available evidence.
 
@@ -447,39 +431,91 @@ The framework nevertheless changes the role of mass-spectral AI. Rather than ask
 \subsection*{Leakage control}
 \methodtodo{Exact-structure and close-analogue overlap between all evaluation chemistry and molecular/spectral pretraining corpora, including simulator-generated data; structural standardization; MCES/Tanimoto criteria and treatment of salts/stereochemistry.}
 
-\subsection*{A conservation-preserving molecular fragmentation World}
-For a precursor molecule \(M\) under acquisition condition \(c\), ORBIT-MS represents gas-phase fragmentation as a latent stochastic reaction world \(\mathcal{W}(M,c)\), rather than identifying the observed spectrum with the reaction process itself. A World state is a closed bond--electron representation containing atom identities, explicit hydrogens, atomic numbers, formal charge and radical state, a symmetric bond--electron matrix, exact monoisotopic masses, charged and neutral connected components, the current ionization/adduct state and acquisition metadata. Neutral coproducts remain part of the closed chemical state even when they are not directly observed. The experimental spectrum is treated as a partial observation generated from this latent reaction world; absence of a peak is therefore not used as a generic negative label for an otherwise legal World state.
+\subsection*{Molecular and spectral representations}
+ORBIT-MS separates the representation used for molecular construction from the representation used for gas-phase electron redistribution. An experimental spectrum is represented as a variable-length set of peaks \(S=\{(m_i,I_i)\}\) together with precursor \(m/z\), adduct, ionization polarity and available acquisition metadata. Spectrum encoders operate on peak nodes and pairwise relations derived from normalized \(m/z\), intensity, pairwise mass differences and, when available, ordered parent--child MS\(^{n}\) transitions. For spectrum-blind World inference, acquisition context contains only precursor and acquisition variables and never measured fragment-peak features.
 
-Elementary transformations are generated autoregressively as single-electron events rather than selected from a catalogue of fragmentation templates. At each event, the policy selects an electron source from an atom or currently occupied bond, chooses whether the target is an atom or a bond, predicts the target atom(s), and transfers one electron. It then chooses whether to stop the elementary event, repeat the preceding electron transfer, or generate a new electron event. Two repeated single-electron transfers in the same direction recover an ordinary two-electron pair transfer, whereas distinct electron destinations permit homolytic and multi-electron rearrangement patterns to emerge from the same action language. The accumulated electron events are applied simultaneously to the parent bond--electron state by a deterministic compiler. Atom identity, total valence-electron count, charge and bond-electron symmetry are conserved exactly; products that cannot be materialized under the supported valence model are rejected. The maximum number of electron events used during sampling is an engineering compute guard that scales with molecular size and is not interpreted as a chemical reaction-depth limit.
+Gas-phase fragmentation is represented by a \emph{bond--electron} (BE) state. A BE state stores atom identities and atomic numbers together with a symmetric integer matrix whose diagonal entries are non-bonding valence electrons localized on an atom and whose off-diagonal entries are electrons shared between atom pairs. A conventional single, double or triple bond therefore contains two, four or six shared electrons, while odd occupancies allow radical intermediates without introducing a separate graph-edit language. Charged precursor roots are compiled from the candidate structure and adduct and are retained only when they materialize to the observed precursor mass and polarity.
 
-The World is expanded as a multi-branch probabilistic reaction network. Policy STOP is represented as one terminal sibling branch and does not delete competing reaction branches. Distinct electron-event trajectories may reconverge to the same canonical chemical state; their path probabilities are retained separately during execution and summed when constructing the canonical reaction DAG. Frontier scheduling determines which unresolved branch receives the next unit of computation, not which chemistry is allowed to exist.
+\subsection*{Exact bond--electron chemical executor}
+Learned policies never directly declare a fragment structure. Instead, they propose electron-redistribution events that are applied by a deterministic chemical executor. An electron site is either an atom or an occupied bond, and an elementary arrow transfers one or two electrons from a source site to a target atom or bond. Local masks exclude moves that lack source electrons or immediately exceed supported shell or bond-electron capacities, but they do not encode a finite catalogue of named fragmentation reactions.
 
-Crucially, probability mass is not renormalized only over successful materialized products. At each sampled state, the policy mass is partitioned into
+For a parent BE state \(x\) and a proposed coherent event \(a\), the executor applies all electron transfers to obtain a new BE state,
 \[
-P_{\mathrm{stop}}+
-P_{\mathrm{valid}}+
-P_{\mathrm{invalid}}+
-P_{\mathrm{censored}}+
-P_{\mathrm{unsampled}}=1.
+x' = T_{\mathrm{exec}}(x,a).
 \]
-\(P_{\mathrm{invalid}}\) denotes sampled electron-event trajectories rejected by the chemistry compiler or materializer; \(P_{\mathrm{censored}}\) denotes trajectories that attempted to continue beyond an event or execution budget; and \(P_{\mathrm{unsampled}}\) denotes policy mass not represented by the finite Monte Carlo sample. Invalid mass is treated as failed chemistry, whereas censored and unsampled mass remain unresolved. They are never reassigned to successful children. World probability estimates are therefore reported together with halted, invalid, censored and unresolved probability mass, allowing chemical failure, computational incompleteness and learned termination to remain distinct.
+It then checks exact electron bookkeeping and BE symmetry and attempts to materialize the resulting state as explicit chemical products. Successful materialization returns charged and neutral components with product SMILES, elemental formula, formal charge, exact \(m/z\) and the corresponding parent-atom indices. Failed bookkeeping or materialization remains a failed event rather than being repaired by local search. Mechanistic class labels, where recorded, are audit metadata and do not define event legality.
 
-\subsection*{Free, Guided and Inverse inference over one World}
-The three WGV modes share the same chemical state and transition semantics but answer different conditional questions.
+\subsection*{Coherent electron-event parameterization}
+The canonical PR85 fragmentation policy generates one complete coherent electron event per Monte Carlo draw. An event is an autoregressive sequence of one- or two-electron arrows. For each arrow the policy selects an occupied source site, chooses the electron count, predicts whether the target is an atom or bond, selects the target atom and, for a bond target, its partner atom, and then predicts whether to continue the same coherent event or stop. The partially updated BE matrix is carried through the sequence, so electrons transferred into a site may be used as a later source within the same concerted event. A finite maximum number of arrows is used only as an engineering compute guard.
 
-\paragraph{Free World inference.}
-Free inference estimates the fragmentation distribution of a molecule without reading the target spectrum at inference time. The policy generates autoregressive electron-event transitions and branch-local STOP probabilities, and Subtrajectory Balance is used to train probability flow across multiple compatible trajectories rather than optimizing a single best path. Training uses molecule--spectrum aligned data as observational evidence, including observed fragment masses, intensities and ordered parent--child transitions, but the target spectrum is not an input to the Free policy. Generated but unobserved legal states remain unlabeled unless a separate observation model supports a negative claim.
+The canonical event path uses independent complete samples. It does not perform local top-\(k\) action selection, beam search, sequential Monte Carlo, effective-sample-size resampling, survivor duplication or fallback enumeration of reaction templates. The same event factorization is used by the spectrum-conditioned verifier and the spectrum-blind World; their conditioning information and learned parameters differ.
 
-\paragraph{Guided spectrum-conditioned inference.}
-Guided inference conditions the same World policy on the observed spectrum. The current production verifier uses graph--spectrum conditioning and a learned guided value to prioritize unresolved frontier states and electron-event proposals under a fixed expansion budget; it does not alter the chemistry compiler or the set of legal transitions. An auxiliary goal-conditioned IQL objective is trained on sampled Guided transitions, but the present production rollout is controlled by the spectrum-conditioned graph policy/value rather than by a separately loaded IQL controller. DAgger and hindsight goal relabelling are therefore not claimed as active components of the current production inference path. Free and Guided are compared under matched chemistry and matched computational budgets so that any gain can be attributed to observation-conditioned allocation of computation.
+\subsection*{Peak-to-product posterior}
+To provide a soft product-level hypothesis for a selected observed fragment peak \(p=(m_p,I_p)\), ORBIT-MS uses a peak-to-product posterior \(P2\). Given a candidate BE state, acquisition context and the measured spectrum, the posterior encodes the candidate and spectrum once and conditions a target-peak query on the candidate representation, the global spectrum representation, the embedding of the queried peak and numerical target-\(m/z\) features. It predicts a retention logit for every precursor atom and a charge distribution over \(\{-2,-1,+1,+2\}\). The retention probabilities define a soft precursor-atom set, and together with the charge distribution yield an expected product \(m/z\).
 
-\paragraph{Inverse molecular inference.}
-Inverse inference constructs molecular hypotheses from the precursor formula/mass constraints and the observed spectrum. A factorized graph neural policy predicts construction action type, element, formal charge, radical state, attachment or atom-pair pointers and bond order without enumerating the complete graph-edit action space. Formula inventory, charge-aware valence, exact hydrogen closure, connectivity and materializability are enforced by hard masks and the construction executor. Canonical partial-graph identities merge equivalent states reached through different construction histories. During training and proposal shaping, ordered fragmentation evidence can be represented as leaf--parent--precursor progress so that a partial molecular graph is rewarded for continuously explaining an observed fragmentation hierarchy rather than for matching isolated peak masses. Sequential Monte Carlo maintains multiple candidate modes, and every completed candidate is finally replayed through the forward fragmentation World to obtain bidirectional spectrum--structure evidence.
+The product posterior is trained with weak composition and observed-charge supervision over the full training population and with stronger atom-set and charge supervision only when a TRAIN event is executed successfully and its product strictly supports the queried peak. These executor-supported products are treated as latent mechanistic hypotheses rather than experimentally observed fragment-structure labels. During verifier training the product posterior is frozen; its atom-retention probabilities, predicted fragment boundary, retention uncertainty and target-mass residual are converted into continuous intent features and injected into the event representation.
 
-\subsection*{World-based structural evidence hierarchy}
-Structural inference is reported as a hierarchy of evidence rather than as a single candidate score. The frozen levels are: precursor mass or formula compatibility; chemically valid molecular structure; reachability in the learned fragmentation World; executable paths supporting observed fragment evidence; candidate-specific discrimination against structural alternatives; bidirectional spectrum--structure consistency after forward World replay; a calibrated bounded structural statement; and authentic-standard confirmation. Generator recall is reported separately from evidence quality so that failure to propose the true structure is not counted as a World-verification error.
+\subsection*{Spectrum-conditioned verifier}
+The Verifier \(V\) is a peak-anchored posterior event policy,
+\[
+q_V(a\mid M,S,p,c),
+\]
+that proposes coherent electron events capable of explaining a selected observed peak. It combines a guided BE/spectrum encoding of the candidate with the product intent supplied by \(P2\). The measured spectrum affects the verifier through the spectrum encoder and target-peak query; it does not alter the executor or the local chemistry masks.
 
-World evidence additionally records how completely the relevant reaction space was explored. For a candidate, supported observations are interpreted together with invalid, event-budget-censored and unsampled policy probability mass. A candidate supported only by a small explored fraction of its policy mass is not treated as equivalent to one for which the compatible reaction world is extensively resolved. Evidence thresholds and any summary statistic using unresolved probability mass are frozen on known-structure development/calibration data before repository-scale dark-spectrum analysis.
+For each selected peak, \(V\) draws multiple complete events independently and executes each draw exactly once. A draw that cannot be materialized receives a negative reward. Materialized products receive a smooth reward determined by the distance between a same-polarity unit-charge product \(m/z\) and the target peak, with an additional intensity-weighted bonus for a strict mass match. Training uses a group-relative policy-gradient loss within the set of draws for the same target, increasing the probability of events with higher relative reward without treating any single latent mechanism as observed ground truth. Strictly supported products and their exact event traces are stored as TRAIN-only latent-event receipts for subsequent product-posterior refresh and World training.
+
+\subsection*{Spectrum-blind gas-phase fragmentation World}
+The free World \(W\) parameterizes
+\[
+p_W(a\mid M,c)
+\]
+with the same coherent-event factorization as \(V\) but without access to the measured fragment spectrum or a target peak. Its input is the candidate BE state and acquisition context only. During inference, independent World draws are executed by the same deterministic chemical executor to obtain charged products and a spectrum-blind distribution over fragment masses.
+
+The current production World is trained by posterior-to-World trace replay. Exact-supported event traces discovered by \(V\) are grouped by training spectrum and target peak and replayed under \(W\); the loss is the negative log probability of the supported trace under the spectrum-blind policy, balanced across supported peaks. Cases without a replayable TRAIN trace do not contribute a trace-likelihood gradient. The canonical production objective does not use importance weights. This separation makes \(V\) an observation-conditioned proposal mechanism and \(W\) a spectrum-blind forward model over the same executable event language.
+
+\subsection*{Spectrum-conditioned molecular generator}
+The Generator \(G\) constructs precursor structures directly from the measured spectrum. Its spectrum encoder represents the MS/MS spectrum as a peak-relation graph with peak-node features and pairwise mass/intensity relations. The current molecular construction state is encoded by a graph neural network over atom identity, formal charge, radical state, local degree/valence and current bonds. A separate molecular-goal representation records the remaining elemental inventory or formula hypothesis. Graph--spectrum cross-attention injects the spectral representation into the current molecular graph, followed by message passing conditioned on the construction state, molecular goal and pooled spectrum context.
+
+The construction policy is factorized rather than enumerating the full graph-edit action space. It predicts the action kind, element, formal charge, radical state, attachment site or atom pair and bond order, with hard masks enforcing remaining formula inventory, charge-aware valence, connectivity and legal emission. The primary paired-supervision stage compiles each known precursor structure into legal graph-construction teacher actions and minimizes their negative log likelihood. Optional posterior-distillation and World-reward stages are evaluated separately and are not part of the canonical paired generator unless explicitly stated.
+
+For the standard no-formula de novo task, formula hypotheses are inferred from precursor mass, adduct and TRAIN-derived formula priors using only benchmark-permitted inputs. Ground-truth formula is reserved for the secondary formula-provided setting. At inference time the canonical generator produces independent ancestral molecular samples; it does not use beam search, top-\(k\) graph expansion, particle filtering or resampling. Invalid or unfinished trajectories remain failures in the denominator.
+
+\subsection*{Integrated WGV evidence and candidate ranking}
+For a completed molecular candidate \(M\) and an observed target peak \(p\), \(V\) is used as an inference proposal over coherent events while \(W\) scores the same event traces without seeing the measured fragment spectrum. For each sampled event
+\[
+a_k\sim q_V(a\mid M,S,p,c),
+\]
+the exact executor returns explicit charged products. The World replays the identical trace to obtain \(\log p_W(a_k\mid M,c)\), and the observation term is computed from the distance between the closest same-polarity unit-charge product and the target peak. With a fixed Gaussian mass kernel and a finite evidence floor, the event-level log evidence is
+\[
+\ell_k =
+\log p_W(a_k\mid M,c)
+-\log q_V(a_k\mid M,S,p,c)
++\log p_{\mathrm{obs}}(p\mid M,a_k),
+\]
+with an additional precursor-root log weight when multiple charged precursor roots are evaluated.
+
+Event samples for one peak are combined with a log-mean-exp estimator,
+\[
+E_p(M,S)=\operatorname{logmeanexp}_k \ell_k.
+\]
+Peak-level evidence is then aggregated using square-root intensity weights,
+\[
+E(M,S)=
+\sum_{p\in\mathcal P}
+\frac{\sqrt{I_p}}{\sum_{j\in\mathcal P}\sqrt{I_j}}\,
+E_p(M,S),
+\]
+where \(\mathcal P\) is the selected set of eligible observed fragment peaks. This produces a candidate-specific World evidence score while correcting for the fact that \(V\) was allowed to condition on the observation. For matched molecular candidate pools, integrated WGV ranking combines the frozen Generator score with the World evidence,
+\[
+\operatorname{Score}(M)=
+\operatorname{GScore}(M)+\lambda E(M,S),
+\]
+and the zero-World setting is required to reproduce the frozen Generator ordering exactly.
+
+\subsection*{Spectrum simulation, molecular retrieval and benchmark protocol}
+The forward World is also evaluated independently of the inverse generator. For spectrum simulation, molecular structure and benchmark-permitted acquisition context are supplied to \(W\), independent coherent events are sampled, and their executed charged products are aggregated into a predicted fragment-mass distribution. The measured spectrum is used only by the frozen evaluation metrics. For molecular retrieval, each candidate in the official MassSpecGym candidate universe is passed through the same spectrum-blind World to construct a World-generated fragment-mass fingerprint, which is then matched to the observed spectrum. Fixed bond-cut, neutral-loss or rearrangement rules are retained only as baselines or auxiliary diagnostics and are not the canonical retrieval backend.
+
+Adaptive development uses only a molecule-group-disjoint partition of the official MassSpecGym training fold. The current split contains 175,548 ADAPTIVE\_TRAIN spectra from 20,430 molecule groups, 8,401 SEARCH\_DEV spectra from 1,135 molecule groups and 9,782 promotion-calibration spectra from 1,136 molecule groups; official validation and test folds remain sealed during adaptive development. The standard no-ground-truth-formula setting is primary wherever MassSpecGym defines one. De novo generation is evaluated with connectivity-level InChIKey-14 Exact@1/10 together with structural-similarity metrics and a fixed raw generation budget; retrieval uses the official mass-based candidate pool with Hit@1/5/20 and MCES, with the formula-filtered pool reported separately as a bonus setting; and spectrum simulation uses the official sparse cosine and Jensen--Shannon similarity implementations. Every evaluation spectrum and every failed generation remains in the denominator.
 
 \subsection*{Soundness--resolution operating point}
 \methodtodo{Calibration cohort; stringency sweep; false-exclusion endpoint; confidence mapping; operating-point selection before atlas analysis; bootstrap/clustered uncertainty; sensitivity to mass tolerance, peak threshold and acquisition metadata.}
@@ -543,17 +579,17 @@ Correspondence and requests for materials should be addressed to \result{corresp
 \noindent\textbf{Extended Data Figure 1 | Corpora, splits, leakage and observation contract.}
 Dataset provenance; molecule-disjoint splits; historical library snapshots; exact and analogue leakage audits; acquisition conditions; dark-subset definition; distinction between unobserved and negative evidence.
 
-\noindent\textbf{Extended Data Figure 2 | Fragmentation World state, actions and conservation.}
-Bond-electron state; explicit atom and H identities; exact mass; charged and neutral products; ionization microstates; sparse electron-flow events; hard action masks; materialization; forward/inverse round trips; action validity and compute scaling.
+\noindent\textbf{Extended Data Figure 2 | Bond--electron state, coherent events and exact chemical execution.}
+BE-state representation; charged precursor microstates; atom/bond electron sites; 1e/2e coherent-event factorization; local electron/shell/bond-capacity masks; exact execution; product materialization; charged-fragment formula, charge, \(m/z\) and parent-atom mapping; failure modes and compute guards.
 
-\noindent\textbf{Extended Data Figure 3 | Free probabilistic reaction-world learning.}
-Subtrajectory-balance/GFlowNet training; multibranch siblings; branch-local STOP; reconvergent flow; probability conservation; calibration; observed mass/intensity/transition coverage; direct-spectrum and single-path baselines.
+\noindent\textbf{Extended Data Figure 3 | Peak-to-product posterior and spectrum-conditioned verifier.}
+Weak composition and observed-charge supervision; executor-supported atom-set hypotheses; target-peak queries; atom-retention/charge intent; guided BE/spectrum encoding; online event sampling; exact-executor rewards; group-relative policy-gradient training; target and spectrum intervention controls.
 
-\noindent\textbf{Extended Data Figure 4 | Guided spectrum-conditioned inference.}
-Free-versus-Guided matched-budget comparisons; spectrum-conditioned graph/value policy; auxiliary IQL training diagnostics; frontier representation; explanatory path coverage; coverage-vs-compute; target-spectrum leakage firewall; explicit statement that DAgger/HER are not part of the current production rollout.
+\noindent\textbf{Extended Data Figure 4 | Spectrum-blind World learning and forward prediction.}
+Posterior-to-World trace replay; supported-peak supervision coverage; peak-balanced trace likelihood; free coherent-event sampling; product materialization; peak-support diagnostics; standard spectrum simulation; official mass-pool molecular retrieval; spectrum-input firewall.
 
-\noindent\textbf{Extended Data Figure 5 | Inverse molecular inference.}
-Heavy-atom construction; canonical state merging; charge/formula/H/valence constraints; GFlowNet/SMC; Exact/Recall@K; structural similarity; posterior diversity; ablations; forward World replay.
+\noindent\textbf{Extended Data Figure 5 | Spectrum-conditioned molecular generation.}
+Peak-relation spectrum encoding; partial-graph message passing; molecular-goal conditioning; graph--spectrum cross-attention; factorized construction heads; hard formula/valence/connectivity masks; independent ancestral sampling; no-formula and formula-provided Exact/Recall@K; structural similarity; proposal/ranking decomposition and WGV reranking.
 
 \noindent\textbf{Extended Data Figure 6 | Evidence hierarchy and prospective calibration.}
 GT/hard-decoy bidirectional discrimination; reliability by evidence level; soundness--resolution trade-off; historical library-growth validation; structural-distance stratification; calibrated comparators.
