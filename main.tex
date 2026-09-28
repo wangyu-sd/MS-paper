@@ -31,109 +31,106 @@
 \newcommand{\figureonetodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.38\textwidth}{%
-\textbf{A | Core concept}\\[3pt]
-\textbullet~Precursor molecule + acquisition condition\\
-\textbullet~Latent gas-phase fragmentation World\\
-\textbullet~Observed MS/MS is only a partial observation\\[2pt]
-\centering $M,c \rightarrow \mathcal W_{\rm frag} \rightarrow S_{\rm obs}$\\[2pt]
-\raggedright
-\textit{Purpose: define the scientific object of the paper.}
+\paneltodo{0.94\textwidth}{%
+\textbf{A | Overall WGV framework}\\[3pt]
+\textbullet~Observed MS/MS $\rightarrow$ spectrum-conditioned Generator \(G\) $\rightarrow$ \(K\) independent molecular hypotheses\\
+\textbullet~For each candidate, spectrum-conditioned Verifier \(V\) proposes coherent electron events and spectrum-blind World \(W\) scores the same event traces\\
+\textbullet~The exact bond--electron executor materializes explicit charged products; event and peak evidence are aggregated for candidate ranking\\[2pt]
+\textit{Purpose: show the complete production inference path without conflating proposal, verification and chemical execution.}
+}
+
+\vspace{5pt}
+
+\paneltodo{0.42\textwidth}{%
+\textbf{B | Spectrum-conditioned molecular generator \(G\)}\\[3pt]
+\textbullet~Peak-relation spectrum encoder + partial-graph state encoder + molecular-goal representation\\
+\textbullet~Graph--spectrum cross-attention and message passing\\
+\textbullet~Factorized legal construction: action kind $\rightarrow$ atom state $\rightarrow$ attachment/pair $\rightarrow$ bond order\\
+\textbullet~Independent ancestral molecular samples; no beam or particle resampling\\[2pt]
+\textit{Purpose: explain how the spectrum conditions iterative molecular graph construction.}
 }
 \hfill
 \paneltodo{0.52\textwidth}{%
-\textbf{B | Does the World recover real fragmentation?}\\[3pt]
-\textbullet~One benchmark molecule with an observed fragmentation hierarchy / MSn transitions\\
-\textbullet~World rollout with matched ions, matched edges and complete chains highlighted\\
-\textbullet~Quantify intensity-weighted coverage, ordered-transition recall and complete-chain rate\\
-\textbullet~Compare against simpler forward / single-path baselines where appropriate\\[2pt]
-\textit{Purpose: show that the World models fragmentation topology, not only peak masses.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.45\textwidth}{%
-\textbf{C | Can the World resolve hard structures?}\\[3pt]
-\textbullet~One spectrum + GT + same-formula / near-isomer decoys\\
-\textbullet~For each candidate show intensity coverage, ordered-transition recall and complete-chain rate\\
-\textbullet~Highlight GT-specific fragmentation topology that decoys cannot reproduce\\[2pt]
-\textit{Purpose: show why World evidence helps discriminate difficult structural alternatives.}
-}
-\hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{D | Structural reliability increases with World evidence}\\[3pt]
-\textbullet~Group predictions by increasing evidence completeness: peak support; + ordered transitions; + complete-chain support; + low unresolved World mass\\
-\textbullet~Plot GT containment / correct-candidate rate across groups\\
-\textbullet~Optional inset: historical prospective validation on later-revealed chemistry\\[2pt]
-\textit{Purpose: empirically connect richer World evidence to more reliable structural conclusions.}
+\textbf{C | Peak-conditioned verifier \(V\), spectrum-blind World \(W\), and exact execution}\\[3pt]
+\textbullet~\(P2\): target peak $\rightarrow$ soft atom-retention and charge intent\\
+\textbullet~\(V\): proposes \(a\sim q_V(a\mid M,S,p,c)\) using the observed spectrum\\
+\textbullet~\(W\): evaluates the same trace with \(p_W(a\mid M,c)\) without observing fragment peaks\\
+\textbullet~Matched event factorization: source $\rightarrow$ 1e/2e $\rightarrow$ target atom/bond $\rightarrow$ continue/stop\\
+\textbullet~Executor: \(M+a\rightarrow\) BE update $\rightarrow$ explicit charged products and \(m/z\)\\[2pt]
+\textit{Purpose: expose the mechanistic core and the separation between posterior proposal, forward plausibility and exact chemistry.}
 }
 
 \vspace{5pt}
 
 \paneltodo{0.94\textwidth}{%
-\textbf{E | Repository-scale resolution of dark spectra}\\[3pt]
-\textbullet~Large funnel / Sankey: dark spectra $\rightarrow$ candidate generation succeeds $\rightarrow$ World-evaluable candidates $\rightarrow$ World-discriminative evidence $\rightarrow$ calibrated structural statements\\
-\textbullet~Final outputs: unique putative structure | bounded isomer set | shared substructure / class | unresolved\\
-\textbullet~Keep denominators and unresolved cases visible at every step\\[2pt]
-\textit{Purpose: provide the headline result --- how much dark chemistry becomes structured molecular knowledge.}
+\textbf{D | Distinct learning signals}\\[3pt]
+\textbullet~\(G\): paired spectrum--precursor teacher graph actions\\
+\textbullet~\(P2\): mass-compatible composition/charge supervision + executor-supported latent products\\
+\textbullet~\(V\): target-peak reward after exact execution + group-relative policy gradient\\
+\textbullet~\(W\): spectrum-blind replay likelihood on executor-supported \(V\) traces\\[2pt]
+\textit{Purpose: show how the four learned components are trained without treating latent mechanisms as experimental fragment-structure labels.}
 }
-
-\vspace{5pt}
-
-\paneltodo{0.94\textwidth}{%
-\textbf{F | Representative dark chemistry}\\[3pt]
-\textbullet~3--4 compact examples: unique structure | bounded isomer set | remote recurrent family | standard-confirmed anchor if available\\
-\textbullet~For each example show structure, evidence type, recurrence and novelty / distance-to-known\\[2pt]
-\textit{Purpose: make the repository-scale result chemically concrete.}
-}
-\caption{\textbf{Figure 1 layout placeholder | A molecular fragmentation world enables high-evidence resolution of dark spectra.}
-Panel A defines the core concept. Panels B--D show that the World captures fragmentation, resolves difficult structures and supports reliable reporting. Panels E--F show the scale and chemical form of dark-spectrum resolution.}
+\caption{\textbf{Figure 1 layout placeholder | ORBIT-MS couples spectrum-conditioned molecular generation to executable gas-phase fragmentation evidence.}
+Panel A gives the end-to-end WGV inference path. Panels B--C expand the Generator and fragmentation models, and panel D summarizes their distinct supervision.}
 \end{figure}
 }
 
 \newcommand{\figuretwotodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.94\textwidth}{%
-\textbf{A | WGV overview}\\[3pt]
-\textbullet~Observed MS/MS $\rightarrow$ spectrum-conditioned Generator \(G\) $\rightarrow$ independent molecular hypotheses\\
-\textbullet~For each candidate, spectrum-conditioned Verifier \(V\) proposes coherent electron events while spectrum-blind World \(W\) scores the same traces\\
-\textbullet~The exact bond--electron executor materializes explicit charged products; event and peak evidence are aggregated to rerank candidates\\[2pt]
-\textit{Purpose: define the production WGV computation graph.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.44\textwidth}{%
-\textbf{B | Molecular generator \(G\)}\\[3pt]
-\textbullet~Peak-relation spectrum encoder + partial-graph state encoder + molecular-goal representation\\
-\textbullet~Graph--spectrum cross-attention followed by factorized legal graph actions\\
-\textbullet~Action kind $\rightarrow$ atom state $\rightarrow$ attachment/pair $\rightarrow$ bond order; independent ancestral sampling at inference\\[2pt]
-\textit{Purpose: show how a spectrum conditions iterative molecular construction.}
+\paneltodo{0.45\textwidth}{%
+\textbf{A | Standard no-formula de novo generation}\\[3pt]
+\textbullet~Mass/adduct-derived formula proposals only; ground-truth formula hidden\\
+\textbullet~Report Exact@1/10, MCES/Tanimoto@1/10, valid unique candidates and fixed raw sample budget\\
+\textbullet~Show formula-provided setting separately as a bonus upper bound\\[2pt]
+\textit{Purpose: measure molecular proposal capacity under the standard benchmark contract.}
 }
 \hfill
-\paneltodo{0.50\textwidth}{%
-\textbf{C | Verifier \(V\), World \(W\) and exact execution}\\[3pt]
-\textbullet~\(P2\): target peak $\rightarrow$ soft atom-retention and charge intent\\
-\textbullet~\(V\): \(M,S,p,c\rightarrow q_V(a\mid M,S,p,c)\); \(W\): \(M,c\rightarrow p_W(a\mid M,c)\) with no observed spectrum\\
-\textbullet~Matched coherent-event factorization: source $\rightarrow$ 1e/2e $\rightarrow$ target atom/bond $\rightarrow$ continue/stop\\
-\textbullet~Executor: event \(a\rightarrow\) BE update $\rightarrow$ explicit charged fragments and \(m/z\)\\
-\textbullet~World evidence combines \(p_W/q_V\) correction with observed-peak agreement\\[2pt]
-\textit{Purpose: show the mechanistic core of ORBIT-MS.}
+\paneltodo{0.45\textwidth}{%
+\textbf{B | Spectrum-blind World simulation}\\[3pt]
+\textbullet~Molecule + acquisition context $\rightarrow W\rightarrow$ executed charged products $\rightarrow$ predicted MS/MS\\
+\textbullet~Report official cosine and Jensen--Shannon similarity on the complete denominator\\
+\textbullet~Include predicted-peak support and low-mass / empty-spectrum diagnostics only as secondary explanation\\[2pt]
+\textit{Purpose: test the forward World independently of inverse molecular generation.}
 }
 
 \vspace{5pt}
 
-\paneltodo{0.94\textwidth}{%
-\textbf{D | Training objectives}\\[3pt]
-\textbullet~\(G\): paired spectrum--precursor teacher graph actions\\
-\textbullet~\(P2\): weak composition/charge supervision + executor-supported latent products\\
-\textbullet~\(V\): exact-executor target-peak reward + group-relative policy gradient\\
-\textbullet~\(W\): spectrum-blind likelihood replay of executor-supported \(V\) traces\\[2pt]
-\textit{Purpose: separate the four supervision sources without conflating proposal learning, chemistry execution and forward-World learning.}
+\paneltodo{0.45\textwidth}{%
+\textbf{C | Official molecular retrieval}\\[3pt]
+\textbullet~World-generated fragment-mass fingerprints for every candidate in the official mass-based pool\\
+\textbullet~Report Hit@1/5/20 and MCES@1; formula-filtered pool shown separately\\
+\textbullet~Use measured spectrum only for matching, never as World input\\[2pt]
+\textit{Purpose: test whether spectrum-blind fragmentation predictions identify the correct candidate.}
 }
-\caption{\textbf{Figure 2 layout placeholder | Generator, verifier and spectrum-blind fragmentation World in ORBIT-MS.}
-Panel A gives the end-to-end WGV computation graph, panels B--C expand the molecular generator and coherent fragmentation model, and panel D summarizes the distinct training objectives.}
+\hfill
+\paneltodo{0.45\textwidth}{%
+\textbf{D | Matched WGV reranking}\\[3pt]
+\textbullet~Freeze one Generator candidate pool and compare G-only with \(G+\lambda E(M,S)\) on the identical molecules\\
+\textbullet~Require zero-World weight to reproduce the frozen G ordering case by case\\
+\textbullet~Report Exact@1/10 and paired gains/losses\\[2pt]
+\textit{Purpose: isolate the value of mechanistic World evidence from proposal recall.}
+}
+
+\vspace{5pt}
+
+\paneltodo{0.45\textwidth}{%
+\textbf{E | Where structure inference fails}\\[3pt]
+\textbullet~Stratify by heavy-atom count, formula availability and candidate validity\\
+\textbullet~Separate formula-support failure, proposal failure and ranking failure\\
+\textbullet~Report proposal Recall@K independently of final ranking\\[2pt]
+\textit{Purpose: identify whether remaining error arises before or after forward verification.}
+}
+\hfill
+\paneltodo{0.45\textwidth}{%
+\textbf{F | Mechanistic controls}\\[3pt]
+\textbullet~Matched versus spectrum-shuffled \(V\) inputs\\
+\textbullet~Spectrum-blind \(W\) firewall and supported-trace replay controls\\
+\textbullet~P2/product-intent and event-factorization ablations where benchmark-relevant\\[2pt]
+\textit{Purpose: test whether gains depend on the intended observation-conditioned mechanism rather than implementation shortcuts.}
+}
+\caption{\textbf{Figure 2 layout placeholder | Standard benchmark decomposition separates molecular proposal, forward fragmentation and WGV evidence.}
+Panels A--C evaluate the three MassSpecGym task families; panel D measures WGV reranking on fixed candidate pools; panels E--F diagnose the remaining structural and mechanistic bottlenecks.}
 \end{figure}
 }
 
@@ -313,7 +310,7 @@ This figure first compares anonymous features with molecular-family analysis glo
 \maketitle
 
 \noindent\textbf{
-Tandem mass spectra are incomplete observations of the gas-phase reaction processes that generate them, yet molecular structure elucidation is usually learned as a direct mapping between spectra and molecular candidates. Here we instead learn a probabilistic molecular fragmentation world in which ionization, electron-flow events, hydrogen transfer, competing fragmentation branches and their observations share one conservation-preserving state space. The same World supports three complementary modes of inference: Free prediction of molecular fragmentation, Guided search for reaction paths that explain an observed spectrum, and Inverse generation of molecular structures that must remain consistent when replayed through the forward World. Under molecule-disjoint evaluation, the learned World recovers \result{Free mass/intensity/transition result}; Guided inference improves \result{matched-budget explanatory endpoint} by \result{Guided gain}; and Inverse inference recovers the true structure within the top \result{K} candidates in \result{Inverse Recall@K}, while maintaining \result{posterior diversity/validity}. Bidirectional spectrum--structure consistency converts molecular prediction into a hierarchy of auditable evidence, and stronger evidence levels correspond to \result{reliability gradient}, including \result{prospective containment/calibration} on structures deposited only after the system was frozen. Applying this evidence hierarchy to \result{dark spectrum count} previously unannotated tandem mass spectra resolves \result{evidence-level distribution/high-evidence count} into bounded structural statements and \result{recurrent entity/family count} recurrent molecular entities or families. These resolved dark structures form \result{headline structural-organization result}, partition reproducibly by \result{microbiota/diet/host source result}, and improve \result{feature-versus-family biological reproducibility endpoint} relative to feature-level analysis, revealing \result{principal biological programme}. Our results establish molecular fragmentation as a learnable world for forward and inverse chemical inference and turn the dark metabolome from a collection of unidentified spectra into an experimentally bounded and biologically analysable chemical space.
+Tandem mass spectra are incomplete observations of the gas-phase chemistry that generates them, yet molecular structure elucidation is usually learned as a direct spectrum-to-structure mapping. Here we present ORBIT-MS, a World--Generator--Verifier framework that separates molecular proposal from executable fragmentation evidence. A spectrum-conditioned Generator constructs molecular hypotheses; for each candidate and observed fragment peak, a Verifier proposes coherent one- or two-electron redistribution events, while a spectrum-blind gas-phase World scores the same event traces from molecular structure and acquisition context alone. A deterministic bond--electron executor applies each event and materializes explicit charged products, allowing inverse-generation confidence to be combined with importance-corrected forward fragmentation evidence. Under molecule-disjoint development, the standard no-ground-truth-formula Generator reaches \result{final no-formula Exact@1/10 and structural-similarity result}; the spectrum-blind World reaches \result{final cosine/Jensen--Shannon and retrieval Hit@K result}; and matched WGV reranking changes \result{Exact@1/10 WGV gain on a frozen candidate pool}. This decomposition makes proposal failure, forward-fragmentation failure and evidence-ranking failure separately measurable rather than collapsing them into one score. We use the resulting evidence hierarchy to assign \result{dark spectrum count} previously unannotated spectra to the strongest supported structural statement, yielding \result{recurrent entity/family count} recurrent molecular entities or families with \result{headline structural/biological result}. ORBIT-MS therefore treats a molecular prediction as a chemical hypothesis that must survive executable gas-phase evidence, providing a route from uncertain tandem spectra to auditable structural and biological inference.
 }
 
 \vspace{1em}
@@ -336,37 +333,25 @@ This shared World also changes the form of structural evidence. A candidate can 
 
 We use this capability to address the dark metabolome. Public repositories contain enormous numbers of unannotated spectra,\cite{Wang2016GNPS,Bushuiev2026Dreams} but their chemistry is usually analysed as anonymous features or spectral clusters. Once dark spectra can be moved to explicit evidence levels and bounded molecular structures, they can instead be counted as recurrent chemical entities, organized into structural families, related to characterized metabolism, assigned perturbation-dependent biological context and compared as molecular objects across cohorts. The paper therefore proceeds from a fragmentation-world paradigm, through graded structural evidence, to large-scale analysis of dark chemistry and its biology.
 
-\section*{A molecular fragmentation world unifies prediction, explanation and inverse inference}
+\section*{ORBIT-MS couples molecular generation to executable fragmentation evidence}
 
-We first tested the central premise that the latent object behind a tandem mass spectrum can be learned as a probabilistic reaction world rather than only as a direct structure-to-spectrum mapping. The World represents ionization microstates, explicit atom and hydrogen identities, bond-electron states, formal charge, radicals, exact mass, charged and neutral coproducts and branch-local termination. Electron-flow actions are executed only when they satisfy hard conservation and materialization constraints; learned policies therefore estimate preference and probability over legal chemistry rather than learning legality from penalties.
+ORBIT-MS separates three questions that are usually collapsed into one spectrum-to-structure score: which molecular structures should be proposed, which fragmentation events can explain a measured peak, and whether those events are intrinsically plausible for the candidate molecule. The Generator \(G\) addresses the first question by iterative spectrum-conditioned molecular graph construction. The Verifier \(V\) addresses the second by conditioning on a candidate, the observed spectrum and a selected peak. The spectrum-blind World \(W\) addresses the third by scoring the identical coherent-event trace without access to measured fragment peaks. All proposed events are passed through the same deterministic bond--electron executor before they can contribute evidence \figureonetodo.
 
-On \result{World held-out cohort and denominator} molecule-disjoint held-out molecules, the Free World generated multi-branch fragmentation networks that covered \result{Free observed-mass coverage} of observed fragment masses, \result{Free intensity-weighted coverage} of experimental fragment intensity and \result{Free ordered-transition coverage} of observed parent--child transitions, while maintaining a maximum probability-conservation error of \result{probability-conservation error} \figureonetodo. Multistage expansion contributed \result{multistage-added coverage} evidence not reachable by one-step fragmentation. In contrast to a direct spectrum predictor, these outputs retain the reaction states and trajectories that connect molecular structure to each supported observation \result{direct-predictor comparison}.
+The production fragmentation language is deliberately narrower than a free-form reaction generator. A coherent event is sampled autoregressively as a sequence of one- or two-electron transfers between atom or bond sites; local masks exclude immediate electron, shell and bond-capacity violations, and the executor must materialize the resulting state into explicit products. On the complete TRAIN-derived SEARCH\_DEV development split, the trained spectrum-conditioned verifier increased \result{final V strict peak-support endpoint} relative to its frozen initialization while maintaining \result{V materialization rate}; the spectrum-blind World trained from supported traces changed \result{final W forward-support endpoint}. These component metrics are used only to diagnose the fragmentation model; project-level performance is evaluated by standard spectrum simulation, retrieval and de novo generation.
 
-The multi-branch representation was essential. Under the same transition model and matched expansion budget, retaining sibling branches, branch-local STOP events and reconvergent paths improved \result{multibranch endpoint} from \result{single-path result} to \result{multi-branch result}. The remaining probability on unexpanded frontier states was reported as censored mass rather than interpreted as chemical impossibility. This distinction allowed the World to represent multiple competing fragmentation routes without forcing a single mechanistic explanation.
+Forward spectrum prediction provides the direct test of \(W\). Given only molecular structure and acquisition context, the World samples coherent events, executes them and aggregates charged products into a predicted fragment-mass distribution. On the current complete 8,401-spectrum SEARCH\_DEV development evaluation, the frozen World obtains cosine similarity 0.09935 and Jensen--Shannon similarity 0.09199 at the current sampling budget, with a median cosine of zero. The failure distribution is informative: 66.84\% of spectra have zero cosine, the World predicts 2.27 mass peaks per case on average compared with 38.83 observed peaks, and a substantial fraction of predicted intensity lies in low-\(m/z\) products absent from these spectra. We therefore treat these values as a measured forward-model baseline rather than evidence that fragmentation simulation is solved; the standard simulation metric, rather than internal event-support rates, remains the optimization target.
 
-The same state and transition semantics were then queried in three directions. Free inference predicted the reaction world from a molecule without reading the target spectrum. Guided inference conditioned on an observed spectrum and learned which frontier states and electron-flow events were worth expanding under a fixed computational budget. Inverse inference constructed multiple candidate molecules from spectral and precursor constraints and required completed candidates to remain consistent when passed forward through the World. A shared-World ablation showed \result{shared-world coupling result}, indicating that the coupling is not simply architectural parameter sharing but a common chemical state and transition system.
+The molecular Generator is evaluated separately because a verifier cannot recover a structure that was never proposed. In the standard no-ground-truth-formula SEARCH\_DEV setting, recovered full-population predictions give Exact@1 of 131/8,401 (1.559\%), Exact@10 of 370/8,401 (4.404\%), and proposal Recall@100 of 464/8,401 (5.523\%). The correct formula is nevertheless present in the mass/adduct-derived proposal list for 8,140/8,401 cases (96.89\%), showing that formula availability alone does not explain the low structural recall. The gap is largest for complex molecules: among 2,110 targets with at least 30 heavy atoms, the correct formula is available for 1,930 cases but the correct connectivity appears among 100 generated samples in only five. These results identify precise molecular connectivity generation, rather than formula proposal or candidate-list emptiness, as the dominant current inverse-model bottleneck.
 
-The distinction between chemical legality and learned preference was enforced throughout. Across \result{number of challenged transitions} deliberately legal and invalid transitions, atom, electron, charge, hydrogen and exact-mass constraints rejected \result{invalid rejection rate} of invalid actions while preserving \result{legal execution rate} of valid actions. Forward/reverse closed-system tests recovered the original state in \result{round-trip rate} of cases for transitions with a defined inverse. These checks establish the executable boundary of the World; they do not imply that every allowed event is a validated gas-phase mechanism, whose propensity remains learned and empirically evaluated.
+\section*{Mechanistic World evidence provides a separate test of molecular hypotheses}
 
-Together, these results define one chemical World with three modes of inference: prediction, explanation and inverse structure inference.
+For a completed candidate \(M\), WGV evaluates observed peaks without allowing the spectrum-conditioned verifier to become the chemistry authority. For each target peak, \(V\) proposes coherent events from \(q_V(a\mid M,S,p,c)\); the exact executor determines the charged products; and \(W\) replays the identical trace to obtain \(p_W(a\mid M,c)\) without observing the measured fragment spectrum. Candidate evidence therefore combines forward plausibility, correction for the observation-conditioned proposal and agreement between executed product masses and the target peak. Event evidence is aggregated over independently sampled traces and then across observed peaks using intensity-aware weights.
 
-\section*{World-based inference establishes graded structural evidence}
+This decomposition is essential for interpreting end-to-end performance. Generator proposal Recall@K measures whether the correct connectivity is present at all, whereas matched WGV reranking measures whether fragmentation evidence moves the correct candidate within an unchanged generated pool. The primary comparison therefore freezes one \(G\) candidate set and evaluates \(G\)-only and \(G+\lambda E(M,S)\) rankings on exactly the same molecules; the zero-World setting must reproduce the original \(G\) ordering case by case. The complete matched no-formula WGV result remains \result{pending matched WGV Exact@1/10 result}, and the official mass-pool retrieval result remains \result{pending complete Hit@1/5/20 and MCES@1 result}; partial or smoke evaluations are not treated as scientific outcomes \figuretwotodo.
 
-We next asked what the shared World adds to molecular structure inference. A direct generator can propose a molecule, but the proposal does not by itself state why that molecule is compatible with the observation or which alternatives the spectrum can exclude. WGV instead evaluates a sequence of increasingly specific evidence: mass/formula compatibility, chemical validity, World reachability, executable path support, candidate-specific discrimination, bidirectional spectrum--structure consistency and finally a calibrated bounded structural statement.
+The observation-conditioned role of \(V\) is also tested directly. In a frozen 256-case spectrum-shuffle control, the precursor state, queried peak and random seed were held fixed while the remainder of the spectrum was replaced by a same-adduct peer spectrum after neutral-loss alignment. At a 32-target budget, matched spectra produced at least one strict-hit event for 43/256 molecules (16.80\%) and shuffled spectra for 40/256 (15.63\%); the paired difference of 1.17 percentage points had a bootstrap 95\% interval of \([-0.39,3.13]\) points. Replay log probabilities shift with the measured spectrum, but strict-hit separation is therefore not yet established at the declared development gate. This negative control localizes a current limitation to spectrum-conditioned evidence use rather than event materialization, which remains near 99\%.
 
-The Free World provides the first mechanistic layer. On the held-out cohort, it recovered \result{Free evidence result} while preserving the target-spectrum firewall. Guided inference then received the same molecule and the observed spectrum but no additional chemistry. Under an identical budget of \result{matched compute budget}, Guided increased \result{primary Guided endpoint} from \result{Free matched-budget result} to \result{Guided matched-budget result}, and required \result{compute reduction} fewer expanded states to reach matched \result{coverage target} \figuretwotodo. The gain arose from reallocating computation toward evidence-bearing branches rather than from changing which chemical transitions were legal.
-
-Inverse inference addressed the complementary problem. On \result{Inverse held-out cohort} molecule-disjoint spectra, the Generator produced chemically valid and formula-consistent candidates in \result{validity rate} of cases, recovered the true structure at Exact@1/@5/@10 of \result{Exact@1}, \result{Exact@5} and \result{Exact@10}, and achieved a mean best structural similarity of \result{best Tanimoto/MCES}. The posterior retained \result{diversity result} distinct structural modes rather than collapsing immediately to one candidate. Removing World guidance or forward replay changed \result{inverse ablation result}, establishing that the inverse model benefits from inference through the learned reaction process rather than only from graph validity constraints.
-
-We then evaluated completed candidates by replaying them through the same World. In same-formula and near-isomer pools, the ground-truth candidate exceeded the strongest decoy in \result{bidirectional discrimination endpoint} of cases when scored by forward path/intensity consistency, compared with \result{mass/similarity comparator result} for weaker evidence. The advantage was concentrated in spectra containing candidate-specific paths that could be executed for the true structure but not for its closest alternatives. This closed loop,
-\[
-S_{\mathrm{obs}}\rightarrow M\rightarrow \mathcal{W}(M)\rightarrow \hat S,
-\]
-turns a molecular proposal into a falsifiable hypothesis about how the observation could have arisen.
-
-Structural reliability increased with evidence strength. Across known-structure evaluation sets, true-structure containment rose from \result{reliability at low evidence} at mass/formula compatibility to \result{reliability at World reachability}, \result{reliability at candidate-specific evidence} and \result{reliability at bidirectional consistency} at successively stronger levels, with corresponding changes in candidate-set size and resolution. We froze these evidence definitions before repository-scale deployment.
-
-Finally, we tested whether the highest model-derived evidence remained honest outside the chemistry available at development time. The complete WGV system and calibration mapping were frozen against a \datatodo{historical library freeze date} snapshot, then evaluated on \result{prospective cohort size} spectra that were dark at freeze but whose structures were independently deposited later. At \result{stated confidence}, the true structure was contained in the reported bounded statement in \result{prospective containment}, with calibration error \result{prospective calibration error}; calibration under increasing structural distance changed by \result{distance-shift calibration result}. Calibrated comparator outputs on the same set showed \result{comparator calibration result}. These results justify using evidence level, rather than rank alone, as the unit of structural confidence in the dark-metabolome analysis.
+Together, the current development results separate three bottlenecks that a single de novo accuracy number would obscure: \(G\) has limited exact-connectivity proposal recall despite broad formula support; \(W\) produces sparse and sometimes low-mass-biased forward spectra; and \(V\) uses spectral context at the probability level but has not yet shown strong strict-hit separation under the shuffle intervention. Subsequent model promotion is therefore tied to matched standard-task improvements rather than to component-only diagnostics.
 
 \section*{High-evidence inference resolves the dark metabolome at scale}
 
@@ -406,19 +391,19 @@ The global paired analysis and the replicated programme therefore connect the me
 
 \section*{Discussion}
 
-Mass-spectral structure elucidation is usually framed as a mapping problem: given an observed spectrum, predict the correct molecular structure. Our results support a broader formulation. The spectrum is an incomplete observation of a latent gas-phase reaction world, and prediction, explanation and inverse structure inference can therefore be treated as conditional queries to the same learned chemical process. This shared World supplies an intermediate causal object between molecular structure and spectral observation that direct mappings do not explicitly represent.
+Mass-spectral structure elucidation is usually framed as a direct mapping problem: given an observed spectrum, predict the correct molecular structure. ORBIT-MS instead separates proposal from executable evidence. The Generator proposes candidate structures, the spectrum-conditioned Verifier searches for coherent electron-redistribution events that explain observed peaks, and the spectrum-blind World asks whether the same events are plausible from the candidate and acquisition context alone. A deterministic bond--electron executor sits between learned inference and chemical products. This architecture does not require the Generator, Verifier and World to be one neural model; it requires them to communicate through a common executable chemical state and event language.
 
-The benefit of this formulation is not that every learned trajectory becomes a proven mechanism. Hard atom, electron, charge, hydrogen, mass and valence constraints establish chemical bookkeeping and executability, whereas event propensity and mechanistic relevance remain learned and empirically tested. The value of the World is instead that forward and inverse claims can be required to agree within the same state and transition semantics. A generated molecule is no longer only a high-scoring answer; it is a hypothesis that must produce a reaction network capable of explaining the observation.
+The value of the fragmentation World is therefore not that every sampled electron path becomes a proven gas-phase mechanism. Local masks and exact execution enforce bookkeeping and materializability, whereas event propensity and mechanistic relevance remain learned and empirically evaluated. Multiple latent events may explain the same observed fragment, and a verifier conditioned on the observation can always propose evidence more easily than a free forward model. The \(p_W/q_V\) correction and exact product comparison are designed to separate these roles: \(V\) is an inference proposal, \(W\) is a spectrum-blind prior over executable events, and the executor determines what those events actually produce.
 
-This changes how uncertainty is represented. Ambiguous spectra naturally induce multiple molecular hypotheses, and multiple fragmentation paths may support the same observed mass. GFlowNet and sequential posterior inference therefore preserve distributions over trajectories and structures rather than optimizing only one winner. Guided inference further separates chemical probability from evidential value: common fragmentation can be likely yet uninformative, whereas a rarer candidate-specific path can be decisive for structural discrimination. Reinforcement learning is used here to allocate finite computation across this combinatorial world, not to relax chemical constraints.
+The current development results also show why this decomposition is useful even before end-to-end performance is mature. Formula availability is already high in the no-formula candidate lists, yet exact-connectivity proposal recall remains low, especially for large molecules. Conversely, free World simulation is chemically executable but spectrally sparse and biased toward low-mass products at the present sampling and training regime. Spectrum-conditioned \(V\) changes event probabilities, but the matched-versus-shuffled strict-hit control is not yet decisive. These are different failure modes and should not be hidden behind a single structure-ranking score.
 
-The resulting evidence hierarchy provides the bridge from method to science. Dark spectra are not all promoted to a rank-1 molecular identity. Instead, each spectrum reaches the strongest level supported by its evidence, from formula compatibility through World reachability and bidirectional consistency to calibrated bounded structure and, for a small subset, authentic-standard confirmation. This makes repository-scale analysis possible without conflating model confidence with experimental identification.
+This distinction changes how uncertainty can be reported. A candidate may be chemically valid yet absent from the Generator pool; it may be proposed but unsupported by the forward World; or it may survive because several latent fragmentation events remain observationally indistinguishable. ORBIT-MS therefore reports proposal coverage, executable fragmentation evidence and final ranking separately. The intended repository-scale evidence hierarchy builds on this decomposition: dark spectra are assigned the strongest bounded structural statement supported by the available evidence rather than being forced to a unique rank-1 identity.
 
-Applied at scale, this approach reveals a recurrent dark chemical population with non-random structural organization and reproducible biological dependence. The distinction between near-known chemistry and remote recurrent families quantifies where existing metabolite references are informative and where they remain sparse. The feature-versus-family analysis further shows why structural resolution matters downstream: chemically related observations can be compared as a common molecular object across cohorts rather than as unrelated anonymous peaks.
+If the standard WGV benchmarks improve after the remaining forward-World and generator bottlenecks are addressed, the framework provides a direct bridge from method to dark-metabolome science. Chemically related observations can then be collapsed into recurrent structural entities or bounded families, compared across independent repositories and associated with perturbation-dependent biological context without conflating model confidence with experimental identification. Authentic standards remain the highest evidence tier for the structures tested experimentally.
 
-Important limitations remain. A learned World is an approximation to gas-phase chemistry; legal electron-flow events are not automatically validated mechanisms. The experimental observation model is incomplete, and unobserved generated states cannot generally be labelled false. Prospective library growth is not a random sample of dark chemistry. Repository-scale entity counts depend on imperfect collapsing rules. Perturbation dependence does not prove biosynthetic origin, and family-level associations do not establish pathways. Authentic standards remain the highest evidence tier for the structures tested here.
+Important limitations remain. The bond--electron executor defines an executable approximation to supported gas-phase chemistry, not a complete quantum-mechanical mechanism model. Product hypotheses discovered by \(V\) are latent explanations rather than experimental fragment-structure labels. The measured spectrum is incomplete, and an unobserved generated fragment cannot generally be treated as chemically false. Current development metrics are obtained on a molecule-group-disjoint partition of the official training fold; official validation and test results remain sealed until the model and evaluation protocol are frozen. Repository-scale entity counts, perturbation dependence and family-level biological associations will introduce additional uncertainty that must be quantified separately.
 
-The framework nevertheless changes the role of mass-spectral AI. Rather than asking only whether a model can guess a molecule from a spectrum, it asks whether a shared chemical world can support forward prediction, conditional explanation and inverse inference with explicit evidence. That capability turns the dark metabolome from a collection of unidentified spectra into a graded, testable and biologically analysable chemical space.
+The framework therefore changes the role of mass-spectral AI in a specific way: a generated molecule is treated as a hypothesis that must survive an executable forward chemical test. Whether this principle ultimately improves the standard de novo, retrieval and spectrum-simulation tasks is an empirical question, and the paper separates those benchmark outcomes from the internal diagnostics used to develop the World.
 
 \section*{Methods}
 
