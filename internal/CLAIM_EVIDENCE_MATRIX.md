@@ -2,6 +2,8 @@
 
 Internal truth contract for the Nature manuscript.
 
+> **Current quantitative authority (2026-10-06):** completed PR85–PR90 results, code/checkpoint provenance, manuscript eligibility and Nature-specific claim boundaries are consolidated in [NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md](NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md). Where an older placeholder or prose number conflicts with that ledger, the ledger is the current factual source until the final fingerprint-free chemical-evidence WGV and official held-out benchmark are frozen.
+
 The paper now makes two coupled contributions:
 
 1. **Inference paradigm:** spectra are partial observations of a latent molecular fragmentation world; one learned World supports Free prediction, Guided explanation and Inverse structure inference.
