@@ -2,24 +2,24 @@
 
 ## Scope
 
-This change revises only \`main.tex\`'s Methods and its Figure 1 **textual** methods placeholder, plus the CoCoGraph reference. It does **not** assert that ORBIT-MS has completed PR91 V2 training, performed self-distillation, demonstrated NMI-level performance, or discovered experimentally confirmed new metabolites.
+This change revises only `main.tex`'s Methods and its Figure 1 **textual** methods placeholder, plus the CoCoGraph reference. It does **not** assert that ORBIT-MS has completed PR91 V2 training, performed self-distillation, demonstrated NMI-level performance, or discovered experimentally confirmed new metabolites.
 
-This PR is deliberately independent of PR #2 (\`paper/figure-revision-discovery-first-20261008\`), which addresses an earlier discovery-first Nature figure plan.
+This PR is deliberately independent of PR #2 (`paper/figure-revision-discovery-first-20261008`), which addresses an earlier discovery-first Nature figure plan.
 
 ## Implemented source components
 
 | Manuscript content | Source of implementation | Correct boundary |
 | --- | --- | --- |
-| W: spectrum-blind connected fragment prior | \`src/orbit_ms/wgv/fragment_candidate_world.py\`; \`scripts/train_pr86_candidate_world.py\`; \`scripts/prepare_pr86_structural_targets.py\` | Up to three precursor-bond cuts, heavy-atom masks, hydrogen offsets and carrier masses; **not** a complete bond–electron mechanistic simulator. |
-| V: observed-spectrum-conditioned fragment posterior | \`src/orbit_ms/wgv/v_set_posterior.py\`; \`scripts/run_pr87_v_learned_set.py\` | Learns posterior reweighting on **frozen W fragments**; no observed fragment-structure truth; spectrum evidence is not calibrated molecule correctness. |
-| W/V structured transfer | \`src/orbit_ms/wgv/wv_structured_evidence.py\`; \`scripts/score_pr87_frozen_wv_graph_edit.py\` | Verified heavy-atom mapping; atom 3, pair 6 and global 2 channels; fragmentation boundary is observability, **not** an automatically signed bond removal. |
-| G: spectrum-conditioned CoCoGraph V2 | \`src/orbit_ms/wgv/cocograph_spectrum_v2.py\`; \`scripts/train_pr91_cocograph_spectrum_v2.py\` | Clean-adjacency remove/add/bond-order heads and separate graph-only noise time; old V1 inverse-step imitation is only an auxiliary term. |
-| V2 sampling and evidence feedback | \`scripts/eval_pr91_cocograph_spectrum_v2.py\`; \`scripts/pr91_wv_online_rollout.py\`; \`scripts/pr91_wv_online_selection.py\` | Predicted formula Top8, 4 draws/formula, bounded DES, online 2-child resampling only at defined late steps, separate terminal W/V scoring. |
+| W: spectrum-blind connected fragment prior | `src/orbit_ms/wgv/fragment_candidate_world.py`; `scripts/train_pr86_candidate_world.py`; `scripts/prepare_pr86_structural_targets.py` | Up to three precursor-bond cuts, heavy-atom masks, hydrogen offsets and carrier masses; **not** a complete bond–electron mechanistic simulator. |
+| V: observed-spectrum-conditioned fragment posterior | `src/orbit_ms/wgv/v_set_posterior.py`; `scripts/run_pr87_v_learned_set.py` | Learns posterior reweighting on **frozen W fragments**; no observed fragment-structure truth; spectrum evidence is not calibrated molecule correctness. |
+| W/V structured transfer | `src/orbit_ms/wgv/wv_structured_evidence.py`; `scripts/score_pr87_frozen_wv_graph_edit.py` | Verified heavy-atom mapping; atom 3, pair 6 and global 2 channels; fragmentation boundary is observability, **not** an automatically signed bond removal. |
+| G: spectrum-conditioned CoCoGraph V2 | `src/orbit_ms/wgv/cocograph_spectrum_v2.py`; `scripts/train_pr91_cocograph_spectrum_v2.py` | Clean-adjacency remove/add/bond-order heads and separate graph-only noise time; old V1 inverse-step imitation is only an auxiliary term. |
+| V2 sampling and evidence feedback | `scripts/eval_pr91_cocograph_spectrum_v2.py`; `scripts/pr91_wv_online_rollout.py`; `scripts/pr91_wv_online_selection.py` | Predicted formula Top8, 4 draws/formula, bounded DES, online 2-child resampling only at defined late steps, separate terminal W/V scoring. |
 | Historical/other W and V families | PR82 electron-event pipeline, PR90 BreakpointWorld/ChemicalEvidenceVerifier | Kept in code history but **not** silently described as the frozen PR86/87 teacher pair used in V2. |
 
 Pinned evaluated teacher components in PR91:
-- PR86 three-cut W SHA256: \`df10668b0cc78ba9a0f5cc12171abea43d33f48cdde4a8c6b15b32ae1de26d14\`.
-- PR87 VSetPosterior SHA256: \`06300f8200dcf201ba8d0eb812c5c89e7035e67c0d3e2e3b17e0846bbd703bb1\`.
+- PR86 three-cut W SHA256: `df10668b0cc78ba9a0f5cc12171abea43d33f48cdde4a8c6b15b32ae1de26d14`.
+- PR87 VSetPosterior SHA256: `06300f8200dcf201ba8d0eb812c5c89e7035e67c0d3e2e3b17e0846bbd703bb1`.
 
 ### Honest component evidence
 
@@ -45,5 +45,5 @@ The method now specifies the intended outer loop as an integrated research compo
 - Complete immutable 8,401-case SEARCH_DEV evaluation of (A) no W/V, (B) terminal W/V only on the **same generated pool**, (C) online plus terminal W/V, including failed cases and group bootstrap.
 - Implement, freeze and evaluate the full unlabelled-data self-distillation stage; report no-distillation, G-only teacher, shuffled-spectrum and W/V-guided pseudo-label controls.
 - Audit exact-structure/family overlap of all evaluation chemistry with G/W/V molecular pretraining and self-distillation inputs.
-- Replace \`\methodtodo\` with immutable experimental artifacts, or explicitly remove unexecuted claims before submission.
+- Replace `\methodtodo` with immutable experimental artifacts, or explicitly remove unexecuted claims before submission.
 - **Manuscript consistency:** title, abstract, Introduction, Results, Discussion, Figure 2–5 textual placeholders, old nature-oriented discovery plan and Supplementary Information still describe the prior executable bond–electron World and dark-metabolome Nature story. They require a separate coordinated NMI rewrite after PR91 V2 results. This PR does not claim otherwise.
