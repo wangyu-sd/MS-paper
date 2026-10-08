@@ -1,5 +1,7 @@
 # MS-paper
 
+> **Figure design under review (2026-10-08):** See [the proposed six-figure plan](internal/FIGURE_PLAN.md) and [its review rationale](internal/FIGURE_REDESIGN_REVIEW_20261008.md). These documents plan a discovery-led manuscript about previously unrecognized metabolite families. The existing README narrative, `main.tex`, Supplementary Information and current claim matrix still describe the earlier five-figure WGV-first draft; they have **not** yet been rewritten or validated as discoveries. Quantitative result provenance continues to reside in `internal/NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md`.
+
 Nature-level manuscript workspace for ORBIT-MS.
 
 ## Central proposition
