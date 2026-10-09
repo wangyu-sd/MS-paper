@@ -281,6 +281,14 @@ The completed and source-audited MassSpecGym development results appear in Table
 }
 
 \bibliographystyle{unsrtnat}
-\bibliography{../references}
+% Overleaf compiles with the project root as its working directory, even
+% when this document resides under supplementary/.
+% Use the root bibliography in Overleaf, or the parent path when compiling
+% directly from the supplementary/ folder with a local TeX installation.
+\IfFileExists{references.bib}{%
+  \bibliography{references}%
+}{%
+  \bibliography{../references}%
+}
 
 \end{document}
