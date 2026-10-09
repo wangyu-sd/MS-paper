@@ -1,0 +1,32 @@
+% Standalone Overleaf entry point for the audited MassSpecGym tables.
+% Set Settings > Compiler > Main document to this file.
+% The authoritative tables remain in supplementary/MassSpecGym_Development_Results.tex.
+% This document intentionally contains no new scientific results.
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\onehalfspacing
+\renewcommand{\thetable}{S\arabic{table}}
+
+\title{\textbf{Supplementary Results}\\[4pt]
+\large MassSpecGym development experiments}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+% Table S1 belongs to the separate full Supplementary Information.
+% Preserve original S2--S12 numbering in this standalone preview.
+\setcounter{table}{1}
+\input{supplementary/MassSpecGym_Development_Results.tex}
+
+\end{document}
