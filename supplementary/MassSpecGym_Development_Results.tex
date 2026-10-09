@@ -61,7 +61,7 @@ The all-case Top1/5/8/16 numerators are 7,382/8,119/8,191/8,270. The molecule-gr
 % Source: orbit-ms/docs/results/PR90_FORMULA_SEED_BOTTLENECK_20261006.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Formula-compatible structural initialization for a seed-bound inverse model.} The first three outcomes partition all 8,401 SEARCH\_DEV cases, joining the frozen direct-formula Top16 with the TRAIN structural-seed index. The last row is an overlapping separate diagnostic, not a fourth disjoint category. These are \emph{necessary conditions}, not success rates of graph generation.}
+\caption{\textbf{Formula-compatible structural initialization for a seed-bound inverse model.} The first three outcomes partition all 8,401 development spectra by the presence of the correct formula among 16 predictions and the availability of a training-library structure with that formula. The last row is an overlapping separate diagnostic, not a fourth disjoint category. These are \emph{necessary conditions}, not success rates of graph generation.}
 \label{tab:msdev_entry}
 \small
 \begin{tabular}{p{0.73\linewidth}r}
@@ -85,7 +85,7 @@ Under this \emph{particular} seed-bound, formula-preserving edit route, at least
 % Source: orbit-ms/docs/architecture/PR86_W_TEACHER10_SELECTED_MIX_20260930.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Fragment-mass coverage of a forward model given the precursor graph.} The World receives the \emph{reference precursor structure} and acquisition context; at most 512 predicted fragment masses are evaluated per query. The fixed mixture (90\% previous two-cut distribution; 10\% three-cut breakpoint distribution) was selected on the separate promotion cohort before SEARCH\_DEV. These are fragment-mass-support measures, \emph{not} chemically validated fragmentation paths, official cosine similarity, or de novo structure prediction.}
+\caption{\textbf{Fragment-mass coverage of a forward model given the precursor graph.} The World receives the \emph{reference precursor structure} and acquisition context; at most 512 predicted fragment masses are evaluated per query. The mixture assigns 90\% weight to a two-cut structural-fragment prior and 10\% to an additional three-cut component. The mixture was selected on a separate model-selection cohort before evaluation. These are fragment-mass-support measures, \emph{not} chemically validated fragmentation paths, official cosine similarity, or de novo structure prediction.}
 \label{tab:msdev_world}
 \small
 \setlength{\tabcolsep}{5pt}
