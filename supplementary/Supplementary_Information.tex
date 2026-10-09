@@ -149,22 +149,20 @@ An eventual annotation system may return a proposed unique connectivity, a bound
 
 \result{Insert comparator calibration errors and the comparison to mechanistic elimination.}
 
-\section{Free, Guided and Inverse inference over one World}
+\section{Forward fragment prediction, verification and inverse molecular inference}
 
-\subsection{Shared World representation}
-\methodtodo{Shared molecular/fragment graph encoding; task-mode conditioning; spectrum peak-graph encoding when applicable; checkpoint lineage; strict absence of target-spectrum input from Free inference.}
+\subsection{Conditional forward prediction}
+Given a hypothesized molecular structure and acquisition context, the implemented World produces a probability-weighted set of fragment-mass and precursor-atom-mask hypotheses without access to the target fragment spectrum. This forward mapping tests whether an already proposed candidate is compatible with a measured spectrum, but its fragment masks are not experimentally established reaction intermediates.
 
-\subsection{Free inference}
-\methodtodo{Teacher-free autoregressive electron-event rollout; Subtrajectory Balance/GFlowNet objective; multibranch probability flow; observation-derived positive evidence; ordered-transition endpoints; unresolved/censored probability accounting.}
+\subsection{Observation-conditioned verification}
+The Verifier uses observed peak masses and intensities to redistribute probability within the frozen World fragment set. Fragment-weighted evidence can discriminate two precursor hypotheses only after both molecular candidates have been supplied. When comparing measured with mismatched spectra, the molecular candidate identities and scoring budget are held fixed; separate structural-decoy tests evaluate whether the evidence favors the known precursor over an isomeric alternative. Fragment-set ranking remains a conditional measurement, not inverse generation.
 
-\subsection{Guided inference}
-\methodtodo{Spectrum-conditioned graph policy/value over the same executable World; frontier prioritization under matched compute; auxiliary IQL objective on sampled transitions; exact production checkpoint/inference path. Explicitly state that DAgger and HER are not currently part of production rollout unless implemented before manuscript freeze.}
+\subsection{Inverse molecular proposals and topology revision}
+For unknown precursor structures, the inverse model must produce complete, chemically valid candidate graphs from the measured spectrum. Earlier completed experiments used molecular fingerprint-related retrieval and local graph-editing priors; their results are retained only as historical benchmark diagnostics. The newer source implementation studies spectrum-conditioned constrained molecular graph denoising, with double-edge-swap transitions and optional structured World/Verifier evidence projected to graph features. Inference must use predicted molecular formulas, not ground-truth composition or the target molecular graph. The benchmark-ready endpoints are raw candidate connectivity reach, ranked Exact@1/10 and matched-versus-control behavior at a fixed proposal budget. No completed all-spectrum result for the newer integrated inverse generator is asserted here.
 
-\subsection{Inverse inference}
-\methodtodo{Factorized graph-construction policy; action-kind/element/charge/radical/attachment/pair/bond-order predictions; hard formula/charge/H/valence constraints; canonical partial-state merging; leaf--parent--precursor ordered-fragment shaping; SMC posterior maintenance; completed-candidate forward World replay.}
-
-\subsection{Bidirectional evidence}
-\methodtodo{Candidate replay through Free/Guided World; mass/intensity/ordered-transition support; candidate-specific discrimination; unresolved World probability mass; definition of the bidirectional consistency endpoint used in the manuscript.}
+\subsection{Future bidirectional calibration and model adaptation}
+A full inverse-to-World-to-spectrum validation requires the same generated molecular candidate to be scored by a separately frozen World/Verifier, with explicit controls for missing candidate support and false-confidence amplification. Confidence-gated self-distillation on unlabeled real MS/MS and any subsequent cross-generation improvement are planned experiments rather than results of the present benchmark tables.
+\methodtodo{For the final integrated system, report the completed source-frozen inverse checkpoint, exact candidate-generation budget, independent model-overlap/leakage audit, matched versus substituted-spectrum negative controls and all-spectrum de novo evaluation. Separately validate confidence thresholds before reporting unobserved compounds as structurally resolved.}
 
 \section{Outer-loop scientific program evolution}
 
