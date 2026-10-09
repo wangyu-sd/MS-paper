@@ -232,3 +232,15 @@ No placeholder is filled from memory, transient logs or exploratory notebooks.
 6. Structural relationships are not biosynthetic mechanisms.
 7. Source attribution establishes dependence, not synthesis.
 8. Training loss and agent progress are not scientific endpoints.
+
+## Overleaf compilation
+
+This repository supports the following compilation entry points:
+
+- **Main manuscript:** choose the root-level `main.tex` as the Main document.
+- **Audited MassSpecGym tables only:** choose the root-level `massspecgym_tables_preview.tex`. This standalone entry point loads the 11 audited tables from `supplementary/MassSpecGym_Development_Results.tex` and preserves their S2--S12 numbering. Scientific data are not duplicated in the wrapper.
+- **Entire Supplementary Information:** choose `supplementary/Supplementary_Information.tex`. It contains `\documentclass`, includes the same result tables, and now chooses the appropriate path to `references.bib`.
+
+Overleaf: **Settings (gear icon) > Compiler > Main document**, then **Recompile**. Switch back to `main.tex` when compiling the manuscript.
+
+Do **not** select `supplementary/MassSpecGym_Development_Results.tex` as the Main document. It is an `\input` fragment with no `\documentclass` or `\begin{document}`. The main manuscript intentionally does not include these separately compiled Supplementary Information tables.
