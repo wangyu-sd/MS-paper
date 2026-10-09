@@ -206,21 +206,21 @@ Conditional proposal reach given a correct-formula emitted candidate is 528/7,82
 % orbit-ms/docs/results/pr90_g90_full_search_dev_20261005.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Completed historical no-supplied-formula de novo results.} All 8,401 SEARCH\_DEV queries are counted. Legacy G\_BASE combines TRAIN-derived retrieval seeds, local edits, an earlier molecular-fingerprint-related route and a mass-aware scorer. G90 uses 16 formula-diversified seeds, two editing depths, beam width 16 and three attempts per operator/parent. Exhaustive-H enumerates a much larger raw H edit pool (mean 2,761 unique H graphs/query) while keeping Na unchanged. \emph{These are not matched-compute architecture comparisons, and none is the final fingerprint-free PR91 system.}}
+\caption{\textbf{Completed exploratory de novo molecular connectivity experiments without supplied formulas.} All 8,401 SEARCH\_DEV queries are counted. Legacy G\_BASE combines TRAIN-derived retrieval seeds, local edits, an earlier molecular-fingerprint-related route and a mass-aware scorer. G90 uses 16 formula-diversified seeds, two editing depths, beam width 16 and three attempts per operator/parent. Exhaustive-H enumerates a much larger raw H edit pool (mean 2,761 unique H graphs/query) while keeping Na unchanged. \emph{These are not matched-compute architecture comparisons, and none is the final fingerprint-free PR91 system.}}
 \label{tab:msdev_denovo}
 \small
 \begin{tabular}{lrrr}
 \toprule
 Route & Exact@1 & Exact@10 & Reach@100 \\
 \midrule
-Legacy G\_BASE, finite edits & 288 (3.43\%) & 948 (11.28\%) & 1,176 (14.00\%) \\
-PR90 G90 topology editor & 157 (1.87\%) & 787 (9.37\%) & 1,317 (15.68\%) \\
-Exhaustive H, over-budget \emph{diagnostic} & 396 (4.71\%) & 1,446 (17.21\%) & 1,841 (21.91\%) \\
+Retrieval-seeded local editing with mass-aware ranking & 288 (3.43\%) & 948 (11.28\%) & 1,176 (14.00\%) \\
+Formula-diversified topology editing & 157 (1.87\%) & 787 (9.37\%) & 1,317 (15.68\%) \\
+Expanded protonated edit enumeration (over-budget) & 396 (4.71\%) & 1,446 (17.21\%) & 1,841 (21.91\%) \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the Top100 final list. G90 recovers more candidates than legacy G\_BASE but ranks the correct structure worse. The exhaustive diagnostic is not a same-budget champion. Official MassSpecGym held-out VAL/TEST was not run for these final WGV hypotheses.
+Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the Top100 final list. The formula-diversified editor increases target-containing candidates but ranks true structures less accurately than the earlier local-edit model. The exhaustive diagnostic is not a same-budget champion. Official MassSpecGym held-out VAL/TEST was not run for these final WGV hypotheses.
 \end{minipage}
 \end{table}
 
