@@ -61,18 +61,18 @@ The all-case Top1/5/8/16 numerators are 7,382/8,119/8,191/8,270. The molecule-gr
 % Source: orbit-ms/docs/results/PR90_FORMULA_SEED_BOTTLENECK_20261006.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Entry feasibility of a TRAIN-seeded, formula-preserving inverse editor.} The first three outcomes partition all 8,401 SEARCH\_DEV cases, joining the frozen direct-formula Top16 with the TRAIN structural-seed index. The last row is an overlapping separate diagnostic, not a fourth disjoint category. These are \emph{necessary conditions}, not success rates of graph generation.}
+\caption{\textbf{Formula-compatible structural initialization for a seed-bound inverse model.} The first three outcomes partition all 8,401 SEARCH\_DEV cases, joining the frozen direct-formula Top16 with the TRAIN structural-seed index. The last row is an overlapping separate diagnostic, not a fourth disjoint category. These are \emph{necessary conditions}, not success rates of graph generation.}
 \label{tab:msdev_entry}
 \small
 \begin{tabular}{p{0.73\linewidth}r}
 \toprule
 Post-hoc entry condition & Cases (\%) \\
 \midrule
-Correct formula Top16, with a same-formula TRAIN seed & 5,752 (68.47) \\
-Correct formula Top16, without a same-formula TRAIN seed & 2,518 (29.97) \\
+Correct formula in Top16; a matching training structure exists & 5,752 (68.47) \\
+Correct formula in Top16; no matching training structure exists & 2,518 (29.97) \\
 Correct formula absent from Top16 & 131 (1.56) \\
 \midrule
-No seed for any predicted Top16 formula (overlapping diagnostic) & 1,682 (20.02) \\
+No training structure for any of the Top16 formulas (overlapping) & 1,682 (20.02) \\
 \bottomrule
 \end{tabular}
 
