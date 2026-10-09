@@ -99,42 +99,19 @@ Simulator-generated training data requires specific attention: pseudo-spectra ge
 
 \result{Insert the full stringency sweep, the selected operating point and its justification.}
 
-\section{The molecular fragmentation World}
+\section{Spectrum-blind structural fragmentation World and conditional Verifier}
 
-\subsection{Closed chemical state}
-\methodtodo{Bond--electron state; atom identity; explicit H; formal charge/radicals; exact mass; ionization/adduct state; charged and neutral connected components; acquisition conditions; canonical state identity.}
+\subsection{Fragment hypotheses from a supplied precursor structure}
+For an input precursor molecular graph $M$ and acquisition context $c$, the implemented World $W$ constructs connected precursor heavy-atom subsets obtainable by cutting at most three heavy-atom bonds. Each retained subset is combined with permissible integer hydrogen adjustments, ion-carrier hypotheses and mass constraints derived from the precursor composition and adduct. Candidate fragments thus retain a heavy-atom mapping to $M$ together with calculated mass and charge-carrier information. These candidates are \emph{structural and mass hypotheses}; a cut in the source graph is not an experimentally validated gas-phase cleavage mechanism or an executable sequence of electron transfers.
 
-\subsection{Autoregressive single-electron event language}
-\methodtodo{Source selection from atoms/occupied bonds; atom-versus-bond target decision; sequential target atom pointers; 1e transfer; learned STOP/REPEAT/NEW event control; relation between repeated 1e events and conventional 2e pair transfer; accumulation of multi-event transformations before deterministic compilation; absence of reaction-template enumeration.}
+\subsection{World scoring without target-spectrum access}
+The World encodes the precursor graph and acquisition metadata, ranks its structural fragment hypotheses and exports their masses, atom masks and normalized prior weights. Its forward inference cannot read the measured fragment peaks of the query being evaluated. During model fitting, experimental fragment masses and intensities provide \emph{weak} supervision through a mass-matching likelihood; they do not reveal the atom identities of experimental product ions. A separate unexplained-peak term prevents every observed signal from being forcibly assigned to the enumerated fragments. For the completed development evaluation, an extended three-cut component was mixed with the prior two-cut candidate distribution using weights selected on the distinct model-selection partition. Fragment support is measured with a 0.005-Da mass window and a bounded predicted-mass budget; this is not equivalent to official full-spectrum cosine similarity.
 
-\subsection{Chemical compiler and legality}
-\methodtodo{Atom/electron/charge/H/mass conservation; bond-electron symmetry; supported valence/materialization checks; treatment of compiler rejection; distinction between executable chemistry and validated mechanism.}
+\subsection{Spectrum-conditioned fragment-set verification}
+For a fixed candidate precursor graph, the Verifier $V$ receives the \emph{same frozen} World fragment set together with the experimental MS/MS spectrum. It computes spectrum-conditioned compatibility scores over World fragment objects using their precursor atom masks, masses, hydrogen/carrier attributes, prior probabilities and the observed peak distribution. Its posterior reweights fragment hypotheses and can rank evidence sets associated with competing molecular structures. Since no experimental fragment-to-atom mapping is provided, a mass-compatible predicted product cannot be taken as a known experimental fragment structure. Comparisons between the measured spectrum and unrelated measured spectra keep the candidate structures fixed, isolating whether verification truly responds to the query's fragment evidence.
 
-\subsection{Multi-branch reaction DAG and probability mass}
-\methodtodo{Sibling reaction branches; branch-local STOP; reconvergent paths; canonical DAG aggregation; frontier scheduling; explicit decomposition of sampled policy mass into valid, invalid, event-budget-censored, unsampled and STOP outcomes; probability-conservation checks; censoring as unresolved rather than chemical failure.}
-
-\subsection{Partial observation semantics}
-The experimental tandem mass spectrum is treated as a partial observation of the latent fragmentation World. Legal generated states that are not observed are not automatically labelled false. Likewise, reaction regions that remain unsampled or are censored by computational budget are not interpreted as chemically impossible.
-
-\subsection{Support, specificity and elimination}
-For a candidate $M$ and observed peak $p$, the model returns whether some atom-balanced trajectory of $M$ reaches a fragment whose exact mass matches $p$ within tolerance. Three distinct quantities follow and are never conflated:
-
-\begin{enumerate}
-\item \textbf{support} --- such a trajectory exists;
-\item \textbf{specificity} --- the support exceeds the best support available to competing candidates in the same pool;
-\item \textbf{elimination} --- no trajectory of $M$ reaches $p$, so $M$ is excluded at the operating stringency.
-\end{enumerate}
-
-Elimination is the operation that makes the output composable. It is also the operation that can be wrong, because the reaction basis is incomplete: absence of a trajectory is evidence of impossibility only to the extent that the model covers the relevant chemistry. Supplementary Note 4 quantifies this directly, and the operating stringency is chosen from that measurement rather than assumed.
-
-\subsection{Accidental-match opportunity control}
-\methodtodo{Correction for the probability that a candidate supports a peak by coincidence, as a function of support-set size, mass tolerance and peak density. Without this control, candidates with large support sets are favoured for reasons unrelated to identity.}
-
-\subsection{Trajectory authority}
-\methodtodo{Levels of mechanistic authority: mass-compatible support, atom-balanced trajectory, and trajectory consistent with an established gas-phase mechanism. Only the highest level supports a reaction-level claim in the main text.}
-
-\subsection{Computational cost}
-\result{Insert per-candidate enumeration time, memory, scaling with heavy-atom count, and total cost of the atlas run.}
+\subsection{Scope and limitations of conditional evidence}
+The measured tandem mass spectrum is only a partial observation of precursor fragmentation. An unobserved predicted fragment is not necessarily chemically impossible, and missing predicted support may reflect absent chemistry in the World, ion-state ambiguity, noise or incomplete measurements. Distinct subgraphs can produce equal or near-equal fragment masses. Consequently, a mass match establishes neither a specific fragmentation pathway nor unique precursor connectivity. The completed World/Verifier tables below evaluate \emph{conditional fragment-mass evidence given a known precursor structure}, not end-to-end unknown-precursor identification. Older bond--electron transfer agents, explicit electron-event executors and reaction-DAG planners remain separate historical developments and must not be silently substituted for this frozen three-cut World.
 
 \section{World-based structural evidence hierarchy}
 
