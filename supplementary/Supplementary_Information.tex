@@ -304,7 +304,14 @@ Anchors that fail to confirm are reported. An unconfirmed anchor is informative 
 
 \section{Supplementary tables}
 
-\methodtodo{S1 corpus inventory; S2 leakage audit; S3 prospective set composition and independence audit; S4 stringency sweep; S5 comparator configurations and versions; S6 rule-evolution receipts; S7 atlas entry schema; S8 uncharacterized recurrent families; S9 perturbation dataset inventory with manual verification status; S10 anchor dossiers.}
+The completed and source-audited MassSpecGym development results appear in Tables~S2--S12 below. Library-snapshot Table~S1 retains its explicitly marked missing measurements. Previously planned leakage, calibration, atlas, biological and authentic-standard tables will be numbered only after their source evidence is frozen; their results are not implied by these benchmark tables.
+
+% Support compilation from either the repository root or supplementary/.
+\IfFileExists{supplementary/MassSpecGym_Development_Results.tex}{%
+  \input{supplementary/MassSpecGym_Development_Results}%
+}{%
+  \input{MassSpecGym_Development_Results}%
+}
 
 \bibliographystyle{unsrtnat}
 \bibliography{../references}
