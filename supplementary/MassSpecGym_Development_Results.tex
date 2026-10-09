@@ -147,3 +147,139 @@ Legacy molecule V score & \textbf{1,221} & \textbf{2,473} & 327 & 1,568 \\
 All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not percentages over only reachable candidates. W ranks 1,213/2,567 (47.3\%) of reachable targets first. Its molecule-group-macro matched-minus-peer Top1 gain over the mass-only ordering is +7.67 percentage points (bootstrap 95\% CI [6.33, 9.10]). These are open-database ranking results, not closed-book de novo Exact@K.
 \end{minipage}
 \end{table}
+
+
+% Source: orbit-ms/docs/research/PR87_OFFICIAL_FP20_WV_FULL_DECISION_20261004.md
+% Historical fingerprint-based proposals; not the canonical inverse method.
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{Historical fixed-pool World evidence on the official MassSpecGym mass-based candidate universe.} A former fingerprint-related ranker selects Top20 structures; candidate IDs are fixed between matched and fixed-precursor peer spectra. Target connectivity is present in 4,672/8,401 (55.61\%) pools. The experiment isolates the World evidence \emph{within that historical pool}, not the accuracy of a fingerprint-free de novo generator.}
+\label{tab:msdev_fp20}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 \\
+\midrule
+Historical FP proposal order & 1,710 & 3,773 & 342 \\
+W-scorable proposal control & 1,974 & 4,019 & 410 \\
+World W evidence & \textbf{2,509} & \textbf{4,418} & 239 \\
+Legacy molecule V evidence & 2,567 & 4,374 & 443 \\
+\bottomrule
+\end{tabular}
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+W improves case-weighted Hit@1 versus the W-scorable control by +6.37 percentage points. Molecule-group macro gain: +14.78 points (bootstrap 95\% CI [12.58, 16.91]); matched-minus-peer group-macro gain: +15.18 points [13.02, 17.39]. Legacy V has a higher case-weighted matched Hit@1 but a \emph{lower} molecule-group-macro Hit@1 than W (difference --0.96 points; CI [--1.81, --0.15]). These outcomes cannot be transferred to a new candidate pool.
+\end{minipage}
+\end{table}
+
+% Source: orbit-ms/docs/research/PR87_G0_SAME_FORMULA_STRUCTURE_GAP_20261004.md
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{Historical G0 formula-to-topology gap.} Independent full-cohort audit of the PR87 G0 100-draw emitted molecular pool. Entries measure post-hoc \emph{presence} of the formula and exact 14-character InChIKey connectivity, not the rank of the correct answer. This historical generator is distinct from the PR90 direct formula posterior and PR91 CoCoGraph.}
+\label{tab:msdev_topology}
+\small
+\begin{tabular}{p{0.73\linewidth}r}
+\toprule
+Post-hoc condition & Cases \\
+\midrule
+Ground-truth formula sampled & 7,829 / 8,401 \\
+At least one correct-formula candidate emitted & 7,822 / 8,401 \\
+Correct connectivity emitted & 528 / 8,401 \\
+Correct formula emitted, correct topology absent & 7,294 / 8,401 \\
+\midrule
+Heavy atoms $\geq20$: formula represented & 5,064 \\
+Heavy atoms $\geq20$: connectivity represented & 41 \\
+\bottomrule
+\end{tabular}
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+Conditional proposal reach given a correct-formula emitted candidate is 528/7,822=6.75\%, and 41/5,064=0.81\% in the listed large-molecule stratum. Neither number is end-to-end Exact@1.
+\end{minipage}
+\end{table}
+
+% Sources: orbit-ms/docs/results/pr87_vg_autoresearch_20261001/
+% g_fixed_pool_mass_full_result_20261002.json; g_exhaustive_h_full_result_20261002.json
+% orbit-ms/docs/results/pr90_g90_full_search_dev_20261005.md
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{Completed historical no-supplied-formula de novo results.} All 8,401 SEARCH\_DEV queries are counted. Legacy G\_BASE combines TRAIN-derived retrieval seeds, local edits, an earlier molecular-fingerprint-related route and a mass-aware scorer. G90 uses 16 formula-diversified seeds, two editing depths, beam width 16 and three attempts per operator/parent. Exhaustive-H enumerates a much larger raw H edit pool (mean 2,761 unique H graphs/query) while keeping Na unchanged. \emph{These are not matched-compute architecture comparisons, and none is the final fingerprint-free PR91 system.}}
+\label{tab:msdev_denovo}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Route & Exact@1 & Exact@10 & Reach@100 \\
+\midrule
+Legacy G\_BASE, finite edits & 288 (3.43\%) & 948 (11.28\%) & 1,176 (14.00\%) \\
+PR90 G90 topology editor & 157 (1.87\%) & 787 (9.37\%) & 1,317 (15.68\%) \\
+Exhaustive H, over-budget \emph{diagnostic} & 396 (4.71\%) & 1,446 (17.21\%) & 1,841 (21.91\%) \\
+\bottomrule
+\end{tabular}
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the Top100 final list. G90 recovers more candidates than legacy G\_BASE but ranks the correct structure worse. The exhaustive diagnostic is not a same-budget champion. Official MassSpecGym held-out VAL/TEST was not run for these final WGV hypotheses.
+\end{minipage}
+\end{table}
+
+% Sources: orbit-ms/docs/research/PR87_G1_PRIOR_ALIGNED_FULL_RESULT_20261004.md
+% PR87_G2_FULL_TRAIN_AND_ISOMER_REGRESSION_20261004.md
+% PR87_G3_FULL_SEARCH_DEV_DECISION_20261004.md
+% PR87_G4_FULL_SEARCH_DEV_DECISION_20261004.md
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{PR87 G0--G4 historical ablations under matched formula-prior and 100-raw-draw conditions.} Every row covers all 8,401 SEARCH\_DEV spectra. G1 adds peer-action supervision; G2 uses symmetric same-formula peer contrast; G3 trains with synchronized paired-action gradients; and G4 emphasizes action negative log likelihood (NLL). This G0 is a different experimental route from the stronger separately scored G\_BASE in Table~\ref{tab:msdev_denovo}.}
+\label{tab:msdev_gablation}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Variant & Exact@1 & Exact@10 & Target in raw pool \\
+\midrule
+G0 frozen control & 235 (2.80\%) & 378 (4.50\%) & 528 (6.29\%) \\
+G1 peer actions & 201 (2.39\%) & 401 (4.77\%) & \textbf{570 (6.78\%)} \\
+G2 symmetric peer & 228 (2.71\%) & 372 (4.43\%) & 529 (6.30\%) \\
+G3 synchronized paired actions & 142 (1.69\%) & 283 (3.37\%) & 439 (5.23\%) \\
+G4 action NLL & \textbf{243 (2.89\%)} & 372 (4.43\%) & 531 (6.32\%) \\
+\bottomrule
+\end{tabular}
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+G1 reaches 42 additional cases but reduces Exact@1; G2--G4 do not establish substantial full-population gains. The raw-pool endpoint is not an end-to-end ranking score. These adaptive-development experiments are historical negative/diagnostic evidence, not final PR91 performance.
+\end{minipage}
+\end{table}
+
+% Source: orbit-ms/docs/results/pr90_g90_bad_case_analysis_20261005.md
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{G90 failure localization.} Panel A partitions every SEARCH\_DEV query exactly once, assessed post hoc after target-blind Top100 ranking. Correct formula means formula \emph{and charge} compatibility, not structural correctness. Panel B comprises overlapping chemical and size strata that must not be summed.}
+\label{tab:msdev_g90}
+\small
+\begin{tabular}{p{0.73\linewidth}r}
+\toprule
+\multicolumn{2}{l}{\textit{A. Mutually exclusive ranked-outcome partition}} \\
+\midrule
+Exact connectivity ranked first & 157 (1.87\%) \\
+Exact connectivity ranked 2--100 & 1,160 (13.81\%) \\
+Correct formula/charge in Top100, topology absent & 3,881 (46.20\%) \\
+Correct formula/charge absent from Top100 & 3,203 (38.13\%) \\
+\midrule
+Total & 8,401 (100\%) \\
+\bottomrule
+\end{tabular}
+
+\vspace{5pt}
+\begin{tabular}{lrr}
+\toprule
+\multicolumn{3}{l}{\textit{B. Overlapping adduct and complexity strata}} \\
+Stratum & Reach@100 (\%) & Formula in Top100 (\%) \\
+\midrule
+$[\mathrm{M+H}]^+$ & 17.1 & 64.7 \\
+$[\mathrm{M+Na}]^+$ & 4.4 & 40.1 \\
+$\leq15$ heavy atoms & 44.4 & 74.5 \\
+$>30$ heavy atoms & 7.4 & 54.7 \\
+At least five rings & 4.3 & 59.2 \\
+Halogen-containing & 2.4 & 12.4 \\
+Sulfur-containing & 6.5 & 42.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
