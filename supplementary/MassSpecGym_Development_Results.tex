@@ -206,7 +206,7 @@ Conditional proposal reach given a correct-formula emitted candidate is 528/7,82
 % orbit-ms/docs/results/pr90_g90_full_search_dev_20261005.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Completed exploratory de novo molecular connectivity experiments without supplied formulas.} All 8,401 SEARCH\_DEV queries are counted. Legacy G\_BASE combines TRAIN-derived retrieval seeds, local edits, an earlier molecular-fingerprint-related route and a mass-aware scorer. G90 uses 16 formula-diversified seeds, two editing depths, beam width 16 and three attempts per operator/parent. Exhaustive-H enumerates a much larger raw H edit pool (mean 2,761 unique H graphs/query) while keeping Na unchanged. \emph{These are not matched-compute architecture comparisons, and none is the final fingerprint-free PR91 system.}}
+\caption{\textbf{Historical graph-edit structure generation with the ground-truth molecular formula hidden.} All 8,401 development spectra are evaluated. The retrieval-seeded approach edits training-library molecular graphs selected using a historical spectrum-to-fingerprint route and reranks with a mass-aware scorer. The formula-diversified approach expands 16 inferred-formula seeds through two edit depths with beam width 16 and three attempts per operator and parent. The exhaustive-search diagnostic generates a mean of 2,761 distinct protonated candidates per query while retaining the original sodiated results. These configurations \emph{do not use identical raw proposal budgets}, and are not the subsequent fingerprint-free graph-denoising model.}
 \label{tab:msdev_denovo}
 \small
 \begin{tabular}{lrrr}
