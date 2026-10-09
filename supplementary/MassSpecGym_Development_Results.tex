@@ -142,7 +142,7 @@ Fixed candidate ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 & Peer Hit@
 \midrule
 Mass-only order & 306 & 1,991 & 306 & 1,991 \\
 World W evidence & 1,213 & 2,429 & 62 & 1,334 \\
-Legacy molecule V score & \textbf{1,221} & \textbf{2,473} & 327 & 1,568 \\
+Earlier learned molecule-level verification & \textbf{1,221} & \textbf{2,473} & 327 & 1,568 \\
 \bottomrule
 \end{tabular}
 
@@ -164,15 +164,15 @@ All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not per
 \toprule
 Ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 \\
 \midrule
-Historical FP proposal order & 1,710 & 3,773 & 342 \\
-W-scorable proposal control & 1,974 & 4,019 & 410 \\
+Fingerprint-preselected candidate ordering & 1,710 & 3,773 & 342 \\
+Candidate-eligibility-controlled ordering & 1,974 & 4,019 & 410 \\
 World W evidence & \textbf{2,509} & \textbf{4,418} & 239 \\
-Legacy molecule V evidence & 2,567 & 4,374 & 443 \\
+Earlier learned molecule-level verification & 2,567 & 4,374 & 443 \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-W improves case-weighted Hit@1 versus the W-scorable control by +6.37 percentage points. Molecule-group macro gain: +14.78 points (bootstrap 95\% CI [12.58, 16.91]); matched-minus-peer group-macro gain: +15.18 points [13.02, 17.39]. Legacy V has a higher case-weighted matched Hit@1 but a \emph{lower} molecule-group-macro Hit@1 than W (difference --0.96 points; CI [--1.81, --0.15]). These outcomes cannot be transferred to a new candidate pool.
+Forward fragmentation evidence improves case-weighted Hit@1 relative to the eligible-candidate control by +6.37 percentage points. Molecule-group macro gain: +14.78 points (bootstrap 95\% CI [12.58, 16.91]); matched-minus-peer group-macro gain: +15.18 points [13.02, 17.39]. Legacy V has a higher case-weighted matched Hit@1 but a \emph{lower} molecule-group-macro Hit@1 than W (difference --0.96 points; CI [--1.81, --0.15]). These outcomes cannot be transferred to a new candidate pool.
 \end{minipage}
 \end{table}
 
