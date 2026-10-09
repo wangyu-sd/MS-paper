@@ -113,33 +113,25 @@ For a fixed candidate precursor graph, the Verifier $V$ receives the \emph{same 
 \subsection{Scope and limitations of conditional evidence}
 The measured tandem mass spectrum is only a partial observation of precursor fragmentation. An unobserved predicted fragment is not necessarily chemically impossible, and missing predicted support may reflect absent chemistry in the World, ion-state ambiguity, noise or incomplete measurements. Distinct subgraphs can produce equal or near-equal fragment masses. Consequently, a mass match establishes neither a specific fragmentation pathway nor unique precursor connectivity. The completed World/Verifier tables below evaluate \emph{conditional fragment-mass evidence given a known precursor structure}, not end-to-end unknown-precursor identification. Older bond--electron transfer agents, explicit electron-event executors and reaction-DAG planners remain separate historical developments and must not be silently substituted for this frozen three-cut World.
 
-\section{World-based structural evidence hierarchy}
+\section{Levels of structural evidence and remaining validation}
 
-\subsection{Definition}
-Each spectrum or candidate may reach progressively stronger evidence:
+\subsection{What is measured and what remains conditional}
+The current components provide a hierarchy of observations rather than a guarantee of molecular identification:
 \begin{enumerate}
-\item precursor mass / molecular-formula compatibility;
-\item chemically valid molecular structure;
-\item reachability in the learned fragmentation World;
-\item executable reaction-path support for observed evidence;
-\item candidate-specific discriminative evidence;
-\item bidirectional spectrum--structure consistency under World replay;
-\item calibrated bounded structural statement;
-\item authentic-standard confirmation.
+\item \textbf{Precursor composition:} a molecular formula is compatible with the measured precursor mass, adduct and observed MS/MS evidence.
+\item \textbf{Candidate validity:} a molecular graph satisfies the chosen valence, formula and connectivity constraints.
+\item \textbf{Conditional fragment support:} given a proposed precursor graph, the spectrum-blind World predicts masses that coincide with observed fragment peaks.
+\item \textbf{Candidate discrimination:} the measured spectrum preferentially supports one fixed molecular candidate over independently selected structural alternatives.
+\item \textbf{Reference-based benchmark recovery:} when the true molecular structure is known to the evaluator, exact-connectivity recall and final rank are computed after inference.
+\item \textbf{Independent calibrated statement or authentic-standard confirmation:} prospective confidence calibration, validated alternatives and orthogonal confirmation are required before a dark-spectrum prediction can be elevated to a reported identification.
 \end{enumerate}
 
-These levels are frozen before repository-scale deployment. Stronger evidence is expected to increase reliability while reducing coverage; both quantities are reported.
+The first five items are distinct \emph{measurement types}, not interchangeable confidence levels. Fragment-mass support is not evidence of an executed reaction path. A correct formula does not imply exact connectivity, and a target structure present in a candidate list does not imply correct ranking. The final item remains a planned validation stage, not a completed outcome of the experiments tabulated below.
 
-\subsection{Bounded structural output}
-At the calibrated operating point the reported structural statement may be a unique putative structure, bounded isomer set, shared substructure or class, molecular formula only, or unresolved. Only authentic-standard evidence is termed identification.
+\subsection{Planned bounded structural statements and calibration}
+An eventual annotation system may return a proposed unique connectivity, a bounded isomer set, a shared scaffold or chemical class, a molecular formula only, or an unresolved result. Such statements must be accompanied by independent uncertainty calibration; absent that calibration they remain structural \emph{hypotheses}. Community annotation confidence levels and standard-confirmed identifications must be assigned according to their respective experimental requirements, not inferred from World support alone.
 
-\subsection{Relation to established reporting conventions}
-\methodtodo{Mapping onto the community confidence-level scheme, and explicit statement of the difference: the community levels are assigned by human judgement after annotation, whereas these levels are computed from which candidates the measurement eliminates. The two are reported side by side so that readers can translate.}
-
-\subsection{Confidence model and calibration}
-\methodtodo{Definition of the confidence that the reported statement contains the true structure; features used; fitting procedure; the disjoint calibration split; the estimator used for calibration error and its confidence intervals.}
-
-The calibration mapping is fitted only on the calibration split and is frozen before the prospective evaluation. It is never refitted after seeing prospective outcomes.
+\methodtodo{Before reporting calibrated dark-structure resolution, define a structure-disjoint confidence calibration cohort; show false-exclusion/containment versus retained resolution under fixed thresholds; validate the effect of candidate-pool support and World incompleteness; verify the correspondence to accepted metabolomics identification levels; report all failed confirmations. The present benchmark development-set results do not satisfy these requirements.}
 
 \section{Prospective validation}
 
