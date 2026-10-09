@@ -230,7 +230,7 @@ Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the T
 % PR87_G4_FULL_SEARCH_DEV_DECISION_20261004.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Graph-construction training-objective ablations under matched formula and sampling conditions.} Every row covers all 8,401 SEARCH\_DEV spectra. G1 adds peer-action supervision; G2 uses symmetric same-formula peer contrast; G3 trains with synchronized paired-action gradients; and G4 emphasizes action negative log likelihood (NLL). This G0 is a different experimental route from the stronger separately scored G\_BASE in Table~\ref{tab:msdev_denovo}.}
+\caption{\textbf{Effect of graph-construction objectives under a fixed formula prior and sampling budget.} Five policies are compared on all 8,401 development spectra using the same mass-derived formula proposal distribution and 100 raw graph draws per eligible query. The reference policy is compared with different-spectrum peer supervision, symmetric same-formula isomer contrast, synchronized paired-action optimization and action negative-log-likelihood learning. These policies are \emph{not} the separately rescored, retrieval-seeded local-edit baseline in Table~\ref{tab:msdev_denovo}; their comparisons are valid only within this table.}
 \label{tab:msdev_gablation}
 \small
 \begin{tabular}{lrrr}
@@ -246,7 +246,7 @@ Action likelihood optimization & \textbf{243 (2.89\%)} & 372 (4.43\%) & 531 (6.3
 \end{tabular}
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-G1 reaches 42 additional cases but reduces Exact@1; G2--G4 do not establish substantial full-population gains. The raw-pool endpoint is not an end-to-end ranking score. These adaptive-development experiments are historical negative/diagnostic evidence, not final PR91 performance.
+The peer-action variant reaches 42 additional target-containing pools but reduces Exact@1; the other training objectives do not establish substantial gains in full-cohort proposal recall. The raw-pool endpoint is not an end-to-end ranking score. These exploratory objective comparisons do not assess the later graph-denoising generator or an official benchmark test set.
 \end{minipage}
 \end{table}
 
