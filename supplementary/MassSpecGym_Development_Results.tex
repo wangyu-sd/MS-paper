@@ -1,0 +1,149 @@
+
+% Completed, source-audited MassSpecGym TRAIN-derived development experiments.
+% Include from Supplementary_Information.tex. Do NOT interpret as held-out TEST.
+% Evidence index: internal/NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md.
+\clearpage
+\section{Completed MassSpecGym development-set experiments}
+\label{sec:msdev_results}
+
+All results in this section were obtained on an \emph{adaptive development partition derived from the official MassSpecGym TRAIN fold}, not on the official VAL or TEST folds. The 8,401-query SEARCH\_DEV cohort was repeatedly inspected during development and is not a pristine independent test. Case-weighted scores count all eligible spectra, including failures; molecule-group bootstrap intervals account for repeated acquisitions of the same molecular connectivity. For de novo structure experiments, the reference precursor formula is hidden unless explicitly stated; equality uses the first 14 InChIKey characters (constitutional connectivity rather than stereochemistry). Retrieval Hit@$k$, de novo Exact@$k$, formula recall, fragment-mass support and conditional V recall describe \emph{different outcomes} and must not be compared as if they were the same metric.
+
+% Source: orbit-ms/docs/results/pr90_search_dev_disjointness_20261006.json
+% Promotion partition: PR86/PR87 fixed W/V checkpoint-selection protocol.
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{Internal MassSpecGym split and evaluation authority.} TRAIN and SEARCH\_DEV have zero overlapping case IDs and zero overlapping molecule groups under connectivity-level identity. The promotion split was reserved for model/decoder selection. Official held-out scores for the final WGV generator are not yet established.}
+\label{tab:msdev_split}
+\small
+\begin{tabular}{lrrl}
+\toprule
+Partition & Spectra & Molecule groups & Role \\
+\midrule
+Full TRAIN & 175,548 & 20,430 & Parameter fitting \\
+Promotion calibration & 9,782 & 1,136 & Checkpoint / decoder selection \\
+SEARCH\_DEV & 8,401 & 1,135 & Repeated adaptive evaluation \\
+Official VAL / TEST & -- & -- & Not reported for final WGV \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: orbit-ms/docs/results/pr90_direct_formula_full_search_dev_20261006.json
+% Model source: PR90 commit baa6870471a4eeed759b948783b0338e797c9ca8
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{Fingerprint-free PR90 precursor-formula inference.} Exact neutral-precursor formula presence among the Top-$k$ hypotheses of a model given measured precursor $m/z$, adduct, fragment peaks and acquisition metadata. No ground-truth formula or molecular fingerprint is supplied. H/Na are disjoint, whereas the S/halogen/P subsets can overlap.}
+\label{tab:msdev_formula}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Stratum & $n$ & Top1 (\%) & Top5 (\%) & Top8 (\%) & Top16 (\%) \\
+\midrule
+All & 8,401 & \textbf{87.87} & \textbf{96.64} & 97.50 & 98.44 \\
+$[\mathrm{M+H}]^+$ & 7,429 & 89.45 & 97.47 & 98.17 & 98.84 \\
+$[\mathrm{M+Na}]^+$ & 972 & 75.82 & 90.33 & 92.39 & 95.37 \\
+Sulfur-containing & 1,183 & 76.08 & 90.70 & 91.72 & 92.39 \\
+Halogen-containing & 1,037 & 73.38 & 93.92 & 95.47 & 97.69 \\
+Phosphorus-containing & 668 & 94.01 & 98.65 & 99.10 & 99.55 \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+The all-case Top1/5/8/16 numerators are 7,382/8,119/8,191/8,270. The molecule-group-equal Top1 accuracy is 86.50\% overall (H 86.17\%, Na 80.96\%). Mean Top1 posterior confidence is 93.45\%; 10-bin expected calibration error is 5.58\% overall and 11.83\% for Na. Formula recall is \emph{not} molecular-connectivity recall.
+\end{minipage}
+\end{table}
+
+% Source: orbit-ms/docs/results/PR90_FORMULA_SEED_BOTTLENECK_20261006.md
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{Entry feasibility of a TRAIN-seeded, formula-preserving inverse editor.} The first three outcomes partition all 8,401 SEARCH\_DEV cases, joining the frozen direct-formula Top16 with the TRAIN structural-seed index. The last row is an overlapping separate diagnostic, not a fourth disjoint category. These are \emph{necessary conditions}, not success rates of graph generation.}
+\label{tab:msdev_entry}
+\small
+\begin{tabular}{p{0.73\linewidth}r}
+\toprule
+Post-hoc entry condition & Cases (\%) \\
+\midrule
+Correct formula Top16, with a same-formula TRAIN seed & 5,752 (68.47) \\
+Correct formula Top16, without a same-formula TRAIN seed & 2,518 (29.97) \\
+Correct formula absent from Top16 & 131 (1.56) \\
+\midrule
+No seed for any predicted Top16 formula (overlapping diagnostic) & 1,682 (20.02) \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+Under this \emph{particular} seed-bound, formula-preserving edit route, at least 2,518+131=2,649/8,401 (31.53\%) queries cannot yield the true connectivity, regardless of W/V reranking. This does not constrain a separate formula-only graph initializer or a generator capable of constructing new scaffolds.
+\end{minipage}
+\end{table}
+
+% Source: orbit-ms/docs/architecture/PR86_W_TEACHER10_SELECTED_MIX_20260930.md
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{PR86 conditional fragment-mass coverage of W.} The World receives the \emph{reference precursor structure} and acquisition context; at most 512 predicted fragment masses are evaluated per query. The fixed mixture (90\% previous two-cut distribution; 10\% three-cut breakpoint distribution) was selected on the separate promotion cohort before SEARCH\_DEV. These are fragment-mass-support measures, \emph{not} chemically validated fragmentation paths, official cosine similarity, or de novo structure prediction.}
+\label{tab:msdev_world}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrr}
+\toprule
+World configuration & $n$ & Weighted recall & Peak recall & Weighted precision \\
+\midrule
+Previous two-World selection & 8,401 & 0.6990 & 0.4618 & \textbf{0.5233} \\
+Selected three-cut mixture & 8,401 & \textbf{0.7219} & \textbf{0.4973} & 0.5215 \\
+\quad $[\mathrm{M+H}]^+$ subset & 7,429 & 0.7527 & 0.5216 & 0.5631 \\
+\quad $[\mathrm{M+Na}]^+$ subset & 972 & 0.4864 & 0.3118 & 0.2037 \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+Selected-minus-previous weighted-recall difference: +0.02285 (1,135-group bootstrap 95\% CI [0.01549, 0.03153]); peak-recall difference: +0.03556 [0.02951, 0.04197]. The selected decoder emits 384.6 masses per spectrum on average; unweighted emitted-mass precision is 3.70\%. Sodium-adduct coverage and the diffuse low-confidence fragment tail remain limitations.
+\end{minipage}
+\end{table}
+
+% Source: orbit-ms/docs/results/pr87_vg_autoresearch_20261001/pr87_current_results_20261001.md
+% Subsections: V learned-set full, three-cut transfer, analytic same-W control.
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{Conditional fragment-set V evaluation on 8,401 SEARCH\_DEV spectra.} All fragment sets are constructed from each \emph{reference precursor graph}. The Verifier ranks a fixed set of W-generated fragment objects under matched versus shuffled measured spectra. Each analytic-versus-learned pair uses the same W objects; switching two-cut to three-cut changes the support set, not only the V scores. Values are Top100 observed-intensity-weighted recall and the matched--shuffled difference.}
+\label{tab:msdev_verifier}
+\small
+\begin{tabular}{llrr}
+\toprule
+World candidate set & Fragment verifier & Matched recall & Matched--shuffled \\
+\midrule
+Old W fragments & Analytic mass posterior & 0.5816 & +0.0310 \\
+Old W fragments & Learned set posterior & 0.5976 & +0.0461 \\
+Three-cut W fragments & Analytic mass posterior & 0.6081 & +0.0403 \\
+Three-cut W fragments & Frozen learned posterior & \textbf{0.6279} & \textbf{+0.0770} \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+Changing the learned V input from the old to the three-cut W set increases matched recall by +0.03032 (molecule-group bootstrap 95\% CI [0.02000, 0.04191]). On 290 strict same-formula, same-acquisition-context structural decoys, the frozen learned V favors the correct set in 243 cases, while the unlearned W prior favors it in 245; improved strict-decoy discrimination over W is therefore \emph{not established}. These results do not imply complete-molecule de novo identification.
+\end{minipage}
+\end{table}
+
+% Source: orbit-ms/docs/research/PR87_PUBCHEM_FULL_WV_INDEPENDENT_RESULT_20261004.md
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{OPEN\_PUBCHEM\_PRIOR retrieval on a target-blind fixed mass-window Top20.} Matched measured and fixed-precursor different-molecule peer spectra rank exactly the same candidate IDs. Only 2,567/8,401 (30.56\%) pools contain the target connectivity, setting a ceiling on all Top20 retrieval outcomes. The World predicts fragments without observing the target spectrum, and the predicted masses are then compared to that spectrum for ranking. No novel molecule is generated by G.}
+\label{tab:msdev_pubchem}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Fixed candidate ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 & Peer Hit@10 \\
+\midrule
+Mass-only order & 306 & 1,991 & 306 & 1,991 \\
+World W evidence & 1,213 & 2,429 & 62 & 1,334 \\
+Legacy molecule V score & \textbf{1,221} & \textbf{2,473} & 327 & 1,568 \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+\begin{minipage}{0.97\linewidth}\footnotesize
+All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not percentages over only reachable candidates. W ranks 1,213/2,567 (47.3\%) of reachable targets first. Its molecule-group-macro matched-minus-peer Top1 gain over the mass-only ordering is +7.67 percentage points (bootstrap 95\% CI [6.33, 9.10]). These are open-database ranking results, not closed-book de novo Exact@K.
+\end{minipage}
+\end{table}
