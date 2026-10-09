@@ -3,10 +3,14 @@
 % Include from Supplementary_Information.tex. Do NOT interpret as held-out TEST.
 % Evidence index: internal/NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md.
 \clearpage
-\section{Completed MassSpecGym development-set experiments}
+\section{Molecular composition, fragmentation evidence and connectivity recovery}
 \label{sec:msdev_results}
 
-All results in this section were obtained on an \emph{adaptive development partition derived from the official MassSpecGym TRAIN fold}, not on the official VAL or TEST folds. The 8,401-query SEARCH\_DEV cohort was repeatedly inspected during development and is not a pristine independent test. Case-weighted scores count all eligible spectra, including failures; molecule-group bootstrap intervals account for repeated acquisitions of the same molecular connectivity. For de novo structure experiments, the reference precursor formula is hidden unless explicitly stated; equality uses the first 14 InChIKey characters (constitutional connectivity rather than stereochemistry). Retrieval Hit@$k$, de novo Exact@$k$, formula recall, fragment-mass support and conditional V recall describe \emph{different outcomes} and must not be compared as if they were the same metric.
+These experiments evaluate different components of spectrum-to-structure inference on 8,401 spectra representing 1,135 molecular connectivity groups. The data are a molecule-disjoint development subset of the \emph{official MassSpecGym training partition}, repeatedly used for model development, not a held-out validation or test set. Every query, including unsuccessful predictions, contributes to case-weighted results. Bootstrap intervals resample molecular groups because individual molecules can have several measured spectra. Exact structure recovery uses the first 14 InChIKey characters and does not imply stereochemical identification.
+
+The forward fragmentation \emph{World} ($W$) predicts fragment masses when a precursor structure is \emph{provided}; the spectrum-conditioned \emph{Verifier} ($V$) reweights fragments generated from that same known structure. In contrast, the inverse \emph{Generator} ($G$) proposes precursor molecular graphs using the measured spectrum, without the true formula or structure. Retrieval ranks existing candidates in a fixed pool, while de novo generation must first produce candidate molecules. We therefore report molecular formula recall, fragment coverage, retrieval Hit@$k$, de novo Exact@$k$ and candidate-pool reach as separate endpoints.
+
+A \emph{matched} spectrum is the experimental spectrum corresponding to the query structure; a \emph{peer} spectrum comes from a different molecular group and is substituted while the query's precursor context and candidate identities stay fixed. The fragment-verification experiment uses an additional \emph{shuffled-spectrum} negative control. Reported matched-minus-control gaps measure sensitivity to spectral evidence rather than independent structural identification.
 
 % Source: orbit-ms/docs/results/pr90_search_dev_disjointness_20261006.json
 % Promotion partition: PR86/PR87 fixed W/V checkpoint-selection protocol.
