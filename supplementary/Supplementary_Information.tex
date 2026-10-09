@@ -35,7 +35,7 @@
 
 \section{Scope and reading order}
 
-This document contains the supporting experiments for two coupled contributions: a shared molecular fragmentation World supporting Free, Guided and Inverse inference, and the use of the resulting evidence hierarchy to resolve and analyse dark chemistry at scale. The notes follow evidentiary dependency rather than main-figure order. World semantics, evidence levels and biological family definitions are frozen before the downstream analyses they support.
+This document distinguishes completed component-level mass-spectrometric experiments from prospective validation and dark-metabolome applications that remain planned. The currently evaluated fragmentation World predicts structure-conditioned fragment hypotheses, the Verifier conditions those hypotheses on observed tandem spectra, and the inverse molecular generator is evaluated separately by whether it proposes the correct connectivity. The completed benchmark tables below report their actual denominators, controls and limitations. Sections containing unexecuted experimental requirements are explicitly marked as such; they do not constitute completed discoveries or prospective chemical identifications.
 
 Every quantity marked \result{} must be bound to an immutable artifact recorded in the claim--evidence matrix. No value is transferred from a training log or an exploratory analysis.
 
@@ -99,70 +99,39 @@ Simulator-generated training data requires specific attention: pseudo-spectra ge
 
 \result{Insert the full stringency sweep, the selected operating point and its justification.}
 
-\section{The molecular fragmentation World}
+\section{Spectrum-blind structural fragmentation World and conditional Verifier}
 
-\subsection{Closed chemical state}
-\methodtodo{Bond--electron state; atom identity; explicit H; formal charge/radicals; exact mass; ionization/adduct state; charged and neutral connected components; acquisition conditions; canonical state identity.}
+\subsection{Fragment hypotheses from a supplied precursor structure}
+For an input precursor molecular graph $M$ and acquisition context $c$, the implemented World $W$ constructs connected precursor heavy-atom subsets obtainable by cutting at most three heavy-atom bonds. Each retained subset is combined with permissible integer hydrogen adjustments, ion-carrier hypotheses and mass constraints derived from the precursor composition and adduct. Candidate fragments thus retain a heavy-atom mapping to $M$ together with calculated mass and charge-carrier information. These candidates are \emph{structural and mass hypotheses}; a cut in the source graph is not an experimentally validated gas-phase cleavage mechanism or an executable sequence of electron transfers.
 
-\subsection{Autoregressive single-electron event language}
-\methodtodo{Source selection from atoms/occupied bonds; atom-versus-bond target decision; sequential target atom pointers; 1e transfer; learned STOP/REPEAT/NEW event control; relation between repeated 1e events and conventional 2e pair transfer; accumulation of multi-event transformations before deterministic compilation; absence of reaction-template enumeration.}
+\subsection{World scoring without target-spectrum access}
+The World encodes the precursor graph and acquisition metadata, ranks its structural fragment hypotheses and exports their masses, atom masks and normalized prior weights. Its forward inference cannot read the measured fragment peaks of the query being evaluated. During model fitting, experimental fragment masses and intensities provide \emph{weak} supervision through a mass-matching likelihood; they do not reveal the atom identities of experimental product ions. A separate unexplained-peak term prevents every observed signal from being forcibly assigned to the enumerated fragments. For the completed development evaluation, an extended three-cut component was mixed with the prior two-cut candidate distribution using weights selected on the distinct model-selection partition. Fragment support is measured with a 0.005-Da mass window and a bounded predicted-mass budget; this is not equivalent to official full-spectrum cosine similarity.
 
-\subsection{Chemical compiler and legality}
-\methodtodo{Atom/electron/charge/H/mass conservation; bond-electron symmetry; supported valence/materialization checks; treatment of compiler rejection; distinction between executable chemistry and validated mechanism.}
+\subsection{Spectrum-conditioned fragment-set verification}
+For a fixed candidate precursor graph, the Verifier $V$ receives the \emph{same frozen} World fragment set together with the experimental MS/MS spectrum. It computes spectrum-conditioned compatibility scores over World fragment objects using their precursor atom masks, masses, hydrogen/carrier attributes, prior probabilities and the observed peak distribution. Its posterior reweights fragment hypotheses and can rank evidence sets associated with competing molecular structures. Since no experimental fragment-to-atom mapping is provided, a mass-compatible predicted product cannot be taken as a known experimental fragment structure. Comparisons between the measured spectrum and unrelated measured spectra keep the candidate structures fixed, isolating whether verification truly responds to the query's fragment evidence.
 
-\subsection{Multi-branch reaction DAG and probability mass}
-\methodtodo{Sibling reaction branches; branch-local STOP; reconvergent paths; canonical DAG aggregation; frontier scheduling; explicit decomposition of sampled policy mass into valid, invalid, event-budget-censored, unsampled and STOP outcomes; probability-conservation checks; censoring as unresolved rather than chemical failure.}
+\subsection{Scope and limitations of conditional evidence}
+The measured tandem mass spectrum is only a partial observation of precursor fragmentation. An unobserved predicted fragment is not necessarily chemically impossible, and missing predicted support may reflect absent chemistry in the World, ion-state ambiguity, noise or incomplete measurements. Distinct subgraphs can produce equal or near-equal fragment masses. Consequently, a mass match establishes neither a specific fragmentation pathway nor unique precursor connectivity. The completed World/Verifier tables below evaluate \emph{conditional fragment-mass evidence given a known precursor structure}, not end-to-end unknown-precursor identification. Older bond--electron transfer agents, explicit electron-event executors and reaction-DAG planners remain separate historical developments and must not be silently substituted for this frozen three-cut World.
 
-\subsection{Partial observation semantics}
-The experimental tandem mass spectrum is treated as a partial observation of the latent fragmentation World. Legal generated states that are not observed are not automatically labelled false. Likewise, reaction regions that remain unsampled or are censored by computational budget are not interpreted as chemically impossible.
+\section{Levels of structural evidence and remaining validation}
 
-\subsection{Support, specificity and elimination}
-For a candidate $M$ and observed peak $p$, the model returns whether some atom-balanced trajectory of $M$ reaches a fragment whose exact mass matches $p$ within tolerance. Three distinct quantities follow and are never conflated:
-
+\subsection{What is measured and what remains conditional}
+The current components provide a hierarchy of observations rather than a guarantee of molecular identification:
 \begin{enumerate}
-\item \textbf{support} --- such a trajectory exists;
-\item \textbf{specificity} --- the support exceeds the best support available to competing candidates in the same pool;
-\item \textbf{elimination} --- no trajectory of $M$ reaches $p$, so $M$ is excluded at the operating stringency.
+\item \textbf{Precursor composition:} a molecular formula is compatible with the measured precursor mass, adduct and observed MS/MS evidence.
+\item \textbf{Candidate validity:} a molecular graph satisfies the chosen valence, formula and connectivity constraints.
+\item \textbf{Conditional fragment support:} given a proposed precursor graph, the spectrum-blind World predicts masses that coincide with observed fragment peaks.
+\item \textbf{Candidate discrimination:} the measured spectrum preferentially supports one fixed molecular candidate over independently selected structural alternatives.
+\item \textbf{Reference-based benchmark recovery:} when the true molecular structure is known to the evaluator, exact-connectivity recall and final rank are computed after inference.
+\item \textbf{Independent calibrated statement or authentic-standard confirmation:} prospective confidence calibration, validated alternatives and orthogonal confirmation are required before a dark-spectrum prediction can be elevated to a reported identification.
 \end{enumerate}
 
-Elimination is the operation that makes the output composable. It is also the operation that can be wrong, because the reaction basis is incomplete: absence of a trajectory is evidence of impossibility only to the extent that the model covers the relevant chemistry. Supplementary Note 4 quantifies this directly, and the operating stringency is chosen from that measurement rather than assumed.
+The first five items are distinct \emph{measurement types}, not interchangeable confidence levels. Fragment-mass support is not evidence of an executed reaction path. A correct formula does not imply exact connectivity, and a target structure present in a candidate list does not imply correct ranking. The final item remains a planned validation stage, not a completed outcome of the experiments tabulated below.
 
-\subsection{Accidental-match opportunity control}
-\methodtodo{Correction for the probability that a candidate supports a peak by coincidence, as a function of support-set size, mass tolerance and peak density. Without this control, candidates with large support sets are favoured for reasons unrelated to identity.}
+\subsection{Planned bounded structural statements and calibration}
+An eventual annotation system may return a proposed unique connectivity, a bounded isomer set, a shared scaffold or chemical class, a molecular formula only, or an unresolved result. Such statements must be accompanied by independent uncertainty calibration; absent that calibration they remain structural \emph{hypotheses}. Community annotation confidence levels and standard-confirmed identifications must be assigned according to their respective experimental requirements, not inferred from World support alone.
 
-\subsection{Trajectory authority}
-\methodtodo{Levels of mechanistic authority: mass-compatible support, atom-balanced trajectory, and trajectory consistent with an established gas-phase mechanism. Only the highest level supports a reaction-level claim in the main text.}
-
-\subsection{Computational cost}
-\result{Insert per-candidate enumeration time, memory, scaling with heavy-atom count, and total cost of the atlas run.}
-
-\section{World-based structural evidence hierarchy}
-
-\subsection{Definition}
-Each spectrum or candidate may reach progressively stronger evidence:
-\begin{enumerate}
-\item precursor mass / molecular-formula compatibility;
-\item chemically valid molecular structure;
-\item reachability in the learned fragmentation World;
-\item executable reaction-path support for observed evidence;
-\item candidate-specific discriminative evidence;
-\item bidirectional spectrum--structure consistency under World replay;
-\item calibrated bounded structural statement;
-\item authentic-standard confirmation.
-\end{enumerate}
-
-These levels are frozen before repository-scale deployment. Stronger evidence is expected to increase reliability while reducing coverage; both quantities are reported.
-
-\subsection{Bounded structural output}
-At the calibrated operating point the reported structural statement may be a unique putative structure, bounded isomer set, shared substructure or class, molecular formula only, or unresolved. Only authentic-standard evidence is termed identification.
-
-\subsection{Relation to established reporting conventions}
-\methodtodo{Mapping onto the community confidence-level scheme, and explicit statement of the difference: the community levels are assigned by human judgement after annotation, whereas these levels are computed from which candidates the measurement eliminates. The two are reported side by side so that readers can translate.}
-
-\subsection{Confidence model and calibration}
-\methodtodo{Definition of the confidence that the reported statement contains the true structure; features used; fitting procedure; the disjoint calibration split; the estimator used for calibration error and its confidence intervals.}
-
-The calibration mapping is fitted only on the calibration split and is frozen before the prospective evaluation. It is never refitted after seeing prospective outcomes.
+\methodtodo{Before reporting calibrated dark-structure resolution, define a structure-disjoint confidence calibration cohort; show false-exclusion/containment versus retained resolution under fixed thresholds; validate the effect of candidate-pool support and World incompleteness; verify the correspondence to accepted metabolomics identification levels; report all failed confirmations. The present benchmark development-set results do not satisfy these requirements.}
 
 \section{Prospective validation}
 
@@ -180,22 +149,20 @@ The calibration mapping is fitted only on the calibration split and is frozen be
 
 \result{Insert comparator calibration errors and the comparison to mechanistic elimination.}
 
-\section{Free, Guided and Inverse inference over one World}
+\section{Forward fragment prediction, verification and inverse molecular inference}
 
-\subsection{Shared World representation}
-\methodtodo{Shared molecular/fragment graph encoding; task-mode conditioning; spectrum peak-graph encoding when applicable; checkpoint lineage; strict absence of target-spectrum input from Free inference.}
+\subsection{Conditional forward prediction}
+Given a hypothesized molecular structure and acquisition context, the implemented World produces a probability-weighted set of fragment-mass and precursor-atom-mask hypotheses without access to the target fragment spectrum. This forward mapping tests whether an already proposed candidate is compatible with a measured spectrum, but its fragment masks are not experimentally established reaction intermediates.
 
-\subsection{Free inference}
-\methodtodo{Teacher-free autoregressive electron-event rollout; Subtrajectory Balance/GFlowNet objective; multibranch probability flow; observation-derived positive evidence; ordered-transition endpoints; unresolved/censored probability accounting.}
+\subsection{Observation-conditioned verification}
+The Verifier uses observed peak masses and intensities to redistribute probability within the frozen World fragment set. Fragment-weighted evidence can discriminate two precursor hypotheses only after both molecular candidates have been supplied. When comparing measured with mismatched spectra, the molecular candidate identities and scoring budget are held fixed; separate structural-decoy tests evaluate whether the evidence favors the known precursor over an isomeric alternative. Fragment-set ranking remains a conditional measurement, not inverse generation.
 
-\subsection{Guided inference}
-\methodtodo{Spectrum-conditioned graph policy/value over the same executable World; frontier prioritization under matched compute; auxiliary IQL objective on sampled transitions; exact production checkpoint/inference path. Explicitly state that DAgger and HER are not currently part of production rollout unless implemented before manuscript freeze.}
+\subsection{Inverse molecular proposals and topology revision}
+For unknown precursor structures, the inverse model must produce complete, chemically valid candidate graphs from the measured spectrum. Earlier completed experiments used molecular fingerprint-related retrieval and local graph-editing priors; their results are retained only as historical benchmark diagnostics. The newer source implementation studies spectrum-conditioned constrained molecular graph denoising, with double-edge-swap transitions and optional structured World/Verifier evidence projected to graph features. Inference must use predicted molecular formulas, not ground-truth composition or the target molecular graph. The benchmark-ready endpoints are raw candidate connectivity reach, ranked Exact@1/10 and matched-versus-control behavior at a fixed proposal budget. No completed all-spectrum result for the newer integrated inverse generator is asserted here.
 
-\subsection{Inverse inference}
-\methodtodo{Factorized graph-construction policy; action-kind/element/charge/radical/attachment/pair/bond-order predictions; hard formula/charge/H/valence constraints; canonical partial-state merging; leaf--parent--precursor ordered-fragment shaping; SMC posterior maintenance; completed-candidate forward World replay.}
-
-\subsection{Bidirectional evidence}
-\methodtodo{Candidate replay through Free/Guided World; mass/intensity/ordered-transition support; candidate-specific discrimination; unresolved World probability mass; definition of the bidirectional consistency endpoint used in the manuscript.}
+\subsection{Future bidirectional calibration and model adaptation}
+A full inverse-to-World-to-spectrum validation requires the same generated molecular candidate to be scored by a separately frozen World/Verifier, with explicit controls for missing candidate support and false-confidence amplification. Confidence-gated self-distillation on unlabeled real MS/MS and any subsequent cross-generation improvement are planned experiments rather than results of the present benchmark tables.
+\methodtodo{For the final integrated system, report the completed source-frozen inverse checkpoint, exact candidate-generation budget, independent model-overlap/leakage audit, matched versus substituted-spectrum negative controls and all-spectrum de novo evaluation. Separately validate confidence thresholds before reporting unobserved compounds as structurally resolved.}
 
 \section{Outer-loop scientific program evolution}
 
@@ -304,7 +271,14 @@ Anchors that fail to confirm are reported. An unconfirmed anchor is informative 
 
 \section{Supplementary tables}
 
-\methodtodo{S1 corpus inventory; S2 leakage audit; S3 prospective set composition and independence audit; S4 stringency sweep; S5 comparator configurations and versions; S6 rule-evolution receipts; S7 atlas entry schema; S8 uncharacterized recurrent families; S9 perturbation dataset inventory with manual verification status; S10 anchor dossiers.}
+The completed and source-audited MassSpecGym development results appear in Tables~S2--S12 below. Library-snapshot Table~S1 retains its explicitly marked missing measurements. Previously planned leakage, calibration, atlas, biological and authentic-standard tables will be numbered only after their source evidence is frozen; their results are not implied by these benchmark tables.
+
+% Support compilation from either the repository root or supplementary/.
+\IfFileExists{supplementary/MassSpecGym_Development_Results.tex}{%
+  \input{supplementary/MassSpecGym_Development_Results}%
+}{%
+  \input{MassSpecGym_Development_Results}%
+}
 
 \bibliographystyle{unsrtnat}
 \bibliography{../references}
