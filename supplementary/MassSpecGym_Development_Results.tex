@@ -207,6 +207,7 @@ Across all queries, 86.82\% generated at least one true-formula structure yet mi
 % Sources: orbit-ms/docs/results/pr87_vg_autoresearch_20261001/
 % g_fixed_pool_mass_full_result_20261002.json; g_exhaustive_h_full_result_20261002.json
 % orbit-ms/docs/results/pr90_g90_full_search_dev_20261005.md
+% Absolute hit numerators are available in linked machine-readable orbit-ms result archives; all visible score cells below use n=8401 and %. 
 \begin{table}[!htbp]
 \centering
 \caption{\textbf{Historical graph-edit structure generation with the ground-truth molecular formula hidden.} All 8,401 development spectra are evaluated. The retrieval-seeded approach edits training-library molecular graphs selected using a historical spectrum-to-fingerprint route and reranks with a mass-aware scorer. The formula-diversified approach expands 16 inferred-formula seeds through two edit depths with beam width 16 and three attempts per operator and parent. The exhaustive-search diagnostic generates a mean of 2,761 distinct protonated candidates per query while retaining the original sodiated results. These configurations \emph{do not use identical raw proposal budgets}, and are not the subsequent fingerprint-free graph-denoising model.}
@@ -217,9 +218,9 @@ Across all queries, 86.82\% generated at least one true-formula structure yet mi
 \toprule
 Route & Exact@1 & Exact@10 & Reach@100 \\
 \midrule
-Retrieval-seeded local editing with mass-aware ranking & 288 (3.43\%) & 948 (11.28\%) & 1,176 (14.00\%) \\
-Formula-diversified topology editing & 157 (1.87\%) & 787 (9.37\%) & 1,317 (15.68\%) \\
-Expanded protonated edit enumeration (over-budget) & 396 (4.71\%) & 1,446 (17.21\%) & 1,841 (21.91\%) \\
+Retrieval-seeded local editing with mass-aware ranking & 3.43\% & 11.28\% & 14.00\% \\
+Formula-diversified topology editing & 1.87\% & 9.37\% & 15.68\% \\
+Expanded protonated edit enumeration (over-budget) & 4.71\% & 17.21\% & 21.91\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
@@ -232,6 +233,7 @@ Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the T
 % PR87_G2_FULL_TRAIN_AND_ISOMER_REGRESSION_20261004.md
 % PR87_G3_FULL_SEARCH_DEV_DECISION_20261004.md
 % PR87_G4_FULL_SEARCH_DEV_DECISION_20261004.md
+% Absolute hit numerators are available in linked machine-readable orbit-ms result archives; all visible score cells below use n=8401 and %. 
 \begin{table}[!htbp]
 \centering
 \caption{\textbf{Effect of graph-construction objectives under a fixed formula prior and sampling budget.} Five policies are compared on all 8,401 development spectra using the same mass-derived formula proposal distribution and 100 raw graph draws per eligible query. The reference policy is compared with different-spectrum peer supervision, symmetric same-formula isomer contrast, synchronized paired-action optimization and action negative-log-likelihood learning. These policies are \emph{not} the separately rescored, retrieval-seeded local-edit baseline in Table~\ref{tab:msdev_denovo}; their comparisons are valid only within this table.}
@@ -242,11 +244,11 @@ Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the T
 \toprule
 Variant & Exact@1 & Exact@10 & Target in raw pool \\
 \midrule
-Reference graph-action policy & 235 (2.80\%) & 378 (4.50\%) & 528 (6.29\%) \\
-Peer-spectrum action supervision & 201 (2.39\%) & 401 (4.77\%) & \textbf{570 (6.78\%)} \\
-Symmetric isomer contrast & 228 (2.71\%) & 372 (4.43\%) & 529 (6.30\%) \\
-Synchronized action-policy optimization & 142 (1.69\%) & 283 (3.37\%) & 439 (5.23\%) \\
-Action likelihood optimization & \textbf{243 (2.89\%)} & 372 (4.43\%) & 531 (6.32\%) \\
+Reference graph-action policy & 2.80\% & 4.50\% & 6.28\% \\
+Peer-spectrum action supervision & 2.39\% & 4.77\% & \textbf{6.78\%} \\
+Symmetric isomer contrast & 2.71\% & 4.43\% & 6.30\% \\
+Synchronized action-policy optimization & 1.69\% & 3.37\% & 5.23\% \\
+Action likelihood optimization & \textbf{2.89\%} & 4.43\% & 6.32\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
