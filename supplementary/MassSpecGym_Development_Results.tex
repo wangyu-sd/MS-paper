@@ -10,7 +10,7 @@ These experiments evaluate different components of spectrum-to-structure inferen
 
 The forward fragmentation \emph{World} ($W$) predicts fragment masses when a precursor structure is \emph{provided}; the spectrum-conditioned \emph{Verifier} ($V$) reweights fragments generated from that same known structure. In contrast, the inverse \emph{Generator} ($G$) proposes precursor molecular graphs using the measured spectrum, without the true formula or structure. Retrieval ranks existing candidates in a fixed pool, while de novo generation must first produce candidate molecules. We therefore report molecular formula recall, fragment coverage, retrieval Hit@$k$, de novo Exact@$k$ and candidate-pool reach as separate endpoints.
 
-A \emph{matched} spectrum is the experimental spectrum corresponding to the query structure; a \emph{peer} spectrum comes from a different molecular group and is substituted while the query's precursor context and candidate identities stay fixed. The fragment-verification experiment uses an additional \emph{shuffled-spectrum} negative control. Reported matched-minus-control gaps measure sensitivity to spectral evidence rather than independent structural identification.
+A \emph{matched} spectrum is the experimental spectrum corresponding to the query structure; a \emph{peer} spectrum comes from a different molecular group and is substituted while the query's precursor context and candidate identities stay fixed. The fragment-verification experiment uses an additional \emph{shuffled-spectrum} negative control. Reported matched-minus-control gaps measure sensitivity to spectral evidence rather than independent structural identification. All outcome rates are expressed as percentages (\%); differences between rates and their confidence intervals are expressed in percentage points (pp). Dataset sizes, subgroup denominators, candidate budgets and computational costs remain absolute counts.
 
 % Sources: orbit-ms/docs/data/pr85_train_split_manifest_20260926.json
 % orbit-ms/docs/data/pr85_full_population_split_audit_20260928.json
@@ -43,24 +43,25 @@ Official VAL / TEST & -- & -- & Not reported for final WGV \\
 \setlength{\tabcolsep}{5pt}
 \begin{tabular}{lrrrrr}
 \toprule
-Stratum & $n$ & Top1 (\%) & Top5 (\%) & Top8 (\%) & Top16 (\%) \\
+Stratum & $n$ & Top1 & Top5 & Top8 & Top16 \\
 \midrule
-All & 8,401 & \textbf{87.87} & \textbf{96.64} & 97.50 & 98.44 \\
-$[\mathrm{M+H}]^+$ & 7,429 & 89.45 & 97.47 & 98.17 & 98.84 \\
-$[\mathrm{M+Na}]^+$ & 972 & 75.82 & 90.33 & 92.39 & 95.37 \\
-Sulfur-containing & 1,183 & 76.08 & 90.70 & 91.72 & 92.39 \\
-Halogen-containing & 1,037 & 73.38 & 93.92 & 95.47 & 97.69 \\
-Phosphorus-containing & 668 & 94.01 & 98.65 & 99.10 & 99.55 \\
+All & 8,401 & \textbf{87.87\%} & \textbf{96.64\%} & 97.50\% & 98.44\% \\
+$[\mathrm{M+H}]^+$ & 7,429 & 89.45\% & 97.47\% & 98.17\% & 98.84\% \\
+$[\mathrm{M+Na}]^+$ & 972 & 75.82\% & 90.33\% & 92.39\% & 95.37\% \\
+Sulfur-containing & 1,183 & 76.08\% & 90.70\% & 91.72\% & 92.39\% \\
+Halogen-containing & 1,037 & 73.38\% & 93.92\% & 95.47\% & 97.69\% \\
+Phosphorus-containing & 668 & 94.01\% & 98.65\% & 99.10\% & 99.55\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-The all-case Top1/5/8/16 numerators are 7,382/8,119/8,191/8,270. The molecule-group-equal Top1 accuracy is 86.50\% overall (H 86.17\%, Na 80.96\%). Mean Top1 posterior confidence is 93.45\%; 10-bin expected calibration error is 5.58\% overall and 11.83\% for Na. Formula recall is \emph{not} molecular-connectivity recall.
+Each formula Top-$k$ percentage is computed on the complete 8,401-spectrum population; underlying exact-match numerators remain in the source result archive. The molecule-group-equal Top1 accuracy is 86.50\% overall (H 86.17\%, Na 80.96\%). Mean Top1 posterior confidence is 93.45\%; 10-bin expected calibration error is 5.58\% overall and 11.83\% for Na. Formula recall is \emph{not} molecular-connectivity recall.
 \end{minipage}
 \end{table}
 
 % Source: orbit-ms/docs/results/PR90_FORMULA_SEED_BOTTLENECK_20261006.md
+% Historical entry counts by row: 5752, 2518, 131; overlapping 1682; n=8401.
 \begin{table}[!htbp]
 \centering
 \caption{\textbf{Formula-compatible structural initialization for a seed-bound inverse model.} The first three outcomes partition all 8,401 development spectra by the presence of the correct formula among 16 predictions and the availability of a training-library structure with that formula. The last row is an overlapping separate diagnostic, not a fourth disjoint category. These are \emph{necessary conditions}, not success rates of graph generation.}
@@ -68,19 +69,19 @@ The all-case Top1/5/8/16 numerators are 7,382/8,119/8,191/8,270. The molecule-gr
 \small
 \begin{tabular}{p{0.73\linewidth}r}
 \toprule
-Post-hoc entry condition & Cases (\%) \\
+Post-hoc entry condition & Share of all queries \\
 \midrule
-Correct formula in Top16; a matching training structure exists & 5,752 (68.47) \\
-Correct formula in Top16; no matching training structure exists & 2,518 (29.97) \\
-Correct formula absent from Top16 & 131 (1.56) \\
+Correct formula in Top16; a matching training structure exists & 68.47\% \\
+Correct formula in Top16; no matching training structure exists & 29.97\% \\
+Correct formula absent from Top16 & 1.56\% \\
 \midrule
-No training structure for any of the Top16 formulas (overlapping) & 1,682 (20.02) \\
+No training structure for any of the Top16 formulas (overlapping) & 20.02\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Under this \emph{particular} seed-bound, formula-preserving edit route, at least 2,518+131=2,649/8,401 (31.53\%) queries cannot yield the true connectivity, regardless of W/V reranking. This does not constrain a separate formula-only graph initializer or a generator capable of constructing new scaffolds.
+Under this \emph{particular} seed-bound, formula-preserving edit route, the 29.97\% of queries without a true-formula seed plus the 1.56\% whose true formula is absent from Top16 give a 31.53\% entry-infeasibility rate, regardless of W/V reranking. This does not constrain a separate formula-only graph initializer or a generator capable of constructing new scaffolds.
 \end{minipage}
 \end{table}
 
@@ -95,16 +96,16 @@ Under this \emph{particular} seed-bound, formula-preserving edit route, at least
 \toprule
 World configuration & $n$ & Weighted recall & Peak recall & Weighted precision \\
 \midrule
-Previous two-World selection & 8,401 & 0.6990 & 0.4618 & \textbf{0.5233} \\
-Selected three-cut mixture & 8,401 & \textbf{0.7219} & \textbf{0.4973} & 0.5215 \\
-\quad $[\mathrm{M+H}]^+$ subset & 7,429 & 0.7527 & 0.5216 & 0.5631 \\
-\quad $[\mathrm{M+Na}]^+$ subset & 972 & 0.4864 & 0.3118 & 0.2037 \\
+Previous two-World selection & 8,401 & 69.90\% & 46.18\% & \textbf{52.33\%} \\
+Selected three-cut mixture & 8,401 & \textbf{72.19\%} & \textbf{49.73\%} & 52.15\% \\
+\quad $[\mathrm{M+H}]^+$ subset & 7,429 & 75.27\% & 52.16\% & 56.31\% \\
+\quad $[\mathrm{M+Na}]^+$ subset & 972 & 48.64\% & 31.18\% & 20.37\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Selected-minus-previous weighted-recall difference: +0.02285 (1,135-group bootstrap 95\% CI [0.01549, 0.03153]); peak-recall difference: +0.03556 [0.02951, 0.04197]. The selected decoder emits 384.6 masses per spectrum on average; unweighted emitted-mass precision is 3.70\%. Sodium-adduct coverage and the diffuse low-confidence fragment tail remain limitations.
+Selected-minus-previous weighted-recall difference: +2.29 pp (1,135-group bootstrap 95\% CI [1.55, 3.15] pp); peak-recall difference: +3.56 pp (95\% CI [2.95, 4.20] pp). The selected decoder emits 384.6 masses per spectrum on average; unweighted emitted-mass precision is 3.70\%. Sodium-adduct coverage and the diffuse low-confidence fragment tail remain limitations.
 \end{minipage}
 \end{table}
 
@@ -119,23 +120,23 @@ Selected-minus-previous weighted-recall difference: +0.02285 (1,135-group bootst
 \toprule
 World candidate set & Fragment verifier & Matched recall & Matched--shuffled \\
 \midrule
-Old W fragments & Analytic mass posterior & 0.5816 & +0.0310 \\
-Old W fragments & Learned set posterior & 0.5976 & +0.0461 \\
-Three-cut W fragments & Analytic mass posterior & 0.6081 & +0.0403 \\
-Three-cut W fragments & Frozen learned posterior & \textbf{0.6279} & \textbf{+0.0770} \\
+Old W fragments & Analytic mass posterior & 58.16\% & +3.10 pp \\
+Old W fragments & Learned set posterior & 59.76\% & +4.61 pp \\
+Three-cut W fragments & Analytic mass posterior & 60.81\% & +4.03 pp \\
+Three-cut W fragments & Frozen learned posterior & \textbf{62.79\%} & \textbf{+7.70 pp} \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Changing the learned V input from the old to the three-cut W set increases matched recall by +0.03032 (molecule-group bootstrap 95\% CI [0.02000, 0.04191]). On 290 strict same-formula, same-acquisition-context structural decoys, the frozen learned V favors the correct set in 243 cases, while the unlearned W prior favors it in 245; improved strict-decoy discrimination over W is therefore \emph{not established}. These results do not imply complete-molecule de novo identification.
+Changing the learned V input from the old to the three-cut W set increases matched recall by +3.03 pp (molecule-group bootstrap 95\% CI [2.00, 4.19] pp). On 290 strict same-formula, same-acquisition-context structural decoys, the frozen learned V favors the correct set in 83.79\% of cases, versus 84.48\% for the unlearned W prior; improved strict-decoy discrimination over W is therefore \emph{not established}. These results do not imply complete-molecule de novo identification.
 \end{minipage}
 \end{table}
 
 % Source: orbit-ms/docs/research/PR87_PUBCHEM_FULL_WV_INDEPENDENT_RESULT_20261004.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Molecular retrieval from a fixed mass-compatible PubChem candidate pool.} Matched measured and fixed-precursor different-molecule peer spectra rank exactly the same candidate IDs. Only 2,567/8,401 (30.56\%) pools contain the target connectivity, setting a ceiling on all Top20 retrieval outcomes. The World predicts fragments without observing the target spectrum, and the predicted masses are then compared to that spectrum for ranking. No novel molecule is generated by G.}
+\caption{\textbf{Molecular retrieval from a fixed mass-compatible PubChem candidate pool.} Matched measured and fixed-precursor different-molecule peer spectra rank exactly the same candidate IDs. Only 30.56\% of the 8,401 query pools contain the target connectivity, setting the maximum possible Hit@K on this fixed candidate set. The World predicts fragments without observing the target spectrum, and the predicted masses are then compared to that spectrum for ranking. No novel molecule is generated by G.}
 \label{tab:msdev_pubchem}
 \small
 \setlength{\tabcolsep}{3pt}
@@ -143,15 +144,15 @@ Changing the learned V input from the old to the three-cut W set increases match
 \toprule
 Fixed candidate ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 & Peer Hit@10 \\
 \midrule
-Mass-only order & 306 & 1,991 & 306 & 1,991 \\
-World W evidence & 1,213 & 2,429 & 62 & 1,334 \\
-Earlier learned molecule-level verification & \textbf{1,221} & \textbf{2,473} & 327 & 1,568 \\
+Mass-only order & 3.64\% & 23.70\% & 3.64\% & 23.70\% \\
+World W evidence & 14.44\% & 28.91\% & 0.74\% & 15.88\% \\
+Earlier learned molecule-level verification & \textbf{14.53\%} & \textbf{29.44\%} & 3.89\% & 18.66\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not percentages over only reachable candidates. W ranks 1,213/2,567 (47.3\%) of reachable targets first. Its molecule-group-macro matched-minus-peer Top1 gain over the mass-only ordering is +7.67 percentage points (bootstrap 95\% CI [6.33, 9.10]). These are open-database ranking results, not closed-book de novo Exact@K.
+All Hit@K entries are percentages of the \emph{entire 8,401-query development cohort}, not only cases whose targets occur among the 20 candidate molecules. Conditional on target connectivity being in the fixed pool, W ranks 47.3\% of reachable targets first. Its molecule-group-macro matched-minus-peer Top1 gain over the mass-only ordering is +7.67 percentage points (bootstrap 95\% CI [6.33, 9.10]). These are open-database ranking results, not closed-book de novo Exact@K.
 \end{minipage}
 \end{table}
 
@@ -160,7 +161,7 @@ All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not per
 % Historical fingerprint-based proposals; not the canonical inverse method.
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Historical fixed-pool World evidence on the official MassSpecGym mass-based candidate universe.} A former fingerprint-related ranker selects Top20 structures; candidate IDs are fixed between matched and fixed-precursor peer spectra. Target connectivity is present in 4,672/8,401 (55.61\%) pools. The experiment isolates the World evidence \emph{within that historical pool}, not the accuracy of a fingerprint-free de novo generator.}
+\caption{\textbf{Historical fixed-pool World evidence on the official MassSpecGym mass-based candidate universe.} A former fingerprint-related ranker selects Top20 structures; candidate IDs are fixed between matched and fixed-precursor peer spectra. Target connectivity is present in 55.61\% of the 8,401 fixed candidate pools. The experiment isolates the World evidence \emph{within that historical pool}, not the accuracy of a fingerprint-free de novo generator.}
 \label{tab:msdev_fp20}
 \small
 \setlength{\tabcolsep}{4pt}
@@ -168,46 +169,45 @@ All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not per
 \toprule
 Ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 \\
 \midrule
-Fingerprint-preselected candidate ordering & 1,710 & 3,773 & 342 \\
-Candidate-eligibility-controlled ordering & 1,974 & 4,019 & 410 \\
-World W evidence & \textbf{2,509} & \textbf{4,418} & 239 \\
-Earlier learned molecule-level verification & 2,567 & 4,374 & 443 \\
+Fingerprint-preselected candidate ordering & 20.35\% & 44.91\% & 4.07\% \\
+Candidate-eligibility-controlled ordering & 23.50\% & 47.84\% & 4.88\% \\
+World W evidence & \textbf{29.87\%} & \textbf{52.59\%} & 2.84\% \\
+Earlier learned molecule-level verification & 30.56\% & 52.07\% & 5.27\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Forward fragmentation evidence improves case-weighted Hit@1 relative to the eligible-candidate control by +6.37 percentage points. Molecule-group macro gain: +14.78 points (bootstrap 95\% CI [12.58, 16.91]); matched-minus-peer group-macro gain: +15.18 points [13.02, 17.39]. Legacy V has a higher case-weighted matched Hit@1 but a \emph{lower} molecule-group-macro Hit@1 than W (difference --0.96 points; CI [--1.81, --0.15]). These outcomes cannot be transferred to a new candidate pool.
+Forward fragmentation evidence improves case-weighted Hit@1 relative to the eligible-candidate control by +6.37 pp. The molecule-group-macro Hit@1 gain is +14.78 pp (bootstrap 95\% CI [12.58, 16.91] pp), and the matched-minus-peer group-macro gain is +15.18 pp (95\% CI [13.02, 17.39] pp). The earlier learned molecule-level verifier has a higher case-weighted matched Hit@1 but a \emph{lower} molecule-group-macro Hit@1 than W (verifier minus World: $-0.96$ pp, 95\% CI [$-1.81$, $-0.15$] pp). These outcomes cannot be transferred to a new candidate pool.
 \end{minipage}
 \end{table}
 
 % Source: orbit-ms/docs/research/PR87_G0_SAME_FORMULA_STRUCTURE_GAP_20261004.md
+% Source count audit: n=8401, formula sampled 7829, formula emitted 7822, topology 528, formula-only miss 7294.
+% Heavy >=20: n=5564, formula sampled 5066, formula emitted 5064, topology 41.
 \begin{table}[!htbp]
 \centering
 \caption{\textbf{A historical graph-generation model exposes the formula-to-connectivity gap.} Independent full-cohort audit of the historical 100-draw graph-generator candidate pool. Entries measure post-hoc \emph{presence} of the formula and exact 14-character InChIKey connectivity, not the rank of the correct answer. This older model is distinct from both the direct elemental-composition model and the subsequent graph-denoising generator.}
 \label{tab:msdev_topology}
 \small
-\begin{tabular}{p{0.73\linewidth}r}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.28\linewidth}rrrr}
 \toprule
-Post-hoc condition & Cases \\
+Stratum & $n$ & Formula sampled & Formula in pool & Exact topology in pool \\
 \midrule
-Ground-truth formula sampled & 7,829 / 8,401 \\
-At least one correct-formula candidate emitted & 7,822 / 8,401 \\
-Correct connectivity emitted & 528 / 8,401 \\
-Correct formula emitted, correct topology absent & 7,294 / 8,401 \\
-\midrule
-Heavy atoms $\geq20$: formula represented & 5,064 \\
-Heavy atoms $\geq20$: connectivity represented & 41 \\
+All spectra & 8,401 & 93.19\% & 93.11\% & 6.28\% \\
+At least 20 heavy atoms & 5,564 & 91.05\% & 91.01\% & 0.74\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Conditional proposal reach given a correct-formula emitted candidate is 528/7,822=6.75\%, and 41/5,064=0.81\% in the listed large-molecule stratum. Neither number is end-to-end Exact@1.
+Across all queries, 86.82\% generated at least one true-formula structure yet missed the target topology. Conditional on having generated a true-formula candidate, exact-connectivity reach is 6.75\% overall and 0.81\% among molecules with at least 20 heavy atoms. None of these proposal-coverage measures is ranked de novo Exact@1.
 \end{minipage}
 \end{table}
 
 % Sources: orbit-ms/docs/results/pr87_vg_autoresearch_20261001/
 % g_fixed_pool_mass_full_result_20261002.json; g_exhaustive_h_full_result_20261002.json
 % orbit-ms/docs/results/pr90_g90_full_search_dev_20261005.md
+% Absolute hit numerators are available in linked machine-readable orbit-ms result archives; all visible score cells below use n=8401 and %. 
 \begin{table}[!htbp]
 \centering
 \caption{\textbf{Historical graph-edit structure generation with the ground-truth molecular formula hidden.} All 8,401 development spectra are evaluated. The retrieval-seeded approach edits training-library molecular graphs selected using a historical spectrum-to-fingerprint route and reranks with a mass-aware scorer. The formula-diversified approach expands 16 inferred-formula seeds through two edit depths with beam width 16 and three attempts per operator and parent. The exhaustive-search diagnostic generates a mean of 2,761 distinct protonated candidates per query while retaining the original sodiated results. These configurations \emph{do not use identical raw proposal budgets}, and are not the subsequent fingerprint-free graph-denoising model.}
@@ -218,9 +218,9 @@ Conditional proposal reach given a correct-formula emitted candidate is 528/7,82
 \toprule
 Route & Exact@1 & Exact@10 & Reach@100 \\
 \midrule
-Retrieval-seeded local editing with mass-aware ranking & 288 (3.43\%) & 948 (11.28\%) & 1,176 (14.00\%) \\
-Formula-diversified topology editing & 157 (1.87\%) & 787 (9.37\%) & 1,317 (15.68\%) \\
-Expanded protonated edit enumeration (over-budget) & 396 (4.71\%) & 1,446 (17.21\%) & 1,841 (21.91\%) \\
+Retrieval-seeded local editing with mass-aware ranking & 3.43\% & 11.28\% & 14.00\% \\
+Formula-diversified topology editing & 1.87\% & 9.37\% & 15.68\% \\
+Expanded protonated edit enumeration (over-budget) & 4.71\% & 17.21\% & 21.91\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
@@ -233,6 +233,7 @@ Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the T
 % PR87_G2_FULL_TRAIN_AND_ISOMER_REGRESSION_20261004.md
 % PR87_G3_FULL_SEARCH_DEV_DECISION_20261004.md
 % PR87_G4_FULL_SEARCH_DEV_DECISION_20261004.md
+% Absolute hit numerators are available in linked machine-readable orbit-ms result archives; all visible score cells below use n=8401 and %. 
 \begin{table}[!htbp]
 \centering
 \caption{\textbf{Effect of graph-construction objectives under a fixed formula prior and sampling budget.} Five policies are compared on all 8,401 development spectra using the same mass-derived formula proposal distribution and 100 raw graph draws per eligible query. The reference policy is compared with different-spectrum peer supervision, symmetric same-formula isomer contrast, synchronized paired-action optimization and action negative-log-likelihood learning. These policies are \emph{not} the separately rescored, retrieval-seeded local-edit baseline in Table~\ref{tab:msdev_denovo}; their comparisons are valid only within this table.}
@@ -243,11 +244,11 @@ Exact@$k$ is ranked connectivity recovery; Reach@100 is target presence in the T
 \toprule
 Variant & Exact@1 & Exact@10 & Target in raw pool \\
 \midrule
-Reference graph-action policy & 235 (2.80\%) & 378 (4.50\%) & 528 (6.29\%) \\
-Peer-spectrum action supervision & 201 (2.39\%) & 401 (4.77\%) & \textbf{570 (6.78\%)} \\
-Symmetric isomer contrast & 228 (2.71\%) & 372 (4.43\%) & 529 (6.30\%) \\
-Synchronized action-policy optimization & 142 (1.69\%) & 283 (3.37\%) & 439 (5.23\%) \\
-Action likelihood optimization & \textbf{243 (2.89\%)} & 372 (4.43\%) & 531 (6.32\%) \\
+Reference graph-action policy & 2.80\% & 4.50\% & 6.28\% \\
+Peer-spectrum action supervision & 2.39\% & 4.77\% & \textbf{6.78\%} \\
+Symmetric isomer contrast & 2.71\% & 4.43\% & 6.30\% \\
+Synchronized action-policy optimization & 1.69\% & 3.37\% & 5.23\% \\
+Action likelihood optimization & \textbf{2.89\%} & 4.43\% & 6.32\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
@@ -259,19 +260,19 @@ The peer-action variant reaches 42 additional target-containing pools but reduce
 % Source: orbit-ms/docs/results/pr90_g90_bad_case_analysis_20261005.md
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Failure decomposition of formula-diversified graph editing.} Panel A partitions every development-spectrum query exactly once, assessed post hoc after target-blind Top100 ranking. Correct formula means formula \emph{and charge} compatibility, not structural correctness. Panel B comprises overlapping chemical and size strata that must not be summed.}
+\caption{\textbf{Failure decomposition of formula-diversified graph editing.} Panel A expresses each mutually exclusive post-hoc outcome as a percentage of all 8,401 development queries after target-blind Top100 ranking. Correct formula means formula \emph{and charge} compatibility, not structural correctness. Panel B comprises overlapping chemical and size strata that must not be summed.}
 \label{tab:msdev_g90}
 \small
 \begin{tabular}{p{0.73\linewidth}r}
 \toprule
 \multicolumn{2}{l}{\textit{A. Mutually exclusive ranked-outcome partition}} \\
 \midrule
-Exact connectivity ranked first & 157 (1.87\%) \\
-Exact connectivity ranked 2--100 & 1,160 (13.81\%) \\
-Correct formula/charge in Top100, topology absent & 3,881 (46.20\%) \\
-Correct formula/charge absent from Top100 & 3,203 (38.13\%) \\
+Exact connectivity ranked first & 1.87\% \\
+Exact connectivity ranked 2--100 & 13.81\% \\
+Correct formula/charge in Top100, topology absent & 46.20\% \\
+Correct formula/charge absent from Top100 & 38.13\% \\
 \midrule
-Total & 8,401 (100\%) \\
+Total & 100.00\% \\
 \bottomrule
 \end{tabular}
 
@@ -279,15 +280,15 @@ Total & 8,401 (100\%) \\
 \begin{tabular}{lrr}
 \toprule
 \multicolumn{3}{l}{\textit{B. Overlapping adduct and complexity strata}} \\
-Stratum & Reach@100 (\%) & Formula in Top100 (\%) \\
+Stratum & Reach@100 & Formula in Top100 \\
 \midrule
-$[\mathrm{M+H}]^+$ & 17.1 & 64.7 \\
-$[\mathrm{M+Na}]^+$ & 4.4 & 40.1 \\
-$\leq15$ heavy atoms & 44.4 & 74.5 \\
-$>30$ heavy atoms & 7.4 & 54.7 \\
-At least five rings & 4.3 & 59.2 \\
-Halogen-containing & 2.4 & 12.4 \\
-Sulfur-containing & 6.5 & 42.7 \\
+$[\mathrm{M+H}]^+$ & 17.1\% & 64.7\% \\
+$[\mathrm{M+Na}]^+$ & 4.4\% & 40.1\% \\
+$\leq15$ heavy atoms & 44.4\% & 74.5\% \\
+$>30$ heavy atoms & 7.4\% & 54.7\% \\
+At least five rings & 4.3\% & 59.2\% \\
+Halogen-containing & 2.4\% & 12.4\% \\
+Sulfur-containing & 6.5\% & 42.7\% \\
 \bottomrule
 \end{tabular}
 \end{table}
