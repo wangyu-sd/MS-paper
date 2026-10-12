@@ -144,15 +144,15 @@ Changing the learned V input from the old to the three-cut W set increases match
 \toprule
 Fixed candidate ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 & Peer Hit@10 \\
 \midrule
-Mass-only order & 306 & 1,991 & 306 & 1,991 \\
-World W evidence & 1,213 & 2,429 & 62 & 1,334 \\
-Earlier learned molecule-level verification & \textbf{1,221} & \textbf{2,473} & 327 & 1,568 \\
+Mass-only order & 3.64\% & 23.70\% & 3.64\% & 23.70\% \\
+World W evidence & 14.44\% & 28.91\% & 0.74\% & 15.88\% \\
+Earlier learned molecule-level verification & \textbf{14.53\%} & \textbf{29.44\%} & 3.89\% & 18.66\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not percentages over only reachable candidates. W ranks 1,213/2,567 (47.3\%) of reachable targets first. Its molecule-group-macro matched-minus-peer Top1 gain over the mass-only ordering is +7.67 percentage points (bootstrap 95\% CI [6.33, 9.10]). These are open-database ranking results, not closed-book de novo Exact@K.
+All Hit@K entries are percentages of the \emph{entire 8,401-query development cohort}, not only cases whose targets occur among the 20 candidate molecules. Conditional on target connectivity being in the fixed pool, W ranks 47.3\% of reachable targets first. Its molecule-group-macro matched-minus-peer Top1 gain over the mass-only ordering is +7.67 percentage points (bootstrap 95\% CI [6.33, 9.10]). These are open-database ranking results, not closed-book de novo Exact@K.
 \end{minipage}
 \end{table}
 
@@ -169,15 +169,15 @@ All Hit@K entries are correct-structure \emph{case counts out of 8,401}, not per
 \toprule
 Ranker & Matched Hit@1 & Matched Hit@10 & Peer Hit@1 \\
 \midrule
-Fingerprint-preselected candidate ordering & 1,710 & 3,773 & 342 \\
-Candidate-eligibility-controlled ordering & 1,974 & 4,019 & 410 \\
-World W evidence & \textbf{2,509} & \textbf{4,418} & 239 \\
-Earlier learned molecule-level verification & 2,567 & 4,374 & 443 \\
+Fingerprint-preselected candidate ordering & 20.35\% & 44.91\% & 4.07\% \\
+Candidate-eligibility-controlled ordering & 23.50\% & 47.84\% & 4.88\% \\
+World W evidence & \textbf{29.87\%} & \textbf{52.59\%} & 2.84\% \\
+Earlier learned molecule-level verification & 30.56\% & 52.07\% & 5.27\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Forward fragmentation evidence improves case-weighted Hit@1 relative to the eligible-candidate control by +6.37 percentage points. Molecule-group macro gain: +14.78 points (bootstrap 95\% CI [12.58, 16.91]); matched-minus-peer group-macro gain: +15.18 points [13.02, 17.39]. Legacy V has a higher case-weighted matched Hit@1 but a \emph{lower} molecule-group-macro Hit@1 than W (difference --0.96 points; CI [--1.81, --0.15]). These outcomes cannot be transferred to a new candidate pool.
+Forward fragmentation evidence improves case-weighted Hit@1 relative to the eligible-candidate control by +6.37 pp. The molecule-group-macro Hit@1 gain is +14.78 pp (bootstrap 95\% CI [12.58, 16.91] pp), and the matched-minus-peer group-macro gain is +15.18 pp (95\% CI [13.02, 17.39] pp). The earlier learned molecule-level verifier has a higher case-weighted matched Hit@1 but a \emph{lower} molecule-group-macro Hit@1 than W (verifier minus World: $-0.96$ pp, 95\% CI [$-1.81$, $-0.15$] pp). These outcomes cannot be transferred to a new candidate pool.
 \end{minipage}
 \end{table}
 
