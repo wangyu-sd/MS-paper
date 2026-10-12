@@ -182,27 +182,25 @@ Forward fragmentation evidence improves case-weighted Hit@1 relative to the elig
 \end{table}
 
 % Source: orbit-ms/docs/research/PR87_G0_SAME_FORMULA_STRUCTURE_GAP_20261004.md
+% Source count audit: n=8401, formula sampled 7829, formula emitted 7822, topology 528, formula-only miss 7294.
+% Heavy >=20: n=5564, formula sampled 5066, formula emitted 5064, topology 41.
 \begin{table}[!htbp]
 \centering
 \caption{\textbf{A historical graph-generation model exposes the formula-to-connectivity gap.} Independent full-cohort audit of the historical 100-draw graph-generator candidate pool. Entries measure post-hoc \emph{presence} of the formula and exact 14-character InChIKey connectivity, not the rank of the correct answer. This older model is distinct from both the direct elemental-composition model and the subsequent graph-denoising generator.}
 \label{tab:msdev_topology}
 \small
-\begin{tabular}{p{0.73\linewidth}r}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.28\linewidth}rrrr}
 \toprule
-Post-hoc condition & Cases \\
+Stratum & $n$ & Formula sampled & Formula in pool & Exact topology in pool \\
 \midrule
-Ground-truth formula sampled & 7,829 / 8,401 \\
-At least one correct-formula candidate emitted & 7,822 / 8,401 \\
-Correct connectivity emitted & 528 / 8,401 \\
-Correct formula emitted, correct topology absent & 7,294 / 8,401 \\
-\midrule
-Heavy atoms $\geq20$: formula represented & 5,064 \\
-Heavy atoms $\geq20$: connectivity represented & 41 \\
+All spectra & 8,401 & 93.19\% & 93.11\% & 6.28\% \\
+At least 20 heavy atoms & 5,564 & 91.05\% & 91.01\% & 0.74\% \\
 \bottomrule
 \end{tabular}
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Conditional proposal reach given a correct-formula emitted candidate is 528/7,822=6.75\%, and 41/5,064=0.81\% in the listed large-molecule stratum. Neither number is end-to-end Exact@1.
+Across all queries, 86.82\% generated at least one true-formula structure yet missed the target topology. Conditional on having generated a true-formula candidate, exact-connectivity reach is 6.75\% overall and 0.81\% among molecules with at least 20 heavy atoms. None of these proposal-coverage measures is ranked de novo Exact@1.
 \end{minipage}
 \end{table}
 
