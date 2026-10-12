@@ -10,7 +10,7 @@ These experiments evaluate different components of spectrum-to-structure inferen
 
 The forward fragmentation \emph{World} ($W$) predicts fragment masses when a precursor structure is \emph{provided}; the spectrum-conditioned \emph{Verifier} ($V$) reweights fragments generated from that same known structure. In contrast, the inverse \emph{Generator} ($G$) proposes precursor molecular graphs using the measured spectrum, without the true formula or structure. Retrieval ranks existing candidates in a fixed pool, while de novo generation must first produce candidate molecules. We therefore report molecular formula recall, fragment coverage, retrieval Hit@$k$, de novo Exact@$k$ and candidate-pool reach as separate endpoints.
 
-A \emph{matched} spectrum is the experimental spectrum corresponding to the query structure; a \emph{peer} spectrum comes from a different molecular group and is substituted while the query's precursor context and candidate identities stay fixed. The fragment-verification experiment uses an additional \emph{shuffled-spectrum} negative control. Reported matched-minus-control gaps measure sensitivity to spectral evidence rather than independent structural identification.
+A \emph{matched} spectrum is the experimental spectrum corresponding to the query structure; a \emph{peer} spectrum comes from a different molecular group and is substituted while the query's precursor context and candidate identities stay fixed. The fragment-verification experiment uses an additional \emph{shuffled-spectrum} negative control. Reported matched-minus-control gaps measure sensitivity to spectral evidence rather than independent structural identification. All outcome rates are expressed as percentages (\%); differences between rates and their confidence intervals are expressed in percentage points (pp). Dataset sizes, subgroup denominators, candidate budgets and computational costs remain absolute counts.
 
 % Sources: orbit-ms/docs/data/pr85_train_split_manifest_20260926.json
 % orbit-ms/docs/data/pr85_full_population_split_audit_20260928.json
@@ -43,44 +43,44 @@ Official VAL / TEST & -- & -- & Not reported for final WGV \\
 \setlength{\tabcolsep}{5pt}
 \begin{tabular}{lrrrrr}
 \toprule
-Stratum & $n$ & Top1 (\%) & Top5 (\%) & Top8 (\%) & Top16 (\%) \\
+Stratum & $n$ & Top1 & Top5 & Top8 & Top16 \\
 \midrule
-All & 8,401 & \textbf{87.87} & \textbf{96.64} & 97.50 & 98.44 \\
-$[\mathrm{M+H}]^+$ & 7,429 & 89.45 & 97.47 & 98.17 & 98.84 \\
-$[\mathrm{M+Na}]^+$ & 972 & 75.82 & 90.33 & 92.39 & 95.37 \\
-Sulfur-containing & 1,183 & 76.08 & 90.70 & 91.72 & 92.39 \\
-Halogen-containing & 1,037 & 73.38 & 93.92 & 95.47 & 97.69 \\
-Phosphorus-containing & 668 & 94.01 & 98.65 & 99.10 & 99.55 \\
+All & 8,401 & \textbf{87.87\%} & \textbf{96.64\%} & 97.50\% & 98.44\% \\
+$[\mathrm{M+H}]^+$ & 7,429 & 89.45\% & 97.47\% & 98.17\% & 98.84\% \\
+$[\mathrm{M+Na}]^+$ & 972 & 75.82\% & 90.33\% & 92.39\% & 95.37\% \\
+Sulfur-containing & 1,183 & 76.08\% & 90.70\% & 91.72\% & 92.39\% \\
+Halogen-containing & 1,037 & 73.38\% & 93.92\% & 95.47\% & 97.69\% \\
+Phosphorus-containing & 668 & 94.01\% & 98.65\% & 99.10\% & 99.55\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-The all-case Top1/5/8/16 numerators are 7,382/8,119/8,191/8,270. The molecule-group-equal Top1 accuracy is 86.50\% overall (H 86.17\%, Na 80.96\%). Mean Top1 posterior confidence is 93.45\%; 10-bin expected calibration error is 5.58\% overall and 11.83\% for Na. Formula recall is \emph{not} molecular-connectivity recall.
+Formula Top1/5/8/16 rates use all 8,401 measured spectra as the denominator (the underlying hit counts are preserved in the source result archive). The molecule-group-equal Top1 accuracy is 86.50\% overall (H 86.17\%, Na 80.96\%). Mean Top1 posterior confidence is 93.45\%; 10-bin expected calibration error is 5.58\% overall and 11.83\% for Na. Formula recall is \emph{not} molecular-connectivity recall.
 \end{minipage}
 \end{table}
 
 % Source: orbit-ms/docs/results/PR90_FORMULA_SEED_BOTTLENECK_20261006.md
-\begin{table}[!htbp]
+% Historical entry counts by row: 5752, 2518, 131; overlapping 1682; n=8401.\n\begin{table}[!htbp]
 \centering
 \caption{\textbf{Formula-compatible structural initialization for a seed-bound inverse model.} The first three outcomes partition all 8,401 development spectra by the presence of the correct formula among 16 predictions and the availability of a training-library structure with that formula. The last row is an overlapping separate diagnostic, not a fourth disjoint category. These are \emph{necessary conditions}, not success rates of graph generation.}
 \label{tab:msdev_entry}
 \small
 \begin{tabular}{p{0.73\linewidth}r}
 \toprule
-Post-hoc entry condition & Cases (\%) \\
+Post-hoc entry condition & Share of all queries \\
 \midrule
-Correct formula in Top16; a matching training structure exists & 5,752 (68.47) \\
-Correct formula in Top16; no matching training structure exists & 2,518 (29.97) \\
-Correct formula absent from Top16 & 131 (1.56) \\
+Correct formula in Top16; a matching training structure exists & 68.47\% \\
+Correct formula in Top16; no matching training structure exists & 29.97\% \\
+Correct formula absent from Top16 & 1.56\% \\
 \midrule
-No training structure for any of the Top16 formulas (overlapping) & 1,682 (20.02) \\
+No training structure for any of the Top16 formulas (overlapping) & 20.02\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Under this \emph{particular} seed-bound, formula-preserving edit route, at least 2,518+131=2,649/8,401 (31.53\%) queries cannot yield the true connectivity, regardless of W/V reranking. This does not constrain a separate formula-only graph initializer or a generator capable of constructing new scaffolds.
+Under this \emph{particular} seed-bound, formula-preserving edit route, the 29.97\% of queries without a true-formula seed plus the 1.56\% whose true formula is absent from Top16 give a 31.53\% entry-infeasibility rate, regardless of W/V reranking. This does not constrain a separate formula-only graph initializer or a generator capable of constructing new scaffolds.
 \end{minipage}
 \end{table}
 
@@ -95,16 +95,16 @@ Under this \emph{particular} seed-bound, formula-preserving edit route, at least
 \toprule
 World configuration & $n$ & Weighted recall & Peak recall & Weighted precision \\
 \midrule
-Previous two-World selection & 8,401 & 0.6990 & 0.4618 & \textbf{0.5233} \\
-Selected three-cut mixture & 8,401 & \textbf{0.7219} & \textbf{0.4973} & 0.5215 \\
-\quad $[\mathrm{M+H}]^+$ subset & 7,429 & 0.7527 & 0.5216 & 0.5631 \\
-\quad $[\mathrm{M+Na}]^+$ subset & 972 & 0.4864 & 0.3118 & 0.2037 \\
+Previous two-World selection & 8,401 & 69.90\% & 46.18\% & \textbf{52.33\%} \\
+Selected three-cut mixture & 8,401 & \textbf{72.19\%} & \textbf{49.73\%} & 52.15\% \\
+\quad $[\mathrm{M+H}]^+$ subset & 7,429 & 75.27\% & 52.16\% & 56.31\% \\
+\quad $[\mathrm{M+Na}]^+$ subset & 972 & 48.64\% & 31.18\% & 20.37\% \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Selected-minus-previous weighted-recall difference: +0.02285 (1,135-group bootstrap 95\% CI [0.01549, 0.03153]); peak-recall difference: +0.03556 [0.02951, 0.04197]. The selected decoder emits 384.6 masses per spectrum on average; unweighted emitted-mass precision is 3.70\%. Sodium-adduct coverage and the diffuse low-confidence fragment tail remain limitations.
+Selected-minus-previous weighted-recall difference: +2.29 pp (1,135-group bootstrap 95\% CI [1.55, 3.15] pp); peak-recall difference: +3.56 pp (95\% CI [2.95, 4.20] pp). The selected decoder emits 384.6 masses per spectrum on average; unweighted emitted-mass precision is 3.70\%. Sodium-adduct coverage and the diffuse low-confidence fragment tail remain limitations.
 \end{minipage}
 \end{table}
 
@@ -117,18 +117,18 @@ Selected-minus-previous weighted-recall difference: +0.02285 (1,135-group bootst
 \small
 \begin{tabular}{llrr}
 \toprule
-World candidate set & Fragment verifier & Matched recall & Matched--shuffled \\
+World candidate set & Fragment verifier & Matched recall & Matched--shuffled (pp) \\
 \midrule
-Old W fragments & Analytic mass posterior & 0.5816 & +0.0310 \\
-Old W fragments & Learned set posterior & 0.5976 & +0.0461 \\
-Three-cut W fragments & Analytic mass posterior & 0.6081 & +0.0403 \\
-Three-cut W fragments & Frozen learned posterior & \textbf{0.6279} & \textbf{+0.0770} \\
+Old W fragments & Analytic mass posterior & 58.16\% & +3.10 pp \\
+Old W fragments & Learned set posterior & 59.76\% & +4.61 pp \\
+Three-cut W fragments & Analytic mass posterior & 60.81\% & +4.03 pp \\
+Three-cut W fragments & Frozen learned posterior & \textbf{62.79\%} & \textbf{+7.70 pp} \\
 \bottomrule
 \end{tabular}
 
 \vspace{3pt}
 \begin{minipage}{0.97\linewidth}\footnotesize
-Changing the learned V input from the old to the three-cut W set increases matched recall by +0.03032 (molecule-group bootstrap 95\% CI [0.02000, 0.04191]). On 290 strict same-formula, same-acquisition-context structural decoys, the frozen learned V favors the correct set in 243 cases, while the unlearned W prior favors it in 245; improved strict-decoy discrimination over W is therefore \emph{not established}. These results do not imply complete-molecule de novo identification.
+Changing the learned V input from the old to the three-cut W set increases matched recall by +3.03 pp (molecule-group bootstrap 95\% CI [2.00, 4.19] pp). On 290 strict same-formula, same-acquisition-context structural decoys, the frozen learned V favors the correct set in 83.79\% of cases, versus 84.48\% for the unlearned W prior; improved strict-decoy discrimination over W is therefore \emph{not established}. These results do not imply complete-molecule de novo identification.
 \end{minipage}
 \end{table}
 
