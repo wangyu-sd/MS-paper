@@ -31,47 +31,41 @@
 \newcommand{\figureonetodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.94\textwidth}{%
-\textbf{A | Overall WGV framework}\\[3pt]
-\textbullet~Observed MS/MS $\rightarrow$ spectrum-conditioned Generator \(G\) $\rightarrow$ \(K\) independent molecular hypotheses\\
-\textbullet~For each candidate, spectrum-conditioned Verifier \(V\) proposes coherent electron events and spectrum-blind World \(W\) scores the same event traces\\
-\textbullet~The exact bond--electron executor materializes explicit charged products; event and peak evidence are aggregated for candidate ranking\\[2pt]
-\textit{Purpose: show the complete production inference path without conflating proposal, verification and chemical execution.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.42\textwidth}{%
-\textbf{B | Spectrum-conditioned molecular generator \(G\)}\\[3pt]
-\textbullet~Peak-relation spectrum encoder + partial-graph state encoder + molecular-goal representation\\
-\textbullet~Graph--spectrum cross-attention and message passing\\
-\textbullet~Factorized legal construction: action kind $\rightarrow$ atom state $\rightarrow$ attachment/pair $\rightarrow$ bond order\\
-\textbullet~Independent ancestral molecular samples; no beam or particle resampling\\[2pt]
-\textit{Purpose: explain how the spectrum conditions iterative molecular graph construction.}
-}
-\hfill
-\paneltodo{0.52\textwidth}{%
-\textbf{C | Peak-conditioned verifier \(V\), spectrum-blind World \(W\), and exact execution}\\[3pt]
-\textbullet~\(P2\): target peak $\rightarrow$ soft atom-retention and charge intent\\
-\textbullet~\(V\): proposes \(a\sim q_V(a\mid M,S,p,c)\) using the observed spectrum\\
-\textbullet~\(W\): evaluates the same trace with \(p_W(a\mid M,c)\) without observing fragment peaks\\
-\textbullet~Matched event factorization: source $\rightarrow$ 1e/2e $\rightarrow$ target atom/bond $\rightarrow$ continue/stop\\
-\textbullet~Executor: \(M+a\rightarrow\) BE update $\rightarrow$ explicit charged products and \(m/z\)\\[2pt]
-\textit{Purpose: expose the mechanistic core and the separation between posterior proposal, forward plausibility and exact chemistry.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.94\textwidth}{%
-\textbf{D | Distinct learning signals}\\[3pt]
-\textbullet~\(G\): paired spectrum--precursor teacher graph actions\\
-\textbullet~\(P2\): mass-compatible composition/charge supervision + executor-supported latent products\\
-\textbullet~\(V\): target-peak reward after exact execution + group-relative policy gradient\\
-\textbullet~\(W\): spectrum-blind replay likelihood on executor-supported \(V\) traces\\[2pt]
-\textit{Purpose: show how the four learned components are trained without treating latent mechanisms as experimental fragment-structure labels.}
-}
-\caption{\textbf{Figure 1 layout placeholder | ORBIT-MS couples spectrum-conditioned molecular generation to executable gas-phase fragmentation evidence.}
-Panel A gives the end-to-end WGV inference path. Panels B--C expand the Generator and fragmentation models, and panel D summarizes their distinct supervision.}
+\small
+\noindent\textbf{a \quad Supervision and unlabelled MS/MS.}\quad
+Paired precursor--spectrum TRAIN data provide weak fragmentation and clean-graph supervision;
+additional experimental MS/MS spectra have no supplied structures.
+\par\medskip
+\noindent\begin{minipage}[t]{0.48\textwidth}
+\textbf{b \quad Spectrum-blind World \(W\).}\par
+Precursor graph \(\rightarrow\) connected heavy-atom masks (at most three bond cuts)
+\(\rightarrow\) hydrogen/carrier variants \(\rightarrow\) graph neural candidate scorer
+\(\rightarrow\) fragment-structure priors. The measured spectrum supervises \(W\) only during fitting.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\textbf{c \quad Spectrum-conditioned Verifier \(V\).}\par
+Measured MS/MS \(+\) frozen \(W\) candidate objects \(\rightarrow\)
+mass-kernel matching and attention \(\rightarrow\) fragment posterior and
+whole-spectrum evidence \(\rightarrow\) uncertainty-aware atom/pair observability.
+\end{minipage}
+\par\medskip
+\noindent\textbf{d \quad Spectrum-conditioned generator \(G\).}\quad
+Predicted formula \(\rightarrow\) legal explicit-H graph initializers
+\(\rightarrow\) native \(m/z\) and graph--spectrum attention
+\(\rightarrow\) GINE clean-bond denoiser \(+\) independent CoCoGraph time estimator
+\(\rightarrow\) constrained double-edge swaps. Frozen \(W/V\) can guide selected
+sampled transitions; terminal candidates are ranked separately.
+\par\medskip
+\noindent\textbf{e \quad Iterative self-distillation (planned).}\quad
+Unlabelled experimental MS/MS \(\rightarrow G_t\) candidate set
+\(\rightarrow\) frozen \(W/V\) evidence \(\rightarrow\) calibrated, abstention-aware
+pseudo-targets \(\rightarrow\) weighted clean-graph denoising
+\(\rightarrow G_{t+1}\); model promotion requires independent evaluation.
+\caption{\textbf{Figure 1 layout placeholder | Fragmentation evidence, spectrum-conditioned graph denoising and the planned self-distillation loop in ORBIT-MS.}
+Panels b--d describe source-implemented components in PR86, PR87 and PR91 V2;
+panel e specifies a proposed training stage and must not be presented as a
+completed result before execution and evaluation. This is a text-only placeholder
+for an unboxed white-background methods figure.}
 \end{figure}
 }
 
@@ -395,139 +389,365 @@ ORBIT-MS therefore makes a specific empirical proposition: structure elucidation
 
 \section*{Methods}
 
-\subsection*{Study design and evidentiary separation}
-\methodtodo{Preregistered confirmatory endpoints; immutable separation of model/program development, calibration, prospective evaluation, census construction and biological analysis; protected-data firewalls preventing prospective structures, source labels or phenotype labels from influencing structural-family construction.}
+\subsection*{Study design and implementation authority}
+ORBIT-MS separates three learning problems: estimating fragment-structure
+priors from a known molecular graph without access to its measured product
+spectrum (World, \(W\)); updating those priors with a measured MS/MS spectrum
+(Verifier, \(V\)); and inferring precursor connectivity from the spectrum with
+chemically constrained graph denoising (Generator, \(G\)).
+The current implementation uses the evaluated PR86 three-cut CandidateWorld,
+the evaluated PR87 VSetPosterior and the PR91 spectrum-conditioned CoCoGraph V2
+generator. The three-cut fragment model is distinct from historical
+bond--electron event policies retained in the repository: no electron-arrow
+trajectory, peak-to-product event policy, or exact bond--electron event
+executor is required by this canonical W/V-to-G path.
+The CoCoGraph component adopts a constrained double-edge-swap (DES)
+generation kernel and a separate time estimator
+\cite{RuizBotella2026CoCoGraph}; the spectrum conditioning and
+fragment-derived atom/pair evidence are ORBIT-MS-specific additions.
 
-\subsection*{Spectral corpora, public libraries and frozen dark-subset definition}
-\methodtodo{Repository accessions, mouse cohort provenance, GNPS/MassBank/MoNA/NIST versions and snapshot dates; spectrum preprocessing and QC; library-search engine/configuration; false-accepted-match validation; definition of dark as absence of an accepted match under the frozen protocol.}
+\methodtodo{Working-draft boundary: PR91 V2 source code is implemented but
+requires actual TRAIN smoke, a completed full checkpoint and frozen
+whole-population evaluation. The self-distillation subsection below is a
+specified next-stage algorithm, not an implemented training run. No accuracy
+gain or multi-round improvement is claimed from either unfinished stage.}
 
-\subsection*{Leakage control}
-\methodtodo{Exact-structure and close-analogue overlap between all evaluation chemistry and molecular/spectral pretraining corpora, including simulator-generated data; structural standardization; MCES/Tanimoto criteria and treatment of salts/stereochemistry.}
+\subsection*{Experimental spectra, paired structures and held-out boundaries}
+A measured query contains observed \((m/z,\text{intensity})\) pairs,
+precursor \(m/z\), adduct and available collision-energy and instrument
+metadata. MassSpecGym provides flat MS2 peak lists, not observed MS\(^{n}\)
+fragmentation ancestry. We therefore preserve the measured peaks and
+intensities, represent the precursor separately as metadata and set
+observed parent--child transition channels to zero. Numerical peak-mass
+differences, neutral-loss compatibility and inferred fragment subformulas
+are model features, never substituted for measured MS\(^{n}\) edges.
+No artificial high-intensity precursor peak is inserted.
 
-\subsection*{Molecular and spectral representations}
-ORBIT-MS separates the representation used for molecular construction from the representation used for gas-phase electron redistribution. An experimental spectrum is represented as a variable-length set of peaks \(S=\{(m_i,I_i)\}\) together with precursor \(m/z\), adduct, ionization polarity and available acquisition metadata. Spectrum encoders operate on peak nodes and pairwise relations derived from normalized \(m/z\), intensity, pairwise mass differences and, when available, ordered parent--child MS\(^{n}\) transitions. For spectrum-blind World inference, acquisition context contains only precursor and acquisition variables and never measured fragment-peak features.
+The TRAIN-derived corpus comprises 175,548 experimental spectra from
+20,430 molecule groups. PR91 V2 defines 18,425 groups for fitting and 2,005
+TRAIN-internal groups for pre-refit G diagnostics; its final declared epoch
+includes all 20,430 TRAIN groups. The development SEARCH\_DEV authority
+contains 8,401 spectra from 1,135 molecule groups and is not the official
+MassSpecGym TEST set. W and V were previously fitted on the full TRAIN
+corpus, so the 2,005-group G diagnostic is \emph{not} an independent
+out-of-sample test of W/V. Official benchmark validation and test data
+remain sealed for model development.
+\methodtodo{Record immutable input/split hashes, complete checkpoint hashes,
+all preprocessing thresholds and the independent calibration corpus needed
+for any later pseudo-label confidence claims.}
 
-Gas-phase fragmentation is represented by a \emph{bond--electron} (BE) state. A BE state stores atom identities and atomic numbers together with a symmetric integer matrix whose diagonal entries are non-bonding valence electrons localized on an atom and whose off-diagonal entries are electrons shared between atom pairs. A conventional single, double or triple bond therefore contains two, four or six shared electrons, while odd occupancies allow radical intermediates without introducing a separate graph-edit language. Charged precursor roots are compiled from the candidate structure and adduct and are retained only when they materialize to the observed precursor mass and polarity.
+\subsection*{Spectrum-blind structural fragmentation World}
+For a candidate precursor \(M\) and acquisition context \(c\), the
+PR86 World enumerates connected heavy-atom subsets obtainable by cutting
+at most three bonds in the precursor graph. For each structural mask,
+mass hypotheses include integer hydrogen offsets from \(-6\) to \(+6\)
+and permitted charge-carrier channels, with explicit constraints imposed
+by the adduct, total hydrogen inventory and precursor mass.
+Thus a candidate fragment object
+\(f=(A,\Delta H,\mathrm{carrier},m_f)\) records its precursor heavy-atom
+mask \(A\), provisional hydrogen adjustment, carrier identity and calculated
+mass. These are mass-compatible structural hypotheses, not independently
+confirmed gas-phase fragment structures or executed electron pathways.
 
-\subsection*{Exact bond--electron chemical executor}
-Learned policies never directly declare a fragment structure. Instead, they propose electron-redistribution events that are applied by a deterministic chemical executor. An electron site is either an atom or an occupied bond, and an elementary arrow transfers one or two electrons from a source site to a target atom or bond. Local masks exclude moves that lack source electrons or immediately exceed supported shell or bond-electron capacities, but they do not encode a finite catalogue of named fragmentation reactions.
-
-For a parent BE state \(x\) and a proposed coherent event \(a\), the executor applies all electron transfers to obtain a new BE state,
+A three-layer, 128-dimensional graph message-passing encoder produces
+atomic states from elemental, bond, valence and other local molecular
+features. A candidate scorer pools the retained-atom representation,
+its complement and a global graph/acquisition representation. It predicts
+relative logits for structural-mask/ion-channel variants and a separate
+unexplained-peak (noise) logit. The inference interface exports calculated
+fragment masses, normalized candidate priors and precursor-atom masks
+without reading the target MS/MS spectrum:
 \[
-x' = T_{\mathrm{exec}}(x,a).
+p_W(f\mid M,c).
 \]
-It then checks exact electron bookkeeping and BE symmetry and attempts to materialize the resulting state as explicit chemical products. Successful materialization returns charged and neutral components with product SMILES, elemental formula, formal charge, exact \(m/z\) and the corresponding parent-atom indices. Failed bookkeeping or materialization remains a failed event rather than being repaired by local search. Mechanistic class labels, where recorded, are audit metadata and do not define event legality.
+During TRAIN fitting only, observed peak masses weakly supervise the
+candidate scores through a listwise mass-match objective. Eligible
+fragment variants within 0.005 Da of a measured peak compete to explain
+its normalized intensity; peaks outside the enumerated support contribute
+through the noise branch. No experimentally observed peak-to-fragment
+atom mapping is assumed. The conditional World evaluation reports
+fragment-intensity-weighted mass coverage separately from structural
+identification; high coverage does not establish the correctness of a
+fragment mechanism or de novo recovery.
 
-\subsection*{Coherent electron-event parameterization}
-The fragmentation policy generates one complete coherent electron event per Monte Carlo draw. An event is an autoregressive sequence of one- or two-electron arrows. For each arrow the policy selects an occupied source site, chooses the electron count, predicts whether the target is an atom or bond, selects the target atom and, for a bond target, its partner atom, and then predicts whether to continue the same coherent event or stop. The partially updated BE matrix is carried through the sequence, so electrons transferred into a site may be used as a later source within the same concerted event. A finite maximum number of arrows is used only as an engineering compute guard.
+\subsection*{Spectrum-conditioned fragment-set Verifier}
+The PR87 Verifier receives a \emph{frozen} World candidate set for a
+specified precursor graph and the actual measured spectrum \(S\).
+Its atom graph encoder has two message-passing layers with 96-dimensional
+hidden representations. Each candidate contains its atom mask, calculated
+mass, hydrogen/carrier attributes and frozen World prior. Measured peaks
+are embedded using relative \(m/z\), neutral loss relative to the
+precursor, intensity and periodic mass features. Candidate-to-peak
+attention combines global spectral context with candidate-local
+evidence.
 
-The event policy uses independent complete samples. It does not perform local top-\(k\) action selection, beam search, sequential Monte Carlo, effective-sample-size resampling, survivor duplication or fallback enumeration of reaction templates. The same event factorization is used by the spectrum-conditioned verifier and the spectrum-blind World; their conditioning information and learned parameters differ.
-
-\subsection*{Peak-to-product posterior}
-To provide a soft product-level hypothesis for a selected observed fragment peak \(p=(m_p,I_p)\), ORBIT-MS uses a peak-to-product posterior \(P2\). Given a candidate BE state, acquisition context and the measured spectrum, the posterior encodes the candidate and spectrum once and conditions a target-peak query on the candidate representation, the global spectrum representation, the embedding of the queried peak and numerical target-\(m/z\) features. It predicts a retention logit for every precursor atom and a charge distribution over \(\{-2,-1,+1,+2\}\). The retention probabilities define a soft precursor-atom set, and together with the charge distribution yield an expected product \(m/z\).
-
-The product posterior is trained with weak composition and observed-charge supervision over the full training population and with stronger atom-set and charge supervision only when a training-set event is executed successfully and its product strictly supports the queried peak. These executor-supported products are treated as latent mechanistic hypotheses rather than experimentally observed fragment-structure labels. During verifier training the product posterior is frozen; its atom-retention probabilities, predicted fragment boundary, retention uncertainty and target-mass residual are converted into continuous intent features and injected into the event representation.
-
-\subsection*{Spectrum-conditioned verifier}
-The Verifier \(V\) is a peak-anchored posterior event policy,
+Let \(s_\theta(f,M,S)\) denote the learned compatibility logit.
+The candidate-set posterior is
 \[
-q_V(a\mid M,S,p,c),
+q_V(f\mid M,S)
+=\operatorname{softmax}_{f\in\mathcal F_W(M)}
+\left[\log p_W(f\mid M,c)+s_\theta(f,M,S)\right].
 \]
-that proposes coherent electron events capable of explaining a selected observed peak. It combines a guided BE/spectrum encoding of the candidate with the product intent supplied by \(P2\). The measured spectrum affects the verifier through the spectrum encoder and target-peak query; it does not alter the executor or the local chemistry masks.
-
-For each selected peak, \(V\) draws multiple complete events independently and executes each draw exactly once. A draw that cannot be materialized receives a negative reward. Materialized products receive a smooth reward determined by the distance between a same-polarity unit-charge product \(m/z\) and the target peak, with an additional intensity-weighted bonus for a strict mass match. Training uses a group-relative policy-gradient loss within the set of draws for the same target, increasing the probability of events with higher relative reward without treating any single latent mechanism as observed ground truth. Strictly supported products and their exact event traces are stored as training-set latent-event receipts for subsequent product-posterior refresh and World training.
-
-\subsection*{Spectrum-blind gas-phase fragmentation World}
-The free World \(W\) parameterizes
+With a Gaussian mass kernel
+\(K_{fj}=\exp[-(m_f-m_j)^2/(2\sigma^2)]\),
+\(\sigma=0.0025\) Da, the spectrum evidence over subprecursor fragment
+peaks is
 \[
-p_W(a\mid M,c)
+E_V(M,S)=\sum_j \bar I_j
+\log\left(\epsilon+
+\sum_{f\in\mathcal F_W(M)}q_V(f\mid M,S)K_{fj}\right),
+\qquad \epsilon=0.001.
 \]
-with the same coherent-event factorization as \(V\) but without access to the measured fragment spectrum or a target peak. Its input is the candidate BE state and acquisition context only. During inference, independent World draws are executed by the same deterministic chemical executor to obtain charged products and a spectrum-blind distribution over fragment masses.
+Here \(\bar I_j\) are normalized eligible-peak intensity weights.
+V is trained with whole-spectrum evidence, matched versus
+different-molecule peer-spectrum contrast and structurally strict,
+same-formula/same-acquisition-context true-versus-decoy contrast where
+eligible. It does not use experimentally labelled fragment structures.
+The resulting posterior is restricted to W's candidate set and is not
+an externally calibrated posterior over all possible fragmentation
+mechanisms or molecular structures.
 
-The World used in the reported experiments is trained by posterior-to-World trace replay. Exact-supported event traces discovered by \(V\) are grouped by training spectrum and target peak and replayed under \(W\); the loss is the negative log probability of the supported trace under the spectrum-blind policy, balanced across supported peaks. Training cases without a replayable supported trace do not contribute a trace-likelihood gradient. The reported trace-replay objective does not use importance weights. This separation makes \(V\) an observation-conditioned proposal mechanism and \(W\) a spectrum-blind forward model over the same executable event language.
+\subsection*{Transferring fragmentation evidence to graph connectivity}
+For each current candidate molecular graph, W emits fragments with
+precursor-atom masks and V assigns spectrum-conditioned weights and
+mass support. A validated heavy-atom isomorphism maps these W masks onto
+the explicit-hydrogen CoCoGraph state; an unchecked atom-index match is
+not used. The implemented PR91 V2 adapter aggregates three atom-level,
+six symmetric atom-pair and two global channels. Pair channels describe
+posterior- and mass-weighted co-membership of two atoms in a fragment,
+their separation by a fragment boundary and ambiguity in fragment
+membership. Global features include unexplained fragment-peak
+intensity and normalized V posterior entropy.
 
-\subsection*{Spectrum-conditioned molecular generator}
-The Generator \(G\) constructs precursor structures directly from the measured spectrum. Its spectrum encoder represents the MS/MS spectrum as a peak-relation graph with peak-node features and pairwise mass/intensity relations. The current molecular construction state is encoded by a graph neural network over atom identity, formal charge, radical state, local degree/valence and current bonds. A separate molecular-goal representation records the remaining elemental inventory or formula hypothesis. Graph--spectrum cross-attention injects the spectral representation into the current molecular graph, followed by message passing conditioned on the construction state, molecular goal and pooled spectrum context.
+These signals express \emph{fragment observability}, not an observed
+bond-edit instruction. In particular, a structural cut required to
+form a candidate fragment is not interpreted as evidence that the
+corresponding precursor bond should be deleted during denoising.
+Learned atom/pair/global projections acquire signed effects on G's
+remove, add and clean-bond logits only from paired TRAIN clean-graph
+supervision. An experimental peak with no compatible W candidate
+contributes to unexplained-intensity diagnostics; it is not assigned
+a fabricated atom or bond.
 
-The construction policy is factorized rather than enumerating the full graph-edit action space. It predicts the action kind, element, formal charge, radical state, attachment site or atom pair and bond order, with hard masks enforcing remaining formula inventory, charge-aware valence, connectivity and legal emission. The primary paired-supervision stage compiles each known precursor structure into legal graph-construction teacher actions and minimizes their negative log likelihood. Optional posterior-distillation and World-reward stages are evaluated separately and are not part of the canonical paired generator unless explicitly stated.
+\subsection*{Spectrum-conditioned CoCoGraph V2 molecular generator}
+The primary inverse model starts from target-free precursor data.
+A separate TRAIN-fitted formula posterior produces up to eight neutral
+formula hypotheses from the measured precursor/adduct and spectral
+information. A formula-only constructor generates up to four chemically
+valid initial molecular graphs per hypothesis without access to the
+reference structure or a retrieved target candidate. CoCoGraph states
+contain explicit hydrogen atoms, formal charges and bond multiplicities.
+The pinned connected DES operator replaces two disjoint bond units
+with one of the two cross-pairings and validates the resulting graph.
+This move preserves the relevant atom inventory, charge and
+incident bond-unit-degree constraints; consequently, certain target
+connectivities cannot be reached from incompatible initializers.
 
-For the standard no-formula de novo task, formula hypotheses are inferred from precursor mass, adduct and TRAIN-derived formula priors using only benchmark-permitted inputs. Ground-truth formula is reserved for the secondary formula-provided setting. At inference time the Generator produces independent ancestral molecular samples; it does not use beam search, top-\(k\) graph expansion, particle filtering or resampling. Invalid or unfinished trajectories remain failures in the denominator.
+The spectrum encoder uses measured-peak features and numerical
+peak-pair relations from the original inverse-G relation Transformer,
+augmented with continuous Gaussian--Fourier \(m/z\) and neutral-loss
+features. Model-inferred peak-formula compatibility relations remain
+separate from observed-ancestry channels. Current graph atoms attend
+to the spectrum through graph--spectrum cross-attention, followed
+by edge-aware GINE message passing. A symmetric, \(O(N^2)\)
+atom-pair head predicts whether current bond units should be removed,
+where connections should be added and the target clean bond order
+(0, 1, 2 or 3). The model does not construct a dense \(N^4\)
+quadruplet action tensor or enumerate complete candidate molecules for
+every DES decision.
 
-\subsection*{Integrated WGV evidence and candidate ranking}
-For a completed molecular candidate \(M\) and an observed target peak \(p\), \(V\) is used as an inference proposal over coherent events while \(W\) scores the same event traces without seeing the measured fragment spectrum. For each sampled event
+An independent, graph-only CoCoGraph time model estimates a
+normalized corruption level for the current graph. Its prediction
+is a learned denoising/trajectory-selection heuristic, not physical
+fragmentation time and not a certified distance to the true molecule.
+The pairwise heads select factors of a constrained DES step; the exact
+graph-swap executor checks connectivity, charge/degree requirements
+and RDKit validity before accepting a proposal.
+
+\subsection*{Paired clean-graph supervision for G and the time model}
+Known TRAIN structures generate valid CoCoGraph forward-noising
+trajectories. For each molecule group, the V2 trainer retains its
+clean graph and suitable shallow and deep corrupted states, and rotates
+available real spectra for that group. The denoiser is supervised
+against the \emph{complete clean adjacency} \(A_0\), not only the
+last randomly sampled inverse swap. Removal/addition labels indicate
+disagreements between current and clean bond units; a separate
+four-class head predicts clean bond order. The time model learns
+normalized corruption depth and \(t=0\) for clean graphs. The known
+inverse DES receives a lower-weight auxiliary loss. Eligible
+different-molecule, same-formula/adduct/acquisition-context spectra
+supply a contrastive signal; absent peers are skipped rather than
+synthesized.
+
+The source implementation defines
 \[
-a_k\sim q_V(a\mid M,S,p,c),
+\begin{aligned}
+\mathcal L_G={}&\mathcal L_{\mathrm{remove}}
++\mathcal L_{\mathrm{add}}
++0.50\mathcal L_{\mathrm{clean}}
++0.50\mathcal L_{\mathrm{time}}\\
+&+0.15\mathcal L_{\mathrm{inverse}}
++0.20\mathcal L_{\mathrm{spectral\ contrast}}.
+\end{aligned}
 \]
-the exact executor returns explicit charged products. The World replays the identical trace to obtain \(\log p_W(a_k\mid M,c)\), and the observation term is computed from the distance between the closest same-polarity unit-charge product and the target peak. With a fixed Gaussian mass kernel and a finite evidence floor, the event-level log evidence is
+Training uses four group-disjoint fitting epochs and one declared
+full-TRAIN refit epoch. Frozen W/V features are introduced only
+for a bounded subset of clean or shallow corrupted states in later
+epochs, with conditional dropout so that the spectrum-only G path
+remains trained. Matched and peer W/V posteriors are recomputed
+independently on the same current graph; the matched posterior is
+never reused for the peer spectrum. If one member of a spectral
+contrast pair lacks valid W/V evidence, both contrast branches
+omit W/V rather than inherit inconsistent evidence.
+
+\subsection*{W/V-guided sampling and terminal molecular ranking}
+At inference, each initial graph follows a bounded sequence of at
+most 32 directly sampled legal DES attempts. The G denoiser always
+observes the measured MS/MS. The independent time model evaluates
+accepted states, and the two lowest predicted-noise snapshots and
+terminal snapshot are retained per trajectory before connectivity
+deduplication. Online W/V feedback is restricted to one selected
+late trajectory per predicted formula, with spectrum-aware trajectory
+allocation and structured W/V evidence on current source graphs.
+At remaining-step checkpoints 5 and 2, the implemented sampler
+directly proposes at most two DES child graphs and scores only
+the actually generated children using frozen W/V. The next
+state is sampled probabilistically from a bounded combination of
+G action likelihood, predicted graph noise time and within-sibling
+standardized V evidence. Neither exhaustive action enumeration nor
+monotonic improvement in V score is assumed.
+
+Terminal scoring is separate from online guidance. For a generated
+candidate \(M\) supported by predicted formula \(F\), the source
+terminal W/V ranker uses
 \[
-\ell_k =
-\log p_W(a_k\mid M,c)
--\log q_V(a_k\mid M,S,p,c)
-+\log p_{\mathrm{obs}}(p\mid M,a_k),
+\mathrm{Score}_{WV}(M,S)
+=E_V(M,S)+0.5\log p_{\mathrm{formula}}(F\mid S),
 \]
-with an additional precursor-root log weight when multiple charged precursor roots are evaluated.
+whereas the no-W/V arm uses the declared formula/time ranking rule.
+At most 100 unique connectivity candidates are returned. Generation
+writes target-free candidate and provenance records before any reference
+structure is read for post-hoc scoring. The primary comparisons are:
+G without W/V, the \emph{identical generated pool} with terminal W/V
+only, and online W/V plus terminal W/V. This separates gains from
+ranking existing molecules from gains in generating otherwise absent
+connectivities.
+\methodtodo{Report actual PR91 V2 run identity, checkpoint hash,
+per-arm candidate budgets, online W/V calls and complete measured outcomes;
+the code's implementation is not a completed benchmark result.}
 
-Event samples for one peak are combined with a log-mean-exp estimator,
+\subsection*{Planned confidence-gated self-distillation on unlabelled spectra}
+\methodtodo{This subsection specifies the planned next-stage algorithm.
+Implement and freeze the pseudo-label calibrator, unlabelled data manifest,
+acceptance thresholds, number of rounds and independent evaluation gates
+before retaining completed-tense claims in a submission version. No
+multi-round G improvement has yet been established.}
+
+The intended outer loop begins with the supervised G checkpoint \(G_0\)
+and freezes W, V and the precursor-formula model. For each real
+unlabelled experimental spectrum \(S_u\), \(G_t\) generates a
+target-free, formula-consistent candidate set \(\mathcal C_t(S_u)\)
+at a fixed compute budget. Frozen W/V assigns candidate-specific
+fragment evidence. These scores are \emph{relative compatibility}
+measures rather than ground-truth structural probabilities. A separately
+established calibration and abstention rule will convert them into a
+weighted pseudo-target distribution
+\(\tilde q_t(M\mid S_u)\) over eligible candidates, with an explicit
+rejection option when discrimination is insufficient. The same-formula
+decoy difficulty, score margins, coverage and ambiguity must be checked
+on reference-confirmed molecules independent of W/V fitting;
+PR91's 2,005 TRAIN-internal G calibration groups alone cannot meet
+that independence condition.
+
+A retained pseudo-structure \(M\) supplies a provisional clean graph
+\(A_0(M)\). Using the same legal forward DES corruption kernel as
+supervised G, the intended learning signal is weighted clean-graph
+denoising rather than direct regression to the W/V score:
 \[
-E_p(M,S)=\operatorname{logmeanexp}_k \ell_k.
+\mathcal L_{\mathrm{pseudo}}=
+\sum_{u\in\mathcal U_{\mathrm{accepted}}}w_u
+\sum_{M\in\mathcal C_t(S_u)}
+\tilde q_t(M\mid S_u)
+\mathbb E_{X\sim q_{\mathrm{DES}}(\cdot\mid M)}
+\left[\mathcal L_{\mathrm{denoise}}(G_{t+1};X,S_u,A_0(M))\right].
 \]
-Peak-level evidence is then aggregated using square-root intensity weights,
-\[
-E(M,S)=
-\sum_{p\in\mathcal P}
-\frac{\sqrt{I_p}}{\sum_{j\in\mathcal P}\sqrt{I_j}}\,
-E_p(M,S),
-\]
-where \(\mathcal P\) is the selected set of eligible observed fragment peaks. This produces a candidate-specific World evidence score while correcting for the fact that \(V\) was allowed to condition on the observation. For matched molecular candidate pools, integrated WGV ranking combines the frozen Generator score with the World evidence,
-\[
-\operatorname{Score}(M)=
-\operatorname{GScore}(M)+\lambda E(M,S),
-\]
-and the zero-World setting is required to reproduce the frozen Generator ordering exactly.
+This objective is \emph{proposed}, not an existing PR91 training
+entry point. Subsequent fitting will retain the original
+experimentally paired loss alongside pseudo-supervision, and
+will update G only. Frozen W/V will not be retrained on the same
+unconfirmed pseudo-structures in the initial loop.
+Each proposed promotion \(G_t\rightarrow G_{t+1}\) must pass
+a predeclared independent, non-pseudo-labelled structural benchmark
+with molecule-level confidence intervals and calibrated uncertainty;
+otherwise the preceding checkpoint is retained. Controls must compare
+W/V-selected pseudo-targets to G-only selection, shuffled-spectrum
+selection and no self-distillation under matched generation budgets.
+This design cannot recover chemistry wholly absent from the G
+candidate support, and repeated high W/V agreement does not
+independently establish a novel chemical structure.
 
-\subsection*{Spectrum simulation, molecular retrieval and benchmark protocol}
-The forward World is also evaluated independently of the inverse generator. For spectrum simulation, molecular structure and benchmark-permitted acquisition context are supplied to \(W\), independent coherent events are sampled, and their executed charged products are aggregated into a predicted fragment-mass distribution. The measured spectrum is used only by the frozen evaluation metrics. For molecular retrieval, each candidate in the official MassSpecGym candidate universe is passed through the same spectrum-blind World to construct a World-generated fragment-mass fingerprint, which is then matched to the observed spectrum. Fixed bond-cut, neutral-loss or rearrangement rules are retained only as baselines or auxiliary diagnostics and are not the canonical retrieval backend.
+\subsection*{Benchmarks, conditional evidence and ablation controls}
+The canonical PR91 V2 de novo protocol uses predicted, not
+ground-truth, formulas; neither oracle formula nor molecular
+fingerprints are passed to proposal, initialization, denoising or
+candidate ranking. Post-hoc structural metrics may compute
+connectivity-level 14-character InChIKey agreement and
+structural similarity after candidate generation, never as
+training teachers or model inputs. All 8,401 SEARCH\_DEV cases,
+including invalid and empty outputs, belong in reported
+denominators. Primary metrics are Exact@1, Exact@10,
+raw generated Recall@100, ranked Reach@100, formula Top-\(k\)
+containment, candidate diversity, invalid-step frequency,
+run time and molecule-group bootstrap intervals.
 
-Adaptive development uses only a molecule-group-disjoint partition of the official MassSpecGym training fold. The development partition contains 175,548 training spectra from 20,430 molecule groups, 8,401 SEARCH\_DEV spectra from 1,135 molecule groups and 9,782 promotion-calibration spectra from 1,136 molecule groups; official validation and test folds remain sealed during adaptive development. The standard no-ground-truth-formula setting is primary wherever MassSpecGym defines one. De novo generation is evaluated with connectivity-level InChIKey-14 Exact@1/10 together with structural-similarity metrics and a fixed raw generation budget; retrieval uses the official mass-based candidate pool with Hit@1/5/20 and MCES, with the formula-filtered pool reported separately as a bonus setting; and spectrum simulation uses the official sparse cosine and Jensen--Shannon similarity implementations. Every evaluation spectrum and every failed generation remains in the denominator.
+W and V are also audited conditionally on independently supplied
+precursor graphs. W mass coverage and V fragment posterior
+retrieval are not substitutes for de novo structural recovery.
+For W/V causality, compare spectrum-matched with shuffled/peer
+observations and test same-formula structural decoys. For online
+generation, freeze checkpoint, formula hypotheses, initial draws
+and attempt budgets across no-W/V, terminal-only and online
+feedback arms. The terminal-only arm must reuse precisely the
+no-W/V generated graph set. Compare the raw candidate sets
+separately from their final rankings, including chemistry/size
+strata and failures. Any future self-distillation experiment
+must additionally measure gain across rounds on independently
+held-out molecules and record pseudo-target rejection rates,
+confidence calibration and drift.
+\methodtodo{Replace development claims with the actual immutable
+V2 full-population receipts and, separately, the official MassSpecGym
+VAL/TEST protocol only after authorized release.}
 
-\subsection*{Soundness--resolution operating point}
-\methodtodo{Calibration cohort; stringency sweep; false-exclusion endpoint; confidence mapping; operating-point selection before atlas analysis; bootstrap/clustered uncertainty; sensitivity to mass tolerance, peak threshold and acquisition metadata.}
+\subsection*{External family-level applications and structural-resolution limits}
+\methodtodo{Select and freeze published standard-confirmed molecular
+families, accession-level independent spectrum sets, structure-overlap
+checks and chemical family-recovery endpoints before running ORBIT-MS.
+External validation, family expansion and any novel chemistry remain
+planned rather than demonstrated.}
+For downstream metabolomics applications, structural-family statements
+must be restricted to connectivity and shared substructures supported
+by the candidate ensemble, not inferred solely from common spectral
+peaks. Published standard-confirmed structures can provide independent
+reference anchors, whereas additional candidate family members without
+their own orthogonal confirmation must remain putative. Library-unmatched
+spectra are not automatically novel metabolites. Biological
+associations mined from existing intervention studies may support
+family-level relevance but cannot by themselves prove a precise
+new connectivity or biosynthetic mechanism.
 
-\subsection*{Prospective library-growth validation}
-\methodtodo{Historical freeze reconstruction; artifact hashes; definition of spectra dark at freeze and structures first deposited later; analogue exclusion; depositing-group independence; outcome revelation procedure; calibration/containment metrics and structural-distance stratification.}
-
-\subsection*{Comparator evaluation}
-\methodtodo{Exact-mass, spectrum-similarity, CFM-ID, SIRIUS/CSI:FingerID and other executable comparators; identical spectra/candidate pools where applicable; independent calibration mapping for each comparator; same-formula and near-isomer strata.}
-
-\subsection*{Structural-entity collapsing and census uncertainty}
-\methodtodo{Rules for adducts, isotopologues, charge states, in-source fragments and redundant acquisitions; validation on known compounds; over-/under-merging rates; propagation into entity-count uncertainty; entity definition at each structural-resolution level.}
-
-\subsection*{Recurrence and dataset independence}
-\methodtodo{Definition of independent datasets; handling of shared samples/laboratories/re-depositions; recurrence threshold; sensitivity analyses; structural-family construction from chemistry only.}
-
-\subsection*{Dark chemical landscape}
-\methodtodo{Frozen characterized-metabolite reference set; structural-distance metrics; near-known neighbourhood threshold; transformation vocabulary; treatment of class-level-only statements; family clustering/graph construction; reference-set and metric sensitivity.}
-
-\subsection*{Biological-source attribution}
-\methodtodo{Public germ-free/gnotobiotic, antibiotic and dietary-intervention datasets; manual design verification; harmonization; biological sample as unit; batch/platform/study effects; positive-control panel; label permutation; mixed/unresolved rules.}
-
-\subsection*{Feature-versus-family biological analysis}
-\methodtodo{Family freezing and hashing before phenotype testing; identical samples/covariates for feature and family arms; preregistered primary reproducibility endpoint; multiplicity control; independent replication; leave-one-cohort-out and metadata-permutation controls.}
-
-\subsection*{Authentic-standard validation}
-\methodtodo{Frozen anchor-selection rule; commercial standard sourcing; precursor, MS/MS and retention/coelution criteria; handling of stereoisomers; reporting of failed/ambiguous anchors and alternative candidates.}
-
-\subsection*{Automated World/program evolution}
-\methodtodo{Outer-loop failure localization; permitted typed modifications; deterministic chemistry compiler; fresh-data acceptance gates; causal replay, ablation, transfer and regression tests; strict separation between proposal generation and acceptance. This analysis is supporting and reported primarily in Extended Data.}
-
-\subsection*{Statistics}
-Unless otherwise stated, the molecule group is the independent unit for structural benchmark analyses, the independent dataset is the unit for recurrence across repositories, and the biological sample is the unit for biological inference. Effect sizes are reported with \result{confidence interval convention}. Paired structural comparisons use \result{bootstrap/sign-flip procedure}. Atlas entity counts propagate \result{collapsing-error uncertainty model}. Biological analyses use \methodtodo{final preregistered multiplicity-control procedure and replication criterion}.
-
-\subsection*{Data availability}
-\methodtodo{Repository accessions; mouse cohort deposition/permissions; historical library snapshots; released atlas tables containing structural statement, confidence, recurrence and evidence provenance; public perturbation datasets.}
-
-\subsection*{Code availability}
-ORBIT-MS is developed at \texttt{https://github.com/wangyu-sd/orbit-ms}. A frozen release containing model checkpoints, fragmentation-World configuration, candidate-generation configuration, calibration mapping, structural-family definitions, evaluation code and analysis manifests will be archived at \result{Zenodo DOI/release tag}.
+\subsection*{Statistics, provenance, data and code availability}
+The molecule group is the independent unit for molecular inference
+accuracy; W/V fragment-level diagnostic peaks within one spectrum
+are not treated as independent biological replicates.
+Paired W/V ablations must retain case-level correspondence and
+report molecule-group bootstrap intervals, with all failures in
+the denominators. Each claimed training and inference outcome
+requires immutable code, checkpoint, input and protocol hashes.
+ORBIT-MS source is available at
+\url{https://github.com/wangyu-sd/orbit-ms}.
+\methodtodo{Publish final reproducible configurations, checkpoint
+hashes, pseudo-label provenance, study accessions, official split
+results and archived release DOI once available.}
 
 \section*{Acknowledgements}
 \result{Funding acknowledgements and collaborators.}
