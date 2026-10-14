@@ -32,13 +32,9 @@ This evidence hierarchy makes it possible to resolve dark chemistry at repositor
 
 ## Current title
 
-**A molecular fragmentation world reveals the dark metabolome**
+**Accurate molecular structure elucidation from tandem mass spectra with ORBIT-MS**
 
-Alternative if the manuscript later becomes predominantly methodological:
-
-**Learning a molecular fragmentation world for mass-spectral inference**
-
-The preferred title keeps the new fragmentation-world paradigm and the large-scale dark-metabolome consequence in one concise statement.
+This is the target editorial title. Its accuracy claim requires complete official structure-elucidation benchmarks and independent chemical evidence. The full Nature discovery-first figure design is being restored in the open manuscript PR #7; the current default-branch figure plan should not be treated as final.
 
 ## Scientific model
 
