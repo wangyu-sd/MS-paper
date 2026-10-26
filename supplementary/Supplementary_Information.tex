@@ -8,6 +8,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{longtable}
+\usepackage{pdflscape}
 \usepackage[super,sort&compress]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
@@ -271,13 +272,21 @@ Anchors that fail to confirm are reported. An unconfirmed anchor is informative 
 
 \section{Supplementary tables}
 
-The completed and source-audited MassSpecGym development results appear in Tables~S2--S12 below. Library-snapshot Table~S1 retains its explicitly marked missing measurements. Previously planned leakage, calibration, atlas, biological and authentic-standard tables will be numbered only after their source evidence is frozen; their results are not implied by these benchmark tables.
+The completed MassSpecGym development results appear in Tables~S2--S12, followed by the source-audited external literature comparison in Table~S13. The external table is not an ORBIT-MS held-out result. Library-snapshot Table~S1 retains its explicitly marked missing measurements. Previously planned leakage, calibration, atlas, biological and authentic-standard tables will be numbered only after their source evidence is frozen; their results are not implied by these benchmark tables.
 
 % Support compilation from either the repository root or supplementary/.
 \IfFileExists{supplementary/MassSpecGym_Development_Results.tex}{%
   \input{supplementary/MassSpecGym_Development_Results}%
 }{%
   \input{MassSpecGym_Development_Results}%
+}
+
+
+% External literature comparison (Table S13), kept separate from own results.
+\IfFileExists{supplementary/MassSpecGym_DeNovo_Literature_Comparison.tex}{%
+  \input{supplementary/MassSpecGym_DeNovo_Literature_Comparison}%
+}{%
+  \input{MassSpecGym_DeNovo_Literature_Comparison}%
 }
 
 \bibliographystyle{unsrtnat}
