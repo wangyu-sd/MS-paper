@@ -1,71 +1,242 @@
-# MS-paper — ORBIT-MS
+# MS-paper
 
-Nature-oriented manuscript workspace for molecular structure elucidation and discovery of previously unrecognized metabolite families in public tandem mass spectra.
+Nature-level manuscript workspace for ORBIT-MS.
 
-## Manuscript title
+## Central proposition
+
+**A tandem mass spectrum is a partial observation of a latent gas-phase molecular fragmentation world. Rather than learning a direct spectrum-to-structure shortcut, ORBIT-MS learns this world and performs prediction, explanation and inverse structure inference inside the same conservation-preserving chemical process.**
+
+The manuscript has two inseparable layers.
+
+### 1. A new inference paradigm
+
+ORBIT-MS learns a probabilistic **molecular fragmentation world**:
+
+`molecule + ionization + collision conditions → latent multi-branch reaction world → partial spectral observation`.
+
+The same world supports three conditional inference modes:
+
+- **World / Free:** what fragmentation networks can this molecule produce?
+- **Verifier / Guided:** which reaction paths best explain the observed spectrum under a fixed computational budget?
+- **Generator / Inverse:** which molecular structures can generate this observation and remain consistent when replayed through the same World?
+
+This is the WGV-RL contribution. It is not three independent models. It is **one chemical world, three modes of inference**.
+
+### 2. A new scientific object
+
+The WGV system converts dark spectra into structural statements supported by progressively stronger evidence:
+
+`mass/formula compatibility → World reachability → executable path support → candidate-specific evidence → bidirectional spectrum–structure consistency → calibrated structural statement → authentic-standard confirmation`.
+
+This evidence hierarchy makes it possible to resolve dark chemistry at repository scale without pretending that every spectrum identifies one unique molecule. The resulting high-evidence structural population is then used to ask what the dark metabolome contains, how it is organized and what biology it encodes.
+
+## Current title
 
 **Accurate molecular structure elucidation from tandem mass spectra with ORBIT-MS**
 
-The same title is already installed in default-branch main.tex and Supplementary Information. The modifier "Accurate" remains conditional on complete held-out structural benchmarks and appropriate independent evidence. ORBIT-MS is the name of the full model; World (W), Verifier (V) and Generator (G) are internal components, not separate model names.
+This is the target editorial title. Its accuracy claim requires complete official structure-elucidation benchmarks and independent chemical evidence. The full Nature discovery-first figure design is being restored in the open manuscript PR #7; the current default-branch figure plan should not be treated as final.
 
-## Scientific proposition: Nature discovery first
+## Scientific model
 
-**The paper is not a World architecture showcase followed by downstream applications.** The proposed contribution is to infer chemically defensible relationships among reference-unmatched metabolomic spectra, discover previously unrecognized molecular families, characterize their chemical relationships, examine their biological distribution, and independently confirm selected structures.
+The core generative picture is:
 
-The method enables that task but cannot manufacture its outcome. Unmatched MS2 scans, source-independent spectral-similarity communities, structurally supported molecular families and new-to-science chemical structures are **different analysis units and evidence levels**. Do not turn one into another without external chemistry or calibrated structural inference.
+[
+M,c ightarrow mathcal{W}(M,c) ightarrow S_{mathrm{obs}}
+]
 
-The six Nature main figures were designed in manuscript PR #2 and restored as the governing plan on PR #7; **do not use the erroneous model-first ordering temporarily introduced in PR #7**. The source of truth is [internal/FIGURE_PLAN.md](internal/FIGURE_PLAN.md), with explicit panel/subfigure-level statistics and plot geometry.
+where:
+- (M) is molecular structure;
+- (c) is ionization/collision/instrument condition;
+- (mathcal{W}) is the latent probabilistic fragmentation reaction world;
+- (S_{mathrm{obs}}) is an incomplete experimental observation of that world.
 
-| Main figure | Central scientific question | Dominant visual |
-| --- | --- | --- |
-| **Fig. 1 — Previously unrecognized molecular families** | What previously unseen family relationships can the public unannotated MS/MS record reveal? | **1c** family-level novelty-distance × independent-study recurrence landscape |
-| **Fig. 2 — Molecular relationships to known chemistry** | What real chemical relationships are shared with characterized metabolites? | **2a** RDKit structure-based chemical relationship graph |
-| **Fig. 3 — Structural evidence and reliability** | How much chemical structure does each measured spectrum truly support? | Full-population candidate reduction, hard decoy/controls and risk–coverage; ORBIT-MS model assessment |
-| **Fig. 4 — Biological distribution** | Where do supported molecular families occur across real independent biological cohorts? | **4b** family-by-sample-context adjusted effect map |
-| **Fig. 5 — Controlled perturbations** | Which families respond reproducibly to microbiota, diet and other interventions? | **5c** family-by-intervention effects with confidence intervals |
-| **Fig. 6 — Independent chemical validation** | Which proposed structure and family-level findings survive independent experimental checks? | Real spectra/standards, complete successes and failures, confirmed family chemistry |
+Therefore:
 
-This is **not** a future-positive-results guarantee. Figures 1c, 2a, 4b, 5c and 6b/f cannot become real numerical figures until structure support, source and biological controls, and independent validation are available. Pending panels in LaTeX remain unboxed text-only design specifications, never made-up structures, spectra or plotted metrics.
+[
+S_{mathrm{obs}} 
+eq mathcal{W}
+]
 
-### ORBIT-MS model placement
+and:
 
-Fig. 1b may contain a small, accurately bounded ORBIT-MS inference inset, without displacing the dominant discovery result. Detailed G/W/V architecture, conditioning firewalls, benchmark comparisons, generator-online versus terminal verifier ablation and empirical structural calibration belong in **Fig. 3 and Extended Data**, with reproducible Methods. A W fragment candidate prior is not a fully learned gas-phase reaction network; V posterior fragment evidence is not experimentally confirmed structure-specific reaction pathways. Unverified self-distillation must not appear as achieved performance.
+[
+	ext{unobserved fragmentation} 
+eq 	ext{false fragmentation}.
+]
 
-## Main figure file contract
+This distinction is fundamental to the paper.
 
-main.tex loads a verified PDF if present and otherwise renders its labelled design specification:
+## WGV as conditional inference over one world
 
-| Figure | Asset |
-| --- | --- |
-| 1 | figures/fig1_discovered_families.pdf |
-| 2 | figures/fig2_chemical_relationships.pdf |
-| 3 | figures/fig3_structure_reliability.pdf |
-| 4 | figures/fig4_biological_distribution.pdf |
-| 5 | figures/fig5_perturbation_effects.pdf |
-| 6 | figures/fig6_chemical_validation.pdf |
+[
+egin{aligned}
+	ext{Free:} &quad p(mathcal{T},Smid M,c) \
+	ext{Guided:} &quad p(mathcal{T}mid M,S_{mathrm{obs}},c) \
+	ext{Inverse:} &quad p(M,mathcal{T}mid S_{mathrm{obs}},c)
+end{aligned}
+]
 
-For actual plot assets, use frozen data/code provenance, low-saturation scientific palette, correctly scaled real RDKit molecule vectors, experimentally measured MS/MS, statistical controls, case denominators and study independence. Main figures should not show artificial reaction schemes, invented spectra or optimistic simulations.
+where (mathcal{T}) denotes fragmentation trajectories/networks.
 
-## What the current evidence supports
+### Free / World
+Learns a multi-branch probabilistic reaction network rather than a single predicted spectrum or one preferred mechanism.
 
-1. **MassSpecGym:** 11 supplementary result tables S2–S12 report source-audited, percentage-formatted **TRAIN-derived 8,401-case development** metrics. Their conditional fragment W/V numbers and historical graph-generation/fixed-pool retrieval are *not* completed official TEST performance of an integrated ORBIT-MS model.
-2. **Public resource:** orbit-ms PR94's model-independent UC/IBD200/VEO-IBD accessible-source corpus has 348 expected / 272 verified / 76 unavailable acquisition files, with 613,331 reference-unmatched eligible measured MS2. Its 2,255 recurrent **spectral** communities (98 across three studies) are not identified molecules. A conditional three-study topology null yielded **p=0.91 (no enrichment)**. PR94's pan-repository study/file/scan inventory is separate and not a completed global structural-discovery denominator.
-3. **Final integrated G/W/V:** orbit-ms PR93 contains full training activity and an official 17,556-case V4 TEST submission, but submitted jobs and TRAIN W improvements do not establish final verified official system accuracy. End-to-end structure recovery and independent calibration remain separately sourced.
-4. **Chemistry, biology and standards:** target Nature structural-family, chemical relationship, independent-context, controlled-intervention and orthogonal chemical-confirmation claims require actual completed experiments. Negative findings must remain available.
+### Guided / Verifier
+Uses the observed spectrum to allocate computation toward reaction branches with the greatest explanatory/discriminative value. Chemical probability and evidential value are intentionally separated.
 
-For every reported metric, retain a declared full eligible denominator, independent unit (molecular connectivity group / study / biological sample), method, source snapshot, result receipts and uncertainty or failure counts.
+### Inverse / Generator
+Maintains multiple molecular hypotheses rather than collapsing immediately to Top-1. Completed candidates must be replayed through the same World and evaluated for forward consistency.
 
-## Editing and PR coordination
+## Why RL is necessary
 
-- Manuscript text, six main-figure macros, caption slots and scientific references: **main.tex**.
-- Detailed Nature figure layout and per-panel data/controls: **internal/FIGURE_PLAN.md**.
-- Promised versus completed scientific evidence: **internal/CLAIM_EVIDENCE_MATRIX.md**, **internal/RESULTS_PLACEHOLDERS.md**.
-- Full-population experiment dependencies: **internal/EXPERIMENT_EXECUTION_PLAN.md**.
-- Supplementary Information: **supplementary/Supplementary_Information.tex**; original 11 MassSpecGym development tables remain **supplementary/MassSpecGym_Development_Results.tex**.
-- PR #2 is the discovery-first design authority; PR #7 is the manuscript implementation being realigned; PR #3's V2 Methods are not automatically the final current model. Earlier five-figure/World-first and temporarily model-first plans are retained only in Git history and historical archives.
+The latent fragmentation world is combinatorial. Exhaustive expansion is impossible.
 
-## Overleaf
+RL therefore solves a scientific resource-allocation problem:
 
-For the main manuscript, set root **main.tex** as the Main document. For the full separate supplement choose **supplementary/Supplementary_Information.tex**. To compile the 11 auditable result tables S2–S12 separately choose root **massspecgym_tables_preview.tex**, not the input-only table fragment.
+> **Where should limited computation be spent in a large chemical reaction world?**
 
-The **article title** is already live in default-branch main. The **corrected six-figure Results and placeholders** are on PR #7 until that branch is merged. To preview them before merge, compile the PR #7 branch in a separate clone or merge after reviewing; changing the figure plan on a draft PR does not affect Overleaf's main branch.
+- SubTB/GFlowNet distributes flow across multiple plausible Free trajectories.
+- Guided IQL/DAgger learns long-horizon value under spectrum conditioning.
+- Inverse GFlowNet/SMC maintains diverse posterior molecular hypotheses.
+- Frontier planning allocates compute without redefining chemistry.
+
+This is not “RL to raise a score”. It is adaptive inference over a constrained chemical world.
+
+## Chemistry and learning have different roles
+
+**Chemistry defines legality; learning defines preference.**
+
+Hard constraints include:
+- atom/element conservation;
+- electron conservation;
+- formal charge;
+- explicit H identity and transfer;
+- exact mass;
+- valence;
+- formula/inventory closure;
+- typed transition materializability.
+
+These are not reward penalties that the policy may trade away. Invalid actions are removed from the executable action space.
+
+Learning estimates:
+- event propensity;
+- branch probability;
+- long-horizon explanatory value;
+- posterior molecular probability;
+- compute allocation.
+
+## Evidence hierarchy
+
+The paper should never collapse every result into “annotation accuracy”.
+
+Every dark-spectrum result is assigned the strongest evidence level it actually reaches:
+
+1. precursor mass / formula compatible;
+2. structurally valid candidate;
+3. reachable in the learned World;
+4. observed peaks supported by executable trajectories;
+5. candidate-specific discriminative evidence;
+6. spectrum → molecule → World → spectrum consistency;
+7. calibrated bounded structural statement;
+8. authentic-standard confirmation.
+
+Main figures must report how much dark chemistry reaches each level.
+
+## Main-text architecture
+
+The manuscript is organized as **2 method-capability figures + 3 discovery figures**.
+
+| § | Section | Figure | Role |
+|---|---|---|---|
+| 1 | A molecular fragmentation world unifies prediction, explanation and inverse inference | Fig. 1 | paradigm |
+| 2 | World-based inference establishes graded structural evidence | Fig. 2 | capability / credibility |
+| 3 | High-evidence inference resolves the dark metabolome at scale | Fig. 3 | large-scale discovery |
+| 4 | Resolved dark chemistry reveals structural and biological organization | Fig. 4 | chemical/source discovery |
+| 5 | Dark molecular families reveal biology hidden from feature-level metabolomics | Fig. 5 | biological discovery |
+
+The chain is:
+
+`partial spectral observation → fragmentation World → W/G/V inference → graded structural evidence → high-evidence dark structures → chemical families → biological organization`.
+
+## Figure-level questions
+
+1. **What is the hidden object behind a spectrum?**  
+   A latent probabilistic fragmentation world.
+
+2. **What new inference capabilities does one shared World provide?**  
+   Forward prediction, spectrum-guided explanation, inverse structure inference and bidirectional verification.
+
+3. **How much dark chemistry can be resolved, and at what evidence level?**  
+   Repository-scale evidence hierarchy and entity/family census.
+
+4. **How is resolved dark chemistry organized?**  
+   Near-known versus remote structural families plus microbiota/diet/host dependence.
+
+5. **Does structure change biological inference?**  
+   Frozen structural families versus anonymous feature-level analysis, followed by one deeply validated programme.
+
+## Agent role
+
+The LLM/MS-agent remains outside online WGV inference.
+
+[
+	ext{systematic failure}
+ightarrow
+	ext{hypothesis}
+ightarrow
+	ext{program/state/action/algorithm revision}
+ightarrow
+	ext{typed compiler + held-out gates}
+ightarrow
+	ext{new World}
+]
+
+The agent evolves the scientific program; it does not replace the reproducible chemical state, policy or transition model.
+
+## Nature-level success criteria
+
+The paper should demonstrate all three layers:
+
+### Paradigm
+A shared learned fragmentation World supports Free, Guided and Inverse inference better than disconnected/direct alternatives.
+
+### Evidence
+World-based bidirectional inference produces more reliable, auditable and calibrated structural conclusions than similarity/rank alone.
+
+### Discovery
+Applying this evidence hierarchy at scale reveals reproducible dark structural families and biological organization not visible at feature level.
+
+If the paper only shows a better W/G/V benchmark, it becomes a methods paper. If it only shows an atlas, it underuses the methodological novelty. The Nature story requires both.
+
+## Draft conventions
+
+`main.tex` is target-final prose. Missing evidence remains explicit:
+
+- `[RESULT: ...]` — numerical/statistical result from a frozen artifact;
+- `[DATA: ...]` — cohort or dataset information still to be bound;
+- `[METHOD: ...]` — protocol detail that must be frozen.
+
+No placeholder is filled from memory, transient logs or exploratory notebooks.
+
+## Standing claim boundaries
+
+1. A spectrum is a partial observation of the fragmentation world, not a complete negative label over all unobserved states.
+2. W/G/V share one chemical world but optimize different conditional objectives.
+3. Chemical legality is hard-constrained; RL learns preference and compute allocation.
+4. Candidate recall, evidence discrimination and end-to-end recovery are separate endpoints.
+5. Dark-spectrum predictions are not automatically identifications.
+6. Structural relationships are not biosynthetic mechanisms.
+7. Source attribution establishes dependence, not synthesis.
+8. Training loss and agent progress are not scientific endpoints.
+
+## Overleaf compilation
+
+This repository supports the following compilation entry points:
+
+- **Main manuscript:** choose the root-level `main.tex` as the Main document.
+- **Audited MassSpecGym tables only:** choose the root-level `massspecgym_tables_preview.tex`. This standalone entry point loads the 11 audited tables from `supplementary/MassSpecGym_Development_Results.tex` and preserves their S2--S12 numbering. Scientific data are not duplicated in the wrapper.
+- **Entire Supplementary Information:** choose `supplementary/Supplementary_Information.tex`. It contains `\documentclass`, includes the same result tables, and now chooses the appropriate path to `references.bib`.
+
+Overleaf: **Settings (gear icon) > Compiler > Main document**, then **Recompile**. Switch back to `main.tex` when compiling the manuscript.
+
+Do **not** select `supplementary/MassSpecGym_Development_Results.tex` as the Main document. It is an `\input` fragment with no `\documentclass` or `\begin{document}`. The main manuscript intentionally does not include these separately compiled Supplementary Information tables.

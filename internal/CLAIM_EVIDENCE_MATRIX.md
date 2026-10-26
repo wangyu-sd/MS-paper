@@ -1,90 +1,131 @@
-# Nature ORBIT-MS claim–evidence matrix
+# Claim–Evidence Matrix
 
-**Controlling authority:** PR #2's discovery-first Figure Plan, restored in internal/FIGURE_PLAN.md and manuscript PR #7. This corrects the erroneously reordered *model → benchmark → resource* figures. **Title:** Accurate molecular structure elucidation from tandem mass spectra with ORBIT-MS; "Accurate" is conditional on completed official full-population evaluation.
+Internal truth contract for the Nature manuscript.
 
-**Central paper claim, if supported:** ORBIT-MS enables structure-supported previously unrecognized metabolite families to be identified in public reference-unmatched MS/MS, connected to characterized chemistry, associated reproducibly with biological contexts and confirmed with independent chemistry. The steps are not interchangeable: unmatched spectra ≠ spectral communities ≠ molecular families ≠ confirmed new compounds.
+> **Current quantitative authority (2026-10-06):** completed PR85–PR90 results, code/checkpoint provenance, manuscript eligibility and Nature-specific claim boundaries are consolidated in [NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md](NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md). Where an older placeholder or prose number conflicts with that ledger, the ledger is the current factual source until the final fingerprint-free chemical-evidence WGV and official held-out benchmark are frozen.
 
-## Figure 1 — Previously unrecognized families (the headline discovery)
+The paper now makes two coupled contributions:
 
-| Panel | Job and mandatory control | Evidence status |
-| --- | --- | --- |
-| 1a | Small global public experimental MS/MS source/QC/reference-match panel. Exact accession, run and scan counts; mutually exclusive accepted/ambiguous/unmatched/unassessable; independently published global estimates kept separate | PR94 three-study source-bound; full pan-repository still incomplete |
-| 1b | Small calibrated structure-resolution population: unique putative 2D, bounded isomer set, core/class, formula, unresolved; known-GT containment and complete denominator | Await final model/calibration |
-| **1c** | **Dominant family-level distance-to-known-chemistry vs independent-study recurrence landscape**, one confirmed/bounded structurally supported *family* per record; chemical prior/null and uncertainty controls | Await actual structure-supported families |
-| 1d | Frozen discovery-family independent-study rediscovery with shuffled/null and source-missingness controls | PR94 spectral-only recurrence exists; chemical family recurrence pending |
-| 1e | Dated library/literature recognition audit: known, previously unrecognized relationship, newly proposed structure and indeterminate | Pending chemistry |
-| 1f | At most three real spectra/structures or bounded cores, selected by prespecified support/recurrence score | Pending real supported cases |
+1. **Inference paradigm:** spectra are partial observations of a latent molecular fragmentation world; one learned World supports Free prediction, Guided explanation and Inverse structure inference.
+2. **Scientific consequence:** this shared World yields a hierarchy of stronger structural evidence that enables repository-scale resolution and analysis of dark chemistry.
 
-**Do not misuse PR94:** The UC/IBD200/VEO-IBD accessible-source corpus has 348 expected acquisitions, 272 verified and 76 missing. Its 835,953 biological queries partition into 13,884 unambiguous matches, 14,289 ambiguous matches, 613,331 no accepted hit, and 194,449 unassessable. The 613,331 unmatched spectra produce 2,255 multi-study **spectral** communities and 98 three-study communities. The conditional topology null gave empirical upper-tail fraction **0.91 (not enriched)**. These are neither 2,255 new molecules nor a verified worldwide sample.
+No claim is submission-ready until its evidence cell is bound to an immutable artifact.
 
-## Figure 2 — Chemistry beyond characterized metabolites
+---
 
-| Panel | Required evidence |
-| --- | --- |
-| **2a** | **Dominant sparse real 2D structural network** linking credible family members and characterized metabolites using verified atom/bond graph differences, not mass deltas or UMAP |
-| 2b | Family graph-edit/path distance vs formula/size/source/scaffold/known-seed-matched prior; unresolved separate |
-| 2c | Distinct supported structural edit classes with independent family/study recurrence and uncertainty |
-| 2d | Independent scaffold/class × graph-edit frequency matrix and null comparisons |
-| 2e | Genuine T0-frozen model/reference knowledge vs independent later chemical reference deposits |
+## Figure 1 — A molecular fragmentation world unifies prediction, explanation and inverse inference
 
-Chemical graph differences are not established biological reactions. Any model prior biased toward known metabolites must be controlled before claiming remarkable chemical-space structure.
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C1** | A tandem mass spectrum is better modelled as a partial observation of a latent multibranch fragmentation world than as the complete target of a direct predictor. | Compare latent-network World modelling with direct spectrum prediction under matched molecular splits and compute, evaluating observed coverage, multistage transitions and probability consistency. | molecule group | molecule-disjoint split; identical acquisition conditions; direct-spectrum baseline; unobserved generated states remain unlabeled rather than false | `TBD:C1_world_vs_direct` |
+| **C2** | One shared chemical World can support Free, Guided and Inverse inference without changing the underlying chemistry between tasks. | Shared-state/shared-transition ablation versus disconnected task-specific models; evaluate Free coverage, Guided matched-budget gain and Inverse recovery. | molecule group / task | same World checkpoint or shared encoder/transition semantics; task-specific heads; target spectrum forbidden in Free | `TBD:C2_shared_world` |
+| **C3** | Hard conservation and typed execution constrain chemical legality while learned policies allocate probability and compute among legal alternatives. | State/action validity audit across training and inference; deliberate invalid-action challenge set; conservation/materialization statistics. | transition / molecule | atom, electron, charge, H, exact mass, formula/valence checks; no reward-only legality | `TBD:C3_conservation` |
+| **C4** | A multibranch probabilistic reaction network explains spectra better than single-path fragmentation under matched compute. | Compare full sibling/STOP/reconvergent network against single-path or greedy rollout. | molecule group | same transition model; same expansion budget; report censored frontier mass | `TBD:C4_multibranch_world` |
 
-## Figure 3 — ORBIT-MS structural reliability (model-method evidence)
+**Boundary:** these are paradigm claims. Do not substitute training loss, selector MRR or probe tests for C1–C4.
 
-| Panel | Required evidence |
-| --- | --- |
-| 3a | Initial-to-retained candidate-count hexbin with full-denominator true-structure containment |
-| 3b | GT containment and alternatives for matched same-formula, scaffold and positional-isomer challenge groups |
-| 3c | Paired matched-versus-precursor-compatible peer/shuffled-spectrum discrimination with fixed candidates and compute |
-| 3d | Specific vs shared peaks, structural fragment features and actual measured MSn, with true W/V/G evidence ablations |
-| 3e | Independently calibrated truth containment of bounded 2D/isomer/core/formula/unresolved reports; population fractions, risk--coverage |
-| 3f | Non-overlapping formula/seed/proposal/pruning/ranking/unresolved failures |
-| 3g | Adduct, atom-count, ring, heteroatom and other complete-population strata |
+---
 
-**Audited limited metrics:** 8,401 repeatedly adaptive **MassSpecGym TRAIN-derived** development spectra; formula Top1 **87.87%**; correct-precursor-conditional World weighted fragment recall **72.19%**; V matched fragment recall **62.79%**; one historical 100-draw G raw pool reached correct 2D connectivity in **6.28%**. Supplementary S2–S12 records these historical/conditional task limits. None represents final ORBIT-MS official de novo TEST accuracy or chemical identification. Final full TEST (17,556 cases), online W/V versus identical-pool terminal reranking and calibrated confidence require complete source-frozen receipts. Detailed W/V/G implementation belongs in Extended Data; Figure 1 need not be a large model diagram.
+## Figure 2 — World-based inference establishes graded structural evidence
 
-## Figure 4 — Sample-context biology
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C5** | Free World recovers experimentally observed masses and ordered fragmentation relations with calibrated probability flow. | Held-out Free-network evaluation. | molecule group | target spectrum hidden from policy; coverage, intensity-weighted coverage, parent-child transitions, multistage gain, probability conservation | `TBD:C5_free_world` |
+| **C6** | Guided inference improves spectrum explanation under the same compute budget by reallocating expansion toward evidence-bearing branches. | Matched-budget Free vs Guided comparison. | molecule group | identical molecule/World/action constraints; Guided alone sees target spectrum; same max expansions/wall time | `TBD:C6_guided_gain` |
+| **C7** | Inverse inference recovers a diverse posterior set of molecular structures rather than only one rank-1 guess. | Molecule-disjoint Inverse benchmark. | molecule group | Exact@K/Recall@K; best similarity/MCES; posterior diversity; formula/chemical validity; candidate-count matched baselines | `TBD:C7_inverse` |
+| **C8** | Bidirectional World consistency distinguishes true candidates from hard structural alternatives. | Spectrum→candidate→World→spectrum replay on GT + hard decoys. | molecule group | same-formula and near-isomer pools; generator recall reported separately; forward coverage/path evidence; cycle consistency | `TBD:C8_bidirectional` |
+| **C9** | WGV produces a monotone evidence hierarchy whose stronger levels correspond to higher structural reliability. | Stratify known-structure cohorts by evidence level and measure containment/accuracy/calibration. | molecule group | fixed definitions; no post hoc threshold tuning; report coverage at every level | `TBD:C9_evidence_hierarchy` |
+| **C10** | Calibrated bounded structural statements remain reliable on chemistry unavailable at model freeze. | Historical library-growth prospective-by-time evaluation. | spectrum / structure | exact+analogue exclusion at freeze; independent depositing groups; frozen model/calibration; structural-distance stratification; comparator calibration | `TBD:C10_prospective` |
 
-| Panel | Required evidence |
-| --- | --- |
-| 4a | Independent study × biological-sample-context dot inventory with N biological subjects and metadata completeness |
-| **4b** | **Dominant frozen molecular family × sample-context study-adjusted heatmap**, no pooled raw inter-platform intensity |
-| 4c | Context effect distributions vs metadata permutation and known-metabolite controls |
-| 4d | Independent cohort discovery-versus-validation effect-size plot with sample-level intervals |
-| 4e | Across-lab sign agreement and replication null |
-| 4f | Batch/instrument/study and source missingness sensitivity |
-| 4g | Structural novelty-distance vs independently replicated context effects; indeterminate families separate |
+**Boundary:** the claim is stronger evidence and controllable ambiguity, not that mechanism is universally more accurate than every black-box model.
 
-Source metadata inventories can be model-independent; family-level biological analysis requires calibrated structural family identities and subject-level independence.
+---
 
-## Figure 5 — Perturbation biology and family-level utility
+## Figure 3 — High-evidence inference resolves the dark metabolome at scale
 
-| Panel | Required evidence |
-| --- | --- |
-| 5a | Verified germ-free, antibiotics, defined diet and other cohort/contrast inventory |
-| 5b | Matched known-metabolite positive controls and metadata permutation |
-| **5c** | **Dominant complete family × perturbation effect estimates with CIs** and negative/null results |
-| 5d | Replication and mixed effects across comparable interventions |
-| 5e | Same-subject, same-covariate feature-level vs frozen-family biological result on preregistered endpoint |
-| 5f | One preselected real molecular family with independently replicated biological effect and conservative inference |
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C11** | Repository-scale dark spectra can be moved from weak mass/formula compatibility to stronger World-based evidence levels at non-trivial scale. | Frozen WGV run over the complete eligible dark corpus. | spectrum / structural entity | frozen evidence thresholds; no sample/phenotype labels in inference; report full denominator and unresolved fraction | `TBD:C11_dark_resolution_funnel` |
+| **C12** | High-evidence structural resolution collapses many spectral observations onto fewer chemical entities. | Validated adduct/isotope/charge/in-source/redundant-acquisition collapsing after structural resolution. | structural entity | collapsing error measured on known compounds; uncertainty propagated into counts | `TBD:C12_entity_collapse` |
+| **C13** | A substantial subset of high-evidence dark entities/families recurs across independent datasets. | Cross-dataset recurrence analysis. | structural entity/family | shared-sample/lab audit; recurrence threshold frozen; technical spectra not independent | `TBD:C13_recurrence` |
+| **C14** | Recurrent dark chemistry occupies both a near-known halo and remote structural families outside the predefined neighbourhood of characterized metabolism. | Frozen structural-distance analysis over high-evidence recurrent entities. | structural entity/family | reference set and distance threshold frozen; insufficient-resolution cases excluded from precise-distance claims | `TBD:C14_near_remote` |
 
-Microbiota/diet dependence does not independently establish microbial synthesis, dietary chemical origins or a pathway.
+**Headline quantity:** how much dark chemistry reaches each evidence level, then how many recurrent entities remain after collapsing.
 
-## Figure 6 — Independent chemical validation
+---
 
-| Panel | Required evidence |
-| --- | --- |
-| 6a | Frozen anchor selection with all confirmed/ambiguous/failed/unavailable outcomes |
-| 6b | Real precursor/MS/MS mirror spectra and comparable authentic-standard RT/coelution when actually measured |
-| 6c | Verified family members, structural differences, bounded unresolved isomer sets |
-| 6d | Dated known/new-to-one-library/previously unrecognized family/new-to-science novelty audit |
-| 6e | Biological effects verified using real structure-supported family identities and identical biological samples |
-| 6f | One deeply verified real family integrating chemistry, recurrence and biological effect, only if achieved |
+## Figure 4 — Resolved dark chemistry reveals structural and biological organization
 
-A library match is not same-lab authentic-standard proof; unverified structure and hypothetical biological function cannot be presented as confirmed.
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C15** | High-evidence recurrent dark chemistry is non-randomly organized into structural families. | Structural graph/landscape and family-size/recurrence analysis. | entity/family | multiple structural-distance definitions; reference-set sensitivity; null family graph | `TBD:C15_structural_organization` |
+| **C16** | Recurrent dark structural families show reproducible dependence on microbiota, diet or host context. | Harmonized public germ-free/gnotobiotic, antibiotic and dietary-intervention analyses. | family / biological dataset | positive controls; label permutation; batch/platform/study model; mixed/unresolved retained | `TBD:C16_source_partition` |
+| **C17** | Biological source labels are coupled to structural organization rather than randomly distributed over dark chemistry. | Overlay source labels on frozen structural landscape; test local label autocorrelation and motif/class enrichment. | family | family frozen before labels; cross-study effect consistency; permutation null | `TBD:C17_structure_source` |
 
-## Supporting data, units and submission gates
+**Boundary:** dependence is not biosynthesis; structural relation is not pathway evidence.
 
-Figure PDFs: fig1_discovered_families.pdf, fig2_chemical_relationships.pdf, fig3_structure_reliability.pdf, fig4_biological_distribution.pdf, fig5_perturbation_effects.pdf, fig6_chemical_validation.pdf (all in figures/). Six Results sections and six figure references must match exactly.
+---
 
-Every plotted value needs original source data, full eligible denominator, independent statistical unit (molecular identity group, independent study or biological sample), calibration provenance, uncertainty and negative/null cases. PR94's spectrum-level recurrence, current incomplete global index and developmental PR93 system must not be re-labelled molecular-family discovery or final benchmark improvement. If the full evidentiary chain fails, the relevant Nature chemical/biological headline is reduced or removed rather than supported by attractive illustrations. The title's accuracy adjective must likewise be reviewed after complete official tests and independent chemistry.
+## Figure 5 — Dark molecular families reveal biology hidden from feature-level metabolomics
+
+| ID | Claim | Experiment | Unit | Minimum controls | Artifact |
+|---|---|---|---|---|---|
+| **C18** | Structural-family analysis is more reproducible than treating the same dark observations as independent anonymous features. | Paired feature-vs-family analysis across all eligible biological contrasts/cohorts. | biological sample / family | same samples/preprocessing/covariates; family definitions frozen before phenotype testing; one preregistered primary endpoint | `TBD:C18_family_gain` |
+| **C19** | At least one high-evidence recurrent dark molecular programme shows replicated biological association. | Frozen family-level discovery + independent replication. | biological sample | multiplicity control; cohort replication; metadata permutation; leave-one-cohort-out | `TBD:C19_programme` |
+| **C20** | Selected high-evidence structures survive orthogonal authentic-standard validation while unresolved alternatives remain explicitly bounded. | Standard MS/MS + retention/coelution; unresolved-case dossier. | molecular hypothesis | anchor criterion frozen before purchase; failures retained; full alternative set | `TBD:C20_standard` |
+
+**Boundary:** one case study cannot replace C18.
+
+---
+
+# Supporting / Extended Data claims
+
+| ID | Claim | Role |
+|---|---|---|
+| **S1** | Explicit atom/electron/H/charge/exact-mass state representation reduces invalid chemistry. | ED2 |
+| **S2** | H-group action compression preserves chemistry while reducing redundant policy actions. | ED2 |
+| **S3** | Closed charged/neutral state enables exact forward/backward accounting. | ED2 |
+| **S4** | Canonical inverse graph state avoids duplicate GFlowNet/SMC states. | ED5 |
+| **S5** | DAgger mitigates teacher/frontier distribution shift in Guided inference. | ED4 |
+| **S6** | SubTB better represents many valid Free trajectories than winner-take-all optimization. | ED3 |
+| **S7** | Inverse SMC/GFlowNet preserves posterior diversity under hard chemistry constraints. | ED5 |
+| **S8** | Outer-loop agent evolution expands scientific capability only when held-out gates accept the change. | ED7 |
+| **S9** | Scientific World KPIs can diverge from training loss; promotion therefore uses held-out science endpoints. | ED3/ED7 |
+
+---
+
+# Nature submission gates
+
+## Paradigm gate
+- C1/C4: the latent multibranch World must provide measurable value beyond direct/single-path prediction.
+- C2: shared-World coupling must not be cosmetic; at least two of Free/Guided/Inverse should measurably benefit from shared semantics.
+- C3: chemical validity must be essentially hard-constrained, not merely average-case.
+
+## Capability/evidence gate
+- C6: Guided must improve explanation or efficiency under matched compute.
+- C7: Inverse must provide useful Recall@K/diversity under molecule-disjoint evaluation.
+- C8/C9: stronger World evidence levels must correlate with structural reliability.
+- C10: prospective credibility should remain meaningful under structural-distance shift.
+
+## Discovery gate
+- C11: a non-trivial fraction of dark spectra must reach strong World-based evidence.
+- C13/C14: recurrent and remote dark chemistry must be quantitatively non-trivial.
+- C16/C17: source dependence should organize structural space.
+- C18: family-level biological analysis must show systematic gain, not only one positive family.
+
+If only the paradigm succeeds, submit as a high-level methods paper. If only the atlas succeeds, the WGV novelty is underused. The Nature story requires both.
+
+---
+
+# Standing rules
+
+1. A spectrum is a partial observation of the latent fragmentation world.
+2. Unobserved World states are unlabeled unless the observation model supports a negative claim.
+3. W/G/V are conditional inference modes over one chemical world, not three arbitrary scorers.
+4. Chemical legality is hard-constrained; learning controls probability/value/search.
+5. Candidate recall, evidence discrimination and end-to-end structure recovery are separate.
+6. Evidence levels are fixed before evaluating dark chemistry.
+7. Model-derived unique structures are not authentic-standard identifications.
+8. Biological samples, not spectra, are units of biological inference.
+9. Structural relation is not biosynthetic mechanism.
+10. Training loss and agent activity are not manuscript endpoints.
