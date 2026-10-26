@@ -14,7 +14,7 @@ Counts of unique molecules, molecular records, and sampled graph-edit examples
 are not interchangeable. The numbers below were transcribed from the source
 publications and were not reproduced under a common molecular pretraining
 corpus, generation budget, ranking procedure, or MCES implementation.
-The ORBIT-MS row is an author-reported measurement that has not yet been
+The separate ORBIT-MS table contains author-reported measurements that has not yet been
 independently checked against a frozen evaluation receipt; it is separated
 visually and must not be interpreted as an audited official test result.
 
@@ -51,8 +51,6 @@ GEMS & 125M edit examples / PubChem & MIST; PubChem starts & \textbf{30.22} & \t
 DiffMS + MIST-CF & 2.8M / four databases & MIST-CF Top5 & 1.86 & \textbf{17.83} & 0.27 & 4.10 & \textbf{13.71} & 0.40 \\
 FRIGID-base + MIST-CF & Up to 1B / SAFE & MIST-CF Top5 & 11.60 & 20.19 & 0.35 & 13.13 & 14.81 & 0.42 \\
 FRIGID + MIST-CF & Up to 1B / SAFE & MIST-CF Top5; ICEBERG & \textbf{14.28} & 18.30 & \textbf{0.37} & \textbf{17.43} & 14.85 & \textbf{0.43} \\
-\midrule
-ORBIT-MS\textsuperscript{\dag} & 20,430 paired groups & Predicted formula; MMA/WGV & 15.67 & 14.20 & 0.40 & 20.35 & 10.80 & 0.49 \\
 \bottomrule
 \end{tabular}%
 }
@@ -60,10 +58,58 @@ ORBIT-MS\textsuperscript{\dag} & 20,430 paired groups & Predicted formula; MMA/W
 \par\vspace{4pt}
 \begin{minipage}{0.97\linewidth}
 \scriptsize\raggedright
-\textsuperscript{\dag}ORBIT-MS: author-reported values, pending checkpoint- and case-level verification; not a completed independently audited TEST result. ``Four databases'' = DSSTox, HMDB, COCONUT and MOSES. For GEMS, 125M denotes sampled graph-edit training \emph{examples}, not distinct molecules. Seed-assisted and predicted-formula protocols differ across methods.
+``Four databases'' = DSSTox, HMDB, COCONUT and MOSES. For GEMS, 125M denotes sampled graph-edit training \emph{examples}, not distinct molecules. Seed-assisted and predicted-formula protocols differ across methods.
 \end{minipage}
 \end{table}
 \end{landscape}
+
+% Separate ORBIT-MS row from landscape-only literature comparison.
+% This is a distinct portrait table, with the same six numeric endpoints.
+\clearpage
+\begin{table}[!htbp]
+\centering
+\caption{\textbf{ORBIT-MS de novo structure elucidation with predicted molecular formula.}
+Author-reported measurements, pending verification against a frozen checkpoint
+and complete case-level evaluation. The model underlying these reported
+numbers was trained on the MassSpecGym paired training partition; molecular
+structure-only pretraining was \emph{not} used in the verified PR93 e7
+checkpoint. The separate 2.5M MassSpecGym v1.5 molecular-pretraining
+experiment is planned/submitted and no improvement from that experiment is
+attributed to this row. These measurements are not independently audited
+MassSpecGym official TEST results.}
+\label{tab:msdev_denovo_orbit}
+\begingroup
+\small
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.13}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{Top-1} & \multicolumn{3}{c}{Top-10} \\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Method & Exact (\%) $\uparrow$ & MCES $\downarrow$ & Tanimoto $\uparrow$ &
+Exact (\%) $\uparrow$ & MCES $\downarrow$ & Tanimoto $\uparrow$ \\
+\midrule
+ORBIT-MS (author-reported) & 15.67 & 14.20 & 0.40 & 20.35 & 10.80 & 0.49 \\
+\bottomrule
+\end{tabular}%
+}
+\endgroup
+\vspace{4pt}
+
+\begin{minipage}{0.97\linewidth}
+\footnotesize
+\textbf{Training provenance:} 175,548 paired MS/MS spectra corresponding to
+20,430 molecular-connectivity groups in the model-fitting partition.
+\textbf{Structure-only pretraining:} not established for the reported model.
+The separate MassSpecGym v1.5 pretraining corpus
+(\texttt{MassSpecGym1.5\_pretraining\_molecules\_2.5M\_tani070.txt};
+2,444,765 molecules after initial screening and removal of one
+test-connectivity overlap) is reserved for a subsequent experiment.
+No outcomes from that experiment are included here.
+\end{minipage}
+\end{table}
+
 
 \noindent\textbf{Data provenance and comparison limitations.}
 The known-formula MADGEN, MS-BART, DiffMS, FOAM and FRIGID results
@@ -97,7 +143,7 @@ inflated MIST--MolForge results identified in the MassSpecGym v1.5
 audit are excluded \citep{Liu2026MassSpecGymWild}.
 
 \noindent\textbf{ORBIT-MS reporting boundary.}
-The ORBIT-MS row reports six values confirmed by the project author
+Table~\ref{tab:msdev_denovo_orbit} reports six values confirmed by the project author
 (Exact@1 = 15.67\%, MCES@1 = 14.20, Tanimoto@1 = 0.40,
 Exact@10 = 20.35\%, MCES@10 = 10.80, Tanimoto@10 = 0.49).
 These values have not been independently verified from a complete
