@@ -19,55 +19,49 @@ independently checked against a frozen evaluation receipt; it is separated
 visually and must not be interpreted as an audited official test result.
 
 \begin{landscape}
-\begin{table}[!htbp]
+\begin{table}[p]
 \centering
-\caption{\textbf{De novo structure elucidation on MassSpecGym: published benchmarks and author-reported ORBIT-MS results.}
-Molecular pretraining and spectral/inference-time resources are reported
-separately. Exact@$k$ denotes successful retrieval of the correct molecular
-connectivity (first 14 characters of InChIKey) in the top $k$ structures
-and is expressed as a percentage (\%). MCES@$k$ is the smallest reported
-maximum-common-edge-subgraph distance and Tanimoto@$k$ is the largest reported
-radius-2, 2048-bit Morgan similarity in the top $k$. Arrows indicate
-preferred directions. Published baselines come from distinct publications. ORBIT-MS numbers
-are author-reported and awaiting reproducibility verification. The table is
-not a single protocol-harmonized leaderboard.}
+\caption{\textbf{De novo structure elucidation on MassSpecGym.} Published results and author-reported ORBIT-MS measurements. Exact@$k$ (\%), MCES@$k$ (lower is better), and Morgan Tanimoto@$k$ (higher is better). Pretraining and inference resources are abbreviated for readability; full provenance and protocol limitations follow below.}
 \label{tab:msdev_denovo_external}
 \begingroup
-\footnotesize
-\setlength{\tabcolsep}{3.8pt}
-\renewcommand{\arraystretch}{1.12}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{@{}p{3.7cm}p{4.25cm}p{4.5cm}rrrrrr@{}}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.04}
+\resizebox{0.97\linewidth}{!}{%
+\begin{tabular}{@{}lllrrrrrr@{}}
 \toprule
  & & & \multicolumn{3}{c}{Top-1} & \multicolumn{3}{c}{Top-10} \\
 \cmidrule(lr){4-6}\cmidrule(l){7-9}
-Method & Molecular pretraining & Spectral model / inference resources &
-Exact $\uparrow$ & MCES $\downarrow$ & Tanimoto $\uparrow$ &
-Exact $\uparrow$ & MCES $\downarrow$ & Tanimoto $\uparrow$ \\
+Method & Molecular pretraining & Spectral / inference inputs & Exact$\uparrow$ & MCES$\downarrow$ & Tani.$\uparrow$ & Exact$\uparrow$ & MCES$\downarrow$ & Tani.$\uparrow$ \\
 \midrule
-\multicolumn{9}{@{}l}{\emph{Known molecular formula (reference formula provided)}} \\
-MADGEN & No separate molecule-only pretraining reported & MassSpecGym paired spectra; scaffold retrieval & 1.31 & 27.47 & 0.20 & 1.54 & 16.84 & 0.26 \\
-MS-BART & 4M MCES2-disjoint molecules & MassSpecGym paired spectra; MIST fingerprints & 1.07 & 16.47 & 0.23 & 1.11 & 15.12 & 0.28 \\
-DiffMS & 2.8M: DSSTox, HMDB, COCONUT, MOSES & MassSpecGym paired spectra & 2.30 & 13.96 & 0.28 & 4.25 & 11.68 & 0.39 \\
-FOAM (DiffMS + PubChem) & DiffMS initialization (2.8M) & DiffMS + PubChem starts; ICEBERG & 1.50 & 12.21 & 0.35 & 10.28 & \textbf{6.06} & 0.53 \\
-MBGen & 2.8M: DSSTox, HMDB, COCONUT, MOSES & MassSpecGym paired spectra & 7.58 & 13.25 & 0.38 & 12.54 & 10.16 & 0.47 \\
-FRIGID-base & Up to 1B SAFE-derived records & MassSpecGym; MIST fingerprints & 16.09 & 15.02 & 0.41 & 18.19 & 11.95 & 0.46 \\
-FRIGID & Up to 1B SAFE-derived records & MIST; ICEBERG-guided refinement & 18.29 & 13.49 & 0.43 & 22.00 & 11.65 & 0.47 \\
-MS-GPT & SAFE-GPT initialization; 100M records & MassSpecGym; MIST posterior; LoRA & 23.91 & 15.50 & 0.52 & 28.65 & 11.74 & 0.54 \\
-GEMS (Tanimoto $<0.7$ starts) & 125M sampled PubChem edit examples & MIST; similarity-filtered PubChem starts & 23.93 & 10.95 & 0.50 & 31.75 & 9.61 & 0.55 \\
-GEMS (one-edit starts excluded) & 125M sampled PubChem edit examples & MIST; PubChem starts without one-edit neighbors & 22.44 & 11.02 & 0.49 & 29.57 & 9.65 & 0.55 \\
-GEMS & 125M sampled PubChem edit examples & MIST; formula-matched PubChem starts & \textbf{30.22} & \textbf{9.68} & \textbf{0.55} & \textbf{41.33} & 8.26 & \textbf{0.61} \\
+\multicolumn{9}{@{}l}{\emph{Known molecular formula}} \\
+MADGEN & None reported & MassSpecGym; retrieval & 1.31 & 27.47 & 0.20 & 1.54 & 16.84 & 0.26 \\
+MS-BART & 4M / MCES2-disjoint & MassSpecGym; MIST & 1.07 & 16.47 & 0.23 & 1.11 & 15.12 & 0.28 \\
+DiffMS & 2.8M / four databases & MassSpecGym & 2.30 & 13.96 & 0.28 & 4.25 & 11.68 & 0.39 \\
+FOAM & DiffMS (2.8M) & PubChem starts; ICEBERG & 1.50 & 12.21 & 0.35 & 10.28 & \textbf{6.06} & 0.53 \\
+MBGen & 2.8M / four databases & MassSpecGym & 7.58 & 13.25 & 0.38 & 12.54 & 10.16 & 0.47 \\
+FRIGID-base & Up to 1B / SAFE & MIST & 16.09 & 15.02 & 0.41 & 18.19 & 11.95 & 0.46 \\
+FRIGID & Up to 1B / SAFE & MIST; ICEBERG & 18.29 & 13.49 & 0.43 & 22.00 & 11.65 & 0.47 \\
+MS-GPT & 100M / SAFE-GPT init. & MIST; LoRA & 23.91 & 15.50 & 0.52 & 28.65 & 11.74 & 0.54 \\
+GEMS (sim. < 0.7 starts) & 125M edit examples / PubChem & MIST; restricted starts & 23.93 & 10.95 & 0.50 & 31.75 & 9.61 & 0.55 \\
+GEMS (one-edit excluded) & 125M edit examples / PubChem & MIST; restricted starts & 22.44 & 11.02 & 0.49 & 29.57 & 9.65 & 0.55 \\
+GEMS & 125M edit examples / PubChem & MIST; PubChem starts & \textbf{30.22} & \textbf{9.68} & \textbf{0.55} & \textbf{41.33} & 8.26 & \textbf{0.61} \\
 \midrule
-\multicolumn{9}{@{}l}{\emph{Predicted molecular formula (reference formula withheld; formula models differ)}} \\
-DiffMS + MIST-CF & 2.8M: DSSTox, HMDB, COCONUT, MOSES & MIST-CF top-five formula candidates & 1.86 & \textbf{17.83} & 0.27 & 4.10 & \textbf{13.71} & 0.40 \\
-FRIGID-base + MIST-CF & Up to 1B SAFE-derived records & MIST-CF top-five formula candidates & 11.60 & 20.19 & 0.35 & 13.13 & 14.81 & 0.42 \\
-FRIGID + MIST-CF & Up to 1B SAFE-derived records & MIST-CF top-five formula candidates; ICEBERG & \textbf{14.28} & 18.30 & \textbf{0.37} & \textbf{17.43} & 14.85 & \textbf{0.43} \\
+\multicolumn{9}{@{}l}{\emph{Predicted molecular formula}} \\
+DiffMS + MIST-CF & 2.8M / four databases & MIST-CF Top5 & 1.86 & \textbf{17.83} & 0.27 & 4.10 & \textbf{13.71} & 0.40 \\
+FRIGID-base + MIST-CF & Up to 1B / SAFE & MIST-CF Top5 & 11.60 & 20.19 & 0.35 & 13.13 & 14.81 & 0.42 \\
+FRIGID + MIST-CF & Up to 1B / SAFE & MIST-CF Top5; ICEBERG & \textbf{14.28} & 18.30 & \textbf{0.37} & \textbf{17.43} & 14.85 & \textbf{0.43} \\
 \midrule
-ORBIT-MS (author-reported; unverified) & 20,430 paired TRAIN groups; structure-only corpus training not established for this checkpoint & Formula predictions + MMA / WGV; exact checkpoint and evaluation protocol pending & 15.67 & 14.20 & 0.40 & 20.35 & 10.80 & 0.49 \\
+ORBIT-MS\textsuperscript{\dag} & 20,430 paired groups & Predicted formula; MMA/WGV & 15.67 & 14.20 & 0.40 & 20.35 & 10.80 & 0.49 \\
 \bottomrule
 \end{tabular}%
 }
 \endgroup
+\par\vspace{4pt}
+\begin{minipage}{0.97\linewidth}
+\scriptsize\raggedright
+\textsuperscript{\dag}ORBIT-MS: author-reported values, pending checkpoint- and case-level verification; not a completed independently audited TEST result. ``Four databases'' = DSSTox, HMDB, COCONUT and MOSES. For GEMS, 125M denotes sampled graph-edit training \emph{examples}, not distinct molecules. Seed-assisted and predicted-formula protocols differ across methods.
+\end{minipage}
 \end{table}
 \end{landscape}
 
