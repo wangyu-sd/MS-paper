@@ -26,7 +26,10 @@ These mappings can be highly predictive, but they usually do not represent the l
 ORBIT-MS instead introduces:
 
 [
-M,c ightarrow mathcal W(M,c) ightarrow S_{m obs}
+M,c 
+ightarrow mathcal W(M,c) 
+ightarrow S_{
+m obs}
 ]
 
 where (mathcal W) is a latent probabilistic reaction world and the observed spectrum is incomplete evidence about it.
@@ -66,8 +69,10 @@ The three modes are:
 [
 egin{aligned}
 	ext{Free:}&quad p(mathcal T,Smid M,c),\
-	ext{Guided:}&quad p(mathcal Tmid M,S_{m obs},c),\
-	ext{Inverse:}&quad p(M,mathcal Tmid S_{m obs},c).
+	ext{Guided:}&quad p(mathcal Tmid M,S_{
+m obs},c),\
+	ext{Inverse:}&quad p(M,mathcal Tmid S_{
+m obs},c).
 end{aligned}
 ]
 
@@ -170,17 +175,23 @@ The paper therefore builds:
 
 [
 	ext{formula}
-ightarrow
+
+ightarrow
 	ext{World reachability}
-ightarrow
+
+ightarrow
 	ext{executable support}
-ightarrow
+
+ightarrow
 	ext{candidate-specific evidence}
-ightarrow
+
+ightarrow
 	ext{bidirectional consistency}
-ightarrow
+
+ightarrow
 	ext{calibrated structural statement}
-ightarrow
+
+ightarrow
 	ext{standard confirmation}.
 ]
 
