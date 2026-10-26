@@ -201,7 +201,10 @@ Construct matched GT + hard-decoy candidate pools.
 
 For every candidate:
 [
-S ightarrow M ightarrow mathcal W(M) ightarrow hat S.
+S 
+ightarrow M 
+ightarrow mathcal W(M) 
+ightarrow hat S.
 ]
 
 Measure:
@@ -521,13 +524,21 @@ Agent activity is not itself a paper endpoint.
 # Critical path
 
 [
-E0 ightarrow (E1,E2,E3) ightarrow (E4,E5,E6,E7)
-ightarrow (E8,E9,E10)
-ightarrow E11	ext{--}E14
-ightarrow E15	ext{--}E19
-ightarrow E20	ext{--}E23
-ightarrow E24	ext{--}E27
-ightarrow E29.
+E0 
+ightarrow (E1,E2,E3) 
+ightarrow (E4,E5,E6,E7)
+
+ightarrow (E8,E9,E10)
+
+ightarrow E11	ext{--}E14
+
+ightarrow E15	ext{--}E19
+
+ightarrow E20	ext{--}E23
+
+ightarrow E24	ext{--}E27
+
+ightarrow E29.
 ]
 
 The paper should not begin full dark-corpus biological interpretation before the evidence hierarchy is frozen.
