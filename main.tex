@@ -19,287 +19,125 @@
 \newcommand{\result}[1]{\textbf{\textcolor{blue}{[RESULT: #1]}}}
 \newcommand{\methodtodo}[1]{\textbf{\textcolor{purple}{[METHOD: #1]}}}
 \newcommand{\datatodo}[1]{\textbf{\textcolor{teal}{[DATA: #1]}}}
-\newcommand{\paneltodo}[2]{%
-  \fbox{%
-    \begin{minipage}[t]{#1}
-    \raggedright\small
-    #2
-    \end{minipage}%
-  }%
+
+% Nature discovery-first six main figures: editorial text-only placeholders, never synthetic data.
+% Place a verified PDF at the named path to automatically replace the fallback.
+\newcommand{\orbitpanel}[2]{\noindent\textbf{#1.}\enspace #2\par\vspace{4pt}}
+\newcommand{\orbitdraft}[1]{%
+\begin{minipage}{0.94\textwidth}
+\raggedright\small\setstretch{1.0}
+\textit{Draft design specification; empirical figure not yet supplied.}\par\vspace{6pt}
+#1
+\end{minipage}%
 }
 
 \newcommand{\figureonetodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.94\textwidth}{%
-\textbf{A | Overall WGV framework}\\[3pt]
-\textbullet~Observed MS/MS $\rightarrow$ spectrum-conditioned Generator \(G\) $\rightarrow$ \(K\) independent molecular hypotheses\\
-\textbullet~For each candidate, spectrum-conditioned Verifier \(V\) proposes coherent electron events and spectrum-blind World \(W\) scores the same event traces\\
-\textbullet~The exact bond--electron executor materializes explicit charged products; event and peak evidence are aggregated for candidate ranking\\[2pt]
-\textit{Purpose: show the complete production inference path without conflating proposal, verification and chemical execution.}
+\IfFileExists{figures/fig1_discovered_families.pdf}{\includegraphics[width=\textwidth]{figures/fig1_discovered_families.pdf}}{%
+\orbitdraft{%
+\orbitpanel{a}{Small horizontal source-accounting flow: indexed experimental MS/MS, QC-eligible spectra and accepted versus unmatched/ambiguous/unassessable library results. Never treat scans as unique molecules.}
+\orbitpanel{b}{Small population composition: unique putative 2D structure, bounded isomers, shared core or class, formula-only, and unresolved or unsupported; calibration containment inset.}
+\orbitpanel{c}{Large family-level hexbin or density display. Horizontal axis: distance to a frozen characterized-metabolite reference; vertical axis: independent-study recurrence; symbol size: structurally supported family members. Count one frozen family per unit.}
+\orbitpanel{d}{Discovery-frozen family assignments tested in held-out studies versus study-aware nulls; retain missing source coverage. PR94 spectral-community recurrence and its non-enriched conditional topology null (p=0.91) are observational, not molecular-family confirmation.}
+\orbitpanel{e}{Compact pre-frozen literature/reference audit separating known relationships, previously unrecognized family relations, putatively unreported structures and indeterminate assignments.}
+\orbitpanel{f}{Narrow strip of at most three preselected real-source families: experimental MS/MS, real RDKit structure or bounded isomer/core, independent-study support and dated recognition status.}
+}%
 }
-
-\vspace{5pt}
-
-\paneltodo{0.42\textwidth}{%
-\textbf{B | Spectrum-conditioned molecular generator \(G\)}\\[3pt]
-\textbullet~Peak-relation spectrum encoder + partial-graph state encoder + molecular-goal representation\\
-\textbullet~Graph--spectrum cross-attention and message passing\\
-\textbullet~Factorized legal construction: action kind $\rightarrow$ atom state $\rightarrow$ attachment/pair $\rightarrow$ bond order\\
-\textbullet~Independent ancestral molecular samples; no beam or particle resampling\\[2pt]
-\textit{Purpose: explain how the spectrum conditions iterative molecular graph construction.}
-}
-\hfill
-\paneltodo{0.52\textwidth}{%
-\textbf{C | Peak-conditioned verifier \(V\), spectrum-blind World \(W\), and exact execution}\\[3pt]
-\textbullet~\(P2\): target peak $\rightarrow$ soft atom-retention and charge intent\\
-\textbullet~\(V\): proposes \(a\sim q_V(a\mid M,S,p,c)\) using the observed spectrum\\
-\textbullet~\(W\): evaluates the same trace with \(p_W(a\mid M,c)\) without observing fragment peaks\\
-\textbullet~Matched event factorization: source $\rightarrow$ 1e/2e $\rightarrow$ target atom/bond $\rightarrow$ continue/stop\\
-\textbullet~Executor: \(M+a\rightarrow\) BE update $\rightarrow$ explicit charged products and \(m/z\)\\[2pt]
-\textit{Purpose: expose the mechanistic core and the separation between posterior proposal, forward plausibility and exact chemistry.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.94\textwidth}{%
-\textbf{D | Distinct learning signals}\\[3pt]
-\textbullet~\(G\): paired spectrum--precursor teacher graph actions\\
-\textbullet~\(P2\): mass-compatible composition/charge supervision + executor-supported latent products\\
-\textbullet~\(V\): target-peak reward after exact execution + group-relative policy gradient\\
-\textbullet~\(W\): spectrum-blind replay likelihood on executor-supported \(V\) traces\\[2pt]
-\textit{Purpose: show how the four learned components are trained without treating latent mechanisms as experimental fragment-structure labels.}
-}
-\caption{\textbf{Figure 1 layout placeholder | ORBIT-MS couples spectrum-conditioned molecular generation to executable gas-phase fragmentation evidence.}
-Panel A gives the end-to-end WGV inference path. Panels B--C expand the Generator and fragmentation models, and panel D summarizes their distinct supervision.}
-\end{figure}
+\caption{\textbf{Previously unrecognized molecular families in public tandem mass spectra.} Panels a--b establish reference matching and calibrated structural reporting on explicitly stated denominators; panel c is the dominant proposed molecular-family discovery landscape. Panels d--f test replication, prior recognition and source-bound chemistry. Unmatched scans and recurrent spectral communities alone cannot establish new molecular identities.}
+\label{fig:discovered_families}
+\end{figure}%
 }
 
 \newcommand{\figuretwotodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.45\textwidth}{%
-\textbf{A | Standard no-formula de novo generation}\\[3pt]
-\textbullet~Mass/adduct-derived formula proposals only; ground-truth formula hidden\\
-\textbullet~Report Exact@1/10, MCES/Tanimoto@1/10, valid unique candidates and fixed raw sample budget\\
-\textbullet~Show formula-provided setting separately as a bonus upper bound\\[2pt]
-\textit{Purpose: measure molecular proposal capacity under the standard benchmark contract.}
+\IfFileExists{figures/fig2_chemical_relationships.pdf}{\includegraphics[width=\textwidth]{figures/fig2_chemical_relationships.pdf}}{%
+\orbitdraft{%
+\orbitpanel{a}{Sparse network of actual characterized metabolites and sufficiently supported reference-unmatched family structures. Graph edges are verifiable atom/bond changes, not UMAP proximity, mass offsets or inferred biosynthetic reactions.}
+\orbitpanel{b}{Nearest characterized-metabolite graph-edit/path distance distribution (one family per unit) versus composition, formula, scaffold and generator-prior matched controls; separate insufficient-resolution group.}
+\orbitpanel{c}{Independent-family recurrence of supported changes in atom inventory, ring connectivity, side-chain position or bond order with group/study uncertainty; report differences, not unobserved enzymatic mechanisms.}
+\orbitpanel{d}{Class/scaffold × verified graph change heatmap of independent-family counts or null-controlled enrichment, with coverage and unresolved-class margins.}
+\orbitpanel{e}{Historical frozen T0 knowledge and family predictions followed by independent post-T0 library or literature records, with actual first-appearance dates, depositor independence and T0-only model knowledge.}
+}%
 }
-\hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{B | Spectrum-blind World simulation}\\[3pt]
-\textbullet~Molecule + acquisition context $\rightarrow W\rightarrow$ executed charged products $\rightarrow$ predicted MS/MS\\
-\textbullet~Report official cosine and Jensen--Shannon similarity on the complete denominator\\
-\textbullet~Include predicted-peak support and low-mass / empty-spectrum diagnostics only as secondary explanation\\[2pt]
-\textit{Purpose: test the forward World independently of inverse molecular generation.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.45\textwidth}{%
-\textbf{C | Official molecular retrieval}\\[3pt]
-\textbullet~World-generated fragment-mass fingerprints for every candidate in the official mass-based pool\\
-\textbullet~Report Hit@1/5/20 and MCES@1; formula-filtered pool shown separately\\
-\textbullet~Use measured spectrum only for matching, never as World input\\[2pt]
-\textit{Purpose: test whether spectrum-blind fragmentation predictions identify the correct candidate.}
-}
-\hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{D | Matched WGV reranking}\\[3pt]
-\textbullet~Freeze one Generator candidate pool and compare G-only with \(G+\lambda E(M,S)\) on the identical molecules\\
-\textbullet~Require zero-World weight to reproduce the frozen G ordering case by case\\
-\textbullet~Report Exact@1/10 and paired gains/losses\\[2pt]
-\textit{Purpose: isolate the value of mechanistic World evidence from proposal recall.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.45\textwidth}{%
-\textbf{E | Where structure inference fails}\\[3pt]
-\textbullet~Stratify by heavy-atom count, formula availability and candidate validity\\
-\textbullet~Separate formula-support failure, proposal failure and ranking failure\\
-\textbullet~Report proposal Recall@K independently of final ranking\\[2pt]
-\textit{Purpose: identify whether remaining error arises before or after forward verification.}
-}
-\hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{F | Mechanistic controls}\\[3pt]
-\textbullet~Matched versus spectrum-shuffled \(V\) inputs\\
-\textbullet~Spectrum-blind \(W\) firewall and supported-trace replay controls\\
-\textbullet~P2/product-intent and event-factorization ablations where benchmark-relevant\\[2pt]
-\textit{Purpose: test whether gains depend on the intended observation-conditioned mechanism rather than implementation shortcuts.}
-}
-\caption{\textbf{Figure 2 layout placeholder | Standard benchmark decomposition separates molecular proposal, forward fragmentation and WGV evidence.}
-Panels A--C evaluate the three MassSpecGym task families; panel D measures WGV reranking on fixed candidate pools; panels E--F diagnose the remaining structural and mechanistic bottlenecks.}
-\end{figure}
+\caption{\textbf{Chemical relationships between recovered molecular families and characterized metabolites.} The dominant structural relationship graph tests whether newly recovered family hypotheses occupy coherent chemical neighbourhoods and how they relate to characterized metabolites. All edges require graph-level support; source-matched nulls and historical model-knowledge controls prevent circular claims of chemical novelty.}
+\label{fig:chemical_relationships}
+\end{figure}%
 }
 
 \newcommand{\figurethreetodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.94\textwidth}{%
-\textbf{A | From dark spectra to structural entities}\\[3pt]
-\textbullet~Show the transformation from dark spectra to structural statements, collapsed structural entities and recurrent families\\
-\textbullet~Keep spectra, statements and entities explicitly distinct\\[2pt]
-\textit{Purpose: define the chemical resolution scale beyond the headline funnel in Figure 1.}
+\IfFileExists{figures/fig3_structure_reliability.pdf}{\includegraphics[width=\textwidth]{figures/fig3_structure_reliability.pdf}}{%
+\orbitdraft{%
+\orbitpanel{a}{Full known-structure evaluation population: log--log hexbin of initial viable candidates against chemically supported retained candidates; show retained-set sizes and all failures.}
+\orbitpanel{b}{Paired truth containment and surviving-alternative counts across same-formula, same-scaffold, positional/regioisomer and near-neighbour controls under equivalent proposal and computation budgets.}
+\orbitpanel{c}{Matched-spectrum versus precursor-compatible peer and shuffled-spectrum difference distributions, structural-prior-only baseline, zero reference and molecule-group 95\% intervals.}
+\orbitpanel{d}{Compare common peaks, candidate-specific fragment structures, neutral-loss/formula relations and genuinely observed MSn ancestry, using matched evidence budgets and distinct W/V/G ablation controls.}
+\orbitpanel{e}{Calibration of unique putative structure, bounded isomer set, shared substructure, formula or unresolved outputs: fraction reported and empirical true-structure containment with risk--coverage.}
+\orbitpanel{f}{Mutually exclusive formula failure, GT absent from native G pool, GT pruned or misranked, structural ambiguity, unsupported or compute-censored outcomes; online guidance versus terminal reranking measured separately.}
+\orbitpanel{g}{100\% composition strips for molecular size, rings, heteroatoms, ion/adduct mode and other predeclared relevant strata; no dropping failed or large molecules.}
+}%
 }
-
-\vspace{5pt}
-
-\paneltodo{0.45\textwidth}{%
-\textbf{B | Feature inflation collapses to molecular entities}\\[3pt]
-\textbullet~Merge adducts, isotopologues, charge states, redundant acquisitions and in-source fragments\\
-\textbullet~Include over-merging / under-merging validation and count uncertainty\\[2pt]
-\textit{Purpose: explain why structural-entity counts are more chemically meaningful than raw feature counts.}
-}
-\hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{C | Recurrence across independent datasets}\\[3pt]
-\textbullet~Plot entity / family recurrence across independent datasets or laboratories\\
-\textbullet~Separate one-study chemistry from recurrent chemistry\\[2pt]
-\textit{Purpose: show that resolved dark chemistry is reproducible rather than dataset-specific noise.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.45\textwidth}{%
-\textbf{D | Distance to known chemistry}\\[3pt]
-\textbullet~Use a frozen characterized-metabolite reference space\\
-\textbullet~Plot distance-to-reference distribution\\
-\textbullet~Partition into near-known halo and remote families\\[2pt]
-\textit{Purpose: test whether the dark metabolome merely extends known chemistry or contains remote regimes.}
-}
-\hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{E | Structural landscape of resolved dark chemistry}\\[3pt]
-\textbullet~Map known metabolites and resolved dark entities in one structure-based space\\
-\textbullet~Show family clusters, near-known regions and remote recurrent islands\\[2pt]
-\textit{Purpose: visualize the chemical organization of the resolved dark metabolome.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.94\textwidth}{%
-\textbf{F | Representative remote recurrent families}\\[3pt]
-\textbullet~Show 3--5 families with structures / bounded statements, recurrence and World evidence\\
-\textbullet~Choose examples that are both recurrent and chemically distant from known references\\[2pt]
-\textit{Purpose: give concrete examples of non-trivial dark chemistry revealed at scale.}
-}
-\caption{\textbf{Figure 3 layout placeholder | The dark metabolome contains recurrent and remote molecular families.}
-This figure moves from entity construction and recurrence to novelty relative to known chemistry, then visualizes the global structural organization of the resolved dark metabolome.}
-\end{figure}
+\caption{\textbf{Structural discrimination, calibration and limitations of ORBIT-MS.} ORBIT-MS is evaluated by whether actual experimental peaks reduce incorrect structural possibilities while retaining the known precursor identity at calibrated coverage. Native de novo Exact@K and raw reach differ from conditional W/V fragment recall and fixed-pool reranking. Historical 8,401-query TRAIN-derived MassSpecGym development data are not official held-out model performance.}
+\label{fig:structure_reliability}
+\end{figure}%
 }
 
 \newcommand{\figurefourtodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.94\textwidth}{%
-\textbf{A | Perturbation cohorts and evidence base}\\[3pt]
-\textbullet~Summarize germ-free / gnotobiotic, antibiotic and defined-diet cohorts\\
-\textbullet~Show study count, biological sample count and platform\\[2pt]
-\textit{Purpose: define the biological evidence base used for source / dependence analysis.}
+\IfFileExists{figures/fig4_biological_distribution.pdf}{\includegraphics[width=\textwidth]{figures/fig4_biological_distribution.pdf}}{%
+\orbitdraft{%
+\orbitpanel{a}{Study × sample-type dot matrix; symbol size equals biological-sample count, with verified assay/source metadata, missingness and comparability.}
+\orbitpanel{b}{Frozen supported family × biological-context heatmap of within-study adjusted presence/enrichment estimates; sample contexts only combined where study design permits.}
+\orbitpanel{c}{Across-family context specificity/effect concentration versus shuffled biological metadata and matched characterized metabolites.}
+\orbitpanel{d}{Study-disjoint 2D density/hexbin of replicated effect estimates with diagonal and valid intervals; independent subjects not repeated spectra.}
+\orbitpanel{e}{Study-conditional cross-cohort sign agreement and independent replication distribution with appropriate permutation benchmark.}
+\orbitpanel{f}{Unadjusted versus study, instrument and batch-adjusted associations; source exclusion sensitivity and detection-rate differences.}
+\orbitpanel{g}{Chemical distance to characterized metabolites versus independently replicated biological-context effects, with insufficient-resolution families explicitly retained.}
+}%
 }
-
-\vspace{5pt}
-
-\paneltodo{0.38\textwidth}{%
-\textbf{B | Positive controls}\\[3pt]
-\textbullet~Recover expected signals from known microbiota-linked or diet-linked metabolites\\
-\textbullet~Use as a compact sanity-check before interpreting dark chemistry\\[2pt]
-\textit{Purpose: establish trust in the biological attribution analysis.}
-}
-\hfill
-\paneltodo{0.52\textwidth}{%
-\textbf{C | Biological labels across dark molecular families}\\[3pt]
-\textbullet~Summarize microbiota-dependent, diet-dependent, host-associated, mixed and unresolved families\\
-\textbullet~Report at family level rather than single-feature level\\[2pt]
-\textit{Purpose: show that resolved dark chemistry carries biological-source structure.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.52\textwidth}{%
-\textbf{D | Structural map annotated by biological source}\\[3pt]
-\textbullet~Reuse the coordinates from Figure 3E\\
-\textbullet~Overlay the source labels from panel C on the same structural landscape\\[2pt]
-\textit{Purpose: show whether biological source partitions chemical space in a structured way.}
-}
-\hfill
-\paneltodo{0.38\textwidth}{%
-\textbf{E | Structure--source coupling statistics}\\[3pt]
-\textbullet~Quantify local autocorrelation, motif / class enrichment and cross-study consistency\\
-\textbullet~Include permutation / null comparisons\\[2pt]
-\textit{Purpose: provide quantitative support for the visual organization in panel D.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.94\textwidth}{%
-\textbf{F | Worked family example}\\[3pt]
-\textbullet~One remote family with recurrence, perturbation effect, biological-source label and structural evidence\\
-\textbullet~Use dependent / associated language unless direct biosynthetic evidence exists\\[2pt]
-\textit{Purpose: connect the global source organization to a concrete family-level case.}
-}
-\caption{\textbf{Figure 4 layout placeholder | Biological source organizes dark chemical space.}
-This figure defines the perturbation evidence base, validates the attribution analysis and then shows that dark molecular families carry reproducible biological-source structure across chemical space.}
-\end{figure}
+\caption{\textbf{Distribution of recovered molecular families across biological sample contexts.} The dominant biological-context matrix tests whether structurally supported families have reproducible sample-associated distributions rather than reflecting study/batch acquisition artefacts. All inferences use biological-sample or study-level independent units, not total spectral counts.}
+\label{fig:biological_distribution}
+\end{figure}%
 }
 
 \newcommand{\figurefivetodo}{%
 \begin{figure}[p]
 \centering
-\paneltodo{0.48\textwidth}{%
-\textbf{A | Global feature-versus-family analysis}\\[3pt]
-\textbullet~Use the same samples, preprocessing and covariates\\
-\textbullet~Compare anonymous features with resolved molecular families\\
-\textbullet~Choose one primary endpoint: cross-cohort replication or effect-sign concordance\\[2pt]
-\textit{Purpose: test whether family-level structural resolution improves biological reproducibility.}
+\IfFileExists{figures/fig5_perturbation_effects.pdf}{\includegraphics[width=\textwidth]{figures/fig5_perturbation_effects.pdf}}{%
+\orbitdraft{%
+\orbitpanel{a}{Frozen eligible comparisons across verified germ-free/conventional, antibiotic, defined-diet and other measured cohort interventions; biological sample and cohort denominators.}
+\orbitpanel{b}{Effect recovery of independently characterized metabolites under identical statistical analysis, plus phenotype-label permutations.}
+\orbitpanel{c}{Family × intervention estimates as forest/dot-and-CI distributions, retaining null and opposing effects and avoiding cross-platform raw-intensity pooling.}
+\orbitpanel{d}{Family × intervention standardized-effect heatmap with separately reported replication support, study independence and mixed/negative categories.}
+\orbitpanel{e}{Paired matched-sample, matched-covariate results for anonymous-feature versus frozen-family replication, sign agreement or preregistered biological endpoint; multiplicity adjustment.}
+\orbitpanel{f}{One preselected supported family with real chemical structure/bounded core and independently replicated perturbation effects; distinguish microbiota dependence from microbial biosynthesis.}
+}%
 }
-\hfill
-\paneltodo{0.42\textwidth}{%
-\textbf{B | Reproducibility gain across all eligible contrasts}\\[3pt]
-\textbullet~Plot paired cohort / contrast-level gains\\
-\textbullet~Include replication, sign concordance, multiplicity-controlled yield and effect stability\\[2pt]
-\textit{Purpose: show that the gain is systematic rather than anecdotal.}
-}
-
-\vspace{5pt}
-
-\paneltodo{0.40\textwidth}{%
-\textbf{C | Principal biological programme}\\[3pt]
-\textbullet~One strongest representative family-level programme\\
-\textbullet~Discovery cohort + independent replication cohort(s)\\
-\textbullet~Effect size and adjusted significance\\[2pt]
-\textit{Purpose: anchor the global result in a concrete biological example.}
-}
-\hfill
-\paneltodo{0.50\textwidth}{%
-\textbf{D | Family chemistry}\\[3pt]
-\textbullet~Show structures / bounded structural statements of family members\\
-\textbullet~Include World evidence, recurrence and interpretable structural differences\\[2pt]
-\textit{Purpose: connect the biological programme to resolved family-level chemistry.}
+\caption{\textbf{Molecular-family responses to microbiota, diet and other biological perturbations.} Biological perturbation responses are evaluated only in verified cohorts using frozen molecular-family definitions and controlled comparators. Observed microbiota/diet associations do not by themselves identify chemical biosynthesis or causal pathways; negative responses and failed replication are retained.}
+\label{fig:perturbation_effects}
+\end{figure}%
 }
 
-\vspace{5pt}
-
-\paneltodo{0.45\textwidth}{%
-\textbf{E | Authentic-standard anchors}\\[3pt]
-\textbullet~Sample-versus-standard MS/MS overlays\\
-\textbullet~Retention / coelution and precursor agreement\\
-\textbullet~Keep orthogonal validation visually distinct from model-derived evidence\\[2pt]
-\textit{Purpose: experimentally anchor selected family members.}
+\newcommand{\figuresixtodo}{%
+\begin{figure}[p]
+\centering
+\IfFileExists{figures/fig6_chemical_validation.pdf}{\includegraphics[width=\textwidth]{figures/fig6_chemical_validation.pdf}}{%
+\orbitdraft{%
+\orbitpanel{a}{Predeclared candidate-family prioritization, purchasable or accessible orthogonal references, confirmed/bounded/disproved/ambiguous/unavailable categories, retaining failed anchors.}
+\orbitpanel{b}{Real sample-versus-standard MS/MS mirror plots, confirmed precursor/adduct agreement, comparable retention or coelution and available MSn/CCS only when actually measured; distinguish external-library evidence.}
+\orbitpanel{c}{Real RDKit structures or validated shared cores with atom/bond-level differences and number of independently supported members.}
+\orbitpanel{d}{Dated literature, molecular structure and spectral library search separating new-to-library annotations, overlooked family relationships and genuinely previously unreported structures.}
+\orbitpanel{e}{Matched feature-versus-confirmed-family biological effects/replication and appropriate controls on identical samples, with uncertainty and negative results; avoid duplicating Fig. 5e.}
+\orbitpanel{f}{Single source-bound family linking original spectra, independent chemistry, study recurrence and replicated biological effect, only if actually obtained; unresolved alternatives retained.}
+}%
 }
-\hfill
-\paneltodo{0.45\textwidth}{%
-\textbf{F | Explicitly unresolved case}\\[3pt]
-\textbullet~Show surviving isomers and the evidence that ruled out alternatives\\
-\textbullet~Explain why current MS/MS cannot separate the survivors\\
-\textbullet~Indicate the next discriminating measurement\\[2pt]
-\textit{Purpose: make residual uncertainty explicit rather than forcing a unique structure.}
-}
-\caption{\textbf{Figure 5 layout placeholder | Molecular families improve the reproducibility and interpretability of dark-metabolome biology.}
-This figure first compares anonymous features with molecular-family analysis globally, then connects one replicated biological programme to its chemistry, orthogonal validation and residual uncertainty.}
-\end{figure}
+\caption{\textbf{Independent chemical confirmation of molecular-family discoveries.} This figure separates model-generated candidates from independently measured chemistry. Full prespecified validation outcomes, successful and unsuccessful, determine what has been chemically confirmed; no authentic-standard result or previously unreported structure is implied while corresponding evidence is pending.}
+\label{fig:chemical_validation}
+\end{figure}%
 }
 
 \title{\textbf{Accurate molecular structure elucidation from tandem mass spectra with ORBIT-MS}}
@@ -310,224 +148,171 @@ This figure first compares anonymous features with molecular-family analysis glo
 \maketitle
 
 \noindent\textbf{
-Tandem mass spectra are incomplete observations of the gas-phase chemistry that generates them, yet molecular structure elucidation is usually treated as a direct mapping from spectrum to structure. Here we introduce ORBIT-MS, which instead treats each molecular prediction as a hypothesis that can be tested by executable fragmentation. A spectrum-conditioned Generator proposes molecular structures, a Verifier proposes coherent electron-redistribution events that explain observed peaks, and a spectrum-blind World evaluates the same events before a deterministic bond--electron executor materializes their charged products. Across molecule-disjoint development data, this design separates molecular proposal quality from forward-fragmentation quality and from evidence-based reranking, yielding \result{final no-formula de novo result}, \result{final spectrum-simulation and retrieval result} and \result{matched WGV reranking result}. We then calibrate the resulting evidence into bounded structural statements and apply them to \result{dark spectrum count} previously unannotated spectra, identifying \result{recurrent entity/family count} recurrent molecular entities or families with \result{headline structural/biological result}. ORBIT-MS therefore turns spectrum-to-structure prediction into a testable chemical inference problem and provides a route from uncertain tandem spectra to auditable structural and biological analysis.
+Untargeted metabolomics detects a far broader repertoire of tandem mass spectra than can be assigned confidently to molecular structures, leaving much of the chemistry represented by these signals unresolved. Recurring spectral patterns provide clues, but neither similarity between spectra nor a plausible generated structure establishes a molecular family. Here we introduce ORBIT-MS, which links spectrum-conditioned molecular graph generation to structure-conditioned fragment prediction and verification against measured MS/MS. By evaluating the fragments supported by competing molecular structures, ORBIT-MS connects spectral interpretation to de novo structure elucidation without assuming that every observation admits a unique structural explanation. Applied to \result{source-audited public MS/MS resource and annotation denominator}, the model yields \result{structurally supported, independently recurrent molecular families} and \result{their chemical relationships to characterized metabolites}. We assess \result{held-out structure-elucidation accuracy and calibrated structural resolution}, examine \result{reproducible biological distributions and perturbation responses}, and test selected assignments using \result{independent chemical validation including failed and ambiguous outcomes}. These analyses connect molecular structure elucidation to the systematic study of chemical relationships that conventional spectral annotations leave unresolved.
 }
 
 \vspace{1em}
 
-Mass spectrometry is a principal technology for surveying small molecules in biology, medicine and the environment.\cite{Wang2016GNPS,Alseekh2021,Gentry2024} Yet most tandem mass spectra generated by untargeted studies still lack a confident structural assignment.\cite{daSilva2015,Alseekh2021} Spectral libraries, molecular networking, formula and fingerprint prediction, learned spectrum models and de novo generators have all improved the hypotheses that can be proposed for a spectrum.\cite{Duhrkop2015,Duhrkop2019,Duhrkop2021,Wang2021CFMID,Goldman2023,Bohde2025,Qiang2026DeepMet} Most of these approaches nevertheless evaluate a spectrum through an answer---a similarity score, fingerprint, ranked candidate or generated molecule---rather than through the gas-phase events that could have produced the observation.
+Untargeted mass spectrometry has transformed the measurement of small molecules across organisms, environments and human disease, while much of the experimental tandem-spectral record still lacks an accepted molecular structure assignment.\cite{Wang2016GNPS,Alseekh2021,Gentry2024,daSilva2015} Large reference libraries, molecular networking, elemental-composition analysis, fingerprint prediction and de novo structure generation have expanded chemical annotation.\cite{Duhrkop2015,Duhrkop2019,Duhrkop2021,Goldman2023} However, the number of unmatched spectra is not a count of unknown compounds: a single molecule can yield multiple adducts, collision-energy spectra, related acquisition files and reproducible spectral patterns. Equally, similarity among unmatched spectra does not establish identical molecular connectivity or a structurally meaningful family.
 
-This distinction matters because a tandem mass spectrum is only a partial observation of fragmentation chemistry. Peak presence does not identify a unique reaction path, and peak absence does not by itself imply chemical impossibility. A model can therefore produce a plausible structure without stating which executable fragmentation evidence supports it, while a forward spectrum model can fit common peaks without discriminating among closely related structural alternatives. The missing object is an explicit, testable connection between a molecular hypothesis and the gas-phase products that hypothesis can generate.
+We instead ask whether previously unrecognized \emph{chemical relationships} can be recovered at scale from these measurements. Establishing such relationships requires more than generating plausible candidate molecules. The precursor formula can remain ambiguous and closely related molecular graphs can produce overlapping fragment masses, so structural assignments must retain alternative connectivities when the experimental evidence does not distinguish them. The experimental spectrum is an incomplete observation of gas-phase fragmentation; neither predicted fragment-mass support nor an absent peak proves a unique fragmentation mechanism.
 
-We address this gap by representing fragmentation in a bond--electron state space and separating molecular proposal from forward chemical evidence. ORBIT-MS combines a spectrum-conditioned molecular Generator \(G\), a spectrum-conditioned Verifier \(V\), a spectrum-blind fragmentation World \(W\) and a deterministic chemical executor. \(G\) proposes molecular hypotheses; \(V\) proposes coherent electron-redistribution events that explain a selected observed peak; \(W\) scores the same event without seeing the fragment spectrum; and the executor determines the explicit charged products and their masses. Candidate ranking can therefore combine inverse-generation confidence with forward evidence while keeping learned preference distinct from chemical executability.
+To turn a plausible structural proposal into a more discriminating chemical test, we developed ORBIT-MS. Its spectrum-conditioned Generator proposes precursor molecular graphs. For each graph, a spectrum-blind World predicts structurally represented fragments and their masses, whereas a Verifier evaluates how the observed MS/MS spectrum supports those predictions. Keeping these operations separate distinguishes fragmentation possibilities implied by a molecular structure from evidence supplied by the measurement itself. Fragment-level evidence can therefore be compared across alternative connectivities and, when incorporated during generation, inform subsequent graph modifications rather than merely reorder completed candidates. Because different structures can account for many of the same ions, fragment agreement is not treated as proof of a unique gas-phase pathway or of an unambiguous precursor identity.
 
-We first evaluate these components through the standard MassSpecGym task families---de novo generation, molecular retrieval and spectrum simulation---and explicitly separate proposal recall from World-based reranking. We then calibrate executable evidence into the strongest structural statement supported by each spectrum rather than forcing every case to a unique identity. Applied to repository-scale dark spectra, this framework is designed to convert anonymous observations into recurrent structural entities or bounded molecular families that can be compared across datasets and related to biological perturbations. The paper therefore proceeds from a testable fragmentation-world hypothesis, through benchmarked structural evidence, to the chemical and biological organization of the dark metabolome.
+We apply this framework to \result{source-audited public MS/MS collection} to examine the chemical relationships represented by spectra without accepted library annotations. We recover \result{number and structural resolution of independently supported molecular families} and place them in the context of characterized metabolite chemistry, testing whether those relationships recur across independent studies rather than arise from spectral similarity alone. Their distributions across biological sample contexts and controlled perturbations provide \result{replicated biological associations and their uncertainty}, while \result{independent chemical confirmation, failures and surviving structural alternatives} defines the limits of the proposed structures. The resulting unit of discovery is not an individual unmatched spectrum but a molecular relationship that can be supported, reproduced and tested independently.
 
-\section*{Executable fragmentation provides a forward test of molecular hypotheses}
+\section*{Previously unrecognized molecular families in public tandem mass spectra}
 
-ORBIT-MS was designed to make forward chemistry an explicit test of a molecular prediction. The Generator \(G\) proposes structures from the observed spectrum, whereas the spectrum-blind World \(W\) receives only a candidate molecule and acquisition context. For a candidate and selected observed peak, the Verifier \(V\) proposes a coherent electron event; \(W\) scores that same trace without access to the measured fragment peaks; and the deterministic executor materializes the event into explicit charged products before any evidence is assigned \figureonetodo. This separation allows forward fragmentation to be evaluated independently of molecular generation.
+We began by establishing the observable experimental universe and the reference-matching status of its spectra, before considering any molecular identities (Fig.~\ref{fig:discovered_families}a). The source inventory distinguishes publicly indexed studies and files, verified acquisition runs, raw MS2 scans, QC-eligible experimental spectra and those assessable against frozen reference libraries. An independent pan-repository accession and file census is \result{complete cross-repository study, acquisition, scan and reference-assessment inventory with dates and source overlap}. Previously published global spectral-search totals, when cited, are external context rather than newly measured ORBIT-MS corpus counts.
 
-We first tested \(W\) as a spectrum simulator. On the complete 8,401-spectrum molecule-disjoint SEARCH\_DEV development set, the current spectrum-blind World achieves a mean official sparse cosine similarity of 0.09935 and Jensen--Shannon similarity of 0.09199 at the frozen sampling budget. These values define the present forward-model baseline rather than a solved simulation task. The corresponding official molecular-retrieval evaluation, which ranks the mass-based candidate universe using World-generated fragment-mass fingerprints, is reported as \result{complete mass-pool Hit@1/5/20 and MCES@1}; the formula-filtered pool is retained as a secondary bonus setting. Together, simulation and retrieval test whether \(W\) captures experimentally useful fragmentation without allowing the observed spectrum to enter the forward policy.
+For the three accessible UC, IBD200 and VEO-IBD study collections in the independent source audit, 272 of 348 expected acquisition files were verified, with 76 unavailable. Of 835,953 eligible biological MS2 queries, 13,884 received an unambiguous reference identity, 14,289 had an ambiguous accepted identity, 613,331 had no accepted hit under the frozen protocol, and 194,449 were not assessable. These quantities describe \emph{measured spectra} in this restricted, availability-limited corpus, not distinct compounds or the global public metabolome. \methodtodo{Promote only the finally audited source-bound PR94 scan and reference-match receipts into manuscript Figure 1a and source data.}
 
-\section*{Molecular connectivity, rather than formula availability, limits current de novo recovery}
+To determine which of the unmatched measurements can be described chemically, we will apply the frozen and independently calibrated ORBIT-MS model while retaining all failed or unsupported structures in the denominator (Fig.~\ref{fig:discovered_families}b). The resulting population must distinguish \result{unique putative 2D assignments, bounded isomer sets, common scaffold or class, formula-only and unresolved proportions}. A strong structural prediction is not an authentic-standard identification. Model-derived structural resolution and source/reference missingness are therefore represented as separate quantities.
 
-We next evaluated the inverse problem under the standard no-ground-truth-formula setting. Across all 8,401 SEARCH\_DEV spectra, \(G\) recovers the correct connectivity at Exact@1 in 131 cases (1.559\%) and at Exact@10 in 370 cases (4.404\%); the correct structure appears anywhere among 100 independent molecular samples in 464 cases (5.523\%). These results use connectivity-level InChIKey-14 matching and retain failed trajectories in the denominator \figuretwotodo.
+The central finding required for this Nature analysis is a landscape of \result{chemically supported, independently recurrent molecular-family population and its credible chemical-distance distribution} (Fig.~\ref{fig:discovered_families}c). Each point represents a frozen \emph{molecular family} rather than an MS2 scan or a spectral-cosine cluster; its distance to characterized metabolites is defined only at a sufficient structural-resolution level. Family membership is established without using biological phenotype labels or the held-out studies intended for replication.
 
-The low recall is not primarily explained by failure to propose the elemental composition. The correct formula is present in the mass/adduct-derived proposal lists for 8,140 of 8,401 cases (96.89\%), yet only 464 correct connectivities are generated. The gap widens with molecular size: among 2,110 targets containing at least 30 heavy atoms, the correct formula is available for 1,930 cases but the correct connectivity is sampled in only five. Thus, under the current model and generation budget, precise bond connectivity is the dominant inverse-model bottleneck, rather than formula availability or empty candidate lists.
+An initial purely spectral analysis detected 2,255 communities of reference-unmatched scans recurring across at least two of the three accessible study groups, including 98 supported across all three. These are empirical spectral similarities, not structure-supported molecular families. In particular, a conditional degree-preserving network null did \emph{not} find enrichment of three-study star-community topology (empirical upper-tail fraction 0.91). This negative control, the substantial missing VEO-IBD acquisitions and the difference between study-level and scan-level independence must remain visible (Fig.~\ref{fig:discovered_families}d). The proposed structure-supported family replication outcome is instead \result{held-out frozen-family rediscovery with matched study-aware null and fully stated source denominators}.
 
-\section*{World evidence separates reranking from molecular proposal recall}
+We will subsequently distinguish previously catalogued molecular relationships, previously unrecognized family relationships among supported structures, putatively new structures and cases whose novelty cannot be established (Fig.~\ref{fig:discovered_families}e). A small, prespecified set of \result{source-verifiable representative families with measured spectra, bounded structures and independent study recurrence} will illustrate the chemical statements the evidence supports, without turning computational proposals into chemically confirmed discoveries (Fig.~\ref{fig:discovered_families}f).
 
-A structure that is absent from the Generator pool cannot be rescued by a verifier, so we evaluate mechanistic evidence only on fixed candidate sets. For each candidate \(M\) and observed peak \(p\), \(V\) samples events from \(q_V(a\mid M,S,p,c)\); the executor determines the charged products; and \(W\) replays the identical trace to obtain \(p_W(a\mid M,c)\). Event evidence combines the spectrum-blind World probability, correction for the observation-conditioned proposal and agreement between executed product masses and the target peak, and is then aggregated across event samples and observed peaks.
+\figureonetodo
 
-The primary WGV comparison therefore freezes one Generator candidate pool and compares its original ordering with \(G+\lambda E(M,S)\) on exactly the same molecules. A zero-World weight is required to reproduce the frozen Generator ranking case by case. Under this matched protocol, WGV changes Exact@1/10 by \result{matched WGV Exact@1/10 result and paired gain/loss analysis}. This design separates two otherwise conflated questions: whether \(G\) can propose the correct structure at all, and whether executable fragmentation evidence can identify it once proposed.
+\section*{Chemical relationships between recovered families and characterized metabolites}
 
-Mechanistic controls are reported separately from the standard-task outcomes. They test whether \(V\) responds to the measured spectrum, whether \(W\) remains spectrum-blind and whether latent product supervision changes event selection, but they are not used as headline performance metrics. Model promotion is tied to the standard de novo, retrieval and spectrum-simulation tasks rather than to internal event-support statistics.
+The existence of recurrent structure-supported families raises a distinct chemical question: are their members related to characterized metabolites by interpretable molecular changes, or do they occupy more remote chemical regions (Fig.~\ref{fig:chemical_relationships})? The primary structural relationship graph will place \result{supported recovered-family structures and established reference metabolites} in a common 2D chemical space, with edges grounded in actual atom and bond differences (Fig.~\ref{fig:chemical_relationships}a). Neither nearest-neighbour positions in a spectral embedding nor differences in precursor mass alone constitute a verified structural relationship.
 
-\section*{High-evidence inference resolves the dark metabolome at scale}
+We will measure \result{family-level shortest valid structural distances to frozen characterized-metabolite references and the matched-null distributions}, including an explicit insufficient-resolution population (Fig.~\ref{fig:chemical_relationships}b). This comparison must control for the tendency of seed-bound, database-assisted or known-chemistry-trained generators to propose molecules close to their initial structure priors. An observed enrichment near known compounds would otherwise be partly a property of the generator rather than a scientific feature of the unannotated metabolome.
 
-We applied the frozen WGV system and evidence hierarchy to \result{dark spectrum count} tandem mass spectra that lacked an accepted spectral-library match under the frozen search protocol. Sample, tissue, perturbation and phenotype labels were unavailable to structural inference. Each spectrum was assigned the strongest evidence level it reached, including unresolved outcomes and computational censoring.
+Among families whose graphs are adequately supported, we will quantify \result{recurring atom-level structural difference types across independent families, classes and studies} and their uncertainty (Fig.~\ref{fig:chemical_relationships}c,d). Such changes may suggest plausible chemical relationships but are not, by themselves, evidence of a particular enzyme, biochemical reaction or gas-phase fragmentation mechanism.
 
-The resulting evidence funnel showed that \result{formula-compatible count/fraction} spectra reached mass/formula compatibility, \result{World-reachable count/fraction} were supported by the learned World, \result{path-supported count/fraction} had executable paths explaining observed evidence, \result{candidate-specific count/fraction} reached candidate-specific discrimination, and \result{bidirectionally consistent count/fraction} satisfied spectrum--structure--World consistency \figurethreetodo. At the frozen calibrated operating point, \result{bounded-statement count/fraction} received a bounded structural statement at \result{evidence-level distribution}, while the remainder stayed at weaker levels rather than being forced to a unique structure.
+Historical reference growth provides a distinct route to independent corroboration: a family defined using a truly frozen earlier knowledge snapshot can be compared with subsequently deposited structures and spectra from independent contributors (Fig.~\ref{fig:chemical_relationships}e). Results are reported as \result{prospective-reference corroboration with full time-of-knowledge and model-pretraining audit}, not retroactively declared prospective when modern libraries or pretrained molecular representations were accessible at model-development time.
 
-We then asked how many chemical entities these observations represent. Entity-collapsing rules for adducts, isotopologues, charge states, in-source fragments and redundant acquisitions were frozen and validated on known compounds, yielding over- and under-merging rates of \result{collapse validation rates}. Propagating these errors, \result{dark observation count} dark observations corresponded to \result{high-evidence structural entity count with interval} high-evidence structural entities, a \result{feature-to-entity contraction} contraction relative to the raw observation count. This count is secondary to the evidence funnel: it describes only chemistry that has reached a stated structural evidence level.
+\figuretwotodo
 
-A substantial subset was reproducible across independent datasets. \result{recurrent entity/family count} entities or families occurred in at least \result{recurrence threshold} independent datasets, and \result{high-recurrence count} recurred across \result{higher recurrence threshold} or more. Recurrence was associated with \result{evidence-recurrence relationship}, suggesting that reproducible dark chemistry is not simply the least structurally informative portion of the corpus.
+\section*{Structural evidence, discrimination and uncertainty in ORBIT-MS}
 
-We next positioned the recurrent high-evidence population relative to characterized metabolism using a reference space and structural-distance definition frozen before counting. \result{near-known fraction} fell within the predefined near-known halo, whereas \result{remote recurrent fraction} formed recurrent structural families outside that neighbourhood; \result{insufficient-resolution fraction} could not be assigned a precise structural distance and remained separate. Thus the high-evidence dark population contains both chemistry adjacent to existing metabolite knowledge and recurrent structural regimes poorly represented by current references.
+The molecular-family claims depend on how well the spectrum can discriminate structural alternatives and on whether the retained candidate set contains the true precursor. We therefore assess ORBIT-MS on known-structure data as a separate reliability question, rather than relying on isolated high-scoring examples (Fig.~\ref{fig:structure_reliability}). The model integrates a spectrum-conditioned graph Generator \(G\), a structure-conditioned spectrum-blind fragment World \(W\), and a Verifier \(V\) that reweights the same structured fragment objects using measured MS/MS evidence. Its conditional W/V evidence is not a complete, experimentally established gas-phase reaction mechanism; its ability to improve \emph{de novo} structure generation rather than terminal ordering requires matched-budget causal controls.
 
-\section*{Resolved dark chemistry reveals structural and biological organization}
+On 8,401 repeatedly used MassSpecGym TRAIN-derived development spectra, the formula model recovers the true elemental composition in 87.87\% of queries at Top1. The selected conditional W achieves 72.19\% measured-intensity-weighted fragment-mass recall \emph{when given the correct precursor structure}; a learned V achieves 62.79\% matched Top100 weighted fragment recall on supplied W supports. These numbers measure separate conditional tasks and are not integrated structure-elucidation accuracy or official TEST results. Source-bound historical fixed-pool retrieval, graph-generation and chemistry-stratified failures remain detailed in Supplementary Tables~S2--S12.
 
-The recurrent high-evidence population was not a random set of isolated structures. A structural relationship graph over characterized metabolites and resolved dark entities revealed \result{structural-landscape result}, including \result{remote family count} recurrent remote families with \result{family-size/recurrence result} \figurefourtodo. These families were defined from chemistry alone, before any biological labels were examined.
+The principal full-cohort accuracy assessment will quantify \result{candidate-space contraction and native truth containment} while separately reporting proposal misses, candidate-pruning errors and final ranking errors (Fig.~\ref{fig:structure_reliability}a,f). The complete official de novo evaluation is \result{all 17,556 MassSpecGym TEST queries, target-blind Exact@1/10, Raw Reach@K, failure and group-level uncertainty}. A submitted TEST evaluation is not itself a scored result, and the repeatedly consulted training-fold development metrics must not be promoted as held-out system performance.
 
-We then asked whether biological source organizes this structural landscape. We assembled \datatodo{number/accessions of manually verified perturbation datasets} public mouse studies containing germ-free or gnotobiotic comparisons, antibiotic perturbation or defined dietary intervention. The attribution pipeline first recovered expected effects for known source-dependent metabolites in \result{positive-control recovery}, while label permutation yielded \result{permutation-null result}. Only after this gate were dark families interpreted.
+A successful structural inference method must reject difficult false alternatives for spectrum-specific reasons. The proposed tests include \result{same-formula, same-scaffold and positional-isomer truth-containment distributions} and paired matched-spectrum, peer-spectrum and appropriately shuffled-spectrum controls on \emph{identical} candidate sets and computational budgets (Fig.~\ref{fig:structure_reliability}b,c). Comparisons among G-only, identical-pool terminal W/V ranking and online W/V-guided generation are separately required to determine whether fragment evidence contributes to new graph proposals rather than simply reordering known candidates.
 
-Among \result{eligible recurrent-family denominator} eligible families, \result{microbiota-dependent fraction} showed reproducible microbiota dependence, \result{diet-dependent fraction} diet dependence and \result{host-associated fraction} host association; \result{mixed fraction} were mixed and \result{source-unresolved fraction} remained unresolved. These labels denote perturbation dependence rather than direct biosynthetic origin.
+The structural evidence analysis will determine \result{how candidate-specific fragments, common peaks, formula and observed multistage ancestry affect false-candidate exclusion} without treating unexplained peaks as chemically impossible (Fig.~\ref{fig:structure_reliability}d). Independently calibrated outputs must give \result{known-truth containment at each reported structural-resolution level, the population fraction assigned to that level, and selective risk--coverage intervals} (Fig.~\ref{fig:structure_reliability}e). Finally, exact-population failures will be stratified by \result{size, ring complexity, adduct and heteroatom subgroup}, with no exclusion of invalid or difficult molecules (Fig.~\ref{fig:structure_reliability}g).
 
-Source labels were non-randomly distributed over structural space. Related families shared source dependence more often than expected under permutation by \result{structure-source coupling statistic}; microbiota-dependent regions were enriched for \result{microbiota motifs/classes}, whereas diet-dependent regions were enriched for \result{diet motifs/classes}. The effect remained \result{cross-study/leave-one-study-out result} across independent datasets. A representative \result{worked remote family} family combined \result{family structural core}, recurrence across \result{family recurrence} datasets and a consistent \result{source perturbation effect}, illustrating how structural resolution converts anonymous perturbation-associated peaks into a chemically coherent dark family.
+\figurethreetodo
 
-These results indicate that the newly resolved dark chemical population has both structural and biological organization.
+\section*{Biological distribution of recovered molecular families across public studies}
 
-\section*{Dark molecular families reveal biology hidden from feature-level metabolomics}
+After freezing the chemical family definitions independently of phenotype and biological labels, we ask whether their prevalence or presence is reproducibly associated with sample context (Fig.~\ref{fig:biological_distribution}). The primary empirical evidence base is a curated set of \result{complete eligible public studies, independent biological samples and comparable sample contexts} (Fig.~\ref{fig:biological_distribution}a). Source provenance must distinguish true independent biological subjects from repeated LC--MS injections and technical replicates.
 
-Finally, we asked whether the structural information supplied by WGV changes biological inference. We froze structural-family membership and all eligible biological contrasts before comparing two analyses of the same samples: one treating each dark feature as an independent analyte and one treating chemically related observations as frozen molecular families.
+The primary biological landscape is a family-by-context map of \result{within-study normalized or covariate-adjusted family detection/enrichment estimates across compatible tissues, biofluids, microbiome-associated and environmental contexts} (Fig.~\ref{fig:biological_distribution}b). Raw spectral intensity differences across unrelated studies and instrumentation must not be treated as direct tissue-specific molecular concentrations.
 
-Across \result{number of eligible cohorts/contrasts}, family-level analysis changed the preregistered primary reproducibility endpoint from \result{feature-level primary endpoint} to \result{family-level primary endpoint}, a paired gain of \result{global family gain with confidence interval} \figurefivetodo. Secondary analyses showed \result{effect-sign concordance result}, \result{replication-rate result} and \result{multiplicity-controlled association-yield result}. Because samples, covariates and preprocessing were identical between the two arms, this comparison isolates the effect of changing the analytical object from anonymous features to high-evidence structural families.
+We will test \result{context-association concentration against label-permutation and matched known-metabolite controls}, \result{discovery-versus-held-out study effect replication}, and \result{cross-laboratory agreement after grouping by independent study} (Fig.~\ref{fig:biological_distribution}c--e). These analyses require explicit source and acquisition adjustment rather than attributing all observed structure to biology. We will accordingly report \result{unadjusted versus study/instrument/batch-adjusted effects and study-exclusion sensitivity} (Fig.~\ref{fig:biological_distribution}f).
 
-The strongest frozen programme, \result{principal family}, was associated with \result{phenotype/contrast} in \result{discovery result} and reproduced in \result{independent replication result}. Its \result{family member count} members share \result{bounded structural relationship}, recur across \result{family recurrence} independent datasets and collectively show \result{family-level effect}, whereas individual features exhibit \result{feature-level heterogeneity}. We use programme to describe this reproducible family-level biological pattern, not to assert a biochemical pathway.
+Finally, the association of family novelty distance with reproducible sample-context effects is a testable \result{chemical-distance versus replicated-context association with matched controls}, not evidence that structurally unusual molecules possess a particular biological function (Fig.~\ref{fig:biological_distribution}g).
 
-We selected \result{anchor count} commercially available structures using a criterion frozen before purchase. Authentic standards reproduced precursor mass, tandem spectrum and retention/coelution for \result{successful anchor count}, while \result{failed/ambiguous anchor count} remained unconfirmed and stayed in the denominator. One representative family member remained deliberately unresolved: \result{surviving isomer count} alternatives survived all available evidence, and the atlas records \result{predicted discriminating measurement} as the experiment predicted to distinguish them rather than assigning a unique identity.
+\figurefourtodo
 
-The global paired analysis and the replicated programme therefore connect the methodological contribution back to biology: inference through a fragmentation world does not merely increase annotation depth, but changes the molecular units available for reproducible metabolomic discovery.
+\section*{Previously unrecognized families under microbiota and dietary perturbations}
+
+Biological context alone cannot establish the contribution of host, microbial or dietary processes. We therefore evaluate independent controlled perturbations using \result{verified germ-free, conventional, antibiotic and defined-diet studies, as available with appropriate controls} (Fig.~\ref{fig:perturbation_effects}a). Before interpreting reference-unmatched families, the same analysis must recover known intervention-linked metabolite effects and meet its predefined label-permutation control (Fig.~\ref{fig:perturbation_effects}b).
+
+The main analysis estimates \result{predeclared structural-family-by-intervention biological effect sizes and uncertainty, across all eligible comparisons} (Fig.~\ref{fig:perturbation_effects}c). Standardized effects may be compared across independently measured interventions when the model and cohort design permit; raw intensities from incompatible protocols cannot be pooled. We further test \result{cross-intervention directional consistency and heterogeneous/null family responses}, retaining negative evidence and all verified samples (Fig.~\ref{fig:perturbation_effects}d).
+
+To test whether chemical family resolution contributes information beyond anonymous spectral features, we compare \result{paired cohort-level replication, effect-direction concordance or preregistered biological association yield for independent features versus frozen families} on identical samples, preprocessing and covariates (Fig.~\ref{fig:perturbation_effects}e). One prespecified \result{family with independently replicated perturbation effect and sufficiently supported chemical structure} may connect the population analysis to molecular evidence (Fig.~\ref{fig:perturbation_effects}f). These associations support context dependence, not an unmeasured pathway or specific microbial biosynthesis.
+
+\figurefivetodo
+
+\section*{Independent chemical confirmation of discovered molecular families}
+
+Any claim of a previously unrecognized chemical family requires chemical evidence beyond the model that generated it. We therefore reserve the final main figure for preselected, independently testable molecular-family predictions and transparently negative or ambiguous confirmations (Fig.~\ref{fig:chemical_validation}). The validation selection must be frozen before results are inspected; the \result{number of families selected, accessible to orthogonal analysis, confirmed, bounded, disproved and unavailable} denominator will include failures (Fig.~\ref{fig:chemical_validation}a).
+
+For suitable anchors we will compare real experimental sample MS/MS with independently measured authentic standards or other source-verified references, using precursor/adduct agreement and comparable retention/coelution or other orthogonal measurements where available (Fig.~\ref{fig:chemical_validation}b). External library matching may corroborate parts of a structural assignment but must not be described as same-laboratory authentic-standard validation if no such experiment occurred.
+
+Within validated families, we will report \result{independently supported members, shared chemical cores, actual atom/bond differences and surviving isomer uncertainty} (Fig.~\ref{fig:chemical_validation}c). A separate dated reference and literature search will partition \result{new-to-one-library entries, unrecognized molecular relationships and any genuinely previously unreported structures} (Fig.~\ref{fig:chemical_validation}d).
+
+Finally, the selected chemistry-supported family groupings will be assessed for \result{changes to the interpretation and replicability of their biological associations relative to feature-level analysis} (Fig.~\ref{fig:chemical_validation}e). If a strong, fully validated case exists, \result{one family connecting original experimental spectra, cross-study recurrence, independent chemical evidence and biological effect replication} will provide a concrete discovery example (Fig.~\ref{fig:chemical_validation}f). An unresolved alternative remains unresolved rather than being declared a uniquely identified metabolite.
+
+\figuresixtodo
 
 \section*{Discussion}
 
-The central change in ORBIT-MS is to make a molecular prediction testable through an executable intermediate representation. Instead of asking only which structure best matches a spectrum, the framework separates molecular proposal from the gas-phase evidence that a candidate can generate. The Generator, Verifier and World are not required to be one neural model; they communicate through the same bond--electron state, coherent-event language and deterministic executor. This separation turns a predicted structure from an endpoint into a hypothesis about observable fragmentation.
+The proposed scientific contribution of ORBIT-MS is not a candidate ranking score in isolation. It is the possibility of using experimental fragmentation evidence to define meaningful, bounded precursor-structure relationships at scale, and then asking whether those relationships reveal chemistry and biology that disconnected spectral features obscure. The distinction between molecular prediction and chemically supported family discovery is critical: a plausible generated structure, a reference-library non-match and a recurrent spectral community are different forms of evidence.
 
-Executable does not mean experimentally proven mechanism. The executor enforces electron bookkeeping and materializability, whereas the propensity and relevance of a fragmentation event remain learned. Multiple latent events may produce the same observed mass, and a spectrum-conditioned verifier has access to information unavailable to the free World. The \(p_W/q_V\) correction and explicit product comparison are therefore important conceptually: \(V\) proposes observation-compatible events, \(W\) asks whether those events are plausible without seeing the answer, and the executor determines what chemistry they actually produce.
+Current component-development results support a useful decomposition of composition, conditional fragment hypotheses, structure proposals and evidence-conditioned ranking, but independent official accuracy and calibration remain necessary for strong structure-elucidation claims. The available three-study public analysis documents substantial reference-matching gaps and reproducible spectral similarity without demonstrating a nonrandom three-study topology enrichment under its stated null or identifying new molecules. The family-level landscape, structural novelty, biological effects and authentic-standard outcomes remain \result{evidence-dependent paper results still to be completed and independently validated}. Negative or inconclusive evidence reduces, rather than inflates, the strength of any chemical discovery statement.
 
-The present development results also expose where the framework is still weak. No-formula candidate lists already contain the correct composition for most spectra, yet exact-connectivity proposal recall remains low, particularly for larger molecules. The current World produces only modest standard spectrum-simulation similarity, so forward fragmentation remains an independent bottleneck rather than a solved verifier. These limitations are useful because they are separable: improvements to \(G\), \(W\) and WGV reranking can be evaluated under different frozen contracts instead of being hidden inside one end-to-end score.
-
-If these benchmark bottlenecks can be overcome, the same decomposition provides a natural way to represent structural uncertainty in the dark metabolome. A spectrum need not be forced to a unique rank-1 structure; it can support a formula, a bounded candidate set, a shared substructure or a unique molecular hypothesis according to the evidence available. Repository-scale analysis can then operate on recurrent structural entities or families while preserving unresolved cases and provenance. This is the intended bridge from the computational method to the chemical and biological questions addressed in the later sections.
-
-Several limitations remain beyond model accuracy. A bond--electron executor is an approximation to supported gas-phase chemistry rather than a quantum-mechanical mechanism simulator. Executor-supported products used to train \(P2\) and \(W\) are latent hypotheses, not experimental fragment-structure labels. The observed spectrum is incomplete, so an unobserved generated product cannot generally be declared chemically false. Development results are reported on a molecule-group-disjoint partition of the official training fold; official validation and test data remain sealed until the model and evaluation protocol are frozen. Repository-scale entity construction, biological-source attribution and family-level associations introduce additional uncertainties that must be quantified separately.
-
-ORBIT-MS therefore makes a specific empirical proposition: structure elucidation should improve when molecular hypotheses are required to survive an executable forward chemical test. The value of that proposition is determined by matched benchmark gains and by whether the resulting evidence supports reproducible chemical and biological conclusions, not by the complexity of the architecture itself.
+The Nature-level argument rests on an integrated experimental chain: full-denominator calibrated inference; structure-supported previously unrecognized relationships; independently repeated observations; controls against model and acquisition biases; biological context; and orthogonal chemistry. The article's accuracy claim and the prominence of its discovery figures depend on whether that chain is ultimately substantiated, not on the complexity of the W/V/G architecture.
 
 \section*{Methods}
 
-\subsection*{Study design and evidentiary separation}
-\methodtodo{Preregistered confirmatory endpoints; immutable separation of model/program development, calibration, prospective evaluation, census construction and biological analysis; protected-data firewalls preventing prospective structures, source labels or phenotype labels from influencing structural-family construction.}
+\subsection*{Study design and separation of evidence}
+ORBIT-MS is evaluated as a molecular structure-inference system with three distinct conditional objectives: molecular candidate generation from measured MS/MS, forward fragment-hypothesis prediction given a proposed precursor structure, and spectrum-conditioned verification of those fragment hypotheses. We distinguish paired structural prediction, candidate-ranking improvements within a fixed pool and genuinely novel structural proposals. Empirical dark-spectral recurrence and biological associations form separate downstream analyses. In particular, a predicted fragment assignment is not an experimentally measured fragment structure, and a spectral-similarity community is not automatically a molecular family. \methodtodo{Freeze confirmatory primary endpoints, all training and inference checkpoints, explicit evaluation budgets, and the promotion criteria for the released W/V/G configuration.}
 
-\subsection*{Spectral corpora, public libraries and frozen dark-subset definition}
-\methodtodo{Repository accessions, mouse cohort provenance, GNPS/MassBank/MoNA/NIST versions and snapshot dates; spectrum preprocessing and QC; library-search engine/configuration; false-accepted-match validation; definition of dark as absence of an accepted match under the frozen protocol.}
+\subsection*{Experimental MS/MS, molecular identity and split protection}
+A query is defined by experimentally measured precursor \(m/z\), observed tandem fragment \(m/z\) and intensity, measured adduct/polarity when available, and acquisition variables supported by the dataset. Benchmark structural identity is evaluated at the first 14 characters of canonical InChIKey, so identical 2D connectivity is distinguished from stereochemical resolution. Spectral input features may include observed peak mass differences but may not include target precursor molecular fingerprints or hidden reference structures.
 
-\subsection*{Leakage control}
-\methodtodo{Exact-structure and close-analogue overlap between all evaluation chemistry and molecular/spectral pretraining corpora, including simulator-generated data; structural standardization; MCES/Tanimoto criteria and treatment of salts/stereochemistry.}
+The audited MassSpecGym TRAIN-derived development corpus contains 193,731 eligible MS2 records partitioned by precursor connectivity into 175,548 parameter-fitting spectra, 9,782 promotion/calibration spectra and 8,401 repeatedly consulted search-development spectra. These partitions are pairwise group-disjoint. Historical results on the 8,401 development cases are descriptive model-development evidence, not a held-out MassSpecGym performance claim. \methodtodo{Freeze the final complete TEST submission, 17,556-case scoring receipt and train/pretrain/reference analogue-leakage checks; report candidate-pool scope for each comparator.}
 
-\subsection*{Molecular and spectral representations}
-ORBIT-MS separates the representation used for molecular construction from the representation used for gas-phase electron redistribution. An experimental spectrum is represented as a variable-length set of peaks \(S=\{(m_i,I_i)\}\) together with precursor \(m/z\), adduct, ionization polarity and available acquisition metadata. Spectrum encoders operate on peak nodes and pairwise relations derived from normalized \(m/z\), intensity, pairwise mass differences and, when available, ordered parent--child MS\(^{n}\) transitions. For spectrum-blind World inference, acquisition context contains only precursor and acquisition variables and never measured fragment-peak features.
+\subsection*{Precursor-composition inference and graph eligibility}
+The primary de novo inference path must not receive a target molecular formula, molecular structure or learned molecular-fingerprint reconstruction of the target as an input. ORBIT-MS uses measured precursor mass, ion context, fragment peaks and permitted acquisition metadata to propose elemental-composition hypotheses. The formula posterior and initial molecular graph are computed without access to the test ground truth. An oracle-formula variant, when used, is reported as a separate conditional upper-bound task and not mixed with standard de novo results. Chemical validity requires transparent checks on atom inventory, formal charge, valence, graph connectivity and precursor/adduct compatibility. Any chemistry or source unsupported by the inference grammar is recorded rather than silently removed from the evaluation denominator.
 
-Gas-phase fragmentation is represented by a \emph{bond--electron} (BE) state. A BE state stores atom identities and atomic numbers together with a symmetric integer matrix whose diagonal entries are non-bonding valence electrons localized on an atom and whose off-diagonal entries are electrons shared between atom pairs. A conventional single, double or triple bond therefore contains two, four or six shared electrons, while odd occupancies allow radical intermediates without introducing a separate graph-edit language. Charged precursor roots are compiled from the candidate structure and adduct and are retained only when they materialize to the observed precursor mass and polarity.
+\subsection*{Spectrum-blind World over structured fragment candidates}
+The source-validated baseline World \(W\) receives a proposed precursor graph and acquisition context, not the observed target fragment peaks. Its structural fragment support is constructed from connected heavy-atom subgraphs of that precursor accessible through up to three bond cuts, with explicit hydrogen adjustment and proton/sodium carrier hypotheses. \(W\) assigns candidate weights/probabilities and supplies source-linked fragment objects, their calculated masses and structural provenance. Real MS/MS may supervise training, but cannot enter the World during a target-blind forward prediction. The resulting ion hypotheses do not certify mechanistic electron-flow trajectories, unobserved products or exact collision-induced dissociation reaction paths.
 
-\subsection*{Exact bond--electron chemical executor}
-Learned policies never directly declare a fragment structure. Instead, they propose electron-redistribution events that are applied by a deterministic chemical executor. An electron site is either an atom or an occupied bond, and an elementary arrow transfers one or two electrons from a source site to a target atom or bond. Local masks exclude moves that lack source electrons or immediately exceed supported shell or bond-electron capacities, but they do not encode a finite catalogue of named fragmentation reactions.
+An experimental extension considers additional structurally distinct rearrangement candidates as one competing candidate source for the same World distribution, not as a second independent score appended after the World. Such candidates require auditable chemical structures, ions, charged states and provenance, especially where precursor atom correspondence is uncertain. \methodtodo{Freeze the actual final World support, the corrected joint-candidate training result, selection budget, checkpoint and any demonstrated incremental contribution from new mechanistic candidates before including extension-specific claims.}
 
-For a parent BE state \(x\) and a proposed coherent event \(a\), the executor applies all electron transfers to obtain a new BE state,
-\[
-x' = T_{\mathrm{exec}}(x,a).
-\]
-It then checks exact electron bookkeeping and BE symmetry and attempts to materialize the resulting state as explicit chemical products. Successful materialization returns charged and neutral components with product SMILES, elemental formula, formal charge, exact \(m/z\) and the corresponding parent-atom indices. Failed bookkeeping or materialization remains a failed event rather than being repaired by local search. Mechanistic class labels, where recorded, are audit metadata and do not define event legality.
+\subsection*{Observation-conditioned fragment Verifier}
+The Verifier \(V\) receives the actual measured MS/MS alongside the frozen structured fragment candidates and prior weights supplied by \(W\) for a particular proposed precursor. It matches fragment masses and spectral evidence, producing observation-conditioned fragment support that can be pooled into molecular-candidate evidence. Fragment posterior weights are hypotheses conditional on \(W\)'s finite candidate support, not experimentally known fragment-to-atom labels. Unexplained observed peaks and W-support limitations remain measurable uncertainties. V cannot infer the correct precursor connectivity from a ground-truth molecular graph at de novo inference time; known precursor graphs enter only specifically labelled conditional component experiments.
 
-\subsection*{Coherent electron-event parameterization}
-The fragmentation policy generates one complete coherent electron event per Monte Carlo draw. An event is an autoregressive sequence of one- or two-electron arrows. For each arrow the policy selects an occupied source site, chooses the electron count, predicts whether the target is an atom or bond, selects the target atom and, for a bond target, its partner atom, and then predicts whether to continue the same coherent event or stop. The partially updated BE matrix is carried through the sequence, so electrons transferred into a site may be used as a later source within the same concerted event. A finite maximum number of arrows is used only as an engineering compute guard.
+Frozen candidate/support controls distinguish V improvements from expansion of the World fragment universe. Matched-spectrum, mass/adduct-compatible different-molecule peer-spectrum and shuffled-spectrum interventions are required to test whether the observed spectrum supplies discriminative information. \methodtodo{Source-freeze the final V posterior and molecule-level evidence aggregation used with the selected W and G, including error handling when atom mapping is unknown.}
 
-The event policy uses independent complete samples. It does not perform local top-\(k\) action selection, beam search, sequential Monte Carlo, effective-sample-size resampling, survivor duplication or fallback enumeration of reaction templates. The same event factorization is used by the spectrum-conditioned verifier and the spectrum-blind World; their conditioning information and learned parameters differ.
+\subsection*{Spectrum-conditioned molecular Generator}
+The Generator \(G\) constructs candidate precursor molecular graphs from the measured spectrum and permissible predicted formula/precursor constraints. Recent implemented generator variants use legal molecular graph modifications (including constrained double-edge swaps) rather than assuming an oracle target structure is present among training-derived seed molecules. Architecture variants include a spectrum-conditioned graph denoiser and a separately learned or estimated corruption-time/stop signal; the final version and checkpoint lineage must be specified, not inferred from historical intermediate training plans.
 
-\subsection*{Peak-to-product posterior}
-To provide a soft product-level hypothesis for a selected observed fragment peak \(p=(m_p,I_p)\), ORBIT-MS uses a peak-to-product posterior \(P2\). Given a candidate BE state, acquisition context and the measured spectrum, the posterior encodes the candidate and spectrum once and conditions a target-peak query on the candidate representation, the global spectrum representation, the embedding of the queried peak and numerical target-\(m/z\) features. It predicts a retention logit for every precursor atom and a charge distribution over \(\{-2,-1,+1,+2\}\). The retention probabilities define a soft precursor-atom set, and together with the charge distribution yield an expected product \(m/z\).
+For any conditional fragment evidence transferred from W/V into G, its structural origin and semantics are explicit. Fragment retention masks, atom-pair observability, or unexplained intensity can provide soft evidence; they are not automatically labels instructing the generator to delete a particular bond. Graph constraints are enforced separately from learned ranking. The correct structure is revealed only after target-blind generation to calculate Exact@K and candidate-pool reach. \methodtodo{Freeze the current supported G architecture (including the final W/V evidence-call schedule, graph initialization, time/stop model, number of generated candidates and failed trajectories) from the final code-release receipts.}
 
-The product posterior is trained with weak composition and observed-charge supervision over the full training population and with stronger atom-set and charge supervision only when a training-set event is executed successfully and its product strictly supports the queried peak. These executor-supported products are treated as latent mechanistic hypotheses rather than experimentally observed fragment-structure labels. During verifier training the product posterior is frozen; its atom-retention probabilities, predicted fragment boundary, retention uncertainty and target-mass residual are converted into continuous intent features and injected into the event representation.
+\subsection*{Online evidence, terminal ranking and causal ablations}
+For every completed candidate precursor, terminal W/V provides structure-conditioned fragment support and a spectrum-conditioned consistency score for ranking. This does not create additional molecular graphs and cannot repair a target absent from the candidate pool. Online guidance uses evidence from intermediate candidate graphs to affect legal future G transitions when the selected implementation supports it. The two channels are evaluated separately.
 
-\subsection*{Spectrum-conditioned verifier}
-The Verifier \(V\) is a peak-anchored posterior event policy,
-\[
-q_V(a\mid M,S,p,c),
-\]
-that proposes coherent electron events capable of explaining a selected observed peak. It combines a guided BE/spectrum encoding of the candidate with the product intent supplied by \(P2\). The measured spectrum affects the verifier through the spectrum encoder and target-peak query; it does not alter the executor or the local chemistry masks.
+The primary causal comparison fixes query spectra, admissible chemical formulas, candidate budgets and evaluation protocol: G without W/V; G with the same previously generated candidate IDs reordered by terminal W/V; and G with online W/V plus terminal verification. Report original and final target-containing candidate-pool reach, ranked accuracy, lost/discarded targets, hard-isomer performance, W/V call counts, wall-clock time and coverage by chemical subgroup. \methodtodo{Freeze coefficients, score normalization and matched-compute definitions from the complete release, and verify the zero-guidance baseline reproduces its fixed parent generator.}
 
-For each selected peak, \(V\) draws multiple complete events independently and executes each draw exactly once. A draw that cannot be materialized receives a negative reward. Materialized products receive a smooth reward determined by the distance between a same-polarity unit-charge product \(m/z\) and the target peak, with an additional intensity-weighted bonus for a strict mass match. Training uses a group-relative policy-gradient loss within the set of draws for the same target, increasing the probability of events with higher relative reward without treating any single latent mechanism as observed ground truth. Strictly supported products and their exact event traces are stored as training-set latent-event receipts for subsequent product-posterior refresh and World training.
+\subsection*{Benchmark metrics and statistical evaluation}
+For de novo structure elucidation we report Exact@1/10, Raw Reach@K, formula correctness, valid/unique candidate rate and chemical/structural difficulty strata on the benchmark-defined full test population. Retrieval is a distinct setting with a fixed experimentally permitted pool and whole-query Hit@K. Conditional forward fragmentation is evaluated only when the precursor graph is supplied; observed intensity-weighted fragment-mass coverage and prediction precision do not equal structure-identification accuracy. Spectrum simulation uses the official spectral metrics, including sparse cosine and Jensen--Shannon similarity, with acquisition and candidate support matched where applicable.
 
-\subsection*{Spectrum-blind gas-phase fragmentation World}
-The free World \(W\) parameterizes
-\[
-p_W(a\mid M,c)
-\]
-with the same coherent-event factorization as \(V\) but without access to the measured fragment spectrum or a target peak. Its input is the candidate BE state and acquisition context only. During inference, independent World draws are executed by the same deterministic chemical executor to obtain charged products and a spectrum-blind distribution over fragment masses.
+Every unsuccessful spectrum or failed generation contributes to the declared denominator, which is stated separately from independent molecule-group counts. Molecular groups, not individual repeated acquisitions of the same reference molecule, define clustered uncertainty for structural inference. No number from TRAIN-derived adaptive SEARCH_DEV is substituted for official TEST. Comparator-specific allowances for known formula, database access or molecular fingerprints are reported explicitly to avoid false like-for-like SOTA claims.
 
-The World used in the reported experiments is trained by posterior-to-World trace replay. Exact-supported event traces discovered by \(V\) are grouped by training spectrum and target peak and replayed under \(W\); the loss is the negative log probability of the supported trace under the spectrum-blind policy, balanced across supported peaks. Training cases without a replayable supported trace do not contribute a trace-likelihood gradient. The reported trace-replay objective does not use importance weights. This separation makes \(V\) an observation-conditioned proposal mechanism and \(W\) a spectrum-blind forward model over the same executable event language.
+\subsection*{Structural resolution, ambiguity and calibration}
+A point estimate is not equivalent to a confirmed 2D identity. We distinguish bounded unique putative structure, isomer-set membership, common structural core, chemical class/formula-only evidence and unresolved/insufficient-support outputs. Proposed structural containment and abstention thresholds require an independent calibration set and frozen operating point before application to unknown public MS/MS. Risk--coverage analyses report ground-truth retention in predicted sets and unsupported cases, not just confidence on successful candidates. \methodtodo{Provide model-independent candidate-set truth containment, calibration holdout, risk--coverage operating point and source-bound intervals before any dark-molecular-family claim.}
 
-\subsection*{Spectrum-conditioned molecular generator}
-The Generator \(G\) constructs precursor structures directly from the measured spectrum. Its spectrum encoder represents the MS/MS spectrum as a peak-relation graph with peak-node features and pairwise mass/intensity relations. The current molecular construction state is encoded by a graph neural network over atom identity, formal charge, radical state, local degree/valence and current bonds. A separate molecular-goal representation records the remaining elemental inventory or formula hypothesis. Graph--spectrum cross-attention injects the spectral representation into the current molecular graph, followed by message passing conditioned on the construction state, molecular goal and pooled spectrum context.
+\subsection*{Public experimental spectra and reference-library assessment}
+The downstream public-resource analysis is deliberately independent of training or invoking W/V/G. It distinguishes primary-source accessions, logical file listings, verified acquisitions, MS2 scans, QC-eligible biological spectra, reference-assessable spectra and individually resolved structural hypotheses. A source-manifested analysis of UC, IBD200 and VEO-IBD scans preserves sample/study provenance and all unavailable acquisitions. Pan-repository inventory extends the discovery scope to GNPS/MassIVE, MetaboLights, Metabolomics Workbench, NORMAN/DSFP, DDBJ MetaboBank and MB-POST, with exact source snapshots and reconciliation of repeated deposits, converted files and unsupported accessions.
 
-The construction policy is factorized rather than enumerating the full graph-edit action space. It predicts the action kind, element, formal charge, radical state, attachment site or atom pair and bond order, with hard masks enforcing remaining formula inventory, charge-aware valence, connectivity and legal emission. The primary paired-supervision stage compiles each known precursor structure into legal graph-construction teacher actions and minimizes their negative log likelihood. Optional posterior-distillation and World-reward stages are evaluated separately and are not part of the canonical paired generator unless explicitly stated.
+A reference match is defined relative to an explicitly frozen set of real GNPS, MassBank, MoNA or other permitted experimental reference spectra and a stated mass/peak matching protocol. Accepted, ambiguous, unmatched and unassessable are disjoint observable statuses; absence from one reference snapshot is not molecular novelty. Previously published public-index totals are cited as published external context rather than converted into newly computed counts. \methodtodo{Final per-repository inclusion, matching and inaccessible-source audit for publication-wide Figure 3 and its data-release provenance.}
 
-For the standard no-formula de novo task, formula hypotheses are inferred from precursor mass, adduct and TRAIN-derived formula priors using only benchmark-permitted inputs. Ground-truth formula is reserved for the secondary formula-provided setting. At inference time the Generator produces independent ancestral molecular samples; it does not use beam search, top-\(k\) graph expansion, particle filtering or resampling. Invalid or unfinished trajectories remain failures in the denominator.
+\subsection*{Study-independent spectral recurrence}
+Observed spectral communities are built using declared precursor/adduct compatibility, measured peak-mass matching, reproducible similarity scores and a community-membership rule with controls against single-linkage chaining. Every accepted observation is linked to an accession, original study, raw acquisition and documented sample wherever available. Technical repeats, multiple collision energies, redepositions and shared samples do not qualify as independent study recurrence. Full-population cross-study edge enumeration, whole-study holdout and blank/QC controls are recorded with their denominators and missingness.
 
-\subsection*{Integrated WGV evidence and candidate ranking}
-For a completed molecular candidate \(M\) and an observed target peak \(p\), \(V\) is used as an inference proposal over coherent events while \(W\) scores the same event traces without seeing the measured fragment spectrum. For each sampled event
-\[
-a_k\sim q_V(a\mid M,S,p,c),
-\]
-the exact executor returns explicit charged products. The World replays the identical trace to obtain \(\log p_W(a_k\mid M,c)\), and the observation term is computed from the distance between the closest same-polarity unit-charge product and the target peak. With a fixed Gaussian mass kernel and a finite evidence floor, the event-level log evidence is
-\[
-\ell_k =
-\log p_W(a_k\mid M,c)
--\log q_V(a_k\mid M,S,p,c)
-+\log p_{\mathrm{obs}}(p\mid M,a_k),
-\]
-with an additional precursor-root log weight when multiple charged precursor roots are evaluated.
+A conditional network-degree-preserving null addresses a specific concentration-of-edges/topology hypothesis; its p value does not test chemical uniqueness or independently prove that spectra arise from the same molecule. The original three-cohort PR94 study is a limited public-source universe and cannot be promoted to a global pan-repository assay count. \methodtodo{Freeze the publication eligibility of PR94's available-source results, global catalog overlap accounting and analysis-unit label in all displayed panels.}
 
-Event samples for one peak are combined with a log-mean-exp estimator,
-\[
-E_p(M,S)=\operatorname{logmeanexp}_k \ell_k.
-\]
-Peak-level evidence is then aggregated using square-root intensity weights,
-\[
-E(M,S)=
-\sum_{p\in\mathcal P}
-\frac{\sqrt{I_p}}{\sum_{j\in\mathcal P}\sqrt{I_j}}\,
-E_p(M,S),
-\]
-where \(\mathcal P\) is the selected set of eligible observed fragment peaks. This produces a candidate-specific World evidence score while correcting for the fact that \(V\) was allowed to condition on the observation. For matched molecular candidate pools, integrated WGV ranking combines the frozen Generator score with the World evidence,
-\[
-\operatorname{Score}(M)=
-\operatorname{GScore}(M)+\lambda E(M,S),
-\]
-and the zero-World setting is required to reproduce the frozen Generator ordering exactly.
+\subsection*{Chemical relationships and recognition status}
+Only candidate molecules with sufficient supported graph connectivity enter graph-edit-based family definitions. Known-metabolite reference snapshots, chemical identity normalization and structural-distance measures are frozen before biological analysis. Graph change types are molecular structural differences, not proof of biochemical transformation. Formula-, scaffold-, mass- and proposal-prior-matched nulls control the known-metabolite proximity caused by candidate retrieval or seed construction. Novelty is audited at three levels: unmatched reference spectrum, previously unrecognized family relationship and previously unreported molecular structure, with explicit unresolved category and dated source evidence. \methodtodo{Freeze known chemistry versions, valid graph-edge criteria and family membership/provenance files before constructing Figure 4.}
 
-\subsection*{Spectrum simulation, molecular retrieval and benchmark protocol}
-The forward World is also evaluated independently of the inverse generator. For spectrum simulation, molecular structure and benchmark-permitted acquisition context are supplied to \(W\), independent coherent events are sampled, and their executed charged products are aggregated into a predicted fragment-mass distribution. The measured spectrum is used only by the frozen evaluation metrics. For molecular retrieval, each candidate in the official MassSpecGym candidate universe is passed through the same spectrum-blind World to construct a World-generated fragment-mass fingerprint, which is then matched to the observed spectrum. Fixed bond-cut, neutral-loss or rearrangement rules are retained only as baselines or auxiliary diagnostics and are not the canonical retrieval backend.
+\subsection*{Biological association and perturbation analysis}
+Biological sample/study provenance is audited before assigning sample/tissue/disease labels. Family definitions are frozen independently of their phenotype or sample context, and within-study effects are estimated before cross-study synthesis. Germ-free/gnotobiotic, antibiotic, defined-diet or other intervention datasets require verified study design, known-metabolite positive controls, technical nuisance adjustment, permutation controls, multiplicity correction and independent cohort replication. To test additional value, family-level and anonymous-feature-level analyses use the identical biological samples, covariates and preregistered primary endpoint. Association and perturbation dependence are not sufficient to establish microbial synthesis or enzymatic pathway assignments. \methodtodo{Cohort list, contrast manifest, replicate IDs, positive-control gate and source-bound full-population Figure 5 outcome.}
 
-Adaptive development uses only a molecule-group-disjoint partition of the official MassSpecGym training fold. The development partition contains 175,548 training spectra from 20,430 molecule groups, 8,401 SEARCH\_DEV spectra from 1,135 molecule groups and 9,782 promotion-calibration spectra from 1,136 molecule groups; official validation and test folds remain sealed during adaptive development. The standard no-ground-truth-formula setting is primary wherever MassSpecGym defines one. De novo generation is evaluated with connectivity-level InChIKey-14 Exact@1/10 together with structural-similarity metrics and a fixed raw generation budget; retrieval uses the official mass-based candidate pool with Hit@1/5/20 and MCES, with the formula-filtered pool reported separately as a bonus setting; and spectrum simulation uses the official sparse cosine and Jensen--Shannon similarity implementations. Every evaluation spectrum and every failed generation remains in the denominator.
+\subsection*{Orthogonal structure confirmation and unresolved examples}
+External chemical validation uses candidate and reference-standard selection frozen before outcomes are inspected. Authenticated standard comparisons may include precursor ion/adduct evidence, real MS/MS and retention/coelution only under comparable acquisition conditions, with failed, absent and ambiguous anchors retained. External library additions are recorded as a weaker category when no same-laboratory standard experiment was performed. The structural-novelty audit checks dated reference/literature records without equating "new to this spectral library" to "new to science". One unresolved case should present the bounded surviving isomers and an explicitly unperformed predicted discriminating measurement. \methodtodo{Frozen anchor set, raw standard/sample spectra and retention records, success/failure audit and Figure 6 evidence receipts.}
 
-\subsection*{Soundness--resolution operating point}
-\methodtodo{Calibration cohort; stringency sweep; false-exclusion endpoint; confidence mapping; operating-point selection before atlas analysis; bootstrap/clustered uncertainty; sensitivity to mass tolerance, peak threshold and acquisition metadata.}
-
-\subsection*{Prospective library-growth validation}
-\methodtodo{Historical freeze reconstruction; artifact hashes; definition of spectra dark at freeze and structures first deposited later; analogue exclusion; depositing-group independence; outcome revelation procedure; calibration/containment metrics and structural-distance stratification.}
-
-\subsection*{Comparator evaluation}
-\methodtodo{Exact-mass, spectrum-similarity, CFM-ID, SIRIUS/CSI:FingerID and other executable comparators; identical spectra/candidate pools where applicable; independent calibration mapping for each comparator; same-formula and near-isomer strata.}
-
-\subsection*{Structural-entity collapsing and census uncertainty}
-\methodtodo{Rules for adducts, isotopologues, charge states, in-source fragments and redundant acquisitions; validation on known compounds; over-/under-merging rates; propagation into entity-count uncertainty; entity definition at each structural-resolution level.}
-
-\subsection*{Recurrence and dataset independence}
-\methodtodo{Definition of independent datasets; handling of shared samples/laboratories/re-depositions; recurrence threshold; sensitivity analyses; structural-family construction from chemistry only.}
-
-\subsection*{Dark chemical landscape}
-\methodtodo{Frozen characterized-metabolite reference set; structural-distance metrics; near-known neighbourhood threshold; transformation vocabulary; treatment of class-level-only statements; family clustering/graph construction; reference-set and metric sensitivity.}
-
-\subsection*{Biological-source attribution}
-\methodtodo{Public germ-free/gnotobiotic, antibiotic and dietary-intervention datasets; manual design verification; harmonization; biological sample as unit; batch/platform/study effects; positive-control panel; label permutation; mixed/unresolved rules.}
-
-\subsection*{Feature-versus-family biological analysis}
-\methodtodo{Family freezing and hashing before phenotype testing; identical samples/covariates for feature and family arms; preregistered primary reproducibility endpoint; multiplicity control; independent replication; leave-one-cohort-out and metadata-permutation controls.}
-
-\subsection*{Authentic-standard validation}
-\methodtodo{Frozen anchor-selection rule; commercial standard sourcing; precursor, MS/MS and retention/coelution criteria; handling of stereoisomers; reporting of failed/ambiguous anchors and alternative candidates.}
-
-\subsection*{Automated World/program evolution}
-\methodtodo{Outer-loop failure localization; permitted typed modifications; deterministic chemistry compiler; fresh-data acceptance gates; causal replay, ablation, transfer and regression tests; strict separation between proposal generation and acceptance. This analysis is supporting and reported primarily in Extended Data.}
-
-\subsection*{Statistics}
-Unless otherwise stated, the molecule group is the independent unit for structural benchmark analyses, the independent dataset is the unit for recurrence across repositories, and the biological sample is the unit for biological inference. Effect sizes are reported with \result{confidence interval convention}. Paired structural comparisons use \result{bootstrap/sign-flip procedure}. Atlas entity counts propagate \result{collapsing-error uncertainty model}. Biological analyses use \methodtodo{final preregistered multiplicity-control procedure and replication criterion}.
+\subsection*{Statistics, missing data and negative results}
+Structural confidence intervals resample independent molecule connectivity groups; spectral cross-study recurrence is evaluated at study/sample independence level, with uncertainty and complete false-match/null controls appropriate to the number of independent studies. Biological comparisons use independent biological samples and, where applicable, paired within-study study-level effects. Failure, absence, out-of-support, technical unassessability and source unavailability remain separate outcomes. Report all eligible cases and all declared analysis denominators rather than only successful candidate structures or reference hits. \methodtodo{Final exact confidence-interval, multiplicity correction, sample-size and sensitivity definitions for each manuscript panel.}
 
 \subsection*{Data availability}
-\methodtodo{Repository accessions; mouse cohort deposition/permissions; historical library snapshots; released atlas tables containing structural statement, confidence, recurrence and evidence provenance; public perturbation datasets.}
+\methodtodo{Public source accessions; frozen spectral/reference snapshots and licenses; audit manifests; raw-to-spectrum lineage; independently frozen chemical-family source data; complete figure data and orthogonal chemical validation records where available.}
 
 \subsection*{Code availability}
-ORBIT-MS is developed at \texttt{https://github.com/wangyu-sd/orbit-ms}. A frozen release containing model checkpoints, fragmentation-World configuration, candidate-generation configuration, calibration mapping, structural-family definitions, evaluation code and analysis manifests will be archived at \result{Zenodo DOI/release tag}.
+ORBIT-MS development is available at \texttt{https://github.com/wangyu-sd/orbit-ms}. The manuscript's final code release will specify the full source/checkpoint lineage, data splits, model implementation, inference settings, W/V candidate support, structures and public-resource/biological analysis scripts under \result{frozen model release identifier and archival DOI}. Planned capabilities will not be included as completed evaluations without corresponding source-bound artifacts.
 
 \section*{Acknowledgements}
 \result{Funding acknowledgements and collaborators.}
@@ -549,37 +334,37 @@ Correspondence and requests for materials should be addressed to \result{corresp
 
 \section*{Extended Data figure legends}
 
-\noindent\textbf{Extended Data Figure 1 | Corpora, splits, leakage and observation contract.}
-Dataset provenance; molecule-disjoint splits; historical library snapshots; exact and analogue leakage audits; acquisition conditions; dark-subset definition; distinction between unobserved and negative evidence.
+\noindent\textbf{Extended Data Figure 1 | Public experimental MS/MS census and reference annotation.}
+Complete accession-level provenance across GNPS/MassIVE, MetaboLights, Metabolomics Workbench, NORMAN/DSFP, MetaboBank and MB-POST; comparability of study/file/acquisition/MS2 units, full catalogue inclusion/exclusion, missing sources and cross-repository duplicates, frozen reference library and scoring protocols. Separate PR94's accessible three-study measured counts from external published global search estimates.
 
-\noindent\textbf{Extended Data Figure 2 | Bond--electron state, coherent events and exact chemical execution.}
-BE-state representation; charged precursor microstates; atom/bond electron sites; 1e/2e coherent-event factorization; local electron/shell/bond-capacity masks; exact execution; product materialization; charged-fragment formula, charge, \(m/z\) and parent-atom mapping; failure modes and compute guards.
+\noindent\textbf{Extended Data Figure 2 | Empirical cross-study spectral recurrence and nulls.}
+Complete eligible measured MS2 and precursor-pair denominators; direct-center communities, independent study assignment, technical blank/QC matches, whole-study holdouts, mass/peak matching tolerance and full-population threshold sensitivity. The conditionally degree-preserving topology null including the observed non-enrichment is retained. No spectral community is labelled as a known precursor molecular identity.
 
-\noindent\textbf{Extended Data Figure 3 | Peak-to-product posterior and spectrum-conditioned verifier.}
-Weak composition and observed-charge supervision; executor-supported atom-set hypotheses; target-peak queries; atom-retention/charge intent; guided BE/spectrum encoding; online event sampling; exact-executor rewards; group-relative policy-gradient training; target and spectrum intervention controls.
+\noindent\textbf{Extended Data Figure 3 | Construction of bounded molecular-family hypotheses and recognition audit.}
+Independent structural calibration, exact-source model provenance, full-denominator unique putative/isomer/core/formula/unresolved reporting; structural-family definitions, family membership, adduct/isotope collapsing, uncertainty and over-/under-merging; frozen literature, reference-molecule and spectral database novelty audits.
 
-\noindent\textbf{Extended Data Figure 4 | Spectrum-blind World learning and forward prediction.}
-Posterior-to-World trace replay; supported-peak supervision coverage; peak-balanced trace likelihood; free coherent-event sampling; product materialization; peak-support diagnostics; standard spectrum simulation; official mass-pool molecular retrieval; spectrum-input firewall.
+\noindent\textbf{Extended Data Figure 4 | ORBIT-MS model architecture and information boundaries.}
+Source-frozen G molecular graph generator; spectrum-blind W prior over chemically represented fragment and ion-mass candidates given the proposed precursor; spectrum-conditioned V fragment posterior and molecular candidate evidence; graph-legal actions and online versus terminal W/V evidence. Separate training and inference inputs. PR86/PR87 baseline fragment support must not be depicted as an experimentally measured electron-event reaction DAG. PR93 extensions and any self-distillation must be marked by their actual evaluated status.
 
-\noindent\textbf{Extended Data Figure 5 | Spectrum-conditioned molecular generation.}
-Peak-relation spectrum encoding; partial-graph message passing; molecular-goal conditioning; graph--spectrum cross-attention; factorized construction heads; hard formula/valence/connectivity masks; independent ancestral sampling; no-formula and formula-provided Exact/Recall@K; structural similarity; proposal/ranking decomposition and WGV reranking.
+\noindent\textbf{Extended Data Figure 5 | Molecular structure benchmarks, difficult alternatives and W/V/G ablations.}
+Exact molecule-group-disjoint MassSpecGym TRAIN, model-selection, adaptive development and complete official held-out divisions; no target formula or target fingerprint; real proposal reach and Exact@K, formula prediction, matched same-formula structural decoys, matched versus peer/shuffled spectral interventions and G-only versus identical-pool terminal W/V versus online W/V inference under matched budgets. Conditional W/V fragment metrics and fixed-pool retrieval are different endpoints from de novo structure accuracy.
 
-\noindent\textbf{Extended Data Figure 6 | Evidence hierarchy and prospective calibration.}
-GT/hard-decoy bidirectional discrimination; reliability by evidence level; soundness--resolution trade-off; historical library-growth validation; structural-distance stratification; calibrated comparators.
+\noindent\textbf{Extended Data Figure 6 | Selective structural reliability, failure analysis and computation.}
+Independent known-structure calibration, selective risk--coverage, reported unique/isomer/core/formula/unresolved bins and true-structure containment, molecular size/adduct/heteroatom/ring-stratified exact outcome decompositions, observed instrument dependence, runtime, candidate budget and W/V call cost. All failed or unsupported examples remain in the denominator.
 
-\noindent\textbf{Extended Data Figure 7 | Outer-loop scientific program evolution.}
-Failure localization; typed program/state/action/algorithm revisions; conservation compilation; accepted and rejected proposals; causal replay; paired held-out gates; scientific KPI changes and compute cost.
+\noindent\textbf{Extended Data Figure 7 | Chemical distance, structural-edit and model-prior sensitivity.}
+Source-supported molecular graph edit rules and mapping confidence; distance to characterized metabolites, matched formula/scaffold/model seed/reference-density nulls, independent family recurrence, cross-class chemical differences and stringent T0/T1 reference-depositor and historical training-knowledge requirements.
 
-\noindent\textbf{Extended Data Figure 8 | Repository-scale dark-resolution and entity collapsing.}
-Complete evidence-level funnel; unresolved/censored fractions; adduct/isotope/charge/in-source collapse validation; entity-count uncertainty; recurrence and evidence-by-recurrence analyses.
+\noindent\textbf{Extended Data Figure 8 | Source-aware biological-sample distribution and replication.}
+Full eligible study/biological-sample inventory, sample type coverage, within-study adjusted supported-family context effects, independence across subjects/laboratories, sample-label permutations, matched known-metabolite controls, cross-cohort directional replication and study/instrument/batch/missingness sensitivity.
 
-\noindent\textbf{Extended Data Figure 9 | Structural landscape and biological-source organization.}
-Known-metabolite reference sensitivity; near-known/remote thresholds; family definitions; public perturbation inventory; positive controls; permutation nulls; source dependence and structure--source coupling.
+\noindent\textbf{Extended Data Figure 9 | Microbiota, diet and other intervention controls.}
+Verified germ-free/antibiotic/diet or other eligible cohort designs and contrast definitions, full positive-control recovery, unadjusted and adjusted family effect sizes, independent replication, heterogeneous/null intervention outcomes and confounding checks. Perturbation dependence is not evidence of direct biosynthetic origin.
 
-\noindent\textbf{Extended Data Figure 10 | Feature-versus-family biological analysis.}
-Frozen family definitions and contrasts; complete paired feature/family results; cross-cohort replication; effect-sign concordance; multiplicity control; leave-one-cohort-out; metadata permutation and threshold sensitivity.
+\noindent\textbf{Extended Data Figure 10 | Structural-family versus spectral-feature biological information.}
+Identical matched biological samples and covariates in feature-level and frozen structural-family analyses; preregistered primary endpoint, independent replication, effect-sign concordance, multiple-testing control, study/sample-level uncertainty and sensitivity to family membership or calibration choices.
 
-\noindent\textbf{Extended Data Figure 11 | Authentic-standard and unresolved-case dossiers.}
-All selected anchors including failures; candidate sets; World evidence; sample and standard spectra; retention/coelution; surviving alternatives; predicted discriminating measurements.
+\noindent\textbf{Extended Data Figure 11 | Orthogonal chemical standards, recognition and unresolved structures.}
+Predeclared authentic-standard/independent-reference anchor selection including unavailable, ambiguous and disproved cases; measured precursor, tandem mass spectra, compatible retention/coelution when actually recorded, source-verified molecular graphs and alternative structural assignments; external literature novelty audits and chemistry-supported biological reanalysis. An illustrative unresolved isomer case documents remaining uncertainty and next measurements, without implying an unperformed experiment was completed.
 
 \end{document}
