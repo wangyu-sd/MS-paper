@@ -2,6 +2,8 @@
 
 Internal truth contract for the Nature manuscript.
 
+> **Figure-numbering notice (design-only PR, 2026-10-08):** The Figure 1–5 headings and C1–C20 mapping below refer to the **existing WGV-first manuscript**, not the proposed new six-figure sequence. The updated `internal/FIGURE_PLAN.md` is a review proposal focused on discovering previously unrecognized metabolite families. Do **not** relabel the existing claim rows as evidence for the proposed figures; remap the claim matrix and manuscript together only if the new plan is approved. Completed numerical facts remain governed by `internal/NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md`.
+
 > **Current quantitative authority (2026-10-06):** completed PR85–PR90 results, code/checkpoint provenance, manuscript eligibility and Nature-specific claim boundaries are consolidated in [NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md](NATURE_RESULTS_EVIDENCE_LEDGER_20261006.md). Where an older placeholder or prose number conflicts with that ledger, the ledger is the current factual source until the final fingerprint-free chemical-evidence WGV and official held-out benchmark are frozen.
 
 The paper now makes two coupled contributions:
