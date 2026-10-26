@@ -1,8 +1,8 @@
-% Published external benchmark table (literature-reported, not re-evaluated).
+% Literature baselines plus explicitly unverified author-reported ORBIT-MS measurements.
 % Add after Tables S2--S12; requires booktabs, graphicx, pdflscape, natbib.
-% This source deliberately excludes unfinished ORBIT-MS end-to-end results.
+% The ORBIT-MS row is author-reported pending a frozen, independently auditable test receipt.
 \clearpage
-\section{Published de novo structure elucidation benchmarks and molecular pretraining provenance}
+\section{De novo structure elucidation benchmarks and molecular pretraining provenance}
 \label{sec:msdev_denovo_literature}
 
 Table~\ref{tab:msdev_denovo_external} juxtaposes literature-reported de novo
@@ -14,19 +14,23 @@ Counts of unique molecules, molecular records, and sampled graph-edit examples
 are not interchangeable. The numbers below were transcribed from the source
 publications and were not reproduced under a common molecular pretraining
 corpus, generation budget, ranking procedure, or MCES implementation.
+The ORBIT-MS row is an author-reported measurement that has not yet been
+independently checked against a frozen evaluation receipt; it is separated
+visually and must not be interpreted as an audited official test result.
 
 \begin{landscape}
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Literature-reported de novo structure elucidation on MassSpecGym.}
+\caption{\textbf{De novo structure elucidation on MassSpecGym: published benchmarks and author-reported ORBIT-MS results.}
 Molecular pretraining and spectral/inference-time resources are reported
 separately. Exact@$k$ denotes successful retrieval of the correct molecular
 connectivity (first 14 characters of InChIKey) in the top $k$ structures
 and is expressed as a percentage (\%). MCES@$k$ is the smallest reported
 maximum-common-edge-subgraph distance and Tanimoto@$k$ is the largest reported
 radius-2, 2048-bit Morgan similarity in the top $k$. Arrows indicate
-preferred directions. Results come from distinct publications and should
-not be treated as a single protocol-harmonized leaderboard.}
+preferred directions. Published baselines come from distinct publications. ORBIT-MS numbers
+are author-reported and awaiting reproducibility verification. The table is
+not a single protocol-harmonized leaderboard.}
 \label{tab:msdev_denovo_external}
 \begingroup
 \footnotesize
@@ -54,10 +58,12 @@ GEMS (Tanimoto $<0.7$ starts) & 125M sampled PubChem edit examples & MIST; simil
 GEMS (one-edit starts excluded) & 125M sampled PubChem edit examples & MIST; PubChem starts without one-edit neighbors & 22.44 & 11.02 & 0.49 & 29.57 & 9.65 & 0.55 \\
 GEMS & 125M sampled PubChem edit examples & MIST; formula-matched PubChem starts & \textbf{30.22} & \textbf{9.68} & \textbf{0.55} & \textbf{41.33} & 8.26 & \textbf{0.61} \\
 \midrule
-\multicolumn{9}{@{}l}{\emph{Predicted molecular formula (MIST-CF top five; reference formula withheld)}} \\
+\multicolumn{9}{@{}l}{\emph{Predicted molecular formula (reference formula withheld; formula models differ)}} \\
 DiffMS + MIST-CF & 2.8M: DSSTox, HMDB, COCONUT, MOSES & MIST-CF top-five formula candidates & 1.86 & \textbf{17.83} & 0.27 & 4.10 & \textbf{13.71} & 0.40 \\
 FRIGID-base + MIST-CF & Up to 1B SAFE-derived records & MIST-CF top-five formula candidates & 11.60 & 20.19 & 0.35 & 13.13 & 14.81 & 0.42 \\
 FRIGID + MIST-CF & Up to 1B SAFE-derived records & MIST-CF top-five formula candidates; ICEBERG & \textbf{14.28} & 18.30 & \textbf{0.37} & \textbf{17.43} & 14.85 & \textbf{0.43} \\
+\midrule
+ORBIT-MS (author-reported; unverified) & 20,430 paired TRAIN groups; structure-only corpus training not established for this checkpoint & Formula predictions + MMA / WGV; exact checkpoint and evaluation protocol pending & 15.67 & 14.20 & 0.40 & 20.35 & 10.80 & 0.49 \\
 \bottomrule
 \end{tabular}%
 }
@@ -71,8 +77,8 @@ were collected or audited by MassSpecGym v1.5
 \citep{Liu2026MassSpecGymWild}; MBGen, MS-GPT and GEMS are
 reported according to their respective studies
 \citep{Sun2026MBGen,Zhao2026MSGPT,Acikalin2026GEMS}.
-Predicted-formula results use the MIST-CF top-five setting as reported
-for DiffMS and FRIGID \citep{Bohde2025,Bohde2026FRIGID}.
+The cited predicted-formula baselines use the MIST-CF top-five setting
+as reported for DiffMS and FRIGID \citep{Bohde2025,Bohde2026FRIGID}.
 MS-BART uses approximately 4 million molecular fingerprint--structure
 pairs based on MassSpecGym's MCES2-disjoint corpus
 \citep{Han2025MSBART}; DiffMS and MBGen use approximately 2.8 million
@@ -97,10 +103,12 @@ inflated MIST--MolForge results identified in the MassSpecGym v1.5
 audit are excluded \citep{Liu2026MassSpecGymWild}.
 
 \noindent\textbf{ORBIT-MS reporting boundary.}
-The rows above concern external published methods only. The available
-ORBIT-MS PR93 results comprise an adaptively reused development sample
-and an incomplete official TEST run, neither of which supports a final
-held-out MassSpecGym de novo leaderboard entry. An ORBIT-MS entry
-requires a frozen checkpoint, specified molecular pretraining and
-inference-time seed resources, a consistent ranking budget, and
-complete independently evaluated predictions for all six metrics.
+The ORBIT-MS row reports six values confirmed by the project author
+(Exact@1 = 15.67\%, MCES@1 = 14.20, Tanimoto@1 = 0.40,
+Exact@10 = 20.35\%, MCES@10 = 10.80, Tanimoto@10 = 0.49).
+These values have not been independently verified from a complete
+frozen evaluation output and must be replaced or confirmed against the
+precise checkpoint, dataset split, inference budget, formula predictor,
+pretraining receipt, and case-level predictions before publication.
+They are not presently attributed to the previously recorded incomplete
+PR93 official TEST experiment.
