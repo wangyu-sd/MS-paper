@@ -36,21 +36,37 @@ candidate-guided W/V refinement. Gen~6 and Gen~7 are interim partial snapshots
 (marked by $\dagger$), not final full-cohort estimates.}
 \label{tab:rsi_gen_ledger}
 \small
-\setlength{\tabcolsep}{4pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{llrrrrr}
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.10}
+\noindent\textit{A. Connectivity recovery}\par\vspace{3pt}
+\begin{tabular}{@{}lp{0.49\linewidth}rr@{}}
 \toprule
-Generation & Main intervention & Exact@1 & Exact@10 & Tanimoto@1 & Tanimoto@10 & Pool max Tanimoto \\
+Generation & Main intervention & Exact@1 & Exact@10 \\
 \midrule
-Gen 1 & TRAIN-only G; MMA library v1 & 0.00\% & 1.00\% & 0.1612 & 0.2175 & 0.2480 \\
-Gen 2 & HMDB-W training; closed-motif sets & 0.00\% & 0.00\% & 0.1699 & 0.2142 & 0.2410 \\
-Gen 3 & Atom-normalized beam search & 0.50\% & 0.50\% & 0.1799 & 0.2174 & 0.2495 \\
-Gen 4 & Expanded 12.98M-entry MMA library & 2.00\% & 2.00\% & 0.1904 & 0.2291 & 0.2700 \\
-Gen 5 & Dual starts; first-order post-W/V refinement & 2.00\% & 2.50\% & 0.1972 & 0.2469 & 0.2840 \\
-Gen 6$^\dagger$ & Non-TEST macro-core pruning; short-horizon G completion & 4.00\% & 10.00\% & 0.2803 & 0.3603 & 0.4114 \\
-Gen 7$^\dagger$ & Isomer consensus; topology prior; second-round W/V & \textbf{10.00\%} & \textbf{10.00\%} & \textbf{0.2904} & \textbf{0.3603} & \textbf{0.4114} \\
+Gen 1 & TRAIN-only G; MMA library v1 & 0.00\% & 1.00\% \\
+Gen 2 & HMDB-W training; closed-motif sets & 0.00\% & 0.00\% \\
+Gen 3 & Atom-normalized beam search & 0.50\% & 0.50\% \\
+Gen 4 & Expanded 12.98M-entry MMA library & 2.00\% & 2.00\% \\
+Gen 5 & Dual starts; first-order post-W/V refinement & 2.00\% & 2.50\% \\
+Gen 6$^\dagger$ & Non-TEST macro-core pruning; short-horizon G completion & 4.00\% & 10.00\% \\
+Gen 7$^\dagger$ & Isomer consensus; topology prior; second-round W/V & \textbf{10.00\%} & \textbf{10.00\%} \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
+\par\vspace{8pt}
+\noindent\textit{B. Structural similarity}\par\vspace{3pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Generation & Tanimoto@1 & Tanimoto@10 & Pool maximum \\
+\midrule
+Gen 1 & 0.1612 & 0.2175 & 0.2480 \\
+Gen 2 & 0.1699 & 0.2142 & 0.2410 \\
+Gen 3 & 0.1799 & 0.2174 & 0.2495 \\
+Gen 4 & 0.1904 & 0.2291 & 0.2700 \\
+Gen 5 & 0.1972 & 0.2469 & 0.2840 \\
+Gen 6$^\dagger$ & 0.2803 & 0.3603 & 0.4114 \\
+Gen 7$^\dagger$ & \textbf{0.2904} & \textbf{0.3603} & \textbf{0.4114} \\
+\bottomrule
+\end{tabular}
 \end{table}
 
 \paragraph{Calibration progression.}
@@ -67,16 +83,31 @@ provided. Gen labels here denote successive development configurations and are
 not the official-test ledger labels in Table~\ref{tab:rsi_gen_ledger}.}
 \label{tab:calibration_progression}
 \small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{llrrrrr}
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.10}
+\noindent\textit{A. Connectivity recovery}\par\vspace{3pt}
+\begin{tabular}{@{}lp{0.42\linewidth}rrr@{}}
 \toprule
-Stage & Configuration & Exact@1 & Exact@10 & Reach & Tanimoto@1 & Tanimoto@10 \\
+Stage & Configuration & Exact@1 & Exact@10 & Reach \\
 \midrule
-Gen 0 & Atom-only; no MMA & 1.50\% & 4.50\% & 6.50\% & 0.2009 & 0.2640 \\
-Gen 1 & MMA features & 6.00\% & 14.50\% & 19.00\% & 0.3221 & 0.4215 \\
-Gen 2 & MMA features; W/V terminal ranking & 8.50\% & 13.50\% & 16.00\% & 0.3351 & 0.4152 \\
-Gen 3 & Eight MMA starts; W/V ranking & 10.00\% & 18.00\% & 19.00\% & 0.3752 & 0.4685 \\
-Gen 4 & Canonical Hybrid; atom-normalized and motif-reserved beam & \textbf{12.50\%} & \textbf{21.50\%} & \textbf{22.50\%} & \textbf{0.3811} & \textbf{0.4938} \\
+Gen 0 & Atom-only; no MMA & 1.50\% & 4.50\% & 6.50\% \\
+Gen 1 & MMA features & 6.00\% & 14.50\% & 19.00\% \\
+Gen 2 & MMA features; W/V terminal ranking & 8.50\% & 13.50\% & 16.00\% \\
+Gen 3 & Eight MMA starts; W/V ranking & 10.00\% & 18.00\% & 19.00\% \\
+Gen 4 & Canonical Hybrid; atom-normalized and motif-reserved beam & \textbf{12.50\%} & \textbf{21.50\%} & \textbf{22.50\%} \\
+\bottomrule
+\end{tabular}
+\par\vspace{8pt}
+\noindent\textit{B. Structural similarity}\par\vspace{3pt}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Stage & Tanimoto@1 & Tanimoto@10 \\
+\midrule
+Gen 0 & 0.2009 & 0.2640 \\
+Gen 1 & 0.3221 & 0.4215 \\
+Gen 2 & 0.3351 & 0.4152 \\
+Gen 3 & 0.3752 & 0.4685 \\
+Gen 4 & \textbf{0.3811} & \textbf{0.4938} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -92,15 +123,26 @@ decisions; Exact@$k$, Reach and Tanimoto assess complete candidate generation.}
 \label{tab:mma_strict_ablation}
 \small
 \setlength{\tabcolsep}{3.5pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lrrrrrrrrr}
+\renewcommand{\arraystretch}{1.10}
+\noindent\textit{A. Teacher and action accuracy}\par\vspace{3pt}
+\begin{tabular}{@{}lrrrr@{}}
 \toprule
-Configuration & Teacher loss $\downarrow$ & Teacher Top-1 & Start Top-1 & Select Top-1 & Exact@1 & Exact@10 & Reach & Tanimoto@1 & Tanimoto@10 \\
+Configuration & Teacher loss $\downarrow$ & Teacher@1 & Start@1 & Select@1 \\
 \midrule
-Without MMA & 0.996 & 69.1\% & 76.4\% & 54.6\% & 1.50\% & 4.50\% & 6.50\% & 0.2009 & 0.2640 \\
-With MMA & \textbf{0.757} & \textbf{76.0\%} & \textbf{86.3\%} & \textbf{67.5\%} & \textbf{6.00\%} & \textbf{14.50\%} & \textbf{19.00\%} & \textbf{0.3221} & \textbf{0.4215} \\
+Without MMA & 0.996 & 69.1\% & 76.4\% & 54.6\% \\
+With MMA & \textbf{0.757} & \textbf{76.0\%} & \textbf{86.3\%} & \textbf{67.5\%} \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
+\par\vspace{8pt}
+\noindent\textit{B. Full-molecule generation}\par\vspace{3pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Configuration & Exact@1 & Exact@10 & Reach & Tanimoto@1 & Tanimoto@10 \\
+\midrule
+Without MMA & 1.50\% & 4.50\% & 6.50\% & 0.2009 & 0.2640 \\
+With MMA & \textbf{6.00\%} & \textbf{14.50\%} & \textbf{19.00\%} & \textbf{0.3221} & \textbf{0.4215} \\
+\bottomrule
+\end{tabular}
 \end{table}
 
 \begin{table}[!htbp]
@@ -111,21 +153,37 @@ protocol. The table separates candidate generation changes from terminal
 verification and ranking changes.}
 \label{tab:mma_wv_component_ablation}
 \small
-\setlength{\tabcolsep}{3pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{p{0.47\textwidth}rrrrr}
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.10}
+\noindent\textit{A. Connectivity recovery and candidate-pool reach}\par\vspace{3pt}
+\begin{tabular}{@{}lp{0.47\linewidth}rrr@{}}
 \toprule
-Configuration & Exact@1 & Exact@10 & Reach & Tanimoto@1 & Tanimoto@10 \\
+ID & Configuration & Exact@1 & Exact@10 & Reach \\
 \midrule
-No MMA; empty-graph start & 1.50\% & 4.50\% & 6.50\% & 0.2009 & 0.2640 \\
-MMA features; empty start; G ranking & 7.00\% & 11.50\% & 16.00\% & 0.3170 & 0.4136 \\
-MMA features; empty start; G + W/V & 8.50\% & 13.50\% & 16.00\% & 0.3351 & 0.4136 \\
-Eight MMA starts; G ranking only & 5.50\% & 16.00\% & 19.00\% & 0.3103 & 0.4685 \\
-Eight MMA starts; G + W/V & 10.00\% & 18.00\% & 19.00\% & 0.3752 & 0.4685 \\
-Joint empty-start Beam-16 and MMA-start pool; W/V & 11.00\% & 19.50\% & 22.00\% & \textbf{0.3872} & 0.4812 \\
-Canonical Hybrid; atom-normalized and motif-reserved beam; W/V & \textbf{12.50\%} & \textbf{21.50\%} & \textbf{22.50\%} & 0.3811 & \textbf{0.4938} \\
+C1 & No MMA; empty-graph start & 1.50\% & 4.50\% & 6.50\% \\
+C2 & MMA features; empty start; G ranking & 7.00\% & 11.50\% & 16.00\% \\
+C3 & MMA features; empty start; G + W/V & 8.50\% & 13.50\% & 16.00\% \\
+C4 & Eight MMA starts; G ranking only & 5.50\% & 16.00\% & 19.00\% \\
+C5 & Eight MMA starts; G + W/V & 10.00\% & 18.00\% & 19.00\% \\
+C6 & Joint empty-start Beam-16 and MMA-start pool; W/V & 11.00\% & 19.50\% & 22.00\% \\
+C7 & Canonical Hybrid; atom-normalized and motif-reserved beam; W/V & \textbf{12.50\%} & \textbf{21.50\%} & \textbf{22.50\%} \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
+\par\vspace{8pt}
+\noindent\textit{B. Structural similarity}\par\vspace{3pt}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ID & Tanimoto@1 & Tanimoto@10 \\
+\midrule
+C1 & 0.2009 & 0.2640 \\
+C2 & 0.3170 & 0.4136 \\
+C3 & 0.3351 & 0.4136 \\
+C4 & 0.3103 & 0.4685 \\
+C5 & 0.3752 & 0.4685 \\
+C6 & \textbf{0.3872} & 0.4812 \\
+C7 & 0.3811 & \textbf{0.4938} \\
+\bottomrule
+\end{tabular}
 \end{table}
 
 \begin{table}[!htbp]
@@ -135,10 +193,11 @@ Because the candidate pool is held fixed, differences isolate the contribution
 of the ranking terms rather than changes in proposal generation.}
 \label{tab:wv_fixed_pool_reranking}
 \small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lrrrrr}
+\setlength{\tabcolsep}{3pt}
+
+\begin{tabular}{@{}p{0.37\linewidth}rrrrr@{}}
 \toprule
-Ranking strategy & Exact@1 & Exact@10 & Reach & Tanimoto@1 & Tanimoto@10 \\
+Ranking strategy & Exact@1 & Exact@10 & Reach & Tan@1 & Tan@10 \\
 \midrule
 G policy score only & 7.00\% & 11.50\% & 16.00\% & 0.3170 & 0.4136 \\
 G + explained intensity & 7.00\% & 11.50\% & 16.00\% & 0.3179 & 0.4136 \\
@@ -159,18 +218,31 @@ generalization to the designated fit evaluation subset. These endpoints have
 different evaluation roles and should not be combined into one accuracy estimate.}
 \label{tab:canonical_hybrid_ablation}
 \small
-\setlength{\tabcolsep}{3pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lrrrrrrr}
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.10}
+\noindent\textit{A. Action efficiency and teacher accuracy}\par\vspace{3pt}
+\begin{tabular}{@{}lp{0.42\linewidth}rrr@{}}
 \toprule
-Policy & Mean decisions & Canonical action Top-1 & Valid action Top-1 & Seen Exact@1 & Seen Reach & Seen Tanimoto@1 & Fit-subset Reach \\
+ID & Policy & Decisions & Canonical@1 & Valid@1 \\
 \midrule
-Random-order staged baseline, Beam 4 & 32.4 & -- & 90.6\% & 25.0\% & 37.5\% & 0.488 & 13.3\% \\
-Canonical + Motif Hybrid, Beam 4 & 24.5 & 84.7\% & 90.6\% & \textbf{32.8\%} & 42.2\% & 0.518 & 14.3\% \\
-Direct single-stage generation, Beam 16 & \textbf{9.1} & 74.6\% & 82.9\% & 17.2\% & 31.3\% & 0.367 & \textbf{31.3\%} \\
-Canonical Hybrid + $R_t$ gate, Beam 16 & 24.6 & \textbf{86.0\%} & \textbf{90.7\%} & 28.1\% & \textbf{53.1\%} & \textbf{0.534} & 27.1\% \\
+P1 & Random-order staged baseline, Beam 4 & 32.4 & -- & 90.6\% \\
+P2 & Canonical + Motif Hybrid, Beam 4 & 24.5 & 84.7\% & 90.6\% \\
+P3 & Direct single-stage generation, Beam 16 & \textbf{9.1} & 74.6\% & 82.9\% \\
+P4 & Canonical Hybrid + $R_t$ gate, Beam 16 & 24.6 & \textbf{86.0\%} & \textbf{90.7\%} \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
+\par\vspace{8pt}
+\noindent\textit{B. Complete-molecule generation}\par\vspace{3pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ID & Seen Exact@1 & Seen Reach & Seen Tan@1 & Fit Reach \\
+\midrule
+P1 & 25.0\% & 37.5\% & 0.488 & 13.3\% \\
+P2 & \textbf{32.8\%} & 42.2\% & 0.518 & 14.3\% \\
+P3 & 17.2\% & 31.3\% & 0.367 & \textbf{31.3\%} \\
+P4 & 28.1\% & \textbf{53.1\%} & \textbf{0.534} & 27.1\% \\
+\bottomrule
+\end{tabular}
 \end{table}
 
 A separate GT-conditioned feasibility probe found that Canonical Hybrid reduced
@@ -191,19 +263,33 @@ ranks structures in a fixed database-derived candidate pool and is not a pure
 de novo generation result.}
 \label{tab:bio_prior_mma_cleavage}
 \small
-\setlength{\tabcolsep}{3pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lrrrrrr}
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.10}
+\noindent\textit{A. Predicted-formula candidate identification}\par\vspace{3pt}
+\begin{tabular}{@{}lp{0.47\linewidth}rrr@{}}
 \toprule
-Candidate pool and evidence & Blind Exact@1 & Blind Exact@10 & Blind Tanimoto@1 & Oracle Exact@1 & Oracle Exact@10 & Oracle Tanimoto@1 \\
+ID & Candidate pool and evidence & Exact@1 & Exact@10 & Tan@1 \\
 \midrule
-Uniform isomer pool & 17.36\% & 47.02\% & 0.3419 & 25.34\% & 54.19\% & 0.4284 \\
-Uniform pool + MMA alignment & 20.11\% & 50.14\% & 0.3708 & 29.39\% & 57.03\% & 0.4656 \\
-Uniform pool + physical 1/2-cut cleavage & 23.73\% & 52.03\% & 0.3972 & 32.56\% & 58.74\% & 0.4875 \\
-Uniform pool + MMA + physical cleavage & 24.47\% & 53.29\% & 0.4070 & 33.50\% & 59.93\% & 0.4982 \\
-Multi-database Bio-Prior + MMA + physical cleavage & \textbf{31.57\%} & \textbf{56.70\%} & \textbf{0.4583} & \textbf{42.74\%} & \textbf{63.08\%} & \textbf{0.5625} \\
+D1 & Uniform isomer pool & 17.36\% & 47.02\% & 0.3419 \\
+D2 & Uniform pool + MMA alignment & 20.11\% & 50.14\% & 0.3708 \\
+D3 & Uniform pool + physical 1/2-cut cleavage & 23.73\% & 52.03\% & 0.3972 \\
+D4 & Uniform pool + MMA + physical cleavage & 24.47\% & 53.29\% & 0.4070 \\
+D5 & Multi-database Bio-Prior + MMA + physical cleavage & \textbf{31.57\%} & \textbf{56.70\%} & \textbf{0.4583} \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
+\par\vspace{8pt}
+\noindent\textit{B. Reference-formula candidate identification}\par\vspace{3pt}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+ID & Exact@1 & Exact@10 & Tan@1 \\
+\midrule
+D1 & 25.34\% & 54.19\% & 0.4284 \\
+D2 & 29.39\% & 57.03\% & 0.4656 \\
+D3 & 32.56\% & 58.74\% & 0.4875 \\
+D4 & 33.50\% & 59.93\% & 0.4982 \\
+D5 & \textbf{42.74\%} & \textbf{63.08\%} & \textbf{0.5625} \\
+\bottomrule
+\end{tabular}
 \end{table}
 
 The source report evaluates this fixed-pool experiment on the complete official
@@ -221,10 +307,11 @@ rank one by the combined macro-core completion and candidate-ranking pipeline.
 The Gen 7 evaluation snapshot remains interim.}
 \label{tab:gen7_landmark_cases}
 \small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{llp{0.25\textwidth}rr}
+\setlength{\tabcolsep}{2.5pt}
+
+\begin{tabular}{@{}p{0.19\linewidth}p{0.30\linewidth}lrr@{}}
 \toprule
-MassSpecGym identifier & Molecule & Molecular formula & Heavy atoms & Rank change \\
+MassSpecGym ID & Molecule & Formula & Heavy atoms & Final rank \\
 \midrule
 0000201 & Beauvericin & C$_{45}$H$_{57}$N$_3$O$_9$ & 57 & 2 $\rightarrow$ 1 \\
 0039311 & Roxithromycin & C$_{41}$H$_{76}$N$_2$O$_{15}$ & 58 & 4 $\rightarrow$ 1 \\
@@ -247,13 +334,14 @@ Local formula-preserving changes are proposed around high-ranked G candidates,
 then evaluated using W/V evidence and chemical-topology filtering.}
 \label{tab:second_round_refinement}
 \small
-\begin{tabular}{p{0.22\textwidth}p{0.28\textwidth}p{0.28\textwidth}p{0.15\textwidth}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.21\linewidth}p{0.29\linewidth}p{0.42\linewidth}@{}}
 \toprule
-Molecule & Initial G candidate & Second-round operation & Outcome \\
+Molecule & Initial candidate & Refinement and outcome \\
 \midrule
-Cyclic tetrapeptide (0002114) & Top-2; linear $n$-propyl side chain; Tanimoto 0.833 & Peripheral $n$-propyl $\rightarrow$ isopropyl reattachment & Exact GT recovered \\
-Tetracycline (0058046) & Top-1; shifted keto--enol tautomer; Tanimoto 0.697 & Enumerate up to 64 tautomer states and score with W/V & Exact GT recovered \\
-Epigallocatechin gallate (0064680) & Gen 6 Top-1 quinoid artifact; Tanimoto 0.431 & Reject with topology prior (score $-0.80$); promote previous rank 6 & Exact GT promoted to rank 1 \\
+Cyclic tetrapeptide (0002114) & Top-2; linear $n$-propyl side chain; Tanimoto 0.833 & Peripheral $n$-propyl $\rightarrow$ isopropyl reattachment; Exact GT recovered \\
+Tetracycline (0058046) & Top-1; shifted keto--enol tautomer; Tanimoto 0.697 & Enumerate up to 64 tautomer states and score with W/V; Exact GT recovered \\
+Epigallocatechin gallate (0064680) & Gen 6 Top-1 quinoid artifact; Tanimoto 0.431 & Reject with topology prior (score $-0.80$); promote previous rank 6; Exact GT promoted to rank 1 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -277,9 +365,10 @@ from external resources and code paths whose full integration remains in progres
 \label{tab:rsi_data_assets}
 \small
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{p{0.25\textwidth}rp{0.36\textwidth}p{0.20\textwidth}}
+
+\begin{tabular}{@{}p{0.25\linewidth}rp{0.32\linewidth}p{0.19\linewidth}@{}}
 \toprule
-Resource & Scale & Role & Status in PR95 \\
+Resource & Scale & Purpose & Status \\
 \midrule
 Non-VAL/TEST molecular structures & 597,383 molecules & Unlabelled structure pool for sleep rollouts and non-TEST macro-core/scaffold support & Source pool reported in RSI plan \\
 GeMS-A de-leaked experimental MS/MS & 41,578,985 spectra & Real unlabeled spectra for wake-stream candidate inference & Resource identified; extraction script added \\
@@ -310,10 +399,11 @@ the epoch trajectory therefore isolates the training progression more directly
 than the full inference pipeline.}
 \label{tab:hmdbw_epoch_progression}
 \small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{rrrrrr}
+\setlength{\tabcolsep}{3pt}
+
+\begin{tabular}{@{}rrrrrr@{}}
 \toprule
-Epoch & Training loss & Canonical Top-1 & Valid-action Top-1 & Calibration Exact@1 & Calibration Reach \\
+Epoch & Train loss & Canonical@1 & Valid@1 & Exact@1 & Reach \\
 \midrule
 0 & 1.997 & 54.4\% & 64.7\% & 4.21\% & 7.37\% \\
 2 & 1.690 & 58.4\% & 67.8\% & 7.37\% & 9.47\% \\
@@ -356,9 +446,10 @@ covered, but decreases strict structural-hit accuracy under the corrected
 substructure-matching definition.}
 \label{tab:strict_fragment_tree_merge}
 \small
-\begin{tabular}{lrrrr}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.32\linewidth}rrrr@{}}
 \toprule
-Selection strategy & Mean covered atoms & GT atom coverage & Strict Hit@0.8 & Coverage conditional on hit \\
+Selection strategy & Covered atoms & GT coverage & Hit@0.8 & Coverage if hit \\
 \midrule
 Independent MMA Top-1 & 13.73 & 35.03\% & \textbf{46.09\%} & 19.90\% \\
 Strict fragment-tree root & 15.88 & 38.99\% & 36.72\% & 19.81\% \\
@@ -375,9 +466,10 @@ win rates indicate that additional motif coverage does not automatically
 provide discriminative evidence beyond W.}
 \label{tab:w_mma_complementarity}
 \small
-\begin{tabular}{lrrrr}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.27\linewidth}rrrr@{}}
 \toprule
-Evidence set & GT wins over near isomers & Mean near-isomer margin & GT wins over random isomers & Mean random-isomer margin \\
+Evidence set & Near-isomer win & Near margin & Random win & Random margin \\
 \midrule
 World W fragments & 81.20\% & 0.2674 & 87.36\% & 0.3897 \\
 MMA motifs & 79.64\% & 0.2051 & 83.68\% & 0.2948 \\
@@ -402,9 +494,10 @@ remains low. These results are from an earlier generator and are not directly
 comparable with the later held-out Calibration or official-test evaluations.}
 \label{tab:early_mma_search_dev}
 \small
-\begin{tabular}{lrrrrr}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.32\linewidth}rrrrr@{}}
 \toprule
-Generator configuration & Exact@1 & Exact@10 & Reach@100 & Tanimoto@1 & Top-10 maximum Tanimoto \\
+Generator configuration & Exact@1 & Exact@10 & Reach@100 & Tan@1 & Top-10 max Tan \\
 \midrule
 Baseline generator & 0.78\% & 1.56\% & 1.56\% & 0.1424 & 0.1951 \\
 Baseline + MMA & 0.00\% & 1.56\% & 1.56\% & 0.1672 & \textbf{0.2406} \\
