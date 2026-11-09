@@ -272,7 +272,7 @@ Anchors that fail to confirm are reported. An unconfirmed anchor is informative 
 
 \section{Supplementary tables}
 
-The completed MassSpecGym development results appear in Tables~S2--S12, followed by the source-audited external literature comparison in Table~S13. The external table is not an ORBIT-MS held-out result. Library-snapshot Table~S1 retains its explicitly marked missing measurements. Previously planned leakage, calibration, atlas, biological and authentic-standard tables will be numbered only after their source evidence is frozen; their results are not implied by these benchmark tables.
+The completed MassSpecGym development results appear in Tables~S2--S12, followed by the source-audited external literature comparison in Table~S13. The WGV/RSI experimental snapshot is presented in Tables~S14--S28 and covers generator evolution, MMA and W/V ablations, Canonical Hybrid actions, HMDB-W training, macro-core-assisted completion, candidate refinement and supporting failure analyses. These tables retain their distinct evaluation protocols: held-out Calibration, official-test development snapshots, TRAIN-derived diagnostics and database-assisted fixed-pool identification are not interchangeable. Gen~6 and Gen~7 official-test values are interim partial snapshots, and the complete Dual Wake--Sleep training cycle is not yet reported as executed. Library-snapshot Table~S1 retains its explicitly marked missing measurements. Previously planned dark-metabolome, biological and authentic-standard results remain separate and are not implied by the WGV/RSI tables.
 
 % Support compilation from either the repository root or supplementary/.
 \IfFileExists{supplementary/MassSpecGym_Development_Results.tex}{%
@@ -287,6 +287,13 @@ The completed MassSpecGym development results appear in Tables~S2--S12, followed
   \input{supplementary/MassSpecGym_DeNovo_Literature_Comparison}%
 }{%
   \input{MassSpecGym_DeNovo_Literature_Comparison}%
+}
+
+% WGV / RSI experimental appendix (Tables S14 onward).
+\IfFileExists{supplementary/ORBIT_WGV_RSI_Results.tex}{%
+  \input{supplementary/ORBIT_WGV_RSI_Results}%
+}{%
+  \input{ORBIT_WGV_RSI_Results}%
 }
 
 \bibliographystyle{unsrtnat}
