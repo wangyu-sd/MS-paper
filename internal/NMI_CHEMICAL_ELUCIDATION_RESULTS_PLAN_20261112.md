@@ -6,11 +6,11 @@
 
 ## Scientific proposition
 
-**Recover structural information and chemical relationships from experimental tandem spectra that conventional reference libraries leave unannotated, and measure whether evolving fragment-informed inference expands what can be resolved.**
+**Recover structural information and chemical relationships from experimental tandem spectra that conventional reference libraries leave unannotated, and use agent-directed recursive self-improvement (RSI) to extend the molecular structures that can be resolved.**
 
-Primary scientific output: a source-linked dark-MS/MS structural resource, calibrated structure-resolution assignments, structure-supported molecular-family relationships, and independent experimental spectral corroboration. No disease mechanism, microbial biosynthesis or new compound identity is claimed without suitable chemistry. Agentic RSI is an enabling strategy, not the primary result object.
+Two contributions must remain visible: (i) a source-linked dark-MS/MS structural resource containing calibrated resolution levels and chemically interpretable family relationships; and (ii) **an agent-directed, experience-driven RSI process** that identifies what WGV cannot yet generate or distinguish, chooses a targeted learning intervention, and uses the measured result to improve both later WGV capability and the agent's subsequent choices. The decisive RSI outcome is *new recoverable chemistry*, not a generic Agent leaderboard. No disease mechanism, microbial biosynthesis or new compound identity is inferred without independent evidence.
 
-**Working title:** ORBIT-MS: Evidence-guided molecular structure elucidation of metabolomic dark matter.
+**Working title:** ORBIT-MS: Self-improving molecular structure elucidation of metabolomic dark matter.
 
 ## Figure and Results contract
 
@@ -18,7 +18,7 @@ Primary scientific output: a source-linked dark-MS/MS structural resource, calib
 | --- | --- | --- | --- | --- |
 | R1. Structurally resolving the reference-unmatched metabolome | `figures/fig1_dark_structure_landscape.pdf` | Unique dark-spectral entities and calibrated structural-resolution tiers | PR94: 835,953 QC-eligible MS/MS queries; 613,331 without accepted library match; 2,255 recurrent *spectral* communities | Freeze spectral-entity definition; run WGV on source-linked representative spectra; produce all-tier population counts and a supported-family landscape |
 | R2. Fragment evidence enables molecular construction and discrimination | `figures/fig2_fragment_guided_elucidation.pdf` | Recovery of known molecular connectivity using observed fragmentation evidence | PR95/SI: MMA on/off known-formula CAL Exact@1 1.50/6.00%; fixed-pool G/WV 7.00/8.50%; NPLIB1 and CASMI external development | Final target-free full MassSpecGym TEST; source-linked representative fragment/structure panels; formula/isomer/known-formula evaluation strata |
-| R3. Recursive learning expands the recoverable chemical space | `figures/fig3_recursive_recoverable_space.pdf` | Previously unsuccessful molecules newly recovered; dark spectra promoted to higher justified resolution | PR95: MMA 4.23M -> 12.98M -> 31.11M entries and 10 historical engineering generations; PR96: bounded episode controller (code, not a completed experiment) | Measured before/after per-case transitions, 2–3 or more real learning generations, new gains/losses, cross-structure reuse and matched fixed/scripted comparison |
+| R3. **Agent-guided recursive self-improvement expands the recoverable chemical space** | `figures/fig3_recursive_recoverable_space.pdf` | Closed-loop scientific decisions, updated WGV chemical capability, accumulated experience and newly recovered molecular structures | PR95: MMA 4.23M -> 12.98M -> 31.11M entries and 10 historical engineering generations; PR96: bounded Scientific Improver and persistent episode memory (code, not measured autonomous gains) | Genuine 3-generation RSI trajectories with fresh FIT diagnosis each generation, action/reflection/memory lineage, source-linked new gains/losses, independent chemical-space transfer, matched fixed/scripted/no-memory controls |
 | R4. Previously unresolved spectra reveal molecular-family relationships | `figures/fig4_molecular_family_relationships.pdf` | Real molecular graph relationships among recovered unknowns and known metabolites | Recurrent spectral communities only; no established graph-level families yet | Graph-supported family definitions, structure edit network and matched known-chemistry/proposal-prior controls; dated recognition evidence |
 | R5. Independent spectral evidence supports molecular hypotheses | `figures/fig5_independent_chemical_evidence.pdf` | Independently corroborated precursor hypotheses and bounded ambiguities | Existing source identifiers, W/V evidence capability and available public references | Prespecified 5–10 promising chemical anchors, independently sourced MS/MS/multienergy/MSn where available, limited authentic-standard follow-up if feasible; record null/ambiguous cases |
 
@@ -39,13 +39,30 @@ Primary scientific output: a source-linked dark-MS/MS structural resource, calib
 - Keep **known-formula** CAL200 and homology-**Macro-Core-assisted** recovery separate from native de novo inference.
 - Select actual real spectra and molecular graphs (e.g. known benchmark macrolides) for explaining candidate-specific fragment evidence. These are *known benchmark examples*, not newly discovered metabolites.
 
-### Work package C — growth of recoverable chemistry (R3)
-- First measure a complete Gen0 failure decomposition using the same molecules and spectra: true formula absent, true structure not generated, correct structure present but misranked, and correctly resolved.
-- Reuse PR96 scientific controller with frozen W and existing interventions `EXPAND_KNOWLEDGE`, `IMPROVE_GENERATOR`, `IMPROVE_VERIFIER`; avoid new agent framework or separate learning model.
-- Run real bounded interventions and frozen paired evaluations. Track **newly correct**, **previously correct lost**, Reach improvement, ranking-only recovery, molecular-class/scaffold transfer and per-update resource cost. An update of library size with no new structure recovery is not a positive scientific endpoint.
-- Demonstrate that a few source-linked dark-spectral entities gain more defensible structural resolution as the capability matures; avoid declaring a unique structure solely from increased model confidence.
-- Matched fixed and scripted controls support RSI mechanism in Extended Data; main figure foregrounds recoverable chemical-space gain.
-- At 2026-11-12, PR96 has code and recipe but no verified completed autonomous Taiji episode. Do not insert numerical agent gains as measured results.
+### Work package C — Agent-directed recursive self-improvement for chemically recoverable space (R3)
+
+**System-level RSI is the primary AI-method contribution, and chemical recovery is its scientific test.** Two recursions must both be visible:
+- **Chemical capability recursion:** WGV failure evidence -> a bounded intervention on MMA, G or V -> new structural capabilities -> later WGV inference.
+- **Scientific decision recursion:** a testable agent hypothesis -> intervention outcome -> reflection/memory ledger -> updated intervention choice next generation. This adapts decisions through experience; it does not claim weight-space fine-tuning of the underlying LLM.
+
+**An autonomous generation contains all of the following measured steps:**
+1. **Diagnose** using fresh TRAIN FIT WGV inference from the current generation. Distinguish true candidate absent (G/chemical coverage), reference reachable but misranked (V) and explanatory chemical-knowledge gaps; include real candidate scores and structurally interpretable failure examples.
+2. **Hypothesize and act** with the PR96 Scientific Improver. Choose one of `EXPAND_KNOWLEDGE`, `IMPROVE_GENERATOR`, `IMPROVE_VERIFIER` or `COLLECT_EVIDENCE`. Record selected action, falsifiable expected change, supporting case IDs, reasoning and source inputs. Reuse existing PR95 actions, not new agent framework code. Keep W fixed for this controlled study.
+3. **Evaluate and remember** the updated WGV on the same independent and frozen evaluation molecules, recording new correct structures, lost correct structures, changes in Reach and conditional ranking, model and knowledge checksums and actual compute. Promote only an evaluated improvement. Store a reflection and measured outcome in memory.
+4. **Repeat** the sequence with the promoted state and *newly recomputed FIT diagnostics*; reusing Gen0 failure reports in Gen1/2 would not test adaptive RSI. The next decision receives previous episode history and can legitimately change its intervention.
+
+**Minimum figure-worthy experiment (not a code-unit test):** one frozen Gen0 checkpoint, three completed sequential generations each for an agent-guided path, strongest fixed intervention and scripted failure routing, common compute limits and equivalent inference budgets. A no-memory agent arm tests the value of feedback to decision-making; it can be performed on matched decision states rather than retraining a second full model chain if measured consistently. Prefer multiple molecule-disjoint seeds/slices for group-level error bars, but never substitute tiny diagnostic subsets for the final structural outcome.
+
+**Figure 3 panel design:**
+- **3a:** small explanatory RSI circle, highlighting chemical-state update and agent-memory update as separate feedback paths;
+- **3b (dominant):** cumulative *newly recovered true molecular identities* (and losses) per real generation, coupled to calibrated higher-resolution dark-spectral entities; use independent molecule IDs, not repeated spectra or memory count;
+- **3c:** real spectrum -> competing graph hypothesis -> diagnosed error -> selected learning experience -> new predicted structure and discriminatory fragments, ideally transfer to a different molecule;
+- **3d:** failure-type by action matrix, showing agent decision, prior memory, and observed chemical outcome;
+- **3e:** Frozen WGV vs Best Fixed vs Scripted vs Full Agent; source-derived evaluation, real compute accounting and uncertainty.
+
+**Required output artifacts:** complete per-episode decision/diagnosis/receipt and reflection memory, initial/promoted G/V/MMA hashes, same-group before/after predictions (not just accuracy aggregates), recovered/lost structure IDs, chemical-class stratification, independently supported dark-spectral resolution changes and final paired comparison.
+
+Known existing data: PR95 resource expansion and the historical G/W/V generation history. At 2026-11-12, PR96 has the real cluster execution recipe and source implementation but **no completed autonomous multi-generation experimental results**. Keep this explicit until Figure 3 is generated from real runs. No large library-size number is a substitute for newly elucidated chemistry.
 
 ### Work package D — interpretable family chemistry (R4)
 - Start with supported candidate connectivities or common cores from work package A; family graph nodes are proposed molecular entities, not scans.
@@ -62,11 +79,11 @@ Primary scientific output: a source-linked dark-MS/MS structural resource, calib
 
 ## Writing rules for this branch
 
-1. Lead with dark-spectrum structural information, not an Agent leaderboard and not disease/perturbation analysis.
-2. In Methods, describe WGV, MMA, Canonical Hybrid, homology-assisted Macro-Core and Scientific Improver without claiming all variants were jointly evaluated in one experiment.
+1. Lead with dark-spectrum structural information, **but clearly identify Agent-directed RSI as the second core contribution** in the title, abstract, introduction, Result 3, discussion and graphical loop. Do not substitute an Agent leaderboard for chemical recovery.
+2. In Methods, explicitly describe the scientific decision loop and its two recursions: structured failure packets -> one typed chemical intervention -> measured update -> persistent episode memory -> next-generation diagnosis/decision. Distinguish historical human/scripted development from actually measured autonomous Agent episodes.
 3. Report historical real results with their setting, denominator and conditional formula access. Never substitute CAL, sampled TEST or fixed-pool retrieval for full target-free test performance.
 4. Use real RDKit molecular drawings and measured spectra in final figures; never stylized substitute data.
-5. Every positive discovery sentence in `main.tex` without a completed source has an explicit `\\result{...}` placeholder. Replace only with source-derived data.
+5. Every positive chemical-discovery or completed RSI improvement claim in `main.tex` without source evidence has an explicit `\\result{...}` placeholder. Replace only with source-derived data.
 6. The old `internal/FIGURE_PLAN.md` and `internal/CLAIM_EVIDENCE_MATRIX.md` describe an earlier Nature six-figure, biology-dependent proposal. They are archived research context; this document defines the current NMI manuscript's five-figure contract.
 
 ## Reproducibility map
