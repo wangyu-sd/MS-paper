@@ -2,8 +2,8 @@
 
 **Manuscript:** ORBIT-MS: Self-improving molecular structure elucidation of metabolomic dark matter  
 **Figure title:** From reference-unmatched tandem spectra to a structurally interpretable dark-metabolome landscape  
-**Figure contract:** \`main.tex\` → \`\\figureonetodo\` → panels **a–e**, label \`fig:dark_landscape\`.  
-**Final PDF:** \`figures/fig1_dark_structure_landscape.pdf\`. Also export editable SVG and source tables.
+**Figure contract:** `main.tex` → `\figureonetodo` → panels **a–e**, label `fig:dark_landscape`.  
+**Final PDF:** `figures/fig1_dark_structure_landscape.pdf`. Also export editable SVG and source tables.
 
 **Purpose:** Generate a high-quality *visual layout concept* with an image generator, then rebuild the scientific panels using actual data, code-based vector graphics, real experimental MS/MS and RDKit molecular SVGs. A generated concept is **not** itself a publishable scientific results figure.
 
@@ -53,7 +53,7 @@
 | Recurrent in all three studies | 98 | Subset of 2,255 |
 | Conditional topology null | p = 0.91 | No observed enrichment under this specific null |
 
-**Source:** ORBIT-MS [PR94](https://github.com/wangyu-sd/orbit-ms/pull/94) and the merged \`MS-paper/main.tex\` first Results section. The four query statuses sum to 835,953. Counts are from UC, IBD200 and VEO-IBD; do **not** call them a global repository census.
+**Source:** ORBIT-MS [PR94](https://github.com/wangyu-sd/orbit-ms/pull/94) and the merged `MS-paper/main.tex` first Results section. The four query statuses sum to 835,953. Counts are from UC, IBD200 and VEO-IBD; do **not** call them a global repository census.
 
 ### Pending empirical assets, not to be invented
 
@@ -69,7 +69,7 @@ No image generator can infer these items from the numeric panel a–b source acc
 2. **Vector recreation:** Rebuild all panels in Python/matplotlib or equivalent vector software using **original CSV/JSON/Parquet and RDKit**, not an upscaled generative image. Type all numerical labels manually or in code. No layout-image pixels should serve as empirical data.
 3. **Data binding:** Panel a–b must link to PR94 counts and source snapshot. Panels c–e remain deliberately unfinished until real data and molecules are available.
 4. **Scientific QC:** Ensure full source-denominator accounting, independent units, exact chemical graph validity, measured-spectrum provenance and distinction between model hypothesis and confirmed chemical identity. No fictional reaction pathways.
-5. **Final outputs:** \`figures/fig1_dark_structure_landscape.pdf\`, editable SVG, source plotting script, tables supporting every numeric element and at least one high-resolution preview. The current repo has no \`figures/\` folder on main; create it when source-derived figure assets are actually produced.
+5. **Final outputs:** `figures/fig1_dark_structure_landscape.pdf`, editable SVG, source plotting script, tables supporting every numeric element and at least one high-resolution preview. The current repo has no `figures/` folder on main; create it when source-derived figure assets are actually produced.
 
 ## D. Panel-level review checklist
 
@@ -84,4 +84,4 @@ No image generator can infer these items from the numeric panel a–b source acc
 
 **Fig. 1 | From reference-unmatched tandem spectra to a structurally interpretable dark-metabolome landscape.** **a**, Source-audited acquisition and biological MS/MS reference-assessment counts for three public metabolomics study collections. **b**, Recurrent reference-unmatched spectral communities across studies, distinguished from molecular-family assignments. **c**, Planned calibrated levels of structural information returned by ORBIT-MS. **d**, Planned source-derived molecular-family chemical landscape with explicit relation to characterized chemistry. **e**, Planned representative source-linked experimental spectra, proposed molecular structures and fragment-specific evidence. Panels c–e will contain actual quantitative structural results only after the corresponding model inference and chemical analyses have been completed.
 
-**Implementation reference:** \`main.tex\` → \`\\figureonetodo\` / \`fig:dark_landscape\`. This file introduces an image-generation prompt and asset requirements only; it does not change manuscript claims or assert completed results.
+**Implementation reference:** `main.tex` → `\figureonetodo` / `fig:dark_landscape`. This file introduces an image-generation prompt and asset requirements only; it does not change manuscript claims or assert completed results.
