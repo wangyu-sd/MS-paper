@@ -3,7 +3,7 @@
 **Paper:** *ORBIT-MS: Self-improving molecular structure elucidation of metabolomic dark matter*  
 **Figure 1 working title:** **From ambiguous MS/MS to evidence-guided and recursively improvable molecular structure elucidation**  
 **Role:** A single, complete **scientific method overview with a worked structure-elucidation example**. It must explain the real problem, the inferential steps, and what becomes learnable across generations.  
-**Figure in LaTeX:** \`main.tex\`, \`\\figureonetodo\`, panels **a–e**, label \`fig:orbit_method\`, final PDF \`figures/fig1_orbit_ms_method_overview.pdf\`.  
+**Figure in LaTeX:** `main.tex`, `\figureonetodo`, panels **a–e**, label `fig:orbit_method`, final PDF `figures/fig1_orbit_ms_method_overview.pdf`.  
 **Status:** This file is a concrete **text-to-image composition prompt + source-asset specification**, not a claim that fully grounded molecular figure assets or an autonomous RSI accuracy result already exist.
 
 ## 1. The three problems this method solves — these MUST be visible on the page
@@ -48,7 +48,7 @@ Visual percentage split is a design guide; optimize actual size to keep real mol
 
 ### Compact wireframe for the illustrator (structure, not literal final typography)
 
-\`\`\`text
+```text
  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────┐
  │ a. SCIENTIFIC AMBIGUITY                                                                       (~18%) │
  │ REAL measured MS/MS (mz,intensity; precursor/adduct) ──→ same-formula candidate graphs A / B / C     │
@@ -80,7 +80,7 @@ Visual percentage split is a design guide; optimize actual size to keep real mol
  │                   └──── capability update ────→ next-generation MMA/G/V (W fixed initially)          │
  │                                    SCIENTIFIC GOAL: more recoverable chemical structure               │
  └──────────────────────────────────────────────────────────────────────────────────────────────────────┘
-\`\`\`
+```
 
 The top candidate graphs A/B/C must be **the same real candidates** whose graph-growth traces appear in b, whose structural fragment hypotheses appear in c, and whose experimentally measured peak alignment appears in d. The top row presents their ambiguity; the middle explains how the method resolves (or bounds) that ambiguity. The bottom panel operates on **a separate labelled TRAIN FIT feedback stream**, not the unknown-query truth.
 
@@ -97,7 +97,7 @@ The upper section should be built around **ONE real experimental MS/MS and its t
 - Other historical candidates include **0000201 (beauvericin)** and **0064680 (epigallocatechin gallate)**, but only use one if it has a complete and internally consistent source-linked chemical-evidence trail. **Do not copy named compound structures without extracting the corresponding real experiment and generated candidates.**
 
 Before inserting any chemical drawing, build a **case evidence package** containing:
-\`case_id\`, \`source_dataset / accession\`, \`precursor_mz\`, \`adduct\`, \`collision_energy_if_available\`, measured \`[(mz,intensity)]\` peaks, permitted/predicted precursor-formula hypotheses, each candidate's \`SMILES / InChIKey14 / formula / source\`, actual \`G_score / W_score / V_score / final_rank\` when recorded, **G's genuine partial-state and action trajectory**, predicted W fragment graph/formula/mass provenance, V measured-peak alignment and result, and an explanation of whether the reference graph was absent, reached or reranked. Avoid target formula as a model input unless the illustrated experiment is explicitly a known-formula conditional example.
+`case_id`, `source_dataset / accession`, `precursor_mz`, `adduct`, `collision_energy_if_available`, measured `[(mz,intensity)]` peaks, permitted/predicted precursor-formula hypotheses, each candidate's `SMILES / InChIKey14 / formula / source`, actual `G_score / W_score / V_score / final_rank` when recorded, **G's genuine partial-state and action trajectory**, predicted W fragment graph/formula/mass provenance, V measured-peak alignment and result, and an explanation of whether the reference graph was absent, reached or reranked. Avoid target formula as a model input unless the illustrated experiment is explicitly a known-formula conditional example.
 
 Use RDKit **Kekulé or appropriate aromatic 2D chemical graph rendering**, consistent atom labels, correct ring closures, formula-preserving alternative connectivities, visually balanced bond lengths and no compression. Bond strokes and heteroatom labels should survive reduction to print width. Draw only 2–3 real measured stick-spectrum peaks as prominent labeled examples if the actual spectrum supports that simplification, but preserve all measured peaks in the source artifact. Align highlights on candidate graph atom/bond positions with the predicted W fragment assignments and actual measured peak relationships. Labels indicating fragment structures must say **“predicted structural fragment”**, not “experimentally observed fragment molecule”.
 
@@ -111,7 +111,7 @@ If the complete example is not yet available, the image generator must create **
 >
 > The figure must solve and explain three linked scientific problems: **(1) molecular-graph generation from sparse, non-unique MS/MS evidence; (2) discrimination between plausible same-formula competing structures using chemically represented fragmentation evidence; and (3) learning from recurrent inference failures through an agent-directed recursive self-improvement loop.** The ultimate application is recovering chemically interpretable structure from metabolomic dark matter, not inferring disease mechanisms.
 >
-> **Visual atmosphere and production:** Research-grade, two-column journal diagram, landscape **16:9**, white canvas. Crisp monochrome chemical 2D graphs and mass-spectral sticks, clean compact technical typography, thin gray connectors with small arrowheads and consistent alignments. Low-saturation palette: charcoal \`#26353B\` for measured chemistry, blue-gray \`#657986\` for molecular hypotheses, muted teal \`#4F8582\` for informative fragmentation evidence and learning updates, warm gray \`#9D9C95\` for unresolved alternatives; pale neutral rules only. Panel letters a–e at top left of their subregions. The viewer must see the problem, actual chemistry, and adaptive resolution without reading a paragraph. Avoid giant box labels, repetitive cards, ornamental gradients and floating icons.
+> **Visual atmosphere and production:** Research-grade, two-column journal diagram, landscape **16:9**, white canvas. Crisp monochrome chemical 2D graphs and mass-spectral sticks, clean compact technical typography, thin gray connectors with small arrowheads and consistent alignments. Low-saturation palette: charcoal `#26353B` for measured chemistry, blue-gray `#657986` for molecular hypotheses, muted teal `#4F8582` for informative fragmentation evidence and learning updates, warm gray `#9D9C95` for unresolved alternatives; pale neutral rules only. Panel letters a–e at top left of their subregions. The viewer must see the problem, actual chemistry, and adaptive resolution without reading a paragraph. Avoid giant box labels, repetitive cards, ornamental gradients and floating icons.
 >
 > **Top 18%, panel a — show why the task is hard.** On the left, a large reserved **actual experimental MS/MS stick spectrum**, with precursor/adduct and observed fragment m/z/intensity labels. Immediately beside it, two or three **same-formula, different-connectivity molecular-graph slots**. Use a minimal thin bracket under their overlapping predicted mass evidence, and a clear short scientific annotation **“A measured spectrum does not uniquely encode a molecular graph.”** A small gray subline explains **“No accepted reference match / limited structural evidence”**. Make the contrast immediately visible: the input spectrum is measured, but the precursor structures are competing hypotheses. Do not draw a ground-truth molecule as if it is supplied during unknown inference. Avoid fake peaks or molecules; preserve blank slots for chemically verified source images.
 >
@@ -165,25 +165,25 @@ The image generator is a design aid. The correct final chemistry must be assembl
 
 | Needed illustration | Current source entry point | Extraction requirements |
 | --- | --- | --- |
-| Real MS/MS and candidate structures | \`scripts/train_pr93_peak_ladder.py\` \`generate_case\`, \`evaluate\`, generated/ranked rows, \`outputs/pr93_paper_figures_20261109\` | A single identical query ID in every upper panel; measured real peaks, exact candidate SMILES, admissible precursor mass/formula and ranking fields |
-| G trace with meaningful decisions | \`src/orbit_ms/wgv/peak_ladder_motif.py\` \`hybrid_trajectory\`, \`HybridStagePolicy\`, \`mstart\`, \`mattach\`, \`rstart\`, \`rattach\`; \`scripts/analyze_pr93_ladder_failures.py\` | Source-derived partial molecular graphs, chosen peak, real atom/ring/motif attachment and chemical validity |
-| MMA structural knowledge | \`src/orbit_ms/wgv/peak_fragment_prior.py\` \`PeakFragmentLibrary.hypotheses\`, \`motif_graph\`; PR95 MMA libraries | Actual peak-linked fragment/motif template and source-provenance information; no invented GT substructure |
-| W candidate-conditioned evidence | PR95 \`scripts/train_pr93_peak_ladder.py\` \`_get_wv_scorer\`, \`_wv_scores\`; corresponding W inference/export | Candidate-specific predicted fragment-ion structures, ion masses and where possible atom lineage. Show finite candidate support, not proven mechanism steps |
-| V measured-spectrum comparison | Same \`generate_case\` and frozen W/V scorer, V ranking / output details | Actual spectrum-to-fragment matches for each candidate and source-derived W/V evidence scores; shared vs discriminating peaks based on real data |
-| RSI diagnosis and action | PR96 \`src/orbit_ms/agents/scientific_improver.py\`: \`observation\`, \`choose\`, \`compare\` | TRAIN FIT reach/ranking diagnosis, action among four typed choices, actual outcome + hypotheses |
-| RSI execution and memory | PR96 \`scripts/run_pr93_scientific_improver.py\`: \`start\`, \`advance\`, \`finish\`, \`previous_experiences\` | Real promoted checkpoints, one decision/episode and reflection memory, not hypothetical autonomous accuracy |
-| Historical real benchmark exemplar | PR95/SI \`supplementary/ORBIT_WGV_RSI_Results.tex\`, MassSpecGym 0002114 (cyclic tetrapeptide) | Source-backed *n*-propyl versus isopropyl competing connectivity; post-generation edit documented. Check raw spectrum and score receipts before drawing |
+| Real MS/MS and candidate structures | `scripts/train_pr93_peak_ladder.py` `generate_case`, `evaluate`, generated/ranked rows, `outputs/pr93_paper_figures_20261109` | A single identical query ID in every upper panel; measured real peaks, exact candidate SMILES, admissible precursor mass/formula and ranking fields |
+| G trace with meaningful decisions | `src/orbit_ms/wgv/peak_ladder_motif.py` `hybrid_trajectory`, `HybridStagePolicy`, `mstart`, `mattach`, `rstart`, `rattach`; `scripts/analyze_pr93_ladder_failures.py` | Source-derived partial molecular graphs, chosen peak, real atom/ring/motif attachment and chemical validity |
+| MMA structural knowledge | `src/orbit_ms/wgv/peak_fragment_prior.py` `PeakFragmentLibrary.hypotheses`, `motif_graph`; PR95 MMA libraries | Actual peak-linked fragment/motif template and source-provenance information; no invented GT substructure |
+| W candidate-conditioned evidence | PR95 `scripts/train_pr93_peak_ladder.py` `_get_wv_scorer`, `_wv_scores`; corresponding W inference/export | Candidate-specific predicted fragment-ion structures, ion masses and where possible atom lineage. Show finite candidate support, not proven mechanism steps |
+| V measured-spectrum comparison | Same `generate_case` and frozen W/V scorer, V ranking / output details | Actual spectrum-to-fragment matches for each candidate and source-derived W/V evidence scores; shared vs discriminating peaks based on real data |
+| RSI diagnosis and action | PR96 `src/orbit_ms/agents/scientific_improver.py`: `observation`, `choose`, `compare` | TRAIN FIT reach/ranking diagnosis, action among four typed choices, actual outcome + hypotheses |
+| RSI execution and memory | PR96 `scripts/run_pr93_scientific_improver.py`: `start`, `advance`, `finish`, `previous_experiences` | Real promoted checkpoints, one decision/episode and reflection memory, not hypothetical autonomous accuracy |
+| Historical real benchmark exemplar | PR95/SI `supplementary/ORBIT_WGV_RSI_Results.tex`, MassSpecGym 0002114 (cyclic tetrapeptide) | Source-backed *n*-propyl versus isopropyl competing connectivity; post-generation edit documented. Check raw spectrum and score receipts before drawing |
 
 **Do not conflate analysis modes:** known-formula CAL, macro-core-assisted neural completion and true formula-blind de novo structure identification are distinct. A known-GT benchmark is acceptable to *illustrate* a success/failure, provided its GT is not drawn as an input to upper-lane unknown inference. The PR95 historical Gen 1–10 record contains human/scripted interventions; the PR96 agent code does not by itself establish measured autonomous multi-generation accuracy gains.
 
 ## 7. Design-to-final-asset workflow (for Codex/illustrator)
 
 1. **First render the concept:** Feed the English master prompt to the image generator. Save a design concept preview separate from the paper figure; use it to assess composition, not chemistry.
-2. **Select one complete source case:** Retrieve source spectrum and model outputs, create an \`evidence_case_manifest.json\` plus source-path references. A single inconsistent case across panels invalidates the worked example.
+2. **Select one complete source case:** Retrieve source spectrum and model outputs, create an `evidence_case_manifest.json` plus source-path references. A single inconsistent case across panels invalidates the worked example.
 3. **Make the chemical drawings:** RDKit generates all 2D molecule and fragment SVGs, same bond-length scale wherever possible. Avoid rescaling molecule drawings with non-uniform X/Y dimensions. Use vector stick spectra with all actual measured peaks. Draw structural fragment maps only from exported model support, and use real chemical differences.
 4. **Create the scientific layout:** Vector graphics via SVG / Inkscape / Illustrator / Python, with precisely traced input edges. Use literal strings that remain readable at print scale. Diagram should include scientifically meaningful arrows and not use five big rounded colored cards.
 5. **Agent RSI inset:** Show action grammar and two feedback routes; only insert quantitative before/after or specific past memory from an actually completed measured PR96 episode.
-6. **Export:** \`figures/fig1_orbit_ms_method_overview.pdf\`, editable SVG, source graph/plot script and \`evidence_case_manifest.json\` with provenance, plus a low-resolution preview. For the current PR, these are deliverables **to be produced later**, not files currently present.
+6. **Export:** `figures/fig1_orbit_ms_method_overview.pdf`, editable SVG, source graph/plot script and `evidence_case_manifest.json` with provenance, plus a low-resolution preview. For the current PR, these are deliverables **to be produced later**, not files currently present.
 
 ## 8. Draft Figure 1 caption
 
