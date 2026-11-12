@@ -1,3 +1,7 @@
+> **Current manuscript update (2026-11-12):** This matrix documents the earlier six-figure Nature discovery-and-biology proposal. For the active NMI chemical-elucidation `main.tex`, use [NMI_CHEMICAL_ELUCIDATION_RESULTS_PLAN_20261112.md](NMI_CHEMICAL_ELUCIDATION_RESULTS_PLAN_20261112.md). Its five Results focus on source-linked unknown MS/MS, WGV structural evidence, recoverable chemical-space expansion, chemical family relationships and independent spectroscopy. The biology and perturbation panels below remain historical ideas, not unfulfilled requirements of the new paper.
+
+---
+
 # Nature ORBIT-MS claim–evidence matrix
 
 **Controlling authority:** PR #2's discovery-first Figure Plan, restored in internal/FIGURE_PLAN.md and manuscript PR #7. This corrects the erroneously reordered *model → benchmark → resource* figures. **Title:** Accurate molecular structure elucidation from tandem mass spectra with ORBIT-MS; "Accurate" is conditional on completed official full-population evaluation.
