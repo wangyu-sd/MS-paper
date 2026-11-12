@@ -3,8 +3,8 @@
 **Paper:** *ORBIT-MS: Self-improving molecular structure elucidation of metabolomic dark matter*  
 **Figure 1 title:** *Evidence-guided molecular elucidation and agent-directed recursive self-improvement in ORBIT-MS*  
 **Purpose:** A scientifically precise **METHOD FRAMEWORK FIGURE**, not a public-metabolomics census or chemical-discovery results plot.  
-**Revised manuscript contract:** \`main.tex\` → \`\\figureonetodo\` → panels **a–e** → \`fig:orbit_method\`.  
-**Final figure file:** \`figures/fig1_orbit_ms_method_overview.pdf\`; final editable SVG and source drawings required.
+**Revised manuscript contract:** `main.tex` → `\figureonetodo` → panels **a–e** → `fig:orbit_method`.  
+**Final figure file:** `figures/fig1_orbit_ms_method_overview.pdf`; final editable SVG and source drawings required.
 
 ## 1. Essential scientific message
 
@@ -30,7 +30,7 @@ There are **two linked loops, and they must be visibly different**:
 >
 > **Panel a — Experimental observation / unknown query (upper-left, ~20% width).** A precise black stick-spectrum insertion area labelled **“Experimental MS/MS”**, with small neutral metadata labels **“precursor m/z”**, **“adduct”** and **“fragment m/z, intensity”**. Place an understated compact “formula hypotheses” strip under or beside the spectrum, from measured precursor/adduct evidence. Add a small subtitle **“Unannotated precursor”**. This is the *only* real measured spectral input; draw a clear slim connector from this spectrum directly to G **and separately to V**. Do not show the target SMILES, real molecular formula ground truth, fingerprint, or a fabricated exact m/z list at inference.
 >
-> **Panel b — G: chemistry-constrained molecular hypotheses (~25% width).** Title **“Generator G”**, small subtitle **“Spectrum-conditioned graph construction”**. Show a short staged graph-build sequence with three visually plausible two-dimensional molecular graph insertion slots: **atom → ring/motif attachment → complete candidate structures**. Include a tiny connected lower mini-band **“MMA: fragment and ring knowledge”** with short teal lines feeding into G; the MMA library is a reusable chemistry resource, not a neural text agent. Show two or three competing candidate-structure slots \`m1, m2, m3\` with the **same precursor-composition constraint**, but visibly distinct 2D connectivity in the eventual source-derived SVG. A small optional caption **“Canonical Hybrid: atom / ring / motif”**. No claims that candidate m1 is true without measured case evidence.
+> **Panel b — G: chemistry-constrained molecular hypotheses (~25% width).** Title **“Generator G”**, small subtitle **“Spectrum-conditioned graph construction”**. Show a short staged graph-build sequence with three visually plausible two-dimensional molecular graph insertion slots: **atom → ring/motif attachment → complete candidate structures**. Include a tiny connected lower mini-band **“MMA: fragment and ring knowledge”** with short teal lines feeding into G; the MMA library is a reusable chemistry resource, not a neural text agent. Show two or three competing candidate-structure slots `m1, m2, m3` with the **same precursor-composition constraint**, but visibly distinct 2D connectivity in the eventual source-derived SVG. A small optional caption **“Canonical Hybrid: atom / ring / motif”**. No claims that candidate m1 is true without measured case evidence.
 >
 > **Panel c — W: candidate-conditioned forward fragmentation (~24% width).** Title **“Fragmentation World W”**, subtitle **“Spectrum-blind forward evidence”**. A candidate molecular graph passes into a narrow, chemically interpretable fragment tree: precursor graph → two or three **structurally represented fragment slots** connected by thin arrows; small neutral-loss / formula evidence labels as reserved insertion fields. Crucially, the measured target spectrum from a must **NOT** connect into W. W sees only the candidate structure and permitted acquisition context. It predicts *candidate-dependent chemical fragment hypotheses*, not a demonstrated unique electron-flow reaction mechanism. Do not invent electron-pushing arrows, charged rearrangement intermediates or actual fragment structures in the generated concept: reserve clean slots for source-derived RDKit SVGs.
 >
@@ -78,9 +78,9 @@ There are **two linked loops, and they must be visibly different**:
 
 ### Output artifacts
 
-- **Design exploration only:** \`figures/mockups/fig1_orbit_ms_method_overview_concept.png\` (when actually generated), labelled *conceptual visualization*. This PR includes a prompt, not an image.
-- **Final:** \`figures/fig1_orbit_ms_method_overview.pdf\`, corresponding editable SVG, real spectrum and RDKit component SVGs, and source/plot script. Do not directly upscale the raster concept as the final paper figure.
-- **Panel lettering / caption:** a–e and the LaTeX filename/label must match \`main.tex\`.
+- **Design exploration only:** `figures/mockups/fig1_orbit_ms_method_overview_concept.png` (when actually generated), labelled *conceptual visualization*. This PR includes a prompt, not an image.
+- **Final:** `figures/fig1_orbit_ms_method_overview.pdf`, corresponding editable SVG, real spectrum and RDKit component SVGs, and source/plot script. Do not directly upscale the raster concept as the final paper figure.
+- **Panel lettering / caption:** a–e and the LaTeX filename/label must match `main.tex`.
 
 ## 5. What to review in the first concept image
 
