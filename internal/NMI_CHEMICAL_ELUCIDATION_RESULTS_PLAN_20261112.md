@@ -16,20 +16,34 @@ Two contributions must remain visible: (i) a source-linked dark-MS/MS structural
 
 | Main result | Figure PDF | Primary scientific object | Already sourced | Critical new work |
 | --- | --- | --- | --- | --- |
-| R1. Structurally resolving the reference-unmatched metabolome | `figures/fig1_dark_structure_landscape.pdf` | Unique dark-spectral entities and calibrated structural-resolution tiers | PR94: 835,953 QC-eligible MS/MS queries; 613,331 without accepted library match; 2,255 recurrent *spectral* communities | Freeze spectral-entity definition; run WGV on source-linked representative spectra; produce all-tier population counts and a supported-family landscape |
+| R1. Structurally resolving the reference-unmatched metabolome | **Fig. 1: `figures/fig1_orbit_ms_method_overview.pdf` is the METHOD SCHEMATIC**, with resource statistics in Extended Data 1–3 and family landscape in Fig. 4 | Unique dark-spectral entities and calibrated structural-resolution tiers, introduced through the end-to-end WGV–RSI scientific workflow | PR94: 835,953 QC-eligible MS/MS queries; 613,331 without accepted library match; 2,255 recurrent *spectral* communities | Render real MS/MS and molecular example placements in Fig. 1; freeze entity definitions; report full-tier population counts and supported-family landscape in their dedicated result panels |
 | R2. Fragment evidence enables molecular construction and discrimination | `figures/fig2_fragment_guided_elucidation.pdf` | Recovery of known molecular connectivity using observed fragmentation evidence | PR95/SI: MMA on/off known-formula CAL Exact@1 1.50/6.00%; fixed-pool G/WV 7.00/8.50%; NPLIB1 and CASMI external development | Final target-free full MassSpecGym TEST; source-linked representative fragment/structure panels; formula/isomer/known-formula evaluation strata |
 | R3. **Agent-guided recursive self-improvement expands the recoverable chemical space** | `figures/fig3_recursive_recoverable_space.pdf` | Closed-loop scientific decisions, updated WGV chemical capability, accumulated experience and newly recovered molecular structures | PR95: MMA 4.23M -> 12.98M -> 31.11M entries and 10 historical engineering generations; PR96: bounded Scientific Improver and persistent episode memory (code, not measured autonomous gains) | Genuine 3-generation RSI trajectories with fresh FIT diagnosis each generation, action/reflection/memory lineage, source-linked new gains/losses, independent chemical-space transfer, matched fixed/scripted/no-memory controls |
 | R4. Previously unresolved spectra reveal molecular-family relationships | `figures/fig4_molecular_family_relationships.pdf` | Real molecular graph relationships among recovered unknowns and known metabolites | Recurrent spectral communities only; no established graph-level families yet | Graph-supported family definitions, structure edit network and matched known-chemistry/proposal-prior controls; dated recognition evidence |
 | R5. Independent spectral evidence supports molecular hypotheses | `figures/fig5_independent_chemical_evidence.pdf` | Independently corroborated precursor hypotheses and bounded ambiguities | Existing source identifiers, W/V evidence capability and available public references | Prespecified 5–10 promising chemical anchors, independently sourced MS/MS/multienergy/MSn where available, limited authentic-standard follow-up if feasible; record null/ambiguous cases |
 
-## Priority sequence: discovery first, efficient reuse of existing WGV
+## Figure 1 design authority: METHOD OVERVIEW, not dark-resource data plot
+
+The owner explicitly fixes **Figure 1 as the ORBIT-MS method overview**. See [FIG1_IMAGEGEN_PROMPT_20261112.md](FIG1_IMAGEGEN_PROMPT_20261112.md) for the copy-ready text-to-image prompt and exact scientific layout.
+
+- **a Experimental input:** real MS/MS, precursor/adduct and predicted composition; no reference structure.
+- **b Generator G and MMA:** atom/ring/motif graph construction producing competing structures.
+- **c World W:** structure-conditioned forward structural fragments, spectrum-blind with respect to the measured target peaks.
+- **d Verifier V and structural reporting:** predicted W fragments plus independently routed measured MS/MS, ranked or bounded molecular interpretations.
+- **e Agentic RSI:** separate lower TRAIN FIT scientific-improvement band with one typed action, real WGV update/evaluation, two feedback paths (chemical capability and agent reflection memory) and next-generation chemical resolution.
+
+Figure 1 is not the 613,331-query bar chart or a family-distance landscape. Those results remain part of the source-accounting Results section and Extended Data Fig. 1–3; graph-supported family chemistry is represented in Figure 4. The page must show the two-level process, not generic colored AI workflow cards.
+
+**Figure 2 remains the chemistry/benchmark evidence figure. Figure 3 is the measured RSI result and agent-decision mechanism. Figures 4–5 cover chemical relationships and independent chemical evidence.** Do not repeat the entire high-level architecture in Figure 2.
+
+## Priority sequence: chemistry-first evidence, method Fig. 1, efficient reuse of existing WGV
 
 ### Work package A — structurally interpretable dark-MS/MS collection (R1)
 - Reuse verified PR94 UC/IBD200/VEO-IBD acquisitions and 613,331 reference-unmatched queries. Keep accession, scan, adduct, collision-energy and missing-source provenance.
 - Deduplicate repeated measurements into explicitly defined entities; obtain representative spectra; retain all entities in the reported denominators.
 - Rank inference candidates and their fragmentation support using a frozen WGV checkpoint and resource snapshot.
 - Assign a calibrated output tier: putative unique 2D connectivity, bounded isomer set, shared core, formula/class or unresolved. Tier counts must describe *entities*, not raw scans or candidate-SMILES count.
-- The 2,255 cross-study **spectral** communities are a discovery substrate, not 2,255 molecular families. Display negative network-topology null p=0.91 as applicable.
+- The 2,255 cross-study **spectral** communities are a discovery substrate, not 2,255 molecular families. Display negative network-topology null p=0.91 as applicable in the **source accounting/Extended Data**, not in Figure 1's method schematic.
 
 ### Work package B — chemical evidence and known-ground-truth validation (R2)
 - Reuse full-TRAIN Peak-Ladder Canonical Hybrid, MMA and W/V checkpoints from PR95; do not rebuild a new model.
@@ -82,7 +96,7 @@ Known existing data: PR95 resource expansion and the historical G/W/V generation
 1. Lead with dark-spectrum structural information, **but clearly identify Agent-directed RSI as the second core contribution** in the title, abstract, introduction, Result 3, discussion and graphical loop. Do not substitute an Agent leaderboard for chemical recovery.
 2. In Methods, explicitly describe the scientific decision loop and its two recursions: structured failure packets -> one typed chemical intervention -> measured update -> persistent episode memory -> next-generation diagnosis/decision. Distinguish historical human/scripted development from actually measured autonomous Agent episodes.
 3. Report historical real results with their setting, denominator and conditional formula access. Never substitute CAL, sampled TEST or fixed-pool retrieval for full target-free test performance.
-4. Use real RDKit molecular drawings and measured spectra in final figures; never stylized substitute data.
+4. Use real RDKit molecular drawings and measured spectra in final figures; never stylized substitute data. For **Figure 1**, use the image-generation prompt only for compositional exploration and rebuild the final framework in editable vector graphics with real chemistry.
 5. Every positive chemical-discovery or completed RSI improvement claim in `main.tex` without source evidence has an explicit `\\result{...}` placeholder. Replace only with source-derived data.
 6. The old `internal/FIGURE_PLAN.md` and `internal/CLAIM_EVIDENCE_MATRIX.md` describe an earlier Nature six-figure, biology-dependent proposal. They are archived research context; this document defines the current NMI manuscript's five-figure contract.
 
@@ -92,6 +106,6 @@ Known existing data: PR95 resource expansion and the historical G/W/V generation
 - **Scientific Improver implementation:** [orbit-ms PR96](https://github.com/wangyu-sd/orbit-ms/pull/96).
 - **Dark-source inventory and recurrence:** [orbit-ms PR94](https://github.com/wangyu-sd/orbit-ms/pull/94).
 - **Supplementary sourced historical tables:** `supplementary/ORBIT_WGV_RSI_Results.tex` and `supplementary/MassSpecGym_Development_Results.tex`.
-- **Current main manuscript:** `main.tex` on this branch.
+- **Current main manuscript:** `main.tex` on this branch; Figure 1 revised to `fig:orbit_method` and `figures/fig1_orbit_ms_method_overview.pdf`.
 
 Do not add speculative biological phenotype, tissue, microbial pathway or diet intervention panels to the present five main figures. Those are possible future applications, not required scientific evidence for this chemical-elucidation study.
