@@ -22,15 +22,29 @@ Two contributions must remain visible: (i) a source-linked dark-MS/MS structural
 | R4. Previously unresolved spectra reveal molecular-family relationships | `figures/fig4_molecular_family_relationships.pdf` | Real molecular graph relationships among recovered unknowns and known metabolites | Recurrent spectral communities only; no established graph-level families yet | Graph-supported family definitions, structure edit network and matched known-chemistry/proposal-prior controls; dated recognition evidence |
 | R5. Independent spectral evidence supports molecular hypotheses | `figures/fig5_independent_chemical_evidence.pdf` | Independently corroborated precursor hypotheses and bounded ambiguities | Existing source identifiers, W/V evidence capability and available public references | Prespecified 5–10 promising chemical anchors, independently sourced MS/MS/multienergy/MSn where available, limited authentic-standard follow-up if feasible; record null/ambiguous cases |
 
-## Figure 1 design authority: METHOD OVERVIEW, not dark-resource data plot
+## Figure 1 design authority: SCIENTIFIC PROBLEM → EXPLANATORY WGV MECHANISM → AGENTIC RSI
+
+The owner explicitly fixes **Figure 1 as the ORBIT-MS scientific method overview**, not merely an architecture diagram. The complete **copy-ready 16:9 text-to-image prompt, source-case extraction specification and acceptance tests** are in [FIG1_IMAGEGEN_PROMPT_20261112.md](FIG1_IMAGEGEN_PROMPT_20261112.md).
+
+**A diagram with four labelled boxes and no chemical example is not acceptable.** A reviewer must visually understand:
+
+1. **Hypothesis-coverage problem:** measured MS/MS does not determine unique molecular connectivity; long atom-wise generation can miss correct complex graphs. The remedy is Peak-Ladder/Canonical Hybrid G with MMA atom/ring/motif building and chemical inventory constraints. Show a real stepwise partial-graph trajectory.
+2. **Discriminative-evidence problem:** several same-formula generated connectivities may explain common peaks, and candidate reach does not equal correct rank. The remedy is candidate-conditioned spectrum-blind W structural fragment hypotheses plus V comparison to the actually measured MS/MS. Show two actual competing molecular graphs and a source-derived common-versus-specific fragment/peak comparison.
+3. **Learning-capability problem:** recurring failure should trigger a targeted change rather than blind retraining. The remedy is Scientific Improver's TRAIN-only hypothesis → one typed MMA/G/V/evidence action → experiment → observed structural recovery/loss → memory-conditioned next action. Show separate return paths for the updated WGV chemistry and for the agent experience memory.
+4. **Scientific payoff:** the system is designed to expand the **recoverable molecular structures and bounded chemical relationships in metabolomic dark matter**, not maximize the quantity of generated SMILES or LLM tool calls.
+
+**One source-grounded molecular example must connect input spectrum, partial G graphs, at least two candidate graphs, W predicted fragments and V observed-peak evidence.** First search real source-linked PR95 traces; MassSpecGym 0002114 provides a documented historical isomer-repair example only if a real MS/MS and scoring trace can be recovered. Do not invent chemical structures, fragment-ion assignments, scores or RSI improvements.
+
+**Layout:** top scientific ambiguity (~18% height); middle detailed G/W/V evidence reasoning (~47%); lower detailed agent-driven RSI (~35%). Panels a–e cover these levels; Figure 1's final figure is \`figures/fig1_orbit_ms_method_overview.pdf\`. If text-to-image model cannot draw exact 2D chemistry, use deliberate insertion slots, then composite actual RDKit SVGs and vector experimental stick spectra.
+
 
 The owner explicitly fixes **Figure 1 as the ORBIT-MS method overview**. See [FIG1_IMAGEGEN_PROMPT_20261112.md](FIG1_IMAGEGEN_PROMPT_20261112.md) for the copy-ready text-to-image prompt and exact scientific layout.
 
-- **a Experimental input:** real MS/MS, precursor/adduct and predicted composition; no reference structure.
-- **b Generator G and MMA:** atom/ring/motif graph construction producing competing structures.
-- **c World W:** structure-conditioned forward structural fragments, spectrum-blind with respect to the measured target peaks.
-- **d Verifier V and structural reporting:** predicted W fragments plus independently routed measured MS/MS, ranked or bounded molecular interpretations.
-- **e Agentic RSI:** separate lower TRAIN FIT scientific-improvement band with one typed action, real WGV update/evaluation, two feedback paths (chemical capability and agent reflection memory) and next-generation chemical resolution.
+- **a Experimental ambiguity:** one measured spectrum next to two verified same-composition, different-connectivity candidate graphs; no target graph supplied to inference.
+- **b Generator G and MMA:** actual peak-select/grow partial-graph trajectory using atom/ring/motif actions to produce competing complete structures; solves candidate-space coverage.
+- **c World W:** structure-conditioned, target-spectrum-blind structural fragment predictions for each competing graph, showing shared versus candidate-specific chemical possibilities.
+- **d Verifier V and structural reporting:** align actual measured ions to W's candidate-specific predictions, distinguish common evidence from discriminating fragment support, produce ranking or bounded interpretation.
+- **e Agentic RSI:** three distinct TRAIN FIT failure modes, one testable chemical hypothesis, one selected action, measured structural recovery and loss, two feedback paths (chemical capability versus agent experience memory) and next-generation inference.
 
 Figure 1 is not the 613,331-query bar chart or a family-distance landscape. Those results remain part of the source-accounting Results section and Extended Data Fig. 1–3; graph-supported family chemistry is represented in Figure 4. The page must show the two-level process, not generic colored AI workflow cards.
 
