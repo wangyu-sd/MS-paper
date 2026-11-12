@@ -1,3 +1,7 @@
+> **Current manuscript update (2026-11-12):** The NMI-oriented `main.tex` has been revised to five chemical-elucidation Results and Figures: dark-spectral structure landscape, experimental fragment evidence, recursively recoverable chemical space, molecular-family chemistry and independent corroboration. The binding plan for that draft is [NMI_CHEMICAL_ELUCIDATION_RESULTS_PLAN_20261112.md](NMI_CHEMICAL_ELUCIDATION_RESULTS_PLAN_20261112.md). The six-figure, biology-heavy Nature proposal below is preserved as **historical planning**, not the present `main.tex` contract.
+
+---
+
 # ORBIT-MS Nature figures — discovery of previously unrecognized metabolite families
 
 **Status:** Original Nature discovery-first Figure design (PR #2), restored as governing plan in PR #7 on 2026-10-14. No uncompleted discovery or model result is asserted.
