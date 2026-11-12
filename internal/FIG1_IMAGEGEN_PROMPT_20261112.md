@@ -46,6 +46,48 @@ This is the *purpose and proposed output* of recursive learning, not yet a measu
 
 Visual percentage split is a design guide; optimize actual size to keep real molecular structure and stick-spectrum regions legible. Good science figures use multiple aligned grids, not equal-height cards.
 
+### Compact wireframe for the illustrator (structure, not literal final typography)
+
+\`\`\`text
+ ┌──────────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ a. SCIENTIFIC AMBIGUITY                                                                       (~18%) │
+ │ REAL measured MS/MS (mz,intensity; precursor/adduct) ──→ same-formula candidate graphs A / B / C     │
+ │                                               QUESTION: which connectivity actually explains peaks?  │
+ ├──────────────────────────────────────────────────────────────────────────────────────────────────────┤
+ │ b. BUILD HYPOTHESES                   c. PREDICT FRAGMENTS               d. TEST AGAINST EXPERIMENT   │
+ │                                  │                                  │                              │
+ │ spectrum ──→  select peak       │ candidate A → [fragment A1,A2]   │ measured peaks ──┐          │
+ │              grow partial      │ candidate B → [fragment B1,B2]   │                 ▼          │
+ │              atom/ring/motif   │ shared + candidate-specific      │ candidate × peak evidence    │
+ │ MMA motif knowledge ──┐        │                                  │ common vs distinguishing      │
+ │                       ▼        │ **NO target spectrum into W**     │ evidence → rank / bounded set │
+ │    partial 0 → 1 → 2 → A,B,C   ─────────────→ W fragments ─────────────────────────────→ V          │
+ │  WHY: expand reachable graphs            WHY: structural evidence          WHY: separate isomers     │
+ ├──────────────────────────────────────────────────────────────────────────────────────────────────────┤
+ │ e. LEARN WHICH SCIENTIFIC CAPABILITY TO IMPROVE                                            (~35%)    │
+ │                                                                                                      │
+ │ TRAIN FIT: unreached graph / misranked isomer / unresolved fragments                                  │
+ │                   │                                                                                  │
+ │                   ▼                                                                                  │
+ │          SCIENTIFIC IMPROVER AGENT  ←────  EPISODE MEMORY ←──── measured outcome/reflection            │
+ │             diagnose / hypothesis / choose                       ▲                                    │
+ │                   │                                              │                                    │
+ │          ONE action: Expand MMA | Train G | Train V | Collect evidence                                │
+ │                   │                                              │                                    │
+ │                   ▼                                              │                                    │
+ │            execute existing tool → evaluate: newly reached / reranked / lost structures              │
+ │                   │                                                                                  │
+ │                   └──── capability update ────→ next-generation MMA/G/V (W fixed initially)          │
+ │                                    SCIENTIFIC GOAL: more recoverable chemical structure               │
+ └──────────────────────────────────────────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+The top candidate graphs A/B/C must be **the same real candidates** whose graph-growth traces appear in b, whose structural fragment hypotheses appear in c, and whose experimentally measured peak alignment appears in d. The top row presents their ambiguity; the middle explains how the method resolves (or bounds) that ambiguity. The bottom panel operates on **a separate labelled TRAIN FIT feedback stream**, not the unknown-query truth.
+
+### Why the problem is real (historical measured motivation; optional tiny annotation, not required in Fig. 1)
+
+In PR95's **known-formula 200-molecule Calibration development condition**, switching from an empty-graph G-only policy pool to MMA-seeded starts **increased Reach from 16.0% to 19.0% but decreased Exact@1 from 7.0% to 5.5%**. On that **same MMA-start candidate pool**, terminal W/V ranking improved Exact@1 to **10.0% while Reach remained 19.0%**. Thus *hypothesis coverage* and *evidence discrimination* are demonstrably different problems. If a historical observation is typeset within Figure 1 as a very small scientific motivation, explicitly label the conditional known-formula setting and avoid mixing it with the single-case worked chemical example. The actual comparison and full breakdown belong to Figure 2.
+
 ## 3. One continuous source-grounded chemical example is mandatory
 
 The upper section should be built around **ONE real experimental MS/MS and its true recorded G-candidate set**, not a collection of three unrelated example molecules. Choose a source-backed case where the recorded inference illustrates a clear chemical distinction:
