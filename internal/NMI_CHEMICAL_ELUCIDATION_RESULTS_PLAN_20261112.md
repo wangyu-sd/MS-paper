@@ -22,33 +22,24 @@ Two contributions must remain visible: (i) a source-linked dark-MS/MS structural
 | R4. Previously unresolved spectra reveal molecular-family relationships | `figures/fig4_molecular_family_relationships.pdf` | Real molecular graph relationships among recovered unknowns and known metabolites | Recurrent spectral communities only; no established graph-level families yet | Graph-supported family definitions, structure edit network and matched known-chemistry/proposal-prior controls; dated recognition evidence |
 | R5. Independent spectral evidence supports molecular hypotheses | `figures/fig5_independent_chemical_evidence.pdf` | Independently corroborated precursor hypotheses and bounded ambiguities | Existing source identifiers, W/V evidence capability and available public references | Prespecified 5–10 promising chemical anchors, independently sourced MS/MS/multienergy/MSn where available, limited authentic-standard follow-up if feasible; record null/ambiguous cases |
 
-## Figure 1 design authority: SCIENTIFIC PROBLEM → EXPLANATORY WGV MECHANISM → AGENTIC RSI
+## Figure 1: research-informed methods story (owner-approved: method overview)
 
-The owner explicitly fixes **Figure 1 as the ORBIT-MS scientific method overview**, not merely an architecture diagram. The complete **copy-ready 16:9 text-to-image prompt, source-case extraction specification and acceptance tests** are in [FIG1_IMAGEGEN_PROMPT_20261112.md](FIG1_IMAGEGEN_PROMPT_20261112.md).
+**Binding visual prompt:** [FIG1_IMAGEGEN_PROMPT_20261112.md](FIG1_IMAGEGEN_PROMPT_20261112.md)  
+**Literature comparison and RSI roadmap:** [FIG1_LITERATURE_VISUAL_STUDY_AND_RSI_RESEARCH_20261113.md](FIG1_LITERATURE_VISUAL_STUDY_AND_RSI_RESEARCH_20261113.md)
 
-**A diagram with four labelled boxes and no chemical example is not acceptable.** A reviewer must visually understand:
+Reference designs: DreaMS (problem-first scientific context), BUDDY (fragment chemistry, not ambiguous features), MADGEN (one real molecular growth trajectory), ChemCrow (grounded chemistry tool actions) and Robin (hypothesis–experiment–feedback cycle). Figure 1 must not copy any reference graphics.
 
-1. **Hypothesis-coverage problem:** measured MS/MS does not determine unique molecular connectivity; long atom-wise generation can miss correct complex graphs. The remedy is Peak-Ladder/Canonical Hybrid G with MMA atom/ring/motif building and chemical inventory constraints. Show a real stepwise partial-graph trajectory.
-2. **Discriminative-evidence problem:** several same-formula generated connectivities may explain common peaks, and candidate reach does not equal correct rank. The remedy is candidate-conditioned spectrum-blind W structural fragment hypotheses plus V comparison to the actually measured MS/MS. Show two actual competing molecular graphs and a source-derived common-versus-specific fragment/peak comparison.
-3. **Learning-capability problem:** recurring failure should trigger a targeted change rather than blind retraining. The remedy is Scientific Improver's TRAIN-only hypothesis → one typed MMA/G/V/evidence action → experiment → observed structural recovery/loss → memory-conditioned next action. Show separate return paths for the updated WGV chemistry and for the agent experience memory.
-4. **Scientific payoff:** the system is designed to expand the **recoverable molecular structures and bounded chemical relationships in metabolomic dark matter**, not maximize the quantity of generated SMILES or LLM tool calls.
+**Scientific causal chain:** a measured spectrum is compatible with multiple precursor connectivities; **MMA** constructs multiple peak-conditioned candidate fragment graphs and atom/bond alignment; **G** uses real atom/ring/motif actions to construct full graph hypotheses; **W** predicts each candidate's fragments without observing target product ions; **V** compares those predictions with measured peaks; **Scientific Improver** converts TRAIN FIT failures into one bounded chemistry-learning intervention and experience for future decisions.
 
-**One source-grounded molecular example must connect input spectrum, partial G graphs, at least two candidate graphs, W predicted fragments and V observed-peak evidence.** First search real source-linked PR95 traces; MassSpecGym 0002114 provides a documented historical isomer-repair example only if a real MS/MS and scoring trace can be recovered. Do not invent chemical structures, fragment-ion assignments, scores or RSI improvements.
+**Five panels and visual allocation:** upper a (~15% height), middle b MMA (~31% width), c Generator (~29%), d W/V combined (~40%; total ~55% height), lower e Agentic RSI (~30%). The main content is one real experimentally measured spectrum, motif graph candidates, actual partial/complete precursor graphs and candidate-specific fragment evidence. Two distinct agent feedback lines carry WGV chemical changes and episodic decision memory. No fake structures, benchmark charts or generic algorithm cards.
 
-**Layout:** top scientific ambiguity (~18% height); middle detailed G/W/V evidence reasoning (~47%); lower detailed agent-driven RSI (~35%). Panels a–e cover these levels; Figure 1's final figure is \`figures/fig1_orbit_ms_method_overview.pdf\`. If text-to-image model cannot draw exact 2D chemistry, use deliberate insertion slots, then composite actual RDKit SVGs and vector experimental stick spectra.
+The **MMA panel is a first-class innovation**: observed peak → compatible ion formula → multiple graph-structured motifs → atom/bond correspondence to current molecular state → G action guidance. This is NOT a simple spectral embedding, an invented observed fragment molecule or a text/database retrieval symbol.
 
+The RSI panel reflects the **current PR96 four typed actions and episode memory**. Proposed PR96 extensions—richer chemistry failure packets, actual selection of the chemical training target cluster, semantically matched experiment-memory retrieval and cost-aware intervention comparison—are documented in the research roadmap but **must not be presented as implemented, autonomous accuracy gains or finished experimental results**.
 
-The owner explicitly fixes **Figure 1 as the ORBIT-MS method overview**. See [FIG1_IMAGEGEN_PROMPT_20261112.md](FIG1_IMAGEGEN_PROMPT_20261112.md) for the copy-ready text-to-image prompt and exact scientific layout.
+A single source-verified measured spectrum/candidate case must connect a–d, with real RDKit vector structures and matched W/V evidence. Historical MassSpecGym 0002114 is only a prospective illustrative case if all needed receipts exist; its post-generation structure edit must not be mislabeled as fixed-pool W/V ranking.
 
-- **a Experimental ambiguity:** one measured spectrum next to two verified same-composition, different-connectivity candidate graphs; no target graph supplied to inference.
-- **b Generator G and MMA:** actual peak-select/grow partial-graph trajectory using atom/ring/motif actions to produce competing complete structures; solves candidate-space coverage.
-- **c World W:** structure-conditioned, target-spectrum-blind structural fragment predictions for each competing graph, showing shared versus candidate-specific chemical possibilities.
-- **d Verifier V and structural reporting:** align actual measured ions to W's candidate-specific predictions, distinguish common evidence from discriminating fragment support, produce ranking or bounded interpretation.
-- **e Agentic RSI:** three distinct TRAIN FIT failure modes, one testable chemical hypothesis, one selected action, measured structural recovery and loss, two feedback paths (chemical capability versus agent experience memory) and next-generation inference.
-
-Figure 1 is not the 613,331-query bar chart or a family-distance landscape. Those results remain part of the source-accounting Results section and Extended Data Fig. 1–3; graph-supported family chemistry is represented in Figure 4. The page must show the two-level process, not generic colored AI workflow cards.
-
-**Figure 2 remains the chemistry/benchmark evidence figure. Figure 3 is the measured RSI result and agent-decision mechanism. Figures 4–5 cover chemical relationships and independent chemical evidence.** Do not repeat the entire high-level architecture in Figure 2.
+Figure 1 remains a **method figure**, while PR94 resource counts belong in the Results/Extended Data, Figure 2 contains hypothesis/evidence performance, Figure 3 contains measured Agentic RSI results (when completed), Figure 4 contains molecular-family chemical relationships and Figure 5 contains independent corroboration.
 
 ## Priority sequence: chemistry-first evidence, method Fig. 1, efficient reuse of existing WGV
 
@@ -66,6 +57,18 @@ Figure 1 is not the 613,331-query bar chart or a family-distance landscape. Thos
 - Run only the selected final version on available external NPLIB1/CASMI sets; earlier reported values are versioned historical references, not interchangeable with final release.
 - Keep **known-formula** CAL200 and homology-**Macro-Core-assisted** recovery separate from native de novo inference.
 - Select actual real spectra and molecular graphs (e.g. known benchmark macrolides) for explaining candidate-specific fragment evidence. These are *known benchmark examples*, not newly discovered metabolites.
+
+### Targeted PR96 research improvements (design only; not deployed)
+
+See the [RSI literature and code audit](FIG1_LITERATURE_VISUAL_STUDY_AND_RSI_RESEARCH_20261113.md). Preserve the current runner and action grammar as a lightweight foundation. The highest-value proposed improvement is to make the Agent decide **which chemistry to improve**, not merely whether the current error is a G or V error.
+
+- **P0 chemical evidence packet:** add per-peak motif/ion-composition coverage, source-backed partial-graph action failures, same-formula candidate-specific W/V evidence and explicit TRAIN FIT failure signatures. Existing PR96 currently passes a dozen top-candidate score summaries and history[-3:].
+- **P1 targeted typed intervention:** optionally extend action with an actual TRAIN FIT \`target_cluster\` selected from a source-backed roster, and ensure action execution really uses the target cases. A claimed targeted update without actual filtered training does not count.
+- **P1 semantic experimental memory:** retrieve applicable success **and failure** lessons by chemical signature, rather than only recent chronology; compare agent decisions with and without memory using actual intervention outcomes.
+- **P2 practical experimental allocation:** track actual GPU cost, regressions and new-recovery yield for each intervention, and prefer interventions whose experimental payoff is documented. Avoid a heavy new RL/MCTS agent.
+- **Proof:** 3 generations on frozen source cases, source-grounded new/lost structure IDs, independent molecule groups, fixed/scripted/no-memory comparisons, and cost-normalized real structural recovery. Existing PR96 has no completed autonomous generation metrics in the source audit.
+
+The 2026 scientific-agent literature supports these directions (Reflexion, ExpeL, GEPA, AFlow, Darwin Gödel Machine), but **their reported gains do not transfer automatically to ORBIT-MS**; all benefits remain hypotheses until tested.
 
 ### Work package C — Agent-directed recursive self-improvement for chemically recoverable space (R3)
 
