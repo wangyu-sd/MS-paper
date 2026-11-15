@@ -286,25 +286,21 @@ G_BASE中 **286/288** Top1来自TRAIN中同式 MCES≤4.5近亲；官方TEST中�
 | GeMS–Hindsight | **2,580 pairs** | Gen8历史报告，需检查训练实际consumption |
 | 非VAL/TEST结构先验池 | **597,383 molecules**（早期报告）或analog池 **637,194**（后续） | 不同构建时间和过滤口径，不能视为互相矛盾或单一版本 |
 
-### 9.2 Gen 1–10 方法/数据变化的历史开发账本
+### 9.2 Gen1–Gen10 完整代际结果（详细母表）
 
-| Gen | 作者记录的核心化学/工程变化 | 报告结果或已证实作用 | 科学身份 |
-|---|---|---|---|
-| 1 | MMA v1 + RingVocab / atom-ring-motif动作 | TEST200 Exact@10 1% | 人工/脚本开发阶段 |
-| 2 | Closed Motif Ladder、motif-first canonical ordering | 构建步数下降 | 训练算法结构修复 |
-| 3 | Atom-normalized beam + motif/ring保留 | CAL200 Exact@1 12.5%, Reach22.5% | 已知分子式条件 |
-| 4 | HMDB-W自合成 + MMA v2 12.98M | TEST200历史 Exact@1 2.0% | 某代开发快照 |
-| 5 | 双起点、W/V局部修复 | TEST200 Exact@10 2.5% | 历史算法组合 |
-| 6 | 非TEST同源Macro-Core → G短补全 | CAL200 raw 49.0% / Reach90% | **Homology-assisted** |
-| 7 | 异构体共识、化学拓扑先验、二轮 tautomer/取代基重建 | TEST200历史 5% 等；若干实际示例 | 未构成独立自主Agent episode |
-| 8 | 多源 sleep + GeMS Wake、MMA v3、formula rescue | CAL100 bare policy Exact@1 7.37%, Reach16.84% | 历史训练数据扩展 |
-| 9 | iminol→amide修复、ring CH2 contraction、1-step partial priority | 多数据分片启动，局部结构覆盖改善 | 更新中的开发历史 |
-| 10 | 不稳定 polyazo筛选、PKS/NRPS优先、跨能量共识 | 全TEST部分进展；具体历史数字见下一条审计 | 历史多阶段系统 |
-| 11–13代码 | compound repair（destroy/regrow）、跨能量真正W/V比对、SMARTS规则 | **代码已有，不代表已有同口径新指标** | 待完整运行回执 |
+**已另建完整逐代账本：** [ORBIT_MS_GEN1_GEN10_DETAILED_RESULTS_20261115.md](ORBIT_MS_GEN1_GEN10_DETAILED_RESULTS_20261115.md)。
 
-最新主分支的 Agent/RSI 控制还包括按失败簇与 `seen` 保持率分配真实/模拟训练比例，及真实LLM Principal的一次已保存决定：`EXPAND_NP_AND_WAKE`、预算26,000/epoch、HMDB 0.04 / 多源天然产物 0.12 / GeMS Wake+Hindsight 0.84。该 receipt 证明决策记录存在，不证明它带来了相应完整TEST收益。
+该文件逐项保留 Gen1–Gen10 的：
+- 每代在 TRAIN calibration 诊断出的失败类型；
+- 对应的代码/训练干预、资源规模和关键提交标识；
+- Official TEST 的 Exact@1、Exact@10、Tanimoto@1/@10/pool-max 历史快照；
+- CAL100/CAL200 的生成、Reach、W/V和Canonical Hybrid消融；
+- Gen7代表性结构恢复与二轮refinement案例；
+- Gen8–10的Wake–Sleep资源、课程配比、Gen10 LLM Principal决策receipt；
+- 1,072、1,996、4,400条 MassSpecGym 分片及 NPLIB1/CASMI 的跨benchmark结果；
+- 不同报告之间的代际编号、分母、Exact@10/Reach和后处理冲突。
 
-PR96 是独立 **draft**、更严格的 Scientific Improver implementation；截至本账本尚缺完整Agent-vs-fixed对应GPU训练episode与匹配性能结果。不要将PR95历史 Gen1–10称为 PR96 已完成的 autonomous RSI runs。
+**这里不再用一行摘要代替完整结果。** Gen1–Gen10 是持续WGV研发的历史代际，不等于十轮均由PR96 Agent自主完成；详细账本明确区分纯生成、已知分子式、homology-assisted、cross-generation memory和官方TEST开发快照。
 
 ### 9.3 真实的单分子技术示例（全部是已知 benchmark 回溯，不是新代谢物发现）
 
