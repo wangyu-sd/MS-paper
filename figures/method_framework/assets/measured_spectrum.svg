@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="42 46 453 94" font-family="Arial, Helvetica, sans-serif">
+<g id="measured-spectrum">
+<path d="M63 61V117H455" fill="none" stroke="#5F6E79" stroke-width="1"/>
+<text x="55" y="65" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="end" font-style="normal">1</text>
+<text x="55" y="121" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="end" font-style="normal">0</text>
+<path d="M103.407 117V90.703" fill="none" stroke="#BD8A58" stroke-width="2.0"/>
+<path d="M228.951 117V84.541" fill="none" stroke="#BD8A58" stroke-width="2.0"/>
+<path d="M422.317 117V61.000" fill="none" stroke="#BD8A58" stroke-width="2.0"/>
+<path d="M422.373 117V115.191" fill="none" stroke="#435F75" stroke-width="1"/>
+<path d="M89.576 117v4" fill="none" stroke="#5F6E79" stroke-width="1"/>
+<text x="90" y="134" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="middle" font-style="normal">70</text>
+<path d="M156.017 117v4" fill="none" stroke="#5F6E79" stroke-width="1"/>
+<text x="156" y="134" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="middle" font-style="normal">80</text>
+<path d="M222.458 117v4" fill="none" stroke="#5F6E79" stroke-width="1"/>
+<text x="222" y="134" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="middle" font-style="normal">90</text>
+<path d="M288.898 117v4" fill="none" stroke="#5F6E79" stroke-width="1"/>
+<text x="289" y="134" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="middle" font-style="normal">100</text>
+<path d="M355.339 117v4" fill="none" stroke="#5F6E79" stroke-width="1"/>
+<text x="355" y="134" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="middle" font-style="normal">110</text>
+<path d="M421.780 117v4" fill="none" stroke="#5F6E79" stroke-width="1"/>
+<text x="422" y="134" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="middle" font-style="normal">120</text>
+<text x="463" y="134" font-size="14" font-weight="400" fill="#5F6E79" text-anchor="start" font-style="italic">m/z</text>
+<text x="99" y="86" font-size="14" font-weight="400" fill="#865726" text-anchor="middle" font-style="normal">72.0816</text>
+<text x="225" y="80" font-size="14" font-weight="400" fill="#865726" text-anchor="middle" font-style="normal">90.9773</text>
+<text x="418" y="56" font-size="14" font-weight="400" fill="#865726" text-anchor="end" font-style="normal">120.0808</text>
+<text x="68" y="65" font-size="13" font-weight="400" fill="#5F6E79" text-anchor="start" font-style="normal">Relative intensity</text>
+</g>
+</svg>
