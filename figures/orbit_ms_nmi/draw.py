@@ -79,7 +79,7 @@ def role(x, y, code, name, color=BLUE):
     text(x+41, y, name, 22, fill=color, bold=True)
 
 
-def mol(key, smiles, x, y, w, h, *, atoms=(), bonds=None, scale_bond=19, color=(.70,.84,.79)):
+def mol(key, smiles, x, y, w, h, *, atoms=(), bonds=None, scale_bond=19, accent_bonds=()):
     m = Chem.MolFromSmiles(smiles)
     if m is None:
         raise ValueError(f"Invalid molecule {key}: {smiles}")
@@ -100,10 +100,12 @@ def mol(key, smiles, x, y, w, h, *, atoms=(), bonds=None, scale_bond=19, color=(
     if bonds is None:
         bonds = [b.GetIdx() for b in m.GetBonds()
                  if b.GetBeginAtomIdx() in a and b.GetEndAtomIdx() in a]
+    teal = (.70,.84,.79)
+    ochre = (.88,.72,.55)
     rdMolDraw2D.PrepareAndDrawMolecule(
         drawer, m, highlightAtoms=a, highlightBonds=bonds,
-        highlightAtomColors={i: color for i in a},
-        highlightBondColors={i: color for i in bonds},
+        highlightAtomColors={i: teal for i in a},
+        highlightBondColors={i: ochre if i in accent_bonds else teal for i in bonds},
         highlightAtomRadii={i:.19 for i in a},
     )
     drawer.FinishDrawing()
@@ -115,7 +117,7 @@ def mol(key, smiles, x, y, w, h, *, atoms=(), bonds=None, scale_bond=19, color=(
             for i in range(m.GetNumAtoms())]
 
 
-def plot(key, peaks, x, y, w, h, *, axis=False, highlight=None, color=BLUE):
+def plot(key, peaks, x, y, w, h, *, axis=False, highlight=None, color=BLUE, limits=None):
     """Build a standalone plot SVG, then inline editable vector content."""
     fig = plt.figure(figsize=(w/72, h/72), facecolor="none")
     a = fig.add_axes([.12,.24,.85,.68] if axis else [.02,.12,.96,.82])
@@ -129,6 +131,8 @@ def plot(key, peaks, x, y, w, h, *, axis=False, highlight=None, color=BLUE):
         a.text(masses[i]-1.3,.91,f"{masses[i]:.4f}",ha="right",va="top",
                fontsize=17, color="#805425")
     a.set_ylim(0,1.1)
+    if limits:
+        a.set_xlim(*limits)
     if axis:
         a.set_xlim(65,125)
         a.set_xticks([70,80,90,100,110,120]);a.set_yticks([0,1])
@@ -206,23 +210,39 @@ def first_panel():
     for g,m in [matches[4],matches[6]]:
         for x,y in (left[m],right[g]):
             circle(round(x,2),round(y,2),3.5,"#FFFFFF",TEAL,1.55)
-    text(176,594,"Motif graph",18,align="middle")
-    text(607,594,"Growing molecular graph",18,align="middle")
-    path("M67 615 H828", FAINT, 1)
-    text(66,642,"Motif graph encoder",18,bold=True,fill=DEEP)
-    for i in range(6):
-        rect(126+i*13,650,9,9,[MINT,MINT,TEAL,MINT,CLOUD,TEAL][i],1)
-    arrow("M264 640H291","teal")
-    text(302,635,"Peak-to-motif attention",17)
-    text(302,665,"Atom alignment + motif memory",17)
-    arrow("M529 629H565","teal");arrow("M539 659H565","teal")
-    text(576,635,"Peak memory",17,bold=True,fill=DEEP)
-    text(576,665,"Graph state",17,bold=True,fill=DEEP)
-    path("M711 627H745V657H711",TEAL,1.6)
-    arrow("M745 643H821","teal")
-    circle(827,643,6,TEAL)
-    text(816,625,"Graph action",16,fill=DEEP,align="end")
-    text(67,690,"Mass-aware variant: mass and hydrogen-shift features",17,fill=GRAY)
+    text(176,579,"Motif graph",18,align="middle")
+    text(607,579,"Growing molecular graph",18,align="middle")
+    path("M67 592 H828", FAINT, 1)
+    group("neural-readout", "Two separate MMA readouts condition the graph action")
+    text(66,614,"Motif graph encoder",17,bold=True,fill=DEEP)
+    text(262,614,"Peak-to-motif attention",17,bold=True,fill=DEEP)
+    for row, shade in enumerate((TEAL, "#87ACA5")):
+        y = 631 + row*16
+        for i in range(5):
+            rect(68+i*12, y-4, 9, 8, shade if (i+row)%3 else MINT, 1)
+        path(f"M127 {y}H189",shade,1.35)
+        circle(193,y,4.5,shade)
+        path(f"M198 {y}H213L309 642",shade,1.35)
+    circle(312,642,4.5,DEEP)
+    circle(310,623,3.8,GOLD)
+    path("M310 628V637",GOLD,1.25)
+    text(322,630,"Peak query",15,fill="#805425")
+    arrow("M318 642H462","teal",width=1.45)
+    text(472,648,"Peak memory",17,bold=True,fill=DEEP)
+    path("M108 650V665H128",TEAL,1.2)
+    for i in range(5):
+        rect(132+i*11,661,7,8,TEAL if i%2 else MINT,1)
+    text(193,671,"Motif atom memory",16,fill=DEEP)
+    arrow("M340 665H366","teal",width=1.45)
+    text(375,671,"Atom alignment",16,fill=DEEP)
+    arrow("M494 665H517","teal",width=1.45)
+    text(526,671,"Graph state",17,bold=True,fill=DEEP)
+    path("M586 641H642V666H621",TEAL,1.45)
+    arrow("M642 654H816","teal",width=1.6)
+    circle(825,654,5.5,TEAL)
+    text(811,642,"Graph action",16,fill=DEEP,align="end")
+    text(67,691,"Mass-aware variant also encodes exact mass and H shift",16,fill=GRAY)
+    end()
     end()
 
 
@@ -242,26 +262,34 @@ def second_panel():
         extra_links=[b.GetIdx() for b in m.GetBonds()
                      if (b.GetBeginAtomIdx() in new) != (b.GetEndAtomIdx() in new)]
         hi=new if i==2 else []
-        coat=(.69,.84,.80)
         draw=[b.GetIdx() for b in m.GetBonds()
               if b.GetBeginAtomIdx() in hi and b.GetEndAtomIdx() in hi]
         if i==2: draw+=extra_links
-        mol(f"growth_{i+1}",st,x,121,198,105,atoms=hi,bonds=draw,scale_bond=17,color=coat)
+        mol(f"growth_{i+1}",st,x,121,198,105,atoms=hi,bonds=draw,scale_bond=17,
+            accent_bonds=extra_links if i==2 else ())
         if i<3: arrow(f"M{x+202} 177H{x_list[i+1]-8}")
         text(x+99,251,["Motif start","Add an atom","Attach motif + new bond","Complete cyclic precursor"][i],
              17,fill=BLUE,align="middle")
     text(895,278,"Reference-conditioned action replay",16,fill=GRAY)
-    text(1864,278,"Highlighted: one motif attachment",16,fill=DEEP,align="end")
+    path("M1532 273h18",TEAL,4)
+    text(1558,278,"9-atom motif",16,fill=DEEP)
+    path("M1705 273h18",GOLD,4)
+    text(1731,278,"New attachment bond",16,fill=DEEP)
     path("M872 294 H1866", FAINT, 1)
     role(1114,336,"W","Fragmentation World")
     role(1483,336,"V","Verifier")
-    text(887,336,"Candidate structures",20,bold=True)
+    text(887,336,"G candidate pool",20,bold=True)
     text(1115,364,"Candidate graph → fragment ions",17,fill=GRAY)
     text(1484,364,"Compare with measured peaks",17,fill=GRAY)
-    # The measured input is represented by a second rendering of the same acquired spectrum.
-    plot("verifier_observed",DATA["query"]["peaks"],1511,379,267,52,color=GOLD)
-    text(1800,413,"Observed",15,fill="#805425")
-    arrow("M1644 432 V448","gold")
+    # The overview and inset share the same relative intensity scale.
+    measured = DATA["query"]["peaks"]
+    plot("verifier_observed",measured,1464,376,137,42,color=GOLD)
+    plot("verifier_observed_zoom",measured,1623,376,224,42,color=GOLD,
+         limits=(120.077,120.093))
+    text(1467,433,"Observed MS/MS",15,fill="#805425")
+    text(1737,433,"m/z 120 region",15,fill="#805425",align="middle")
+    path("M1594 412L1615 402M1594 384L1615 382",GOLD,1.1)
+    arrow("M1788 435 V447","gold",width=1.45)
 
     candidates=DATA["candidates"]
     evidence_cols=DATA["evidence"]["peaks"]
@@ -278,7 +306,7 @@ def second_panel():
                     atoms=f["atoms"],scale_bond=13)
             else:
                 mol(f"w_fragment_{c['label']}_{j}",f["skeleton"],x,y-38,140,61,
-                    scale_bond=15,color=(.77,.88,.84))
+                    scale_bond=15)
             text(x+70,y+33,f'{f["mass"]:.4f}',16,fill=DEEP if j else BLUE,align="middle")
         arrow(f"M1420 {y} H1443")
     rect(1456,450,407,177,CLOUD,5)
@@ -298,8 +326,8 @@ def second_panel():
     text(1460,650,"Shared",16,fill=GRAY);circle(1530,644,5,"#9BACB3")
     text(1560,650,"A-only (weak)",16,fill=DEEP);circle(1674,644,5,TEAL)
     text(1703,650,"Unsupported",16,fill=GRAY);circle(1812,644,6,"#FFFFFF","#9CACB2",1.2)
-    text(887,656,"Same elemental formula",18,fill=GRAY)
-    text(887,679,"A: rank 1 · B: rank 3",18,fill=BLUE)
+    text(887,656,"Same formula  ·  C₂₈H₃₆N₄O₄",17,fill=GRAY)
+    text(887,679,"A rank 1  ·  B rank 3",18,fill=BLUE)
     text(1130,656,"W-predicted ion m/z",18,fill=BLUE)
     text(1130,679,"Neutral skeletons shown",16,fill=GRAY)
     text(1456,681,"Ranked hypotheses or a bounded isomer set",19,bold=True,fill=BLUE)
@@ -365,11 +393,17 @@ def agent_panel():
     text(1373,912,"Train selected component",16,fill=PLUM)
     arrow("M1759 875H1888","violet",dash="4 4",width=1.4)
     rect(1371,927,498,51,LILAC,5)
-    text(1384,949,"Paired evaluation",18,bold=True,fill=PLUM)
-    text(1384,970,"Gate promotion on recovery and regressions",16,fill=INK)
+    text(1384,947,"Baseline",16,fill=PLUM)
+    text(1384,969,"Trial",16,fill=PLUM)
+    path("M1450 942h15q10 0 14 8M1422 964h43q10 0 14-8",PLUM,1.25)
+    circle(1481,953,3,PLUM)
+    arrow("M1488 953h22","violet",width=1.25)
+    text(1518,949,"Paired evaluation on the same cases",17,bold=True,fill=PLUM)
+    text(1518,970,"Gate on recovery and regressions",16,fill=INK)
     arrow("M1867 951Q1890 951 1890 798H1852","violet",dash="4 5")
     text(1869,914,"Episode memory",16,fill=PLUM,align="end")
     arrow("M1400 979V1011H1364","teal")
+    text(1410,1017,"If promoted",16,fill=DEEP)
     arrow("M1021 1011H1081","teal")
     rect(1088,989,268,45,MINT,5)
     text(1222,1018,"Update MMA / G / V",19,bold=True,fill=DEEP,align="middle")

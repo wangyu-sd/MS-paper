@@ -1479,28 +1479,51 @@ L 548.6 94.0
 <circle cx="490.87" cy="477.7" r="3.5" fill="#FFFFFF" stroke="#4E8C89" stroke-width="1.55"/>
 <circle cx="294.36" cy="505.26" r="3.5" fill="#FFFFFF" stroke="#4E8C89" stroke-width="1.55"/>
 <circle cx="455.82" cy="519.51" r="3.5" fill="#FFFFFF" stroke="#4E8C89" stroke-width="1.55"/>
-<text x="176" y="594" font-size="18" fill="#30373C" font-weight="400" text-anchor="middle">Motif graph</text>
-<text x="607" y="594" font-size="18" fill="#30373C" font-weight="400" text-anchor="middle">Growing molecular graph</text>
-<path d="M67 615 H828" fill="none" stroke="#D9E4E3" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
-<text x="66" y="642" font-size="18" fill="#2E615E" font-weight="700" text-anchor="start">Motif graph encoder</text>
-<rect x="126" y="650" width="9" height="9" rx="1" fill="#E7F1EE"/>
-<rect x="139" y="650" width="9" height="9" rx="1" fill="#E7F1EE"/>
-<rect x="152" y="650" width="9" height="9" rx="1" fill="#4E8C89"/>
-<rect x="165" y="650" width="9" height="9" rx="1" fill="#E7F1EE"/>
-<rect x="178" y="650" width="9" height="9" rx="1" fill="#EDF2F5"/>
-<rect x="191" y="650" width="9" height="9" rx="1" fill="#4E8C89"/>
-<path d="M264 640H291" fill="none" stroke="#4E8C89" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
-<text x="302" y="635" font-size="17" fill="#30373C" font-weight="400" text-anchor="start">Peak-to-motif attention</text>
-<text x="302" y="665" font-size="17" fill="#30373C" font-weight="400" text-anchor="start">Atom alignment + motif memory</text>
-<path d="M529 629H565" fill="none" stroke="#4E8C89" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
-<path d="M539 659H565" fill="none" stroke="#4E8C89" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
-<text x="576" y="635" font-size="17" fill="#2E615E" font-weight="700" text-anchor="start">Peak memory</text>
-<text x="576" y="665" font-size="17" fill="#2E615E" font-weight="700" text-anchor="start">Graph state</text>
-<path d="M711 627H745V657H711" fill="none" stroke="#4E8C89" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M745 643H821" fill="none" stroke="#4E8C89" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
-<circle cx="827" cy="643" r="6" fill="#4E8C89" stroke="none" stroke-width="1"/>
-<text x="816" y="625" font-size="16" fill="#2E615E" font-weight="400" text-anchor="end">Graph action</text>
-<text x="67" y="690" font-size="17" fill="#61717A" font-weight="400" text-anchor="start">Mass-aware variant: mass and hydrogen-shift features</text>
+<text x="176" y="579" font-size="18" fill="#30373C" font-weight="400" text-anchor="middle">Motif graph</text>
+<text x="607" y="579" font-size="18" fill="#30373C" font-weight="400" text-anchor="middle">Growing molecular graph</text>
+<path d="M67 592 H828" fill="none" stroke="#D9E4E3" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<g id="neural-readout" role="group" aria-label="Two separate MMA readouts condition the graph action"><title>Two separate MMA readouts condition the graph action</title>
+<text x="66" y="614" font-size="17" fill="#2E615E" font-weight="700" text-anchor="start">Motif graph encoder</text>
+<text x="262" y="614" font-size="17" fill="#2E615E" font-weight="700" text-anchor="start">Peak-to-motif attention</text>
+<rect x="68" y="627" width="9" height="8" rx="1" fill="#E7F1EE"/>
+<rect x="80" y="627" width="9" height="8" rx="1" fill="#4E8C89"/>
+<rect x="92" y="627" width="9" height="8" rx="1" fill="#4E8C89"/>
+<rect x="104" y="627" width="9" height="8" rx="1" fill="#E7F1EE"/>
+<rect x="116" y="627" width="9" height="8" rx="1" fill="#4E8C89"/>
+<path d="M127 631H189" fill="none" stroke="#4E8C89" stroke-width="1.35" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="193" cy="631" r="4.5" fill="#4E8C89" stroke="none" stroke-width="1"/>
+<path d="M198 631H213L309 642" fill="none" stroke="#4E8C89" stroke-width="1.35" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="68" y="643" width="9" height="8" rx="1" fill="#87ACA5"/>
+<rect x="80" y="643" width="9" height="8" rx="1" fill="#87ACA5"/>
+<rect x="92" y="643" width="9" height="8" rx="1" fill="#E7F1EE"/>
+<rect x="104" y="643" width="9" height="8" rx="1" fill="#87ACA5"/>
+<rect x="116" y="643" width="9" height="8" rx="1" fill="#87ACA5"/>
+<path d="M127 647H189" fill="none" stroke="#87ACA5" stroke-width="1.35" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="193" cy="647" r="4.5" fill="#87ACA5" stroke="none" stroke-width="1"/>
+<path d="M198 647H213L309 642" fill="none" stroke="#87ACA5" stroke-width="1.35" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="312" cy="642" r="4.5" fill="#2E615E" stroke="none" stroke-width="1"/>
+<circle cx="310" cy="623" r="3.8" fill="#BD8A58" stroke="none" stroke-width="1"/>
+<path d="M310 628V637" fill="none" stroke="#BD8A58" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="322" y="630" font-size="15" fill="#805425" font-weight="400" text-anchor="start">Peak query</text>
+<path d="M318 642H462" fill="none" stroke="#4E8C89" stroke-width="1.45" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<text x="472" y="648" font-size="17" fill="#2E615E" font-weight="700" text-anchor="start">Peak memory</text>
+<path d="M108 650V665H128" fill="none" stroke="#4E8C89" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="132" y="661" width="7" height="8" rx="1" fill="#E7F1EE"/>
+<rect x="143" y="661" width="7" height="8" rx="1" fill="#4E8C89"/>
+<rect x="154" y="661" width="7" height="8" rx="1" fill="#E7F1EE"/>
+<rect x="165" y="661" width="7" height="8" rx="1" fill="#4E8C89"/>
+<rect x="176" y="661" width="7" height="8" rx="1" fill="#E7F1EE"/>
+<text x="193" y="671" font-size="16" fill="#2E615E" font-weight="400" text-anchor="start">Motif atom memory</text>
+<path d="M340 665H366" fill="none" stroke="#4E8C89" stroke-width="1.45" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<text x="375" y="671" font-size="16" fill="#2E615E" font-weight="400" text-anchor="start">Atom alignment</text>
+<path d="M494 665H517" fill="none" stroke="#4E8C89" stroke-width="1.45" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<text x="526" y="671" font-size="17" fill="#2E615E" font-weight="700" text-anchor="start">Graph state</text>
+<path d="M586 641H642V666H621" fill="none" stroke="#4E8C89" stroke-width="1.45" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M642 654H816" fill="none" stroke="#4E8C89" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<circle cx="825" cy="654" r="5.5" fill="#4E8C89" stroke="none" stroke-width="1"/>
+<text x="811" y="642" font-size="16" fill="#2E615E" font-weight="400" text-anchor="end">Graph action</text>
+<text x="67" y="691" font-size="16" fill="#61717A" font-weight="400" text-anchor="start">Mass-aware variant also encodes exact mass and H shift</text>
+</g>
 </g>
 <g id="panel-b" role="group" aria-label="World–Generator–Verifier (WGV)"><title>World–Generator–Verifier (WGV)</title>
 <text x="867" y="57" font-size="35" fill="#435F75" font-weight="700" text-anchor="start">b</text>
@@ -1640,25 +1663,25 @@ L 142.2 194.8
 <path d="M1336 177H1377" fill="none" stroke="#435F75" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#blue)"/>
 <text x="1233" y="251" font-size="17" fill="#435F75" font-weight="400" text-anchor="middle">Add an atom</text>
 <g id="growth_3" transform="translate(1385 121) scale(0.3333333333)"><!-- END OF HEADER -->
-<path class='bond-0 atom-0 atom-1' d='M 228.8,144.5 L 234.5,149.3 L 225.4,198.6 L 212.7,196.3 L 221.8,147.0 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-1 atom-1 atom-2' d='M 277.4,120.3 L 281.7,132.5 L 234.5,149.3 L 228.8,144.5 L 230.1,137.1 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-11 atom-1 atom-12' d='M 189.2,102.2 L 230.1,137.1 L 228.8,144.5 L 221.8,147.0 L 186.4,116.9 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-12 atom-12 atom-13' d='M 189.2,102.2 L 186.4,116.9 L 142.7,132.4 L 137.0,127.5 L 138.4,120.2 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-13 atom-13 atom-14' d='M 97.4,85.3 L 138.4,120.2 L 137.0,127.5 L 130.0,130.0 L 94.7,99.9 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-19 atom-13 atom-18' d='M 137.0,127.5 L 142.7,132.4 L 133.0,185.3 L 121.6,175.7 L 130.0,130.0 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-14 atom-14 atom-15' d='M 97.4,85.3 L 94.7,99.9 L 51.0,115.5 L 39.6,105.8 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-15 atom-15 atom-16' d='M 39.6,105.8 L 51.0,115.5 L 42.6,161.1 L 28.5,166.1 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-16 atom-16 atom-17' d='M 42.6,161.1 L 77.9,191.2 L 75.2,205.9 L 28.5,166.1 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<path class='bond-17 atom-17 atom-18' d='M 121.6,175.7 L 133.0,185.3 L 75.2,205.9 L 77.9,191.2 Z' style='fill:#AFD6CC;fill-rule:evenodd;fill-opacity:1;stroke:#AFD6CC;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
-<ellipse cx='238.4' cy='203.4' rx='40.4' ry='25.5' class='atom-0'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='228.8' cy='144.5' rx='6.8' ry='6.8' class='atom-1'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='187.8' cy='109.5' rx='6.8' ry='6.8' class='atom-12'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='137.0' cy='127.5' rx='6.8' ry='6.8' class='atom-13'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='96.1' cy='92.6' rx='6.8' ry='6.8' class='atom-14'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='45.3' cy='110.6' rx='6.8' ry='6.8' class='atom-15'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='35.5' cy='163.6' rx='6.8' ry='6.8' class='atom-16'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='76.5' cy='198.5' rx='6.8' ry='6.8' class='atom-17'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
-<ellipse cx='127.3' cy='180.5' rx='6.8' ry='6.8' class='atom-18'  style='fill:#AFD6CC;fill-rule:evenodd;stroke:#AFD6CC;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 228.8,144.5 L 234.5,149.3 L 225.4,198.6 L 212.7,196.3 L 221.8,147.0 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-1 atom-1 atom-2' d='M 277.4,120.3 L 281.7,132.5 L 234.5,149.3 L 228.8,144.5 L 230.1,137.1 Z' style='fill:#E0B78C;fill-rule:evenodd;fill-opacity:1;stroke:#E0B78C;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-11 atom-1 atom-12' d='M 189.2,102.2 L 230.1,137.1 L 228.8,144.5 L 221.8,147.0 L 186.4,116.9 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-12 atom-12 atom-13' d='M 189.2,102.2 L 186.4,116.9 L 142.7,132.4 L 137.0,127.5 L 138.4,120.2 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-13 atom-13 atom-14' d='M 97.4,85.3 L 138.4,120.2 L 137.0,127.5 L 130.0,130.0 L 94.7,99.9 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-19 atom-13 atom-18' d='M 137.0,127.5 L 142.7,132.4 L 133.0,185.3 L 121.6,175.7 L 130.0,130.0 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-14 atom-14 atom-15' d='M 97.4,85.3 L 94.7,99.9 L 51.0,115.5 L 39.6,105.8 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-15 atom-15 atom-16' d='M 39.6,105.8 L 51.0,115.5 L 42.6,161.1 L 28.5,166.1 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-16 atom-16 atom-17' d='M 42.6,161.1 L 77.9,191.2 L 75.2,205.9 L 28.5,166.1 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='bond-17 atom-17 atom-18' d='M 121.6,175.7 L 133.0,185.3 L 75.2,205.9 L 77.9,191.2 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<ellipse cx='238.4' cy='203.4' rx='40.4' ry='25.5' class='atom-0'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='228.8' cy='144.5' rx='6.8' ry='6.8' class='atom-1'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='187.8' cy='109.5' rx='6.8' ry='6.8' class='atom-12'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='137.0' cy='127.5' rx='6.8' ry='6.8' class='atom-13'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='96.1' cy='92.6' rx='6.8' ry='6.8' class='atom-14'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='45.3' cy='110.6' rx='6.8' ry='6.8' class='atom-15'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='35.5' cy='163.6' rx='6.8' ry='6.8' class='atom-16'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='76.5' cy='198.5' rx='6.8' ry='6.8' class='atom-17'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<ellipse cx='127.3' cy='180.5' rx='6.8' ry='6.8' class='atom-18'  style='fill:#B2D6C9;fill-rule:evenodd;stroke:#B2D6C9;stroke-width:1.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
 <path class='bond-0 atom-0 atom-1' d='M 221.6,183.6 L 228.8,144.5' style='fill:none;fill-rule:evenodd;stroke:#30373B;stroke-width:4.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
 <path class='bond-1 atom-1 atom-2' d='M 228.8,144.5 L 279.5,126.4' style='fill:none;fill-rule:evenodd;stroke:#30373B;stroke-width:4.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
 <path class='bond-2 atom-2 atom-3' d='M 279.5,126.4 L 294.6,139.3' style='fill:none;fill-rule:evenodd;stroke:#30373B;stroke-width:4.5px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
@@ -2062,7 +2085,10 @@ Q 338.8 282.8, 342.4 282.8
 ' fill='#9E4433'/></g>
 <text x="1726" y="251" font-size="17" fill="#435F75" font-weight="400" text-anchor="middle">Complete cyclic precursor</text>
 <text x="895" y="278" font-size="16" fill="#61717A" font-weight="400" text-anchor="start">Reference-conditioned action replay</text>
-<text x="1864" y="278" font-size="16" fill="#2E615E" font-weight="400" text-anchor="end">Highlighted: one motif attachment</text>
+<path d="M1532 273h18" fill="none" stroke="#4E8C89" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1558" y="278" font-size="16" fill="#2E615E" font-weight="400" text-anchor="start">9-atom motif</text>
+<path d="M1705 273h18" fill="none" stroke="#BD8A58" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="1731" y="278" font-size="16" fill="#2E615E" font-weight="400" text-anchor="start">New attachment bond</text>
 <path d="M872 294 H1866" fill="none" stroke="#D9E4E3" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
 <circle cx="1129" cy="328" r="15" fill="#435F75" stroke="none" stroke-width="1"/>
 <text x="1129" y="335" font-size="20" fill="#FFFFFF" font-weight="700" text-anchor="middle">W</text>
@@ -2070,65 +2096,117 @@ Q 338.8 282.8, 342.4 282.8
 <circle cx="1498" cy="328" r="15" fill="#435F75" stroke="none" stroke-width="1"/>
 <text x="1498" y="335" font-size="20" fill="#FFFFFF" font-weight="700" text-anchor="middle">V</text>
 <text x="1524" y="336" font-size="22" fill="#435F75" font-weight="700" text-anchor="start">Verifier</text>
-<text x="887" y="336" font-size="20" fill="#30373C" font-weight="700" text-anchor="start">Candidate structures</text>
+<text x="887" y="336" font-size="20" fill="#30373C" font-weight="700" text-anchor="start">G candidate pool</text>
 <text x="1115" y="364" font-size="17" fill="#61717A" font-weight="400" text-anchor="start">Candidate graph → fragment ions</text>
 <text x="1484" y="364" font-size="17" fill="#61717A" font-weight="400" text-anchor="start">Compare with measured peaks</text>
-<g transform="translate(1511 379)">
+<g transform="translate(1464 376)">
 
  <defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="verifier_observed-figure_1">
   <g id="verifier_observed-patch_1">
-   <path d="M 0 52
-L 267 52
-L 267 0
+   <path d="M 0 42
+L 137 42
+L 137 0
 L 0 0
-L 0 52
+L 0 42
 z
 " style="fill: none"/>
   </g>
   <g id="verifier_observed-axes_1">
    <g id="verifier_observed-patch_2">
-    <path d="M 5.34 45.76
-L 261.66 45.76
-L 261.66 3.12
-L 5.34 3.12
-L 5.34 45.76
+    <path d="M 2.74 36.96
+L 134.26 36.96
+L 134.26 2.52
+L 2.74 2.52
+L 2.74 36.96
 z
 " style="fill: none"/>
    </g>
    <g id="verifier_observed-matplotlib.axis_1"/>
    <g id="verifier_observed-matplotlib.axis_2"/>
    <g id="verifier_observed-LineCollection_1">
-    <path d="M 16.990909 45.76
-L 16.990909 27.556723
-" clip-path="url(#verifier_observed-p87098ab8b5)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
-    <path d="M 108.706231 45.76
-L 108.706231 23.291409
-" clip-path="url(#verifier_observed-p87098ab8b5)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
-    <path d="M 249.967834 45.76
-L 249.967834 6.996364
-" clip-path="url(#verifier_observed-p87098ab8b5)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
-    <path d="M 250.009091 45.76
-L 250.009091 44.507484
-" clip-path="url(#verifier_observed-p87098ab8b5)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+    <path d="M 8.718182 36.96
+L 8.718182 22.257353
+" clip-path="url(#verifier_observed-p47a192f932)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+    <path d="M 55.778104 36.96
+L 55.778104 18.812292
+" clip-path="url(#verifier_observed-p47a192f932)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+    <path d="M 128.260649 36.96
+L 128.260649 5.650909
+" clip-path="url(#verifier_observed-p47a192f932)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+    <path d="M 128.281818 36.96
+L 128.281818 35.948352
+" clip-path="url(#verifier_observed-p47a192f932)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
    </g>
    <g id="verifier_observed-patch_3">
-    <path d="M 5.34 45.76
-L 261.66 45.76
+    <path d="M 2.74 36.96
+L 134.26 36.96
 " style="fill: none; stroke: #61717a; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="verifier_observed-p87098ab8b5">
-   <rect x="5.34" y="3.12" width="256.32" height="42.64"/>
+  <clipPath id="verifier_observed-p47a192f932">
+   <rect x="2.74" y="2.52" width="131.52" height="34.44"/>
   </clipPath>
  </defs>
 </g>
-<text x="1800" y="413" font-size="15" fill="#805425" font-weight="400" text-anchor="start">Observed</text>
-<path d="M1644 432 V448" fill="none" stroke="#BD8A58" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gold)"/>
+<g transform="translate(1623 376)">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="verifier_observed_zoom-figure_1">
+  <g id="verifier_observed_zoom-patch_1">
+   <path d="M 0 42
+L 224 42
+L 224 0
+L 0 0
+L 0 42
+z
+" style="fill: none"/>
+  </g>
+  <g id="verifier_observed_zoom-axes_1">
+   <g id="verifier_observed_zoom-patch_2">
+    <path d="M 4.48 36.96
+L 219.52 36.96
+L 219.52 2.52
+L 4.48 2.52
+L 4.48 36.96
+z
+" style="fill: none"/>
+   </g>
+   <g id="verifier_observed_zoom-matplotlib.axis_1"/>
+   <g id="verifier_observed_zoom-matplotlib.axis_2"/>
+   <g id="verifier_observed_zoom-LineCollection_1">
+    <path clip-path="url(#verifier_observed_zoom-pced604e054)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+    <path clip-path="url(#verifier_observed_zoom-pced604e054)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+    <path d="M 55.552 36.96
+L 55.552 5.650909
+" clip-path="url(#verifier_observed_zoom-pced604e054)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+    <path d="M 169.792 36.96
+L 169.792 35.948352
+" clip-path="url(#verifier_observed_zoom-pced604e054)" style="fill: none; stroke: #bd8a58; stroke-width: 1.2"/>
+   </g>
+   <g id="verifier_observed_zoom-patch_3">
+    <path d="M 4.48 36.96
+L 219.52 36.96
+" style="fill: none; stroke: #61717a; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="verifier_observed_zoom-pced604e054">
+   <rect x="4.48" y="2.52" width="215.04" height="34.44"/>
+  </clipPath>
+ </defs>
+</g>
+<text x="1467" y="433" font-size="15" fill="#805425" font-weight="400" text-anchor="start">Observed MS/MS</text>
+<text x="1737" y="433" font-size="15" fill="#805425" font-weight="400" text-anchor="middle">m/z 120 region</text>
+<path d="M1594 412L1615 402M1594 384L1615 382" fill="none" stroke="#BD8A58" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1788 435 V447" fill="none" stroke="#BD8A58" stroke-width="1.45" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#gold)"/>
 <text x="881" y="502" font-size="24" fill="#435F75" font-weight="700" text-anchor="start">A</text>
 <g id="candidate_A" transform="translate(913 454) scale(0.3333333333)"><!-- END OF HEADER -->
 <path class='bond-18 atom-18 atom-19' d='M 298.2,58.9 L 304.1,64.4 L 298.6,88.1 L 290.6,91.7 Z' style='fill:#B2D6C9;fill-rule:evenodd;fill-opacity:1;stroke:#B2D6C9;stroke-width:0.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
@@ -2912,8 +2990,8 @@ L 69.4 80.5
 <circle cx="1674" cy="644" r="5" fill="#4E8C89" stroke="none" stroke-width="1"/>
 <text x="1703" y="650" font-size="16" fill="#61717A" font-weight="400" text-anchor="start">Unsupported</text>
 <circle cx="1812" cy="644" r="6" fill="#FFFFFF" stroke="#9CACB2" stroke-width="1.2"/>
-<text x="887" y="656" font-size="18" fill="#61717A" font-weight="400" text-anchor="start">Same elemental formula</text>
-<text x="887" y="679" font-size="18" fill="#435F75" font-weight="400" text-anchor="start">A: rank 1 · B: rank 3</text>
+<text x="887" y="656" font-size="17" fill="#61717A" font-weight="400" text-anchor="start">Same formula  ·  C₂₈H₃₆N₄O₄</text>
+<text x="887" y="679" font-size="18" fill="#435F75" font-weight="400" text-anchor="start">A rank 1  ·  B rank 3</text>
 <text x="1130" y="656" font-size="18" fill="#435F75" font-weight="400" text-anchor="start">W-predicted ion m/z</text>
 <text x="1130" y="679" font-size="16" fill="#61717A" font-weight="400" text-anchor="start">Neutral skeletons shown</text>
 <text x="1456" y="681" font-size="19" fill="#435F75" font-weight="700" text-anchor="start">Ranked hypotheses or a bounded isomer set</text>
@@ -4137,11 +4215,17 @@ L 67.62 32.56
 <text x="1373" y="912" font-size="16" fill="#796A82" font-weight="400" text-anchor="start">Train selected component</text>
 <path d="M1759 875H1888" fill="none" stroke="#796A82" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 4" marker-end="url(#violet)"/>
 <rect x="1371" y="927" width="498" height="51" rx="5" fill="#F0ECF2"/>
-<text x="1384" y="949" font-size="18" fill="#796A82" font-weight="700" text-anchor="start">Paired evaluation</text>
-<text x="1384" y="970" font-size="16" fill="#30373C" font-weight="400" text-anchor="start">Gate promotion on recovery and regressions</text>
+<text x="1384" y="947" font-size="16" fill="#796A82" font-weight="400" text-anchor="start">Baseline</text>
+<text x="1384" y="969" font-size="16" fill="#796A82" font-weight="400" text-anchor="start">Trial</text>
+<path d="M1450 942h15q10 0 14 8M1422 964h43q10 0 14-8" fill="none" stroke="#796A82" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="1481" cy="953" r="3" fill="#796A82" stroke="none" stroke-width="1"/>
+<path d="M1488 953h22" fill="none" stroke="#796A82" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#violet)"/>
+<text x="1518" y="949" font-size="17" fill="#796A82" font-weight="700" text-anchor="start">Paired evaluation on the same cases</text>
+<text x="1518" y="970" font-size="16" fill="#30373C" font-weight="400" text-anchor="start">Gate on recovery and regressions</text>
 <path d="M1867 951Q1890 951 1890 798H1852" fill="none" stroke="#796A82" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 5" marker-end="url(#violet)"/>
 <text x="1869" y="914" font-size="16" fill="#796A82" font-weight="400" text-anchor="end">Episode memory</text>
 <path d="M1400 979V1011H1364" fill="none" stroke="#4E8C89" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
+<text x="1410" y="1017" font-size="16" fill="#2E615E" font-weight="400" text-anchor="start">If promoted</text>
 <path d="M1021 1011H1081" fill="none" stroke="#4E8C89" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#teal)"/>
 <rect x="1088" y="989" width="268" height="45" rx="5" fill="#E7F1EE"/>
 <text x="1222" y="1018" font-size="19" fill="#2E615E" font-weight="700" text-anchor="middle">Update MMA / G / V</text>

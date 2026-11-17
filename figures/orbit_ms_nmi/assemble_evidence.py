@@ -12,6 +12,7 @@ from rdkit.Chem.rdMolDescriptors import CalcMolFormula
 
 CASE = "MassSpecGymID0002114"
 PR95 = "44bf931fc2510fc7b86c02024c719ee34f4ee144"
+PR95_AUDITED_HEAD = "efce3e5452f124b6971336a74ddb5c9d5031e516"
 PR96 = "c63c32ce24b29d959164c2b081e511b25641a1c4"
 PR12 = "91045d0d3966ed66058a3c1cdb7176f2fbba28ad"
 PR13 = "b53a2b9351597312e41f773df2459df194441aa8"
@@ -185,7 +186,8 @@ def main():
         states["reference_replay_motifs"]=g["motif_templates"]
     manifest={
         "design_and_source": {
-            "paper_PR12":PR12,"paper_PR13":PR13,"orbit_PR95":PR95,"orbit_PR96":PR96,
+            "paper_PR12":PR12,"paper_PR13":PR13,"orbit_PR95":PR95,
+            "orbit_PR95_audited_head":PR95_AUDITED_HEAD,"orbit_PR96":PR96,
             "score_source":f"https://github.com/wangyu-sd/orbit-ms/blob/{PR95}/scripts/score_pr87_frozen_wv_graph_edit.py",
             "agent_source":f"https://github.com/wangyu-sd/orbit-ms/blob/{PR96}/src/orbit_ms/agents/scientific_improver.py"},
         "query":query,"query_source":raw[0]["path"],

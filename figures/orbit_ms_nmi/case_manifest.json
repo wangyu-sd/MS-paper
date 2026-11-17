@@ -3,6 +3,7 @@
     "paper_PR12": "91045d0d3966ed66058a3c1cdb7176f2fbba28ad",
     "paper_PR13": "b53a2b9351597312e41f773df2459df194441aa8",
     "orbit_PR95": "44bf931fc2510fc7b86c02024c719ee34f4ee144",
+    "orbit_PR95_audited_head": "efce3e5452f124b6971336a74ddb5c9d5031e516",
     "orbit_PR96": "c63c32ce24b29d959164c2b081e511b25641a1c4",
     "score_source": "https://github.com/wangyu-sd/orbit-ms/blob/44bf931fc2510fc7b86c02024c719ee34f4ee144/scripts/score_pr87_frozen_wv_graph_edit.py",
     "agent_source": "https://github.com/wangyu-sd/orbit-ms/blob/c63c32ce24b29d959164c2b081e511b25641a1c4/src/orbit_ms/agents/scientific_improver.py"
