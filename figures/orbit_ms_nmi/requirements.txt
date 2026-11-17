@@ -1,0 +1,4 @@
+matplotlib==3.9.4
+numpy==1.26.4
+Pillow==13.0.0
+rdkit==2025.9.3
