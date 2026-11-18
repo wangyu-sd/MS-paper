@@ -5,6 +5,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import subprocess
+import re
 import xml.etree.ElementTree as ET
 
 import numpy as np
@@ -19,10 +20,11 @@ SOURCE = FIG / "orbit_ms_nmi_figure1_sources"
 VERIFY = SOURCE / "verification"
 STEM = FIG / "orbit_ms_nmi_figure1_vector"
 NS = {"s": "http://www.w3.org/2000/svg"}
-PANELS = {"a": (0, 0, 687, 174), "b": (687, 0, 1670, 174),
-          "c": (0, 174, 383, 720), "d": (383, 174, 1153, 720),
-          "e": (1153, 174, 1670, 720), "f": (0, 720, 453, 942),
-          "g": (453, 720, 1034, 942), "h": (1034, 720, 1670, 942)}
+PANELS = {
+    "a":(0,0,586,164),"b":(586,0,1670,164),
+    "c":(0,164,361,649),"d":(361,164,1177,649),"e":(1177,164,1670,649),
+    "f":(0,649,445,942),"g":(445,649,1008,942),"h":(1008,649,1670,942),
+}
 
 
 def digest(p):
@@ -54,7 +56,7 @@ def main():
     for letter in PANELS:
         assert "panel-"+letter in ids
     counts = Counter(e.tag.rsplit("}", 1)[-1] for e in all_elements)
-    assert counts["text"] > 150 and counts["path"] > 500 and counts["circle"] >= 91
+    assert counts["text"] > 85 and counts["path"] > 500 and counts["circle"] >= 91
 
     document = pymupdf.open(pdf_path)
     assert len(document) == 1
@@ -109,11 +111,9 @@ def main():
     assert paired["fold"]=="train" and len(paired["peaks"])==20
     spectrum_sources = {
         "a-measured":case["query"], "e-measured":case["query"],
-        "f-paired-input":paired, "f-paired-pair":paired,
-        "f-sleep-pair":case["experience"]["sleep"],
-        "f-wake-input":case["experience"]["wake"],
-        "f-wake-pair":case["experience"]["wake"],
-        "f-hindsight-pair":case["experience"]["hindsight"],
+        "f-atlas-paired":paired, "f-atlas-sleep":case["experience"]["sleep"],
+        "f-atlas-wake":case["experience"]["wake"],
+        "f-atlas-hindsight":case["experience"]["hindsight"],
     }
     for name,record in spectrum_sources.items():
         plot=root.find(f'.//s:g[@id="spectrum-{name}"]',NS)
@@ -153,12 +153,18 @@ def main():
     overlaps = []
     for i, left in enumerate(bounds):
         for right in bounds[i+1:]:
-            if left.get("panel") != right.get("panel"):
-                continue
             dx = min(left["right"], right["right"]) - max(left["left"], right["left"])
             dy = min(left["bottom"], right["bottom"]) - max(left["top"], right["top"])
             if dx > 3 and dy > 2:
                 overlaps.append([left["text"], right["text"]])
+    panel_overflow = []
+    for item in bounds:
+        if not item["panel"]:
+            continue
+        x0,y0,x1,y1=PANELS[item["panel"][-1]]
+        if item["left"]<x0 or item["right"]>x1 or item["top"]<y0 or item["bottom"]>y1:
+            panel_overflow.append(item["text"])
+    assert not panel_overflow, panel_overflow
     assert not clipped, clipped
     assert not overlaps, overlaps
     connector_crossings = json.loads((VERIFY/'connector-crossings.json').read_text())
@@ -219,6 +225,7 @@ def main():
     spans = [span for b in page.get_text("dict")["blocks"] if b["type"] == 0
              for line in b["lines"] for span in line["spans"]]
     statistics = {
+        "label_words": len(re.findall(r"[A-Za-z]+(?:[-–][A-Za-z]+)*",text)),
         "pdf_pages": len(document), "page_points": list(page.rect), "page_mm": [page.rect.width*25.4/72,page.rect.height*25.4/72],
         "pdf_image_count": 0, "pdf_path_objects": len(page.get_drawings()), "pdf_text_characters": len(text),
         "font_families": families, "embedded_font_records": len(page.get_fonts(full=True)),

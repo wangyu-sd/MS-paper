@@ -8,12 +8,72 @@
   "assets": [
     {
       "file": "assets/a-measured.svg",
-      "sha256": "b95c349b8d0364b6fa2e7aac2a85ca0e01a23daba51c45a46c3076157eb6a16e",
+      "sha256": "c19b663f88ba05acc32f75e1ea075177b15a4cf9aa0a41a94070af5ec6e5a580",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-f-hindsight.svg",
+      "sha256": "fe6c9b31e04b2f03239d33e2fbb405cc52345c8d0eaa08f001478c28a9628f1a",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-f-paired.svg",
+      "sha256": "0f8b0d7fa9153c44027b46dca4624afe0ceb7fd9a1872a50e964417c46992692",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-f-sleep.svg",
+      "sha256": "7d922dbe055b95e0ca50adc4f354c29b63eceb0d7137ff24803ce46ce58f0900",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-f-wake.svg",
+      "sha256": "2aba2f14af489811b5c976d191e0a57ee91e801799f7c94a4f9ac297ed6bb5b7",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-motif-1.svg",
+      "sha256": "568d1a4c7ca80fdfec34b9a851fa239f08294f90cf616b9e304e8e15202aa613",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-motif-2.svg",
+      "sha256": "360ceb0554ac387ee2fb19559335c89614531a6c31396044867aa97c95e6bed4",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-motif-3.svg",
+      "sha256": "570fe4c7cacd4a37b6a9b4ba9bdb343ce3cd42ab38d1efa47264169f491934fb",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-motif-4.svg",
+      "sha256": "b8349d8ec6f30fe45d22aa387304774b5c1da36824b52de413d7333fd7a02c10",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-motif-5.svg",
+      "sha256": "c06093ffa1d393b6ac3b532fde8027988c7e0b25552d5165013d08677db465fc",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-motif-6.svg",
+      "sha256": "dc967a5623ca1c448fdf665a3482b98e0503e07acb1e081f27851c8ef5b7b0bc",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-retrieved-0.svg",
+      "sha256": "4eea5bd06d2354af9fadce3b8ebe8e5d395815687a4343d0c262f17fd0d51aae",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/atlas-retrieved-1.svg",
+      "sha256": "785cea5d286899e86d84ba426122f0001f7ee381edcc73f37e9abb6c260d670f",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/atom-level-alignment.svg",
-      "sha256": "c7ac59836bf0f07e15466efdffbd9921f3af565f8651eae6e42b2b07d14de6a1",
+      "sha256": "58e703cfa7874add57aa1fb7137012b29b89c9a9c4e44cc21b3e32710a0076ff",
       "representation": "native SVG paths and/or text"
     },
     {
@@ -53,7 +113,7 @@
     },
     {
       "file": "assets/e-measured.svg",
-      "sha256": "12ba18fccc4a1fa42568bcbe0f1c7453e021786442a0305ec6b2289b5058aac4",
+      "sha256": "4cba09c64ff7085e1c1dc992bc76ff3a9ddedb29dfa70cc2387e12533420ede4",
       "representation": "native SVG paths and/or text"
     },
     {
@@ -154,6 +214,26 @@
     {
       "file": "assets/retrieved_motif_2.svg",
       "sha256": "ef1ca405ba14d9c7c8d91a2cdac5f97db63a89876475a08aeaa53881fa4824c5",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/spectrum-f-atlas-hindsight.svg",
+      "sha256": "2881bf20ffb3951bb0b3d90e89832f6c686b02e4021083a0e834ea564cfc7a15",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/spectrum-f-atlas-paired.svg",
+      "sha256": "da19ecd921a2fd6943494e5b860511d7a8b0984da8eae97f56317ea5ac010099",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/spectrum-f-atlas-sleep.svg",
+      "sha256": "95d5c2393f1ae31a99c81f85b8bba47a82d1e5d90efa54fdc3968efb94364b41",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/spectrum-f-atlas-wake.svg",
+      "sha256": "37c41b67bb90ce20ed833cd38e6fa85a1f1700df57efe8ba8c205d6e2b1edac8",
       "representation": "native SVG paths and/or text"
     },
     {

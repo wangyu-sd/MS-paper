@@ -1,14 +1,26 @@
-# ORBIT-MS Figure 1 detail revision
+# ORBIT-MS Figure 1 chemical atlas redesign
 
-The reference and the artwork at prior PR #18 commit `5594f4d` were reviewed alongside the [current vector revision](orbit_ms_nmi_figure1_reference_comparison.png). Panel boundaries and the 180 × 101.53 mm page match the previous vector version.
+The baseline is the vector figure at PR #18 commit `23fa6e8`. The [before/after preview](orbit_ms_nmi_figure1_atlas_before_after.png) shows both PDF renders at equal width.
 
-| Area | Changes |
+| Area | Editorial change |
 | --- | --- |
-| Flow | A shared vector arrow system uses a fixed-size spearhead and a smaller head for tight gaps. Rerouted selected bends and branches, including the MMA backbone, acquisition outputs and intervention selector. |
-| Alignment | Aligned inference boxes and W/V arrows to their centerlines. Centered the acquisition headers over the weight cells, and kept the data, operation and output on each f row at the same height. Moved the chemical formula beneath the structures in e. |
-| Spectra | Redrew the experimental benchmark as a centroid stick plot with a linear m/z axis, relative intensity in percent and reference ticks. Inset spectra use the same visual conventions at a compact scale. Each stick carries its original centroid and intensity metadata in the SVG. |
-| Experience data | Replaced f's ring glyphs with archived RDKit structures. Added the measured MassSpecGym TRAIN pair 0000570, kept GeMS Wake as a pseudopair, and used the archived W peaks for Sleep and Hindsight. g sample IDs link the plotted examples to the illustrative acquisition rows. |
+| a–b | The spectrum, molecular formula and A/B pointer explain ambiguity. Complete candidate structures appear once, in e. The inference band separates G/W/V flow from the measured-spectrum connection into V. |
+| c–e | d occupies about 50% of the middle band. The archived graph, highlighted neighborhood and RDKit structures are the main visual sequence. The atom correspondence, alignment, backbone and constrained replay replace separate model cards. c and e use matching label hierarchy and short panel references for retrieved motifs and candidates. |
+| f–g | Four actual records replace repeated input/output graphics. Row numbers connect the experiences to a quieter, illustrative sampling matrix. The brief output strip gives the three distinct learning routes. |
+| h | Decision and controlled evaluation occupy separate rows. The pipeline distinguishes promotion and retention. A short dashed connector points episode memory to the next hypothesis. |
 
-The PDF was visually checked at 180 mm and in enlarged panel crops. It has 2,667 vector drawing objects, embedded Arial and Times New Roman, and zero raster images. The verifier checks the displayed peak tables, their normalized stick heights, the canonical structures, all 102 motif containment edges, native text intersections and connector crossings.
+The canvas uses neutral separators, fixed arrowhead sizes, recurring alignment lines and the requested charcoal, slate, teal, copper and violet palette. Compared with the baseline, extracted English words fell from 334 to 210, and editable rectangles fell from 184 to 49. The counts describe layout density and include structural and technical labels.
 
-At print scale, the compact experience structures are identifiable but fine atom labels still benefit from magnification. The mini spectra lack numeric ticks. Two benchmark sticks at 120.0808 and 120.0893 are too close to resolve visually across the full benchmark mass range; both centroids are retained in the SVG and listed separately in the evidence matrix. See the [source inventory](orbit_ms_nmi_figure1_sources/README.md) for the archived cases, calibration scope and qualitative acquisition weights.
+At 180 mm page width, panel letters are approximately 12.5 pt, titles 9.3 pt and mechanism headings 8.1 pt. Main labels are generally 6.5–7.3 pt. Some compact metadata and numeric ticks are about 6.1–6.4 pt, and chemical subscripts and atom glyphs are smaller. The page was reviewed at 180 mm and at 2× raster scale, checking d's molecular bounds and atom mapping, e's evidence symbols, f/g's alignment and h's gate and memory connections. The final motif depictions have extra internal padding to clear terminal atoms and ring vertices. Automated checks found no label overlap, panel overflow or sampled connector/label crossings.
+
+The editable SVG and PDF contain no raster images. The PDF has 1,541 vector drawing objects and embedded, searchable Arial and Times New Roman. The verifier checks the spectra against their recorded centroids and normalized intensities. It also checks the chemical source records, atom mapping and all 102 displayed containment edges.
+
+## Material for the figure caption
+
+- The benchmark trace and evidence matrix are for MassSpecGym 0002114. The precursor is [M+H]+ at m/z 493.2804. The close 120.0808/120.0893 observed sticks remain separate in the SVG and are listed independently in e.
+- The overview is a 91-node archived sample. The containment network is independent of retrieval score; motif 2 is phenethylamine and motif 3 is N-ethylaniline. The group counts are for mined source shards. The ion lookup is also supported by paired TRAIN and W simulations.
+- The atom correspondence illustrates an archived marked substructure. Motif Atom Memory is used when enabled. The before/after example is a reference-conditioned motif attachment replay. A/B in e are benchmark candidates.
+- The four acquisition rows reuse the measured TRAIN record and archived Sleep, Wake and Hindsight examples. The bars illustrate weighting rather than reporting fitted weights. Evidence/scaffold filters precede sampling, and TRAIN anchors contribute to learning.
+- The agent uses a TRAIN FIT diagnostic subset and a separate, matched CAL set. W is frozen. Only promotion advances the WGV generation. Episode memory informs the next hypothesis. Collecting evidence can update memory directly.
+
+The [source inventory](orbit_ms_nmi_figure1_sources/README.md) records the underlying cases and rebuild commands.

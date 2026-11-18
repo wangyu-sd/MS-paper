@@ -1,16 +1,16 @@
 # ORBIT-MS Figure 1 native vector sources
 
-The master is [orbit_ms_nmi_figure1_vector.svg](../orbit_ms_nmi_figure1_vector.svg). It reconstructs the selected 1670 × 942 reference using editable text, RDKit paths, native spectrum sticks, graph nodes, model boxes and connector paths. `selected_reference.png` preserves the earlier selection; `revision_reference.png` preserves the latest author comparison. Both are QA assets only. The current execution revision corrects the reference layout and remains available for author review; see [validation](../orbit_ms_nmi_figure1_vector_validation.md). The SVG and exported PDF contain no image objects.
+The master is [orbit_ms_nmi_figure1_vector.svg](../orbit_ms_nmi_figure1_vector.svg). The chemical-atlas layout uses editable text, RDKit paths, native spectrum sticks, graph nodes and connector paths. The [before/after preview](../orbit_ms_nmi_figure1_atlas_before_after.png) uses the prior native PDF as the baseline. `selected_reference.png` preserves the earlier selection; `revision_reference.png` preserves the latest author comparison. Both are QA assets only. The current editorial design and caption scope are documented in the [visual audit](../orbit_ms_nmi_figure1_vector_validation.md). The SVG and exported PDF contain no image objects.
 
 ## Source inventory
 
 | Panel | Reconstructed objects | Scientific source |
 | --- | --- | --- |
-| a | Measured spectrum and two same-formula candidates | MassSpecGym 0002114, original query and candidate ranking in `data/case_manifest.json`; reused `candidate_A.svg` and `candidate_B.svg` |
+| a | Measured spectrum and two same-formula candidates | MassSpecGym 0002114, original query and candidate ranking in `data/case_manifest.json`; candidate depictions appear in e |
 | b | G/W/V overview and c/d/e reference labels | Manual SVG text and paths arranged against the reference; PR95 architecture and PR96 model promotion |
 | c | Source parent, connected motif and ion lookup | Reused archived `library_parent.svg`; final-size, reference-oriented motifs are regenerated from the identical case-manifest SMILES. Ion key, source groups and mass constraints remain source-derived |
 | d | Global sample and six-node zoom | Canonical structures, extracted records and containment matches in `data/motif-topology.json`; final node coordinates in `data/reference_graph_layout.json`; final chemical drawing specifications in `data/reference_drawing_specs.json` |
-| d | Atom alignment | Explicit source atom correspondence in `case_manifest.json`; independently editable `atom-level-alignment.svg`, retained separately while the assembly restores the reference Memory/Graph State boxes |
+| d | Atom alignment | Explicit source atom correspondence in `case_manifest.json`; independently editable `atom-level-alignment.svg`, included in d at the recorded motif and partial-graph atom correspondence |
 | d | One motif attachment | Reused `growth_2.svg` and `growth_3.svg`, reference-conditioned deterministic action replay. The after state adds nine heavy atoms to the before state |
 | e | Structure-conditioned W and V evidence | Archived same-case predictions and scores; full emitted objects/posteriors in `data/frozen_wv_case.json.gz` |
 | f | Paired and single-modality data | RDKit depictions and original centroid pairs for the archived Sleep, Wake and Hindsight records in the case manifest. The measured paired TRAIN example is MassSpecGymID0000570 in `data/paired_training_example.json`. |
