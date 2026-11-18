@@ -1,7 +1,7 @@
 # ORBIT-MS NMI chemical-elucidation manuscript and experimental results plan
 
 **Date:** 2026-11-12  
-**Active draft:** `main.tex` on branch `paper/nmi-dark-chemical-elucidation-20261112`.  
+**Active manuscript:** `main.tex`; editorial revision continued in PR #22 on 2026-11-18. The five-result design below remains the experiment contract.  
 **This proposal supersedes the six-main-figure, biology-heavy Nature outline for the current NMI draft.** Earlier nature/discovery plans remain historical context, not the figure contract for this branch.
 
 ## Scientific proposition
@@ -10,7 +10,7 @@
 
 Two contributions must remain visible: (i) a source-linked dark-MS/MS structural resource containing calibrated resolution levels and chemically interpretable family relationships; and (ii) **an agent-directed, experience-driven RSI process** that identifies what WGV cannot yet generate or distinguish, chooses a targeted learning intervention, and uses the measured result to improve both later WGV capability and the agent's subsequent choices. The decisive RSI outcome is *new recoverable chemistry*, not a generic Agent leaderboard. No disease mechanism, microbial biosynthesis or new compound identity is inferred without independent evidence.
 
-**Working title:** ORBIT-MS: Self-improving molecular structure elucidation of metabolomic dark matter.
+**Title:** ORBIT-MS: Recursive chemical learning for molecular structure elucidation from tandem mass spectra.
 
 ## Figure and Results contract
 
@@ -83,7 +83,7 @@ Known existing data: PR95 resource expansion and the historical G/W/V generation
 2. In Methods, explicitly describe the scientific decision loop and its two recursions: structured failure packets -> one typed chemical intervention -> measured update -> persistent episode memory -> next-generation diagnosis/decision. Distinguish historical human/scripted development from actually measured autonomous Agent episodes.
 3. Report historical real results with their setting, denominator and conditional formula access. Never substitute CAL, sampled TEST or fixed-pool retrieval for full target-free test performance.
 4. Use real RDKit molecular drawings and measured spectra in final figures; never stylized substitute data.
-5. Every positive chemical-discovery or completed RSI improvement claim in `main.tex` without source evidence has an explicit `\\result{...}` placeholder. Replace only with source-derived data.
+5. In the 2026-11-18 editorial revision, expected positive results are written as complete manuscript sentences with `x` for pending measurements or chemical identifiers. The LaTeX `\pending{metric-id}` macro renders this notation and a single draft note explains it outside the abstract. Completed data retain their original values and evaluation setting. Fill each pending outcome from its completed experiment; the expected direction is draft prose, not a measured finding.
 6. The old `internal/FIGURE_PLAN.md` and `internal/CLAIM_EVIDENCE_MATRIX.md` describe an earlier Nature six-figure, biology-dependent proposal. They are archived research context; this document defines the current NMI manuscript's five-figure contract.
 
 ## Reproducibility map
@@ -92,6 +92,7 @@ Known existing data: PR95 resource expansion and the historical G/W/V generation
 - **Scientific Improver implementation:** [orbit-ms PR96](https://github.com/wangyu-sd/orbit-ms/pull/96).
 - **Dark-source inventory and recurrence:** [orbit-ms PR94](https://github.com/wangyu-sd/orbit-ms/pull/94).
 - **Supplementary sourced historical tables:** `supplementary/ORBIT_WGV_RSI_Results.tex` and `supplementary/MassSpecGym_Development_Results.tex`.
-- **Current main manuscript:** `main.tex` on this branch.
+- **Current manuscript:** `main.tex`; see `internal/EDITORIAL_REVISION_20261118.md` for the result-placeholder map and editorial checks.
 
 Do not add speculative biological phenotype, tissue, microbial pathway or diet intervention panels to the present five main figures. Those are possible future applications, not required scientific evidence for this chemical-elucidation study.
+
