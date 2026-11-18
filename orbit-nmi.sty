@@ -1,0 +1,71 @@
+% ORBIT-MS: restrained Nature Portfolio-inspired editorial typesetting.
+% This is an authoring stylesheet, NOT a publisher-supplied journal class.
+% Main scientific content, figures and citations reside entirely in main.tex.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{orbit-nmi}[2026/11/18 ORBIT-MS NMI manuscript typography]
+
+\RequirePackage{titling}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+
+\definecolor{orbitink}{HTML}{202C39}
+\definecolor{orbitnavy}{HTML}{294760}
+\definecolor{orbitmuted}{HTML}{5E6973}
+\definecolor{orbitline}{HTML}{C9D2D8}
+\definecolor{orbitviolet}{HTML}{665D75}
+\definecolor{orbitteal}{HTML}{477172}
+\hypersetup{colorlinks=true,linkcolor=orbitnavy,citecolor=orbitnavy,urlcolor=orbitnavy}
+
+% A comfortable one-column article, with conventional editorial hierarchy.
+\setlength{\parindent}{1.35em}
+\setlength{\parskip}{0.2em}
+\setlength{\emergencystretch}{2em}
+\widowpenalty=10000
+\clubpenalty=10000
+
+% Manuscript / referee mode: set true in main.tex to restore double spacing
+% and original continuous line numbers without touching any paper content.
+\newif\iforbitreview
+\orbitreviewfalse
+\newcommand{\orbittypeset}{%
+  \iforbitreview
+    \doublespacing
+    \linenumbers
+  \else
+    \setstretch{1.27}%
+  \fi
+}
+
+% Elegant editorial frontmatter rather than a decorative cover page.
+\pretitle{\begin{center}\vspace*{-0.9em}\LARGE\bfseries\color{orbitink}\linespread{1.07}\selectfont}
+\posttitle{\par\vspace{0.65em}\end{center}}
+\preauthor{\begin{center}\small\color{orbitink}\begin{tabular}[t]{c}}
+\postauthor{\end{tabular}\par\end{center}\vspace{-1em}}
+\predate{\begin{center}\small\color{orbitmuted}}
+\postdate{\end{center}\vspace{-2.2em}}
+
+% Main sections, Methods, and extended-data legends share one typographic system.
+\titleformat{\section}[hang]{\normalfont\large\bfseries\color{orbitnavy}}{}{0pt}{}[\vspace{-5pt}\titlerule]
+\titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries\color{orbitink}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{20pt}{9pt}
+\titlespacing*{\subsection}{0pt}{13pt}{4pt}
+
+% Subdued manuscript running head. No badges, boxes, gradients or decoration.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\textsc{ORBIT-MS}}
+\fancyhead[R]{\footnotesize\color{orbitmuted}Research manuscript}
+\fancyfoot[C]{\footnotesize\color{orbitmuted}\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\footnotesize\color{orbitmuted}\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% Rule-delimited journal abstract, not a color-filled panel.
+\newenvironment{orbitabstract}{%
+\par\begingroup\small\setstretch{1.30}\setlength{\parindent}{0pt}%
+\color{orbitink}\vspace{3pt}\noindent\textcolor{orbitline}{\rule{\linewidth}{0.55pt}}%
+\par\vspace{7pt}\noindent
+}{%
+\par\vspace{7pt}\noindent\textcolor{orbitline}{\rule{\linewidth}{0.55pt}}%
+\endgroup\par\vspace{8pt}%
+}
