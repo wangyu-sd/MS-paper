@@ -7,8 +7,8 @@ from pathlib import Path
 import subprocess
 import xml.etree.ElementTree as ET
 
-import numpy as np
-from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFont
+import re
+from PIL import Image, ImageDraw, ImageFont
 import pymupdf
 from rdkit import Chem
 from rdkit.Chem.rdMolDescriptors import CalcMolFormula
@@ -19,10 +19,11 @@ SOURCE = FIG / "orbit_ms_nmi_figure1_sources"
 VERIFY = SOURCE / "verification"
 STEM = FIG / "orbit_ms_nmi_figure1_vector"
 NS = {"s": "http://www.w3.org/2000/svg"}
-PANELS = {"a": (0, 0, 687, 174), "b": (687, 0, 1670, 174),
-          "c": (0, 174, 383, 720), "d": (383, 174, 1153, 720),
-          "e": (1153, 174, 1670, 720), "f": (0, 720, 453, 942),
-          "g": (453, 720, 1034, 942), "h": (1034, 720, 1670, 942)}
+PANELS = {
+    "a": (0, 0, 598, 164), "b": (598, 0, 1600, 164),
+    "c": (0, 164, 371, 605), "d": (371, 164, 1139, 605), "e": (1139, 164, 1600, 605),
+    "f": (0, 605, 371, 900), "g": (371, 605, 916, 900), "h": (916, 605, 1600, 900),
+}
 
 
 def digest(p):
@@ -39,7 +40,7 @@ def run_poppler(binary_dir, name, *args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--poppler-dir")
-    parser.add_argument("--reference", type=Path, default=SOURCE/"revision_reference.png")
+    parser.add_argument("--before-pdf", type=Path, help="Previous Figure 1 PDF for a same-width comparison")
     args = parser.parse_args()
     VERIFY.mkdir(exist_ok=True)
     svg_path = STEM.with_suffix(".svg")
@@ -54,7 +55,7 @@ def main():
     for letter in PANELS:
         assert "panel-"+letter in ids
     counts = Counter(e.tag.rsplit("}", 1)[-1] for e in all_elements)
-    assert counts["text"] > 150 and counts["path"] > 500 and counts["circle"] >= 91
+    assert counts["text"] > 75 and counts["path"] > 500 and counts["circle"] >= 91
 
     document = pymupdf.open(pdf_path)
     assert len(document) == 1
@@ -67,7 +68,7 @@ def main():
     families = sorted({span["font"] for b in page.get_text("dict")["blocks"] if b["type"] == 0
                        for line in b["lines"] for span in line["spans"]})
     assert all("Arial" in family or "TimesNewRoman" in family for family in families), families
-    assert abs(page.rect.width/page.rect.height - 1670/942) < 0.000001
+    assert abs(page.rect.width/page.rect.height - 16/9) < 0.000001
 
     case = json.loads((SOURCE / "data/case_manifest.json").read_text())
     a, b = [Chem.MolFromSmiles(c["smiles"]) for c in case["candidates"]]
@@ -105,7 +106,7 @@ def main():
     assert nodes["3"].HasSubstructMatch(nodes["5"])
     assert nodes["5"].HasSubstructMatch(nodes["6"])
 
-    drawing_specs = json.loads((SOURCE/'data/reference_drawing_specs.json').read_text())
+    drawing_specs = json.loads((SOURCE/'data/editorial_drawing_specs.json').read_text())
     for spec in drawing_specs:
         assert Chem.MolFromSmiles(spec['canonical_smiles']) is not None
         art = ET.parse(SOURCE/'assets'/spec['asset']).getroot()
@@ -117,21 +118,26 @@ def main():
             node_id = spec['source'].split('[')[1].split(']')[0]
             expected = Chem.MolToSmiles(nodes[node_id])
         assert spec['canonical_smiles'] == expected
-    display = json.loads((SOURCE/'data/reference_graph_layout.json').read_text())
+    display = json.loads((SOURCE/'data/editorial_graph_layout.json').read_text())
     assert set(display['node_positions_px']) == set(nodes)
 
     bounds = json.loads((VERIFY/"text-bounds.json").read_text())
-    clipped = [v["text"] for v in bounds if v["left"] < -.5 or v["right"] > 1670.5 or
-               v["top"] < -.5 or v["bottom"] > 942.5]
+    clipped = [v["text"] for v in bounds if v["left"] < -.5 or v["right"] > 1600.5 or
+               v["top"] < -.5 or v["bottom"] > 900.5]
     overlaps = []
     for i, left in enumerate(bounds):
         for right in bounds[i+1:]:
-            if left.get("panel") != right.get("panel"):
-                continue
             dx = min(left["right"], right["right"]) - max(left["left"], right["left"])
             dy = min(left["bottom"], right["bottom"]) - max(left["top"], right["top"])
             if dx > 3 and dy > 2:
                 overlaps.append([left["text"], right["text"]])
+    panel_overflow = []
+    for item in bounds:
+        x0,y0,x1,y1 = PANELS[item["panel"][-1]]
+        if (item["left"] < x0 or item["right"] > x1 or
+                item["top"] < y0 or item["bottom"] > y1):
+            panel_overflow.append(item["text"])
+    assert not panel_overflow, panel_overflow
     assert not clipped, clipped
     assert not overlaps, overlaps
     connector_crossings = json.loads((VERIFY/'connector-crossings.json').read_text())
@@ -142,52 +148,31 @@ def main():
     fonts = run_poppler(args.poppler_dir, "pdffonts", pdf_path)
     assert "Arial" in fonts and "TimesNewRoman" in fonts
     run_poppler(args.poppler_dir, "pdfinfo", pdf_path)
-    run_poppler(args.poppler_dir, "pdftoppm", "-png", "-singlefile", "-scale-to-x", "1670",
-                "-scale-to-y", "942", pdf_path, VERIFY/"render-reference-size")
-    source = Image.open(args.reference).convert("RGB")
-    rendered = Image.open(VERIFY/"render-reference-size.png").convert("RGB")
-    assert source.size == rendered.size == (1670, 942)
-    source_arr, rendered_arr = np.asarray(source, dtype=np.int16), np.asarray(rendered, dtype=np.int16)
-    error = abs(source_arr-rendered_arr)
-    pixel_error = np.any(error != 0, axis=2)
-    Image.blend(source, rendered, .5).save(VERIFY/"overlay.png")
-    diff = ImageEnhance.Contrast(ImageChops.difference(source, rendered)).enhance(3)
-    diff.save(VERIFY/"difference-x3.png")
-    rendered.resize((709, 400), Image.Resampling.LANCZOS).save(VERIFY/"review-180mm-100dpi.png")
-    # Side-by-side crop sheets retain original pixel coordinates, with both sides at the same scale.
-    font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 18)
-    for letter, xy in PANELS.items():
-        old, new = source.crop(xy), rendered.crop(xy)
-        sheet = Image.new("RGB", (old.width*2+24, old.height+32), "white")
-        draw = ImageDraw.Draw(sheet)
-        draw.text((0,2), f"{letter} · selected PNG", fill="#29363D", font=font)
-        draw.text((old.width+24,2), f"{letter} · native vector render", fill="#29363D", font=font)
-        sheet.paste(old,(0,32)); sheet.paste(new,(old.width+24,32))
-        sheet.save(VERIFY/f"panel-{letter}-comparison.png")
-
-    previous_path = VERIFY/"previous-iteration-render.png"
-    if not previous_path.exists():
-        previous_path = VERIFY/"previous-vector-render.png"
-    revision = {}
-    if previous_path.exists():
-        previous = Image.open(previous_path).convert("RGB")
-        assert previous.size == source.size
-        for letter, xy in PANELS.items():
-            crops = [im.crop(xy) for im in (source, previous, rendered)]
-            width,height = crops[0].size
-            sheet = Image.new("RGB",(3*width+48,height+32),"white")
-            draw = ImageDraw.Draw(sheet)
-            for i,(im,caption) in enumerate(zip(crops,("Reference","Previous vector","Refined vector"))):
-                xx = i*(width+24)
-                sheet.paste(im,(xx,32))
-                draw.text((xx,2),caption,fill="#101214",font=font)
-            sheet.save(VERIFY/f"three-way-{letter}.png")
-            reference_array = np.asarray(crops[0],dtype=np.int16)
-            revision[letter] = {
-                "previous_mae":float(abs(reference_array-np.asarray(crops[1],dtype=np.int16)).mean()),
-                "refined_mae":float(abs(reference_array-np.asarray(crops[2],dtype=np.int16)).mean()),
-            }
-        (VERIFY/"revision-comparison.json").write_text(json.dumps(revision,indent=2)+"\n")
+    preview = FIG/"orbit_ms_nmi_figure1_vector_preview"
+    run_poppler(args.poppler_dir,"pdftoppm","-png","-singlefile","-scale-to-x","3200",
+                "-scale-to-y","1800",pdf_path,preview)
+    run_poppler(args.poppler_dir,"pdftoppm","-png","-singlefile","-r","150",
+                pdf_path,VERIFY/"review-180mm-150dpi")
+    if args.before_pdf:
+        with pymupdf.open(args.before_pdf) as before:
+            before_text = before[0].get_text()
+            pix = before[0].get_pixmap(matrix=pymupdf.Matrix(3,3),alpha=False)
+            image_before = Image.frombytes("RGB",[pix.width,pix.height],pix.samples)
+        image_after = Image.open(preview.with_suffix(".png")).convert("RGB")
+        width = 1440
+        images = [im.resize((width,round(im.height*width/im.width)),Image.Resampling.LANCZOS)
+                  for im in (image_before,image_after)]
+        comparison = Image.new("RGB",(width, sum(im.height for im in images)+100),"#F2F5F4")
+        painter = ImageDraw.Draw(comparison)
+        font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial Bold.ttf",25)
+        y = 0
+        for title,im in zip(("Before","Editorial redesign"),images):
+            painter.text((24,y+10),title,fill="#29363D",font=font)
+            comparison.paste(im,(0,y+50))
+            y += im.height+50
+        comparison.save(FIG/"orbit_ms_nmi_figure1_before_after.png")
+    else:
+        before_text = ""
 
     spans = [span for b in page.get_text("dict")["blocks"] if b["type"] == 0
              for line in b["lines"] for span in line["spans"]]
@@ -195,22 +180,20 @@ def main():
         "pdf_pages": len(document), "page_points": list(page.rect), "page_mm": [page.rect.width*25.4/72,page.rect.height*25.4/72],
         "pdf_image_count": 0, "pdf_path_objects": len(page.get_drawings()), "pdf_text_characters": len(text),
         "font_families": families, "embedded_font_records": len(page.get_fonts(full=True)),
-        "svg_objects": dict(counts), "source_png": str(args.reference), "source_sha256":digest(args.reference),
-        "reference_pixels": list(source.size), "changed_pixel_fraction": float(pixel_error.mean()),
-        "mean_absolute_channel_error_0_255": float(error.mean()), "max_channel_error": int(error.max()),
+        "svg_objects": dict(counts), "panel_text_overflow": panel_overflow,
+        "label_words": len(re.findall(r"[A-Za-z]+(?:[-–][A-Za-z]+)*",text)),
+        "previous_label_words": len(re.findall(r"[A-Za-z]+(?:[-–][A-Za-z]+)*",before_text)) or None,
         "native_text_clipped": clipped, "native_text_overlaps": overlaps,
         "connector_text_crossings":connector_crossings,
         "minimum_pdf_type_points": min(s["size"] for s in spans),
-        "body_13_svg_pixels_in_pdf_points": 13*180*72/25.4/1670,
+        "standard_annotation_points": 16*180*72/25.4/1600,
         "kg_nodes": len(nodes), "verified_kg_edges": len(edges),
         "pdf_sha256": digest(pdf_path), "svg_sha256":digest(svg_path),
-        "note": "Differences include scientific replacements of malformed generated molecules and native font/rasterization differences; pixel equality is not expected."
+        "note": "Editorial redesign at 180 mm physical page width."
     }
     (VERIFY/"statistics.json").write_text(json.dumps(statistics, indent=2)+"\n")
     index_path = SOURCE/"source_index.json"
     index = json.loads(index_path.read_text())
-    index["comparison_reference_png"] = args.reference.name
-    index["comparison_reference_sha256"] = digest(args.reference)
     index['assets'] = [{'file':str(path.relative_to(SOURCE)),'sha256':digest(path),
                         'representation':'native SVG paths and/or text'}
                        for path in sorted((SOURCE/'assets').glob('*.svg'))]
