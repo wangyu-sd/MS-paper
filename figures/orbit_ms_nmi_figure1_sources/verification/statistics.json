@@ -1,5 +1,5 @@
 {
-  "label_words": 210,
+  "label_words": 205,
   "pdf_pages": 1,
   "page_points": [
     0.0,
@@ -12,8 +12,8 @@
     101.53293906317816
   ],
   "pdf_image_count": 0,
-  "pdf_path_objects": 1541,
-  "pdf_text_characters": 1613,
+  "pdf_path_objects": 1840,
+  "pdf_text_characters": 1582,
   "font_families": [
     "Arial-BoldMT",
     "ArialMT",
@@ -21,20 +21,20 @@
     "TimesNewRomanPS-ItalicMT",
     "TimesNewRomanPSMT"
   ],
-  "embedded_font_records": 26,
+  "embedded_font_records": 29,
   "svg_objects": {
-    "svg": 19,
-    "title": 247,
+    "svg": 24,
+    "title": 252,
     "defs": 1,
     "marker": 12,
-    "path": 1136,
-    "rect": 49,
+    "path": 1408,
+    "rect": 51,
     "g": 230,
-    "text": 135,
+    "text": 142,
     "line": 175,
-    "tspan": 16,
-    "ellipse": 54,
-    "circle": 108
+    "circle": 113,
+    "ellipse": 72,
+    "tspan": 16
   },
   "source_png": "/Users/wangyu/.codex/worktrees/8b55/\u4ee3\u8c22\u8c31\u56fe/ms-paper-vector/figures/orbit_ms_nmi_figure1_sources/revision_reference.png",
   "source_sha256": "b3b7b474981ba4284cf0a35a4c0ba7d27dd31aca42b2450af2017d31ac3da4f1",
@@ -42,8 +42,8 @@
     1670,
     942
   ],
-  "changed_pixel_fraction": 0.9333301549766708,
-  "mean_absolute_channel_error_0_255": 35.49519305338368,
+  "changed_pixel_fraction": 0.9339079802179081,
+  "mean_absolute_channel_error_0_255": 35.58365244034225,
   "max_channel_error": 255,
   "native_text_clipped": [],
   "native_text_overlaps": [],
@@ -52,7 +52,7 @@
   "body_13_svg_pixels_in_pdf_points": 3.971898722240559,
   "kg_nodes": 91,
   "verified_kg_edges": 102,
-  "pdf_sha256": "4b947d045b451992c55d997aff7017d037eca459a4f40ce5df27ac12132d3ba9",
-  "svg_sha256": "f82add6a4777b4f36ddbf0ceb225eb24780edb1fde1c350273334caeda21fa53",
+  "pdf_sha256": "1da61372a4811393d49b144a4409529f1a57327a33cd32fa366f101862b2a2ac",
+  "svg_sha256": "006b048e0d5f27ba7fdd9644758429a2f695cc57e024d011e8291d257c6b86be",
   "note": "Differences include scientific replacements of malformed generated molecules and native font/rasterization differences; pixel equality is not expected."
 }

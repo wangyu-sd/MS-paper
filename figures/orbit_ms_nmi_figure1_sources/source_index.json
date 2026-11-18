@@ -63,12 +63,12 @@
     },
     {
       "file": "assets/atlas-retrieved-0.svg",
-      "sha256": "4eea5bd06d2354af9fadce3b8ebe8e5d395815687a4343d0c262f17fd0d51aae",
+      "sha256": "4518e9914072a0cb9ee175cc21787523e94a5024fd997b7e1e9ed0e914167a94",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/atlas-retrieved-1.svg",
-      "sha256": "785cea5d286899e86d84ba426122f0001f7ee381edcc73f37e9abb6c260d670f",
+      "sha256": "450608a08af399aca01c6378f81c6037d6482c680faec5f1c897b0b9d3b8def8",
       "representation": "native SVG paths and/or text"
     },
     {
@@ -113,7 +113,7 @@
     },
     {
       "file": "assets/e-measured.svg",
-      "sha256": "4cba09c64ff7085e1c1dc992bc76ff3a9ddedb29dfa70cc2387e12533420ede4",
+      "sha256": "562c11b7851e9771736f4b10798d7e66bcb4ccdfb9d6d51a0cb721ecd5f91b3e",
       "representation": "native SVG paths and/or text"
     },
     {
@@ -199,6 +199,21 @@
     {
       "file": "assets/growth_3.svg",
       "sha256": "a975d408d80881a2a65d54bc64eea7828f408c1eb2293d0e1c421ff6a284a55d",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/integrated-mined-motif.svg",
+      "sha256": "d5e5581450962ea75b7f85adc85cb0b3efe210739e1596e1fdf97c0d1bd572d8",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/integrated-w-fragment-0.svg",
+      "sha256": "aabf5abd85a11d6f7b3f166847827c7c5caff273a408833c3214b29ddf1df33c",
+      "representation": "native SVG paths and/or text"
+    },
+    {
+      "file": "assets/integrated-w-fragment-1.svg",
+      "sha256": "76d506ce7972400218fde9b554a19edcb0ee554139b96406df30a936440e5df6",
       "representation": "native SVG paths and/or text"
     },
     {

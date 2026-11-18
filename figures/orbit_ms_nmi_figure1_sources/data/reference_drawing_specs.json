@@ -1,9 +1,18 @@
 [
   {
+    "asset": "integrated-mined-motif.svg",
+    "canonical_smiles": "NCCc1ccccc1",
+    "width_px": 143,
+    "height_px": 59,
+    "rotation_degrees": 180,
+    "atom_font_px": 14,
+    "source": "case_manifest.json:mma.motifs[0]"
+  },
+  {
     "asset": "atlas-retrieved-0.svg",
     "canonical_smiles": "NCCc1ccccc1",
     "width_px": 138,
-    "height_px": 60,
+    "height_px": 55,
     "rotation_degrees": 180,
     "atom_font_px": 14,
     "source": "case_manifest.json:mma.motifs[0]"
@@ -12,7 +21,7 @@
     "asset": "atlas-retrieved-1.svg",
     "canonical_smiles": "CCNc1ccccc1",
     "width_px": 138,
-    "height_px": 60,
+    "height_px": 55,
     "rotation_degrees": 180,
     "atom_font_px": 14,
     "source": "case_manifest.json:mma.motifs[1]"
@@ -70,6 +79,24 @@
     "rotation_degrees": 0,
     "atom_font_px": 16,
     "source": "motif-topology.json:node[6]"
+  },
+  {
+    "asset": "integrated-w-fragment-0.svg",
+    "canonical_smiles": "NCCc1ccccc1",
+    "width_px": 143,
+    "height_px": 49,
+    "rotation_degrees": 180,
+    "atom_font_px": 13,
+    "source": "w_fragment:A:0"
+  },
+  {
+    "asset": "integrated-w-fragment-1.svg",
+    "canonical_smiles": "CCCc1ccccc1",
+    "width_px": 143,
+    "height_px": 49,
+    "rotation_degrees": 180,
+    "atom_font_px": 13,
+    "source": "w_fragment:A:1"
   },
   {
     "asset": "atlas-f-paired.svg",

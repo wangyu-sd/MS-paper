@@ -55,6 +55,17 @@ def main():
     assert len(ids) == len(set(ids))
     for letter in PANELS:
         assert "panel-"+letter in ids
+    locked_assets = {
+        "a":("integrated-a-A","integrated-a-B"),
+        "c":("integrated-source-molecule","integrated-mined-motif","atlas-retrieved-0","atlas-retrieved-1"),
+        "d":(*[f"atlas-motif-{i}" for i in range(1,7)],"integrated-atom-correspondence",
+             "integrated-partial-action","integrated-updated-action"),
+        "e":("integrated-e-A","integrated-e-B","integrated-w-fragment-0","integrated-w-fragment-1"),
+    }
+    for panel,required in locked_assets.items():
+        group=root.find(f'.//s:g[@id="panel-{panel}"]',NS)
+        panel_ids={item.get("id") for item in group.iter()}
+        assert set(required)<=panel_ids,(panel,set(required)-panel_ids)
     counts = Counter(e.tag.rsplit("}", 1)[-1] for e in all_elements)
     assert counts["text"] > 85 and counts["path"] > 500 and counts["circle"] >= 91
 
@@ -137,6 +148,10 @@ def main():
             key=spec["source"].split(":")[1]
             record=paired if key=="paired" else case["experience"][key]
             expected=Chem.MolToSmiles(Chem.MolFromSmiles(record["smiles"]))
+        elif spec["source"].startswith("w_fragment:"):
+            _,candidate,index=spec["source"].split(":")
+            entry=next(item for item in case["candidates"] if item["label"]==candidate)
+            expected=Chem.MolToSmiles(Chem.MolFromSmiles(entry["shown_fragments"][int(index)]["skeleton"]))
         elif spec['source'].startswith('case_manifest'):
             index = int(spec['source'].split('[')[1].split(']')[0])
             expected = Chem.MolToSmiles(Chem.MolFromSmiles(case['mma']['motifs'][index]['motif']))
