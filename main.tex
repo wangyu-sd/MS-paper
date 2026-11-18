@@ -1,7 +1,8 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
-\usepackage[margin=1in]{geometry}
-\usepackage{mathptmx}
+\usepackage[margin=27mm,headheight=15pt,headsep=12pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
 \usepackage{setspace}
 \usepackage{lineno}
 \usepackage{microtype}
@@ -11,14 +12,16 @@
 \usepackage[super,sort&compress]{natbib}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
+\usepackage{orbit-nmi}
 
-\doublespacing
-\linenumbers
+% Typesetting defaults to a clean reading copy; set \orbitreviewtrue in
+% orbit-nmi.sty to enable the original referee doublespacing/linenumbers.
+\orbittypeset
 
 % Draft-only macros. Remove before submission.
-\newcommand{\result}[1]{\textbf{\textcolor{blue}{[RESULT: #1]}}}
-\newcommand{\methodtodo}[1]{\textbf{\textcolor{purple}{[METHOD: #1]}}}
-\newcommand{\datatodo}[1]{\textbf{\textcolor{teal}{[DATA: #1]}}}
+\newcommand{\result}[1]{\textbf{\textcolor{orbitnavy}{[RESULT: #1]}}}
+\newcommand{\methodtodo}[1]{\textbf{\textcolor{orbitviolet}{[METHOD: #1]}}}
+\newcommand{\datatodo}[1]{\textbf{\textcolor{orbitteal}{[DATA: #1]}}}
 
 % Nature discovery-first six main figures: editorial text-only placeholders, never synthetic data.
 % Place a verified PDF at the named path to automatically replace the fallback.
@@ -114,17 +117,26 @@
 \end{figure}%
 }
 
-\title{\textbf{ORBIT-MS: Self-improving molecular structure elucidation of metabolomic dark matter}}
-\author{Author names and affiliations to be finalized}
+\title{ORBIT-MS: Recursive chemical learning for molecular structure elucidation from tandem mass spectra}
+% Authorship note: historical eleven-person roster located in earlier MolSpecFlow,
+% NOT in the MS-paper author history. See internal/AUTHOR_METADATA_RECOVERY_20261118.md.
+% Do not transplant the other paper's author order or corresponding authorship.
+\author{\textbf{Yu Wang}\textsuperscript{1,2,3} \quad \textit{[full ORBIT-MS author list pending confirmation]}\\[7pt]
+\textsuperscript{1}School of Computer Science, Peking University\\
+\textsuperscript{2}School of Artificial Intelligence for Science, Peking University\\
+\textsuperscript{3}AI for Life Sciences Lab, Tencent\\[4pt]
+\textit{Affiliation indices and correspondence to be verified for this manuscript}}
 \date{}
 
 \begin{document}
 \maketitle
 
+\begin{orbitabstract}
 \noindent\textbf{Abstract.}
-Untargeted tandem mass spectrometry detects a vast repertoire of molecular signals, yet most experimental spectra remain without a confident structural assignment. This metabolomic dark matter is difficult to elucidate because chemically distinct molecules can explain overlapping fragments, while fixed inference models cannot learn from the structural hypotheses they repeatedly fail to generate or distinguish. Here we introduce ORBIT-MS, an evidence-guided, agent-directed recursive self-improvement (RSI) system that couples a spectrum-conditioned molecular Generator, a structure-conditioned fragmentation World and an experimental-spectrum Verifier. A Scientific Improver Agent diagnoses failed inferences, selects targeted chemical-knowledge, generator or verifier updates, and retains the observed consequences as experience for subsequent decisions. In a source-audited three-study resource, 613,331 of 835,953 eligible biological MS/MS queries lacked an accepted reference-spectrum match. Existing known-formula calibration experiments show that fragment knowledge substantially improves molecular candidate reach and that W/V evidence improves ranking within the same candidate pool. We investigate \result{the population distribution of supported structural resolution among reference-unmatched spectra}, \result{new molecular structures and resolution tiers recovered across completed autonomous RSI generations}, and \result{chemically supported relationships connecting unresolved spectra to characterized molecular families}. Independent spectral evidence and, where available, orthogonal chemistry are used to assess the resulting assignments. ORBIT-MS aims to progressively extend the interpretable chemical space of the metabolomic dark matter rather than to assign an unsupported unique structure to every observation.
+Untargeted tandem mass spectrometry detects molecular signals far beyond the compounds represented in reference libraries, yet sparse paired measurements and overlapping fragment evidence leave many molecular structures unresolved. Here we introduce ORBIT-MS, an evidence-guided system that couples a spectrum-conditioned molecular Generator (\(G\)), a structure-conditioned fragmentation World (\(W\)) and an experimental-spectrum Verifier (\(V\)) with recursive chemical learning. Mass-matched substructure alignment (MMA) connects observed fragment-ion hypotheses to reusable molecular motifs and chemically valid graph-construction actions. In a same-checkpoint, 200-molecule known-formula calibration, MMA increased true-structure candidate reach from 6.50\% to 19.00\% and exact top-one recovery from 1.50\% to 6.00\%; W/V evidence also improved identification when reranking fixed candidate pools. Across successive development generations, the fragment/motif resource expanded from 4.23 to approximately 31.11 million records alongside improvements in recoverable molecular structures. A Scientific Improver Agent uses structural-generation and isomer-discrimination failures to select bounded learning interventions and retain their measured outcomes as experience for later scientific decisions. In a source-audited analysis of three public collections, 613,331 of 835,953 eligible MS/MS queries lacked an accepted reference-spectrum match. We investigate \result{the independent chemical structures recovered by autonomous recursive updates relative to matched fixed learning policies}, and \result{the structural-resolution gains for experimentally unannotated spectra supported by independent chemistry}. ORBIT-MS links spectrum evidence, transferable structural knowledge and iterative scientific decisions in a framework for elucidating metabolomic dark matter.
+\end{orbitabstract}
 
-\vspace{1em}
+
 
 Untargeted metabolomics provides a broad view of the small-molecule signals present in biological and environmental samples, but structural interpretation remains a central bottleneck.\cite{Wang2016GNPS,Alseekh2021,Gentry2024,Alexandrov2026Perspective} Large experimental MS/MS archives contain measurements that are not assigned confidently by existing spectral libraries, and the number of measured spectra greatly exceeds the number of independently characterized molecular structures. Nevertheless, unannotated spectra are not synonymous with undiscovered molecules: different ion species, acquisition conditions and repeated experiments can produce many records for one precursor. Understanding the metabolomic dark matter therefore requires both source-aware measurement accounting and a defensible way to associate fragment evidence with molecular structures.
 
@@ -231,6 +243,11 @@ Reference matching is defined by the date-stamped GNPS/MassBank/MoNA or other so
 \subsection*{Molecular identities and benchmark partitions}
 Connectivity identity is evaluated using the first 14 characters of a canonical InChIKey. This identifies 2D graph connectivity under the chosen standardization and does not demonstrate stereochemical identity. Known-structure benchmarks retain fixed molecule-group partitions and the complete declared eligible denominator; confidence intervals resample molecular groups rather than treating repeated spectra as independent structures. Historical MassSpecGym TRAIN-derived development partitions contain 175,548 fitting spectra, 9,782 calibration spectra and 8,401 repeatedly inspected search-development spectra out of 193,731 eligible TRAIN spectra. These results remain distinguished from official MassSpecGym TEST evaluation. Target-free inference does not read target molecular formulas, target structures or target fingerprints; analyses providing a reference formula, supplied candidate set or partial Macro-Core are reported as separate conditional tasks.
 
+\subsection*{Chemical novelty, benchmark grouping and prior knowledge access}
+Chemical novelty is defined relative to the actual molecular structures accessible in paired training, structure-only pretraining, MMA indexing and inference, rather than only the absence of the query spectrum from a reference library. In addition to the official molecule-disjoint MassSpecGym benchmark, the planned analyses distinguish spectrum-random (S0), connectivity-identity-disjoint (S1), scaffold-disjoint (S2), official MCES-disjoint (S3), pretraining-aware structural novelty (S4), and external/study/temporal transfer (S5) evaluations. Scaffold distance and MCES distance are different criteria, not a presumed monotonic sequence of difficulty. Exact 2D connectivity is standardized with the first 14 canonical InChIKey characters; constitutional identity is not equated with stereochemical identity.
+
+The source-access conditions are tracked separately: K0 contains only paired training structures and evidence; K1 excludes test identities and prespecified close structural neighbours from external pretraining and retrieval resources; K2 excludes exact test identities while allowing structurally related external chemistry; and K3 adds recursively acquired experiences to a declared K1 or K2 base. K3 is an update condition, not a new novelty metric. The manifest records the source snapshot, deduplication standard, permitted test-time formula and partial-core information, and the set of all test identities queried against each chemical library. The existing official TEST results remain valid as originally labelled experiments; experiments requiring a new training split or a filtered external corpus remain \methodtodo{prospective S0--S5/K0--K3 matched evaluations with fixed model and library manifests}.
+
 \subsection*{Direct precursor-composition hypotheses}
 Precursor elemental-composition hypotheses are inferred from the observed precursor mass, ion/adduct context and permissible fragment evidence. Formula correctness and Top-\(K\) formula recall are measured separately from molecular graph recovery. Chemical validity filters enforce allowed atom inventory, charges, valence, connectivity and precursor/adduct mass consistency. A missing true formula is counted explicitly as a composition-stage failure. Molecular fingerprints are not used to generate, route, score or guide structural proposals in the active target-free pipeline; post-inference Morgan/Tanimoto values are external similarity metrics only.
 
@@ -243,6 +260,16 @@ Verifier \(V\) compares those structural fragment hypotheses with measured produ
 Generator \(G\) follows the current PR93/PR95 Peak-Ladder and Canonical Hybrid graph-construction implementation. Given measured MS/MS and admissible precursor/formula hypotheses, it uses chemically legal atom, ring and MMA motif starts/attachments with canonical trajectory ordering, atom-normalized beam scoring and motif-reserved expansion. MMA consists of source-linked reusable fragment/motif records derived from training structures and supported W-simulated structure–spectrum pairs. Graph construction is governed by chemical validity, not by a hidden target graph at inference time. The current optional Macro-Core procedure retrieves a non-evaluation structural homologue, removes one or more heavy-atom components and lets \(G\) complete the remaining graph; this is explicitly labelled homology-assisted completion and is not described as pure de novo generation.
 
 Fixed-pool terminal \(W/V\) reranking changes only the ordering of already generated molecular candidates. Whenever enabled in a selected inference variant, intermediate \(W/V\) evidence influencing future \(G\) actions is separately identified as online guidance. The benchmark reports raw reach before ranking, Exact@1/10 after ranking, generated candidate count, invalid proposals and elapsed inference time. Differences between empty-graph, motif-seeded and homology-assisted modes are not pooled into a single undeclared metric.
+
+\subsection*{Mass-matched substructure alignment and molecular construction experience}
+Given measured precursor and product-ion \(m/z\), \(G\) forms admissible composition hypotheses consistent with the selected ion/adduct and experimental tolerance. MMA accesses reusable source-linked fragment and motif graph records through mass/formula-compatible hypotheses, then aligns those substructures with the evolving candidate graph and available spectrum-conditioned construction context. This converts an ion signal into a potential chemically executable operation only after enforcing atom inventory, allowed charges, valence, ring closure, attachment compatibility and remaining-precursor composition. Different peaks can be compatible with shared fragments or competing structural motifs; mass matching alone is not taken to prove a particular substructure.
+
+The Peak-Ladder and Canonical Hybrid construction policy can initiate graph hypotheses from atoms, rings or mass-matched motifs and extend them through legal edits. Canonical ordering, atom-normalized beam ranking and motif-reserved expansions control differences in action granularity. For a completed candidate, structure-conditioned \(W\) supplies fragmentation hypotheses and measured-spectrum \(V\) evaluates their consistency. Intermediate W/V guidance, where used, affects subsequent generation and is distinguished from terminal fixed-pool reranking. MMA provenance links the fragment/motif library source, simulated or experimental evidence, retrieval/alignment decision and executed construction actions for subsequent causal transfer analysis. \methodtodo{Freeze the exact release MMA matching tolerances, motif-scoring implementation, structural attachment masks and online versus terminal W/V aggregation coefficients.}
+
+\subsection*{Sleep, Wake and Hindsight chemical experience}
+Sleep begins from non-evaluation molecular graphs, generates structure-derived fragmentation observations with a frozen World and contributes source-linked synthetic structure--spectrum supervision and fragment/motif records. Wake begins from real but unlabeled experimental spectra; pseudo-label candidates enter an update only after prespecified formula, chemical validity and fragment-support evidence gates, with original acquisition and spectrum identifiers retained. Hindsight reuses chemically legal candidate alternatives, graph-construction failures and counterfactual proposals to produce corrective generator/verifier experiences, optionally paired with W-simulated evidence. A generated label is an optimization target with a recorded source and confidence, not an independently established experimental identity.
+
+The experimental unit for studying learning is the independent target molecular connectivity, not the number of new motif-library entries. To distinguish the contributions of these learning sources, the planned controlled comparison holds \(W\), starting \(G/V\) checkpoints, allowable external chemistry and evaluated targets fixed while enabling Sleep, Wake, Hindsight and their combination. Acquisition by spectral entropy, structural scarcity or failure state is compared with random experience selection under explicit experience and computational budgets. All existing historical updates remain in the manuscript; \methodtodo{matched-budget learning-stream and selection-policy ablations with per-structure gains/losses are pending}.
 
 \subsection*{Agent-directed recursive self-improvement and chemical experience}
 Existing WGV learning tools supply the interventions used by Scientific Improver: forward Sleep simulation from non-evaluation molecular structures, real-spectrum Wake pseudo-labeling under source-specific evidence gates, motif/ring vocabulary expansion, Canonical Hybrid structure-supervised training of \(G\), and candidate-derived hard-isomer training of \(V\). PR95's historical Gen~1--10 progression records a sequence of human-directed or scripted model/algorithm configurations, not ten independently completed autonomous scientific-agent experiments.
@@ -258,6 +285,11 @@ Each accepted action may update \(\mathcal K_t\), \(G_t\) or \(V_t\), using the 
 
 Matched evaluation compares autonomous agent choice with unchanged WGV, an identical fixed intervention and scripted failure routing; agent-memory ablation separates benefit from persistent experience. Valid comparisons use common initial checkpoints, equivalent candidate-generation settings, the same independent evaluation molecules, and measured training/GPU cost or an explicit unmatched-cost qualification. Updates are promoted only after completed evaluations. In the current PR96 implementation, the Scientific Improver and episode controller are executable code, but real multi-generation Taiji outcomes have not yet been established and therefore remain \methodtodo{prospectively measured multi-generation Agentic RSI results, the complete source and checkpoint ledger, ablation of agent memory and actual GPU-hour receipts}.
 
+\subsection*{Scientific Improver episode execution, promotion and experience memory}
+The Scientific Improver implementation provides a bounded selection layer over existing WGV interventions rather than arbitrary source-code generation. Each real episode recomputes a TRAIN FIT diagnostic cohort using the current promoted model state, separates unreached structures from candidate-present misrankings, and supplies the LLM with source-linked candidate evidence, the permitted action set, a resource budget and a bounded history of previous decisions. The action is one of \texttt{EXPAND\_KNOWLEDGE}, \texttt{IMPROVE\_GENERATOR}, \texttt{IMPROVE\_VERIFIER} or \texttt{COLLECT\_EVIDENCE}. It includes a falsifiable chemical diagnosis, supporting FIT case identifiers, a target metric and an expected direction of change.
+
+A typed controller dispatches the selected existing training or evidence-gathering stage. Evaluation and candidate-promotion rules are deterministic, and the decision agent does not access official TEST labels for policy selection. An episode ledger stores model/knowledge checkpoint identities, split manifests, intervention specification, measurable candidate reach and ranking changes, resource receipts and a reflection used to condition a later choice. A \texttt{COLLECT\_EVIDENCE} action is recorded as information acquisition rather than a fictitious parameter update or zero-cost performance improvement. Genuine autonomous RSI requires sequential fresh FIT observations and actual promoted WGV states; manually engineered historical generations or unexecuted LLM decisions are analysed separately. The code currently provides the controller and receipts, whereas \methodtodo{completed multi-generation matched Agent/Fixed/Scripted/No-memory trials, validated per-molecule recoveries and actual GPU-hours} remain dedicated experiments.
+
 \subsection*{Structural resolution, calibration and selective interpretation}
 Structure confidence is represented at several levels: putative unique connectivity, bounded alternative connectivity set, supported common core/scaffold, elemental composition or structural class, and unresolved/out-of-support. Thresholds for assigning these categories are selected on an independent known-identity calibration set, then frozen before dark-spectral interpretation. Empirical coverage refers to whether the benchmark true structure is retained by each proposed structural statement; confidence scores without truth containment are not treated as calibrated identification probabilities. Candidate-set size, formula ambiguity, unmodelled ion chemistry and detector/instrument limitations are recorded for every failed or downgraded inference. A calibration model may prefer a bounded isomer set to an unjustified single-molecule prediction.
 
@@ -272,6 +304,11 @@ Prioritized molecular-family examples are selected using frozen evidence and rec
 
 \subsection*{Statistical analysis and comparative experiments}
 Primary structural performance is Exact@1/10 and candidate-pool reach for connectivity groups, accompanied by formula accuracy, valid candidate fraction, top-\(K\) structural similarity and computational cost. Molecular-group bootstrap confidence intervals account for multiple spectra representing the same reference structure. Known-formula, macro-core-assisted and database-fixed-pool tasks are presented separately from target-free generation. The critical controlled comparisons hold the experimental query, initial candidates and resource budgets fixed while changing MMA information, \(W/V\) ranking or new learning experiences. For source-scale dark-matter results, units are distinct spectral entities or structurally supported families with original spectra and independent studies traceable separately. Unavailable sources and unresolved chemical identities remain in denominators.
+
+\subsection*{Reporting of benchmark protocols and independent chemical recovery}
+For each benchmark, the release will state the exact cohort and count of spectra, unique standardized molecular connectivities, source-specific acquisition grouping, adduct and formula availability, candidate-set origin and size, model checkpoints, library snapshot and any inter-spectrum or multi-energy aggregation. Candidate-pool Reach is the fraction of queries for which the correct reference connectivity appears anywhere in the generated set; Exact@10 and Exact@1 refer to the corresponding ranked subsets. The three quantities must be computed on the same per-case population when compared as nested outcomes. In particular, database-assisted full-horizon retrieval, zero-overlap partial-core completion, reference-formula-assisted CAL experiments, and homology-provided macro-core experiments are different inference regimes. The source audit records unmatched and unassessable real spectra without imputing structure correctness from model consensus alone.
+
+Where generations are compared, the primary endpoint is the number of independent previously unreached or incorrectly ranked molecule groups newly recovered, together with losses among previously correct groups. Performance is reported both at spectral-query and connectivity-group levels, with molecular-group resampling for uncertainty and explicit evaluation/inference budgets. Structural-resolution improvements in the reference-unmatched metabolome are assessed only through source-linked evidence tiers and independent observations when available; increased rank score or candidate count alone is not treated as an elucidated novel molecule.
 
 \subsection*{Data availability}
 The source release will include \result{the frozen public study/accession list, reference-library versions, MS/MS input and deduplication lineage, unresolved spectral entities, structural-resolution assignments, supported molecular-family edges and all corresponding figure data}. Published raw spectra remain subject to their original repository access conditions and licensing. Source-derived counts in the manuscript are distinguished from model-generated structural assignments.
