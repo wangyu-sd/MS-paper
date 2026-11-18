@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 605 96 77"><g id="spectrum-c-query"><title>spectrum c query</title>
-<path d="M22 642H78" fill="none" stroke="#BD4B00" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M50.000 642V615.000" fill="none" stroke="#BD4B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 605 126 79"><g id="spectrum-c-query"><title>spectrum c query</title>
+<line x1="50.0000" x2="50.0000" y1="642.0000" y2="615.0000" data-mz="120.0808" data-intensity="1" stroke="#A84B09" stroke-width="1.1" stroke-linecap="butt"/>
+<path d="M22 615V642H78" fill="none" stroke="#65747C" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
 </g></svg>

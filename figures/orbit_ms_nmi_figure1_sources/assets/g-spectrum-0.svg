@@ -1,20 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="470 808 68 67"><g id="spectrum-g-spectrum-0"><title>spectrum g spectrum 0</title>
-<path d="M490 835H518" fill="none" stroke="#BD4B00" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M490.283 835V833.213" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M491.271 835V834.821" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M491.576 835V834.820" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M492.269 835V832.761" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M494.284 835V834.780" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M496.988 835V834.813" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M502.298 835V834.784" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M502.558 835V834.792" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.312 835V834.604" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.313 835V818.000" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.314 835V834.501" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.455 835V833.217" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M504.366 835V834.824" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M505.865 835V833.911" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M510.862 835V834.818" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M510.933 835V834.811" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M517.717 835V834.771" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="432 809 100 67"><g id="spectrum-g-spectrum-0"><title>spectrum g spectrum 0</title>
+<line x1="487.2385" x2="487.2385" y1="834.0000" y2="833.2492" data-mz="57.071" data-intensity="0.05005005005005005" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.5802" x2="489.5802" y1="834.0000" y2="833.3393" data-mz="69.0709" data-intensity="0.044044044044044044" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="492.3152" x2="492.3152" y1="834.0000" y2="831.9730" data-mz="83.0864" data-intensity="0.13513513513513514" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="495.0501" x2="495.0501" y1="834.0000" y2="832.6486" data-mz="97.1012" data-intensity="0.09009009009009009" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="496.9984" x2="496.9984" y1="834.0000" y2="833.1441" data-mz="107.0855" data-intensity="0.057057057057057055" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="497.7780" x2="497.7780" y1="834.0000" y2="832.9790" data-mz="111.0804" data-intensity="0.06806806806806807" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="498.5504" x2="498.5504" y1="834.0000" y2="832.6486" data-mz="115.039" data-intensity="0.09009009009009009" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="499.7334" x2="499.7334" y1="834.0000" y2="833.1291" data-mz="121.1012" data-intensity="0.05805805805805806" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="500.4988" x2="500.4988" y1="834.0000" y2="832.2883" data-mz="125.0233" data-intensity="0.11411411411411411" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="500.5059" x2="500.5059" y1="834.0000" y2="832.0931" data-mz="125.0597" data-intensity="0.12712712712712712" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="500.5130" x2="500.5130" y1="834.0000" y2="833.2793" data-mz="125.0961" data-intensity="0.04804804804804805" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="503.2338" x2="503.2338" y1="834.0000" y2="832.1832" data-mz="139.039" data-intensity="0.12112112112112113" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="503.2409" x2="503.2409" y1="834.0000" y2="832.3784" data-mz="139.0754" data-intensity="0.10810810810810811" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="503.8214" x2="503.8214" y1="834.0000" y2="831.7327" data-mz="142.0499" data-intensity="0.15115115115115116" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="505.9759" x2="505.9759" y1="834.0000" y2="829.0000" data-mz="153.091" data-intensity="0.3333333333333333" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="507.9386" x2="507.9386" y1="834.0000" y2="832.0480" data-mz="163.1485" data-intensity="0.13013013013013014" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="511.2469" x2="511.2469" y1="834.0000" y2="832.4685" data-mz="180.1019" data-intensity="0.1021021021021021" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="511.4389" x2="511.4389" y1="834.0000" y2="831.5826" data-mz="181.0859" data-intensity="0.16116116116116116" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="511.4532" x2="511.4532" y1="834.0000" y2="832.6036" data-mz="181.159" data-intensity="0.09309309309309309" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="514.7615" x2="514.7615" y1="834.0000" y2="819.0000" data-mz="198.1125" data-intensity="1.0" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<path d="M486 819V834H516" fill="none" stroke="#65747C" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
 </g></svg>

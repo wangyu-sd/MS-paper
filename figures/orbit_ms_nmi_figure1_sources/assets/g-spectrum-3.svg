@@ -1,20 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="470 862 68 67"><g id="spectrum-g-spectrum-3"><title>spectrum g spectrum 3</title>
-<path d="M490 889H518" fill="none" stroke="#00A77C" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M490.283 889V887.213" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M491.271 889V888.821" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M491.576 889V888.820" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M492.269 889V886.761" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M494.284 889V888.780" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M496.988 889V888.813" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M502.298 889V888.784" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M502.558 889V888.792" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.312 889V888.604" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.313 889V872.000" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.314 889V888.501" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M503.455 889V887.217" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M504.366 889V888.824" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M505.865 889V887.911" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M510.862 889V888.818" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M510.933 889V888.811" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M517.717 889V888.771" fill="none" stroke="#00A77C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="432 863 100 67"><g id="spectrum-g-spectrum-3"><title>spectrum g spectrum 3</title>
+<line x1="487.2385" x2="487.2385" y1="888.0000" y2="887.6641" data-mz="41.03858" data-intensity="0.02239459050424985" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="487.3714" x2="487.3714" y1="888.0000" y2="887.8078" data-mz="42.03383" data-intensity="0.012811277811165736" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="487.5060" x2="487.5060" y1="888.0000" y2="887.9097" data-mz="43.04165" data-intensity="0.006018318259179344" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="487.5077" x2="487.5077" y1="888.0000" y2="887.9392" data-mz="43.05423" data-intensity="0.004055744960200951" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="487.6406" x2="487.6406" y1="888.0000" y2="887.4919" data-mz="44.04948" data-intensity="0.033874487589888674" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="488.8411" x2="488.8411" y1="888.0000" y2="887.9552" data-mz="53.03858" data-intensity="0.0029850193726283715" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.1103" x2="489.1103" y1="888.0000" y2="887.6813" data-mz="55.05423" data-intensity="0.021247160517170936" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.2383" x2="489.2383" y1="888.0000" y2="887.9583" data-mz="56.01309" data-intensity="0.002777989525651268" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.2432" x2="489.2432" y1="888.0000" y2="887.8553" data-mz="56.04948" data-intensity="0.009647925868088653" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.3778" x2="489.3778" y1="888.0000" y2="887.8858" data-mz="57.0573" data-intensity="0.007612707528039538" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.3795" x2="489.3795" y1="888.0000" y2="886.0496" data-mz="57.06988" data-intensity="0.1300296943929157" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.5075" x2="489.5075" y1="888.0000" y2="887.9310" data-mz="58.02874" data-intensity="0.0045991782000401014" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.5124" x2="489.5124" y1="888.0000" y2="886.6491" data-mz="58.06513" data-intensity="0.0900597346468998" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.5141" x2="489.5141" y1="888.0000" y2="887.9600" data-mz="58.0777" data-intensity="0.0026677901545722896" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="489.6487" x2="489.6487" y1="888.0000" y2="887.9145" data-mz="59.08553" data-intensity="0.005699291208505657" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="490.9821" x2="490.9821" y1="888.0000" y2="884.5689" data-mz="69.06988" data-intensity="0.2287413970726043" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.1101" x2="491.1101" y1="888.0000" y2="885.3102" data-mz="70.02874" data-intensity="0.1793232505523116" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.1150" x2="491.1150" y1="888.0000" y2="887.6730" data-mz="70.06513" data-intensity="0.02179822279877542" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.2447" x2="491.2447" y1="888.0000" y2="887.9406" data-mz="71.03657" data-intensity="0.003961714794171077" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.2479" x2="491.2479" y1="888.0000" y2="887.9475" data-mz="71.06037" data-intensity="0.0034969348324729644" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.2496" x2="491.2496" y1="888.0000" y2="887.1738" data-mz="71.07295" data-intensity="0.05508245932661767" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.2512" x2="491.2512" y1="888.0000" y2="887.9198" data-mz="71.08553" data-intensity="0.005345284236547957" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.3761" x2="491.3761" y1="888.0000" y2="887.9601" data-mz="72.02058" data-intensity="0.002660824960968808" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.3793" x2="491.3793" y1="888.0000" y2="887.8652" data-mz="72.04439" data-intensity="0.008988889492274409" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.3842" x2="491.3842" y1="888.0000" y2="886.4308" data-mz="72.08078" data-intensity="0.10461232730715835" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.5122" x2="491.5122" y1="888.0000" y2="887.9380" data-mz="73.03964" data-intensity="0.004136598030943022" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.6436" x2="491.6436" y1="888.0000" y2="887.7850" data-mz="74.02365" data-intensity="0.01433574935328858" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="491.7782" x2="491.7782" y1="888.0000" y2="887.9479" data-mz="75.03148" data-intensity="0.00347564957546304" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="492.0414" x2="492.0414" y1="888.0000" y2="887.9481" data-mz="77.00219" data-intensity="0.003457660772712195" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="492.9867" x2="492.9867" y1="888.0000" y2="887.9178" data-mz="84.08078" data-intensity="0.0054767212486044195" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="493.1133" x2="493.1133" y1="888.0000" y2="887.9163" data-mz="85.02841" data-intensity="0.0055818469716590585" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="493.1213" x2="493.1213" y1="888.0000" y2="887.7745" data-mz="85.0886" data-intensity="0.015031776105089895" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="493.2559" x2="493.2559" y1="888.0000" y2="879.3708" data-mz="86.09643" data-intensity="0.5752812536240568" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="493.3905" x2="493.3905" y1="888.0000" y2="887.5445" data-mz="87.10425" data-intensity="0.03036554241207133" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="493.5154" x2="493.5154" y1="888.0000" y2="883.4434" data-mz="88.0393" data-intensity="0.30377614778738493" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="494.5893" x2="494.5893" y1="888.0000" y2="887.7821" data-mz="96.08078" data-intensity="0.014527566637452501" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="494.7207" x2="494.7207" y1="888.0000" y2="887.7142" data-mz="97.06479" data-intensity="0.019052626109028418" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="494.8488" x2="494.8488" y1="888.0000" y2="887.8690" data-mz="98.02365" data-intensity="0.008736458360767991" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="494.8585" x2="494.8585" y1="888.0000" y2="887.8317" data-mz="98.09643" data-intensity="0.01122296977491074" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="494.9850" x2="494.9850" y1="888.0000" y2="887.8902" data-mz="99.04406" data-intensity="0.007320854669450622" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="495.3871" x2="495.3871" y1="888.0000" y2="887.7201" data-mz="102.05495" data-intensity="0.018660045279186337" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="495.5217" x2="495.5217" y1="888.0000" y2="887.9410" data-mz="103.06278" data-intensity="0.003934376250819218" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="496.8600" x2="496.8600" y1="888.0000" y2="887.9546" data-mz="113.08352" data-intensity="0.0030276898331717604" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="496.9946" x2="496.9946" y1="888.0000" y2="886.3303" data-mz="114.09134" data-intensity="0.11131656619502926" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="497.1260" x2="497.1260" y1="888.0000" y2="887.0913" data-mz="115.07536" data-intensity="0.06058134188341633" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="497.1292" x2="497.1292" y1="888.0000" y2="887.8876" data-mz="115.09917" data-intensity="0.007496369722256984" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="497.2540" x2="497.2540" y1="888.0000" y2="886.8972" data-mz="116.03422" data-intensity="0.07351807803970056" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="497.2589" x2="497.2589" y1="888.0000" y2="887.7753" data-mz="116.0706" data-intensity="0.014980496623974899" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="497.2638" x2="497.2638" y1="888.0000" y2="887.9225" data-mz="116.10699" data-intensity="0.005169467275047455" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="497.3935" x2="497.3935" y1="888.0000" y2="887.9469" data-mz="117.07843" data-intensity="0.003539301053284322" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="498.3280" x2="498.3280" y1="888.0000" y2="887.9422" data-mz="124.07569" data-intensity="0.003852612451430264" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="499.1307" x2="499.1307" y1="888.0000" y2="887.8477" data-mz="130.08626" data-intensity="0.010155191195444972" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="499.3999" x2="499.3999" y1="888.0000" y2="873.0000" data-mz="132.10191" data-intensity="1.0" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="499.5279" x2="499.5279" y1="888.0000" y2="887.9337" data-mz="133.06077" data-intensity="0.004420585705770737" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="500.1997" x2="500.1997" y1="888.0000" y2="887.8157" data-mz="138.09134" data-intensity="0.012283388351051897" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="500.4689" x2="500.4689" y1="888.0000" y2="887.9361" data-mz="140.10699" data-intensity="0.004257285239134374" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="500.6018" x2="500.6018" y1="888.0000" y2="887.9271" data-mz="141.10224" data-intensity="0.004858861897596614" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="503.1385" x2="503.1385" y1="888.0000" y2="887.9196" data-mz="160.09682" data-intensity="0.005359555845795976" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="503.9384" x2="503.9384" y1="888.0000" y2="887.7362" data-mz="166.08626" data-intensity="0.017589851325401702" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="504.4719" x2="504.4719" y1="888.0000" y2="887.9574" data-mz="170.08117" data-intensity="0.0028368911339922333" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="506.3437" x2="506.3437" y1="888.0000" y2="887.9187" data-mz="184.09682" data-intensity="0.005422476163462352" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="508.6175" x2="508.6175" y1="888.0000" y2="887.8611" data-mz="201.12337" data-intensity="0.009259510262470483" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="510.2169" x2="510.2169" y1="888.0000" y2="887.9199" data-mz="213.09956" data-intensity="0.005341774164928818" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="512.4876" x2="512.4876" y1="888.0000" y2="887.9445" data-mz="230.1023" data-intensity="0.0037030358787116645" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="514.7615" x2="514.7615" y1="888.0000" y2="883.5000" data-mz="247.12885" data-intensity="0.3" stroke="#00A77C" stroke-width="1.1" stroke-linecap="butt"/>
+<path d="M486 873V888H516" fill="none" stroke="#65747C" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
 </g></svg>

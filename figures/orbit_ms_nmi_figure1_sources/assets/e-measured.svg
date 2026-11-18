@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="1534 244 133 75"><g id="spectrum-e-measured"><title>spectrum e measured</title>
-<path d="M1554 279H1647" fill="none" stroke="#BD4B00" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1557.576 279V267.260" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1591.366 279V264.509" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1643.408 279V254.000" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1643.424 279V278.192" fill="none" stroke="#BD4B00" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1500 240 163 77"><g id="spectrum-e-measured"><title>spectrum e measured</title>
+<line x1="1564.9765" x2="1564.9765" y1="275.0000" y2="263.2601" data-mz="72.0816" data-intensity="0.46959673" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="1594.2648" x2="1594.2648" y1="275.0000" y2="260.5092" data-mz="90.9773" data-intensity="0.57963063" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="1639.3752" x2="1639.3752" y1="275.0000" y2="250.0000" data-mz="120.0808" data-intensity="1.0" stroke="#A84B09" stroke-width="1.1" stroke-linecap="butt"/>
+<line x1="1639.3884" x2="1639.3884" y1="275.0000" y2="274.1922" data-mz="120.0893" data-intensity="0.03231163" stroke="#BD4B00" stroke-width="1.1" stroke-linecap="butt"/>
+<path d="M1554 250V275H1647" fill="none" stroke="#65747C" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
 </g></svg>

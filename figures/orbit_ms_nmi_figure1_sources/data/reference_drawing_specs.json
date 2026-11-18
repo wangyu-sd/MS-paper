@@ -88,5 +88,68 @@
     "rotation_degrees": 180,
     "atom_font_px": 14,
     "source": "case_manifest.json:mma.motifs[0]"
+  },
+  {
+    "asset": "f-paired-input.svg",
+    "canonical_smiles": "CC[C@H](C)[C@@H]1NC(=O)C(C(C)=O)=C1O",
+    "width_px": 48,
+    "height_px": 33,
+    "rotation_degrees": 0,
+    "atom_font_px": 8,
+    "source": "experience:paired"
+  },
+  {
+    "asset": "f-paired-pair.svg",
+    "canonical_smiles": "CC[C@H](C)[C@@H]1NC(=O)C(C(C)=O)=C1O",
+    "width_px": 55,
+    "height_px": 33,
+    "rotation_degrees": 0,
+    "atom_font_px": 8,
+    "source": "experience:paired"
+  },
+  {
+    "asset": "f-sleep-input.svg",
+    "canonical_smiles": "CC(=O)OC1C(=O)N(CCN(C)C)c2ccccc2SC1c1ccc(O)cc1",
+    "width_px": 83,
+    "height_px": 33,
+    "rotation_degrees": 0,
+    "atom_font_px": 8,
+    "source": "experience:sleep"
+  },
+  {
+    "asset": "f-sleep-pair.svg",
+    "canonical_smiles": "CC(=O)OC1C(=O)N(CCN(C)C)c2ccccc2SC1c1ccc(O)cc1",
+    "width_px": 55,
+    "height_px": 33,
+    "rotation_degrees": 0,
+    "atom_font_px": 8,
+    "source": "experience:sleep"
+  },
+  {
+    "asset": "f-wake-pair.svg",
+    "canonical_smiles": "CCCCCCCCOC(=O)c1ccccc1C(=O)OCCCCCCCC",
+    "width_px": 55,
+    "height_px": 33,
+    "rotation_degrees": 0,
+    "atom_font_px": 6,
+    "source": "experience:wake"
+  },
+  {
+    "asset": "f-hindsight-input.svg",
+    "canonical_smiles": "CCC(C)C(NC(=O)C(N)CC(=O)O)C(=O)O",
+    "width_px": 83,
+    "height_px": 33,
+    "rotation_degrees": 0,
+    "atom_font_px": 8,
+    "source": "experience:hindsight"
+  },
+  {
+    "asset": "f-hindsight-pair.svg",
+    "canonical_smiles": "CCC(C)C(NC(=O)C(N)CC(=O)O)C(=O)O",
+    "width_px": 55,
+    "height_px": 33,
+    "rotation_degrees": 0,
+    "atom_font_px": 8,
+    "source": "experience:hindsight"
   }
 ]
