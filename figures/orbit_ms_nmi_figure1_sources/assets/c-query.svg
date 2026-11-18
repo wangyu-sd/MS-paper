@@ -1,8 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 604 98 83"><g id="spectrum-c-query"><title>spectrum c query</title>
-<path d="M22 647H80" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M24.230 647V631.503" fill="none" stroke="#008BC0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M45.303 647V627.872" fill="none" stroke="#008BC0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M77.760 647V614.000" fill="none" stroke="#BD4B00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M77.770 647V645.934" fill="none" stroke="#008BC0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="76" y="622" fill="#BD4B00" font-family="Times New Roman" font-size="16" font-weight="400" text-anchor="end">120.0808</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 605 96 77"><g id="spectrum-c-query"><title>spectrum c query</title>
+<path d="M22 642H78" fill="none" stroke="#BD4B00" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50.000 642V615.000" fill="none" stroke="#BD4B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </g></svg>

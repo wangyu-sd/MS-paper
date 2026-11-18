@@ -1,0 +1,92 @@
+[
+  {
+    "asset": "c-extracted-reference.svg",
+    "canonical_smiles": "NCCc1ccccc1",
+    "width_px": 130,
+    "height_px": 44,
+    "rotation_degrees": 180,
+    "atom_font_px": 14,
+    "source": "case_manifest.json:mma.motifs[0]"
+  },
+  {
+    "asset": "c-online-motif-2-reference.svg",
+    "canonical_smiles": "NCCc1ccccc1",
+    "width_px": 108,
+    "height_px": 31,
+    "rotation_degrees": 180,
+    "atom_font_px": 14,
+    "source": "case_manifest.json:mma.motifs[0]"
+  },
+  {
+    "asset": "c-online-motif-3-reference.svg",
+    "canonical_smiles": "CCNc1ccccc1",
+    "width_px": 104,
+    "height_px": 34,
+    "rotation_degrees": 180,
+    "atom_font_px": 14,
+    "source": "case_manifest.json:mma.motifs[1]"
+  },
+  {
+    "asset": "zoom-display-1.svg",
+    "canonical_smiles": "NC(Cc1ccccc1)C(=O)O",
+    "width_px": 117,
+    "height_px": 59,
+    "rotation_degrees": 0,
+    "atom_font_px": 14,
+    "source": "motif-topology.json:node[1]"
+  },
+  {
+    "asset": "zoom-display-2.svg",
+    "canonical_smiles": "NCCc1ccccc1",
+    "width_px": 114,
+    "height_px": 51,
+    "rotation_degrees": 0,
+    "atom_font_px": 14,
+    "source": "motif-topology.json:node[2]"
+  },
+  {
+    "asset": "zoom-display-3.svg",
+    "canonical_smiles": "CCNc1ccccc1",
+    "width_px": 106,
+    "height_px": 55,
+    "rotation_degrees": 0,
+    "atom_font_px": 14,
+    "source": "motif-topology.json:node[3]"
+  },
+  {
+    "asset": "zoom-display-4.svg",
+    "canonical_smiles": "CCc1ccccc1",
+    "width_px": 93,
+    "height_px": 50,
+    "rotation_degrees": 0,
+    "atom_font_px": 14,
+    "source": "motif-topology.json:node[4]"
+  },
+  {
+    "asset": "zoom-display-5.svg",
+    "canonical_smiles": "Nc1ccccc1",
+    "width_px": 73,
+    "height_px": 50,
+    "rotation_degrees": 0,
+    "atom_font_px": 14,
+    "source": "motif-topology.json:node[5]"
+  },
+  {
+    "asset": "zoom-display-6.svg",
+    "canonical_smiles": "c1ccccc1",
+    "width_px": 53,
+    "height_px": 51,
+    "rotation_degrees": 0,
+    "atom_font_px": 14,
+    "source": "motif-topology.json:node[6]"
+  },
+  {
+    "asset": "encoder-motif-reference.svg",
+    "canonical_smiles": "NCCc1ccccc1",
+    "width_px": 93,
+    "height_px": 43,
+    "rotation_degrees": 180,
+    "atom_font_px": 14,
+    "source": "case_manifest.json:mma.motifs[0]"
+  }
+]

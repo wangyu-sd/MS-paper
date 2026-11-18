@@ -48,6 +48,32 @@ async function main() {
     const verification = path.join(root, "figures/orbit_ms_nmi_figure1_sources/verification");
     await fs.mkdir(verification, {recursive:true});
     await fs.writeFile(path.join(verification, "text-bounds.json"), JSON.stringify(issues, null, 2) + "\n");
+    const crossings = await page.evaluate(() => {
+      const outer = document.querySelector("body > svg");
+      const frame = outer.getBoundingClientRect();
+      const bounds = Array.from(outer.querySelectorAll('text')).map(t => {
+        const b=t.getBoundingClientRect();
+        return {text:t.textContent,panel:t.closest('g[id^="panel-"]')?.id,
+          left:b.left+2,right:b.right-2,top:b.top+1,bottom:b.bottom-1};
+      });
+      const hits=[];
+      for (const p of outer.querySelectorAll('path[data-role="connector"]')) {
+        const matrix=p.getScreenCTM(), length=p.getTotalLength();
+        const panel=p.closest('g[id^="panel-"]')?.id;
+        const found=new Set();
+        for (let i=0;i<=Math.ceil(length);i++) {
+          const q=p.getPointAtLength(Math.min(i,length));
+          const t=new DOMPoint(q.x,q.y).matrixTransform(matrix);
+          for (const b of bounds) {
+            if (panel===b.panel && t.x>b.left && t.x<b.right && t.y>b.top && t.y<b.bottom)
+              found.add(b.text);
+          }
+        }
+        for (const text of found) hits.push({panel,path:p.getAttribute('d'),text});
+      }
+      return hits;
+    });
+    await fs.writeFile(path.join(verification,'connector-crossings.json'),JSON.stringify(crossings,null,2)+'\n');
   } finally {
     await browser.close();
   }

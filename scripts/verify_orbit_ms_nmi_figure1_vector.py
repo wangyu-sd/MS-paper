@@ -105,6 +105,21 @@ def main():
     assert nodes["3"].HasSubstructMatch(nodes["5"])
     assert nodes["5"].HasSubstructMatch(nodes["6"])
 
+    drawing_specs = json.loads((SOURCE/'data/reference_drawing_specs.json').read_text())
+    for spec in drawing_specs:
+        assert Chem.MolFromSmiles(spec['canonical_smiles']) is not None
+        art = ET.parse(SOURCE/'assets'/spec['asset']).getroot()
+        assert not art.findall('.//s:image',NS)
+        if spec['source'].startswith('case_manifest'):
+            index = int(spec['source'].split('[')[1].split(']')[0])
+            expected = Chem.MolToSmiles(Chem.MolFromSmiles(case['mma']['motifs'][index]['motif']))
+        else:
+            node_id = spec['source'].split('[')[1].split(']')[0]
+            expected = Chem.MolToSmiles(nodes[node_id])
+        assert spec['canonical_smiles'] == expected
+    display = json.loads((SOURCE/'data/reference_graph_layout.json').read_text())
+    assert set(display['node_positions_px']) == set(nodes)
+
     bounds = json.loads((VERIFY/"text-bounds.json").read_text())
     clipped = [v["text"] for v in bounds if v["left"] < -.5 or v["right"] > 1670.5 or
                v["top"] < -.5 or v["bottom"] > 942.5]
@@ -119,6 +134,8 @@ def main():
                 overlaps.append([left["text"], right["text"]])
     assert not clipped, clipped
     assert not overlaps, overlaps
+    connector_crossings = json.loads((VERIFY/'connector-crossings.json').read_text())
+    assert not connector_crossings, connector_crossings
 
     image_list = run_poppler(args.poppler_dir, "pdfimages", "-list", pdf_path)
     assert not any(line.strip().startswith("1 ") for line in image_list.splitlines())
@@ -148,7 +165,9 @@ def main():
         sheet.paste(old,(0,32)); sheet.paste(new,(old.width+24,32))
         sheet.save(VERIFY/f"panel-{letter}-comparison.png")
 
-    previous_path = VERIFY/"previous-vector-render.png"
+    previous_path = VERIFY/"previous-iteration-render.png"
+    if not previous_path.exists():
+        previous_path = VERIFY/"previous-vector-render.png"
     revision = {}
     if previous_path.exists():
         previous = Image.open(previous_path).convert("RGB")
@@ -180,6 +199,7 @@ def main():
         "reference_pixels": list(source.size), "changed_pixel_fraction": float(pixel_error.mean()),
         "mean_absolute_channel_error_0_255": float(error.mean()), "max_channel_error": int(error.max()),
         "native_text_clipped": clipped, "native_text_overlaps": overlaps,
+        "connector_text_crossings":connector_crossings,
         "minimum_pdf_type_points": min(s["size"] for s in spans),
         "body_13_svg_pixels_in_pdf_points": 13*180*72/25.4/1670,
         "kg_nodes": len(nodes), "verified_kg_edges": len(edges),
@@ -191,8 +211,9 @@ def main():
     index = json.loads(index_path.read_text())
     index["comparison_reference_png"] = args.reference.name
     index["comparison_reference_sha256"] = digest(args.reference)
-    for asset_record in index["assets"]:
-        asset_record["sha256"] = digest(SOURCE/asset_record["file"])
+    index['assets'] = [{'file':str(path.relative_to(SOURCE)),'sha256':digest(path),
+                        'representation':'native SVG paths and/or text'}
+                       for path in sorted((SOURCE/'assets').glob('*.svg'))]
     index_path.write_text(json.dumps(index,indent=2)+"\n")
     print(json.dumps(statistics,indent=2))
 
