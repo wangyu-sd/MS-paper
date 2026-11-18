@@ -21,7 +21,7 @@ CASE = json.loads((SOURCE / "data/case_manifest.json").read_text())
 KG = json.loads((SOURCE / "data/motif-topology.json").read_text())
 MOLECULE_BOUNDS = json.loads((ASSETS / "molecule_bounds.json").read_text())
 W, H = 1670, 942
-INK, BLUE, TEAL, COPPER, VIOLET = "#29363D", "#456477", "#44857F", "#BA8150", "#776A86"
+INK, BLUE, TEAL, COPPER, VIOLET = "#101214", "#008BC0", "#00A77C", "#BD4B00", "#7934D7"
 FAINT, SECONDARY, LIGHT = "#D7DEE0", "#677680", "#F2F5F4"
 PARTS = []
 
@@ -80,7 +80,7 @@ def rectangle(x, y, w, h, fill="white", stroke=FAINT, radius=4, width=.8, dash=N
         f'fill="{fill}" stroke="{stroke}" stroke-width="{width}"{dashed}/>')
 
 
-def box(x, y, w, h, values, size=13, stroke=FAINT, fill="white", bold=False, color=INK):
+def box(x, y, w, h, values, size=13, stroke="#BCD0DA", fill="#F6F8F8", bold=False, color=INK):
     rectangle(x, y, w, h, fill, stroke)
     values = [values] if isinstance(values, str) else values
     spacing = size * 1.12
@@ -122,6 +122,11 @@ def inline_svg(key, artwork, x, y, w, h):
 
 def asset(name, x, y, w, h, instance=None):
     artwork = (ASSETS/(name+".svg")).read_text()
+    # Match the reference's conventional black-bond / blue-N / red-O drawing style.
+    # Atom and bond geometry remains the archived RDKit vector geometry.
+    for original, replacement in (("#30373B", "#000000"), ("#2D5B87", "#0000FF"),
+                                  ("#9E4433", "#FF0000")):
+        artwork = artwork.replace(original, replacement)
     if name+".svg" in MOLECULE_BOUNDS:
         left, top, width, height = MOLECULE_BOUNDS[name+".svg"]
         crop = f"{left-6} {top-6} {width+12} {height+12}"
@@ -140,12 +145,10 @@ def new_molecule(name, smiles):
     opts.clearBackground = False
     opts.padding = .09
     opts.fixedBondLength = 60
-    opts.bondLineWidth = 3.6
-    opts.minFontSize = 25
-    opts.maxFontSize = 36
-    ring = mol.GetSubstructMatch(Chem.MolFromSmiles("c1ccccc1"))
-    rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol, highlightAtoms=list(ring),
-                                      highlightAtomColors={i:(.72,.86,.82) for i in ring})
+    opts.bondLineWidth = 5.0
+    opts.minFontSize = 36
+    opts.maxFontSize = 48
+    rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol)
     drawer.FinishDrawing()
     path.write_text(re.sub(r"[ \t]+$", "", drawer.GetDrawingText(), flags=re.M))
 
@@ -198,7 +201,8 @@ def spectrum(name, peaks, x, y, width, height, axes=False, highlight=False, simu
         is_base = highlight and abs(mz-120.0808)<.00001
         if is_base:
             color=COPPER
-        line(f"M{xx:.3f} {base}V{base-intensity/norm*height:.3f}", color, 2.0 if is_base else 1.25)
+        stick_width = (4.5 if is_base else 6) if axes else (1.8 if is_base else 1.25)
+        line(f"M{xx:.3f} {base}V{base-intensity/norm*height:.3f}", color, stick_width)
     if axes:
         for v in (70,80,90,100,110,120):
             xx=x+(v-lower)/(upper-lower)*width
@@ -303,9 +307,13 @@ def graph_overview():
     nodes = {node["id"]:node for node in KG["nodes"]}
     focus = set(KG["focus_ids"])
     def xy(id_):
+        selected_positions={"1":(963,261),"2":(930,296),"3":(1065,281),
+                            "4":(976,326),"5":(1068,320),"6":(993,361)}
+        if id_ in selected_positions:
+            return selected_positions[id_]
         x,y=nodes[id_]["xy"]
-        return 407+x*0.49,282+y*.245
-    rectangle(908,285,187,111,"#F8FBFA",TEAL,12,1,dash="4 3")
+        return 407+x*0.49,253+y*.32
+    rectangle(913,242,184,136,"#F8FBFA",TEAL,12,1,dash="4 3")
     for edge in KG["overview_edges"]:
         u,v=edge["larger"],edge["included"]
         a,b=xy(u);c,d=xy(v)
@@ -317,68 +325,70 @@ def graph_overview():
     for id_ in nodes:
         x,y=xy(id_)
         group("kg-node-"+id_)
-        circle(x,y,5.5 if id_ in focus else 2.2,TEAL if id_ in focus else "#81989E")
+        circle(x,y,6.8 if id_ in focus else 2.5,"#168C70" if id_ in focus else "#6E8B98")
         if id_ in focus:
-            label(x+8,y+5,id_,13)
+            label(x+10,y+5,id_,15,True)
         end()
-    line("M913 397L721 413M1094 396L1122 413",TEAL,.8)
+    line("M913 377L721 412M1094 376L1122 412",TEAL,.8)
 
 
 def panel_d():
     title("d",399,209,"Knowledge graph to molecular construction",20)
-    label(435,231,"Mass-matched substructure alignment (MMA)",15)
+    label(435,231,"Mass-matched substructure alignment (MMA)",16,True)
     group("knowledge-graph-overview")
     graph_overview()
     end()
-    label(399,440,"Selected molecular neighborhood",17,True)
+    label(399,436,"Selected molecular neighborhood",18,True)
     group("zoomed-motif-neighborhood")
-    positions={"1":(396,448,115,73),"2":(519,486,120,72),"3":(647,448,102,73),
-               "4":(400,576,111,70),"5":(641,578,109,70),"6":(526,611,110,66)}
+    positions={"1":(398,450,115,63),"2":(520,494,108,48),"3":(645,454,105,59),
+               "4":(414,589,93,50),"5":(675,591,73,51),"6":(553,621,61,52)}
+    captions={"1":(454,526),"2":(575,560),"3":(699,526),
+              "4":(459,660),"5":(708,660),"6":(584,687)}
     names={"1":"Phenylalanine","2":"Phenethylamine","3":"N-ethylaniline","4":"Ethylbenzene","5":"Aniline","6":"Benzene"}
     for u,v in KG["zoom_edges"]:
-        paths={("1","2"):"M509 500L531 510",("1","4"):"M451 526V578",
-               ("2","6"):"M582 559V621",("4","6"):"M501 637L547 651",
-               ("3","5"):"M703 525V577",("5","6"):"M650 639L620 651"}
+        paths={("1","2"):"M512 494L534 510",("1","4"):"M446 541V586",
+               ("2","6"):"M583 570V620",("4","6"):"M510 631L551 649",
+               ("3","5"):"M703 577V587",("5","6"):"M665 632L617 651"}
         line(paths[u,v],TEAL,1.25,True)
     for id_,(x,y,w,h) in positions.items():
         asset("zoom_motif_"+id_,x,y,w,h)
-        label(x+w/2,y+h+11,id_+" "+names[id_],12.5,anchor="middle")
-    label(469,711,"Substructure containment",15,True)
+        cx,cy=captions[id_]
+        label(cx,cy,id_+" "+names[id_],14,anchor="middle")
+    label(435,705,"Substructure containment",17,True)
     end()
-    label(777,440,"MMA alignment and construction",17,True)
+    line("M756 421V710",FAINT,.8)
+    label(777,436,"MMA alignment and construction",18,True)
     asset("retrieved_motif_1",774,461,90,44,"encoder-motif")
     box(658,539,93,36,["Retrieved","motifs 2, 3"],13,stroke="#8DBFB3",fill="#F7FBF9")
-    line("M751 558H772V509H867V496H884",TEAL,1.45,True)
-    box(887,463,57,48,["Motif","graph","encoder"],12.2)
-    box(966,448,79,41,["Peak attention","+ prior"],12)
+    line("M751 558H772V519H854V496H870",TEAL,1.45,True)
+    box(872,463,61,53,["Motif","graph","encoder"],14)
+    box(955,445,79,49,["Peak","attention","+ prior"],14)
     box(1063,449,66,32,["Peak","memory"],12)
-    label(965,498,"Atom memory (variant)",10.5)
-    inline_svg("neural-atom-alignment",(ASSETS/"atom-level-alignment.svg").read_text(),961,501,171,35)
-    label(1127,545,"Graph state",10.5,anchor="end")
-    line("M864 483H884",BLUE,1,True)
-    line("M944 481H955V468H964",BLUE,1,True)
-    line("M955 481V517H960",BLUE,1,True)
-    line("M1047 468H1060",BLUE,1,True)
-    line("M1048 517H1061",BLUE,1,True)
-    box(840,549,285,22,"Shared spectrum/graph backbone",12)
-    line("M1130 466H1138V560H1126",BLUE,1)
-    line("M1130 517H1138",BLUE,1)
-    line("M854 571H802V578",BLUE,1,True)
-    box(768,579,111,44,[],12)
-    label(775,590,"Hybrid policy",11.5)
-    label(773,605,"Atom",9.5)
-    label(773,614,"Ring / motif",9.5)
-    add(f'<text x="862" y="591" text-anchor="end" font-family="Times New Roman" '
-        f'font-size="10.5" font-style="italic" fill="{INK}">R<tspan baseline-shift="sub" font-size="72%">t</tspan></text>')
+    box(955,493,80,43,["Motif atom","memory","(optional)"],12)
+    box(1055,498,57,34,["Graph","state"],13)
+    line("M864 483H870",BLUE,1.2,True)
+    line("M934 481H943V464H953",BLUE,1.2,True)
+    line("M943 481V515H953",BLUE,1.2,True)
+    line("M1035 464H1060",BLUE,1.2,True)
+    line("M1036 515H1053",BLUE,1.2,True)
+    box(833,540,231,22,"Shared spectrum/graph backbone",13)
+    line("M1130 466H1138V551H1065",BLUE,1.2)
+    line("M1113 515H1138",BLUE,1.2)
+    line("M834 551H802V573",BLUE,1.2,True)
+    box(766,575,132,50,[],12)
+    label(795,589,"Hybrid",14,anchor="middle")
+    label(796,604,"atom/ring/",14,anchor="middle")
+    label(796,619,"motif",14,anchor="middle")
     for j in range(3):
-        line(f"M830 {599+j*7}h36",TEAL,.6)
+        line(f"M840 {588+j*13}h50",TEAL,.6)
         for k,height in enumerate([3,5,2,6,4]):
-            line(f"M{835+k*6} {599+j*7}v{-height}",TEAL,1)
-    box(919,579,103,44,["Formula /","valence masks"],13)
-    box(1041,579,85,44,["Graph","transition"],13)
-    line("M880 601H917",BLUE,1.1,True)
-    line("M1023 601H1039",BLUE,1.1,True)
-    line("M1127 602H1141",BLUE,1,True)
+            line(f"M{845+k*8} {588+j*13}v{-height}",TEAL,1)
+    box(920,575,81,50,["Mass /","valence","constraint"],13)
+    box(1019,579,70,42,["Graph","transition"],13)
+    box(1096,579,52,42,["A/B","candidates"],11.5)
+    line("M899 600H918",BLUE,1.2,True)
+    line("M1002 600H1017",BLUE,1.2,True)
+    line("M1090 600H1094",BLUE,1.2,True)
     # The selected atoms are represented separately from the parent-preserving action replay.
     rectangle(767,633,372,78,"white",FAINT,8)
     label(775,651,"Reference-conditioned action replay",14,True)
@@ -394,12 +404,13 @@ def panel_e():
     for c,y in zip(CASE["candidates"],(250,324)):
         badge(1182,y+13,c["label"],12)
         asset("candidate_"+c["label"],1195,y-5,76,68,"e-input-"+c["label"])
-    box(1275,285,62,39,["A/B","candidates"],13)
+    box(1275,285,62,39,["A/B","candidates"],13,bold=True)
     line("M1265 299H1273",BLUE,1,True)
-    box(1352,278,73,49,["W","fragments"],14)
+    box(1352,278,73,49,["W","fragments"],14,bold=True)
     line("M1338 303H1350",BLUE,1,True)
     box(1439,279,142,24,"120.0808 · shared",13)
     box(1439,312,142,24,"120.0889 · A only",13)
+    label(1435,272,"Predicted m/z",15)
     line("M1426 292H1437",BLUE,1,True)
     line("M1426 319H1437",BLUE,1,True)
     box(1596,297,55,35,"V",16)
@@ -408,31 +419,30 @@ def panel_e():
     spectrum("e-measured",CASE["query"]["peaks"],1564,254,83,25)
     label(1551,242,"Measured MS/MS",14)
     line("M1617 280V294",BLUE,1,True)
-    label(1170,390,"Candidates",12,color=SECONDARY)
-    label(1170,405,"from G output",12,color=SECONDARY)
-    rectangle(1253,391,382,69,"white",FAINT,0)
-    for x in (1289,1384,1479,1574):
-        line(f"M{x} 391V460",FAINT,.6)
-    line("M1253 415H1635M1253 438H1635",FAINT,.6)
-    label(1217,423,"m/z",15,math=True)
+    box(1170,389,87,53,["Candidates","from","G output"],14)
+    rectangle(1261,410,373,49,"white","#B5CAD6",4)
+    for x in (1305,1392,1471,1550):
+        line(f"M{x} 410V459","#B5CAD6",.6)
+    line("M1261 435H1634","#B5CAD6",.6)
+    label(1282,404,"m/z",15,anchor="middle",math=True)
     for j,mz in enumerate((72.0816,90.9773,120.0808,120.0893)):
-        xx=1320+j*90
-        label(xx,404,f"{mz:.4f}",14,anchor="middle",math=True)
+        xx=(1352,1428,1509,1590)[j]
+        label(xx,404,f"{mz:.4f}",16,anchor="middle",math=True)
     for i,c in enumerate(CASE["candidates"]):
         yy=425+i*23
-        label(1268,yy+4,c["label"],14,True)
+        label(1282,yy+4,c["label"],16,True,anchor="middle")
         for j,cell in enumerate(c["evidence"]):
-            xx=1320+j*90
+            xx=(1352,1428,1509,1590)[j]
             present=cell["density"]>0
             fill=COPPER if j==3 and present else "#789099" if present else "white"
-            circle(xx,yy,4 if j==3 and present else 5.2,fill,"#90A3AB" if not present else "none",.9)
-    label(1198,494,"Structural hypotheses",17,True)
+            circle(xx,yy,6.5,fill,"#78939E" if not present else "none",1.1)
+    label(1198,490,"Structural hypotheses",20,True)
     for c,x in zip(CASE["candidates"],(1241,1448)):
         badge(x,521,c["label"])
         asset("candidate_"+c["label"],x+10,505,145,92,"e-output-"+c["label"])
-    formula(1351,611,"C28H36N4O4",16,anchor="middle")
-    label(1511,611,"(MassSpecGym 0002114)",12.5,anchor="middle")
-    label(1267,642,"Separate TRAIN FIT audit",18,True)
+    formula(1310,601,"C28H36N4O4",19,anchor="middle")
+    label(1478,601,"(MassSpecGym 0002114)",15,True,anchor="middle")
+    label(1275,638,"Separate TRAIN FIT audit",21,True)
     end()
 
 
@@ -444,7 +454,7 @@ def panel_f():
     names=[["Paired","molecule–spectrum"],["Structure-only"],["Spectrum-only"],["Model-generated"]]
     yy=[811,849,883,918]
     for i,(y,n) in enumerate(zip(yy,names)):
-        box(17,y-17,112,30,n,11)
+        box(17,y-17,112,30,n,12)
         # Native modality tokens use valid source miniatures without assigning a test compound to TRAIN.
         if i in (0,1,3):
             graph_icon(158,y-3,10,TEAL if i==3 else INK)
@@ -456,22 +466,22 @@ def panel_f():
             spectrum("f-paired",CASE["experience"]["wake"]["peaks"],355,y-9,38,18)
         elif i==1:
             line("M174 846H190V824H221",TEAL,1,True)
-            box(224,815,105,17,["Motif mining"],11)
+            box(224,805,105,19,["Motif mining"],12,stroke="#A7CEC5",fill="#F2FAF5")
             line("M190 846H221",TEAL,1,True)
-            box(224,832,105,31,["Forward Sleep","frozen W"],11.5)
+            box(224,832,105,31,["Forward Sleep","frozen W"],12.5)
             line("M330 847H340",BLUE,1,True)
             graph_icon(354,y-3,9,INK)
             spectrum("f-sleep",CASE["experience"]["sleep"]["peaks"],376,y-9,35,18,simulated=True)
         elif i==2:
             line("M185 881H218",BLUE,1,True)
-            box(223,867,106,31,["Wake / G,W,V","filter"],11.5)
+            box(223,867,106,31,["Wake / G,W,V","filter"],12.5)
             line("M330 881H340",BLUE,1,True)
             graph_icon(354,y-3,9,INK)
             spectrum("f-wake",CASE["experience"]["wake"]["peaks"],376,y-9,35,18)
             label(365,y+15,"Pseudo-pair",10.5)
         else:
             line("M173 915H218",BLUE,1,True)
-            box(223,901,106,31,["Hindsight","frozen W"],11.5)
+            box(223,901,106,31,["Hindsight","frozen W"],12.5)
             line("M330 916H340",BLUE,1,True)
             graph_icon(354,y-3,9,INK)
             spectrum("f-hindsight",CASE["experience"]["hindsight"]["peaks"],376,y-9,35,18,simulated=True)
@@ -499,8 +509,8 @@ def panel_g():
         spectrum(f"g-spectrum-{i}",peaks[i],496,yy-7,20,11,simulated=i in (1,2))
         for j,value in enumerate(values):
             x=529+j*54
-            rectangle(x,yy-6,39,8,"#E7EFED","none",0)
-            rectangle(x,yy-6,39*value,8,"#78AFA7","none",0)
+            rectangle(x,yy-6,39,8,"#E1F5EA","none",0)
+            rectangle(x,yy-6,39*value,8,"#23BD90" if j==4 else "#86D6B3","none",0)
     for i,s in enumerate(["Weighted","sampling","without","replacement"]):
         label(815,840+i*13,s,11,anchor="middle")
     line("M792 876H838",BLUE,1,True)
@@ -511,7 +521,7 @@ def panel_g():
         spectrum(f"g-selected-{i}",peaks[i],868,826+i*28,24,16,simulated=i>0)
     for i,(caption,code) in enumerate([(["Knowledge","expansion"],"c"),(["Generator","learning"],"d"),(["Verifier","learning"],"e")]):
         yy=799+i*47
-        box(918,yy,80,37,caption,12,stroke="#A6C8C1",fill="#F7FBFA")
+        box(918,yy,80,37,caption,13,stroke="#A6C8C1",fill="#F2FAF5")
         line(f"M898 {yy+18}H915",TEAL,1,True)
         circle(1013,yy+18,11,TEAL)
         label(1013,yy+22,code,15,True,"white","middle")
@@ -535,51 +545,49 @@ def robot(x,y):
 def panel_h():
     title("h",1046,754,"Scientific Improver Agent",20)
     robot(1072,767)
-    rectangle(1059,795,132,96,"white",FAINT,4)
-    label(1066,802,"TRAIN FIT",13,True)
+    rectangle(1059,788,136,92,"white",FAINT,4)
+    label(1066,802,"TRAIN FIT",14,True)
     label(1066,817,"training diagnostic subset",10.5)
     for i,s in enumerate(["Absent","Misranked","Motif gaps"]):
-        y=841+i*16
-        label(1067,y,s,11)
+        y=839+i*16
+        label(1067,y,s,12)
         for j in range(5):
             line(f"M{1152+j*6} {y-1}v{-((j+i)%3+1)*2}",VIOLET,.8)
     box(1201,829,51,27,"Hypothesis",11,stroke="#C7BDCF")
     line("M1192 842H1199",VIOLET,1,True)
     label(1249,796,"Select ONE",14,color=VIOLET)
-    box(1256,800,118,42,["Expand knowledge","(retrieval resource)"],11,stroke="#C7BDCF")
-    box(1256,846,118,22,"Improve G",12,stroke="#C7BDCF")
-    box(1256,872,118,22,"Improve V",12,stroke="#C7BDCF")
+    box(1256,800,118,42,["Expand knowledge","for retrieval /","score implementation"],11.5,stroke="#C7BDCF",fill="#F9F4FD")
+    box(1256,845,118,20,"Improve G",13,stroke="#C7BDCF",fill="#F9F4FD")
+    box(1256,868,118,20,"Improve V",13,stroke="#C7BDCF",fill="#F9F4FD")
     line("M1252 842H1254",VIOLET,1,True)
     line("M1247 842V821H1254M1247 842V857H1254M1247 857V883H1254",VIOLET,1,True)
-    box(1257,898,117,21,"Tool selection → g",11.5,stroke="#C7BDCF")
-    line("M1375 909H1381",VIOLET,.8)
-    box(1378,766,114,22,"Trial from g",12,stroke="#AFBFC8")
-    line("M1433 789V803",BLUE,1.1,True)
-    label(1390,810,"Paired CAL",14,True)
-    label(1378,823,"independent calibration set",10)
-    rectangle(1380,828,117,57,"white",FAINT,4)
-    line("M1438 828V885M1380 865H1497",FAINT,.6)
-    label(1408,842,"Baseline",11,anchor="middle")
-    label(1408,857,"WGV",11,anchor="middle")
-    label(1466,842,"Trial",11,anchor="middle")
-    label(1466,857,"WGV",11,anchor="middle")
-    label(1466,875,"(W frozen)",10,anchor="middle")
-    circle(1411,876,4,"white",BLUE,.8)
-    box(1505,830,63,43,["Promotion","gate"],12,stroke="#C7BDCF")
-    line("M1498 849H1503",BLUE,1,True)
-    box(1590,801,71,30,"",12,stroke="#94BEAF",fill="#F7FBF9")
-    generation(1625,820,True,15)
-    label(1589,796,"Pass",12)
-    line("M1569 844H1578V816H1588",TEAL,1.2,True)
-    box(1590,854,71,30,"Retain",13)
-    label(1575,852,"Fail",12)
-    line("M1569 858H1580V868H1588",SECONDARY,1.1,True)
-    box(1258,923,116,18,"Collect evidence",11,stroke="#C7BDCF")
-    line("M1241 858V932H1256",VIOLET,1,True)
-    box(1405,907,95,34,["Episode","Memory"],12,stroke="#C7BDCF",fill="#FAF8FB")
-    line("M1375 932H1403",VIOLET,1,True)
-    line("M1538 875V896H1452V905",VIOLET,1,True,"3 3")
-    label(1510,900,"Next hypothesis",12,color=VIOLET)
+    box(1237,891,138,20,"Tool selection → g",13,stroke="#C7BDCF",fill="#F9F4FD")
+    box(1378,750,114,22,"Trial from g",13,bold=True,stroke="#AFBFC8")
+    line("M1433 773V783",BLUE,1.1,True)
+    label(1390,798,"Paired CAL",15,True)
+    label(1378,811,"independent calibration set",10)
+    rectangle(1380,816,117,51,"white",FAINT,4)
+    line("M1438 816V867",FAINT,.6)
+    label(1408,830,"Baseline",12,anchor="middle")
+    label(1408,844,"WGV",12,anchor="middle")
+    label(1466,830,"Trial",12,anchor="middle")
+    label(1466,844,"WGV",12,anchor="middle")
+    label(1466,860,"(W frozen)",10,anchor="middle")
+    box(1505,815,63,43,["Promotion","gate"],12,stroke="#C7BDCF",fill="#F9F4FD")
+    line("M1498 839H1503",BLUE,1,True)
+    box(1590,792,71,30,"",12,stroke="#94BEAF",fill="#F7FBF9")
+    generation(1625,811,True,15)
+    label(1589,787,"Pass",12)
+    line("M1569 830H1578V807H1588",TEAL,1.2,True)
+    box(1590,846,71,30,"Retain",13)
+    label(1575,842,"Fail",12)
+    line("M1569 850H1580V860H1588",SECONDARY,1.1,True)
+    box(1237,915,138,20,"Collect evidence",13,stroke="#C7BDCF",fill="#F9F4FD")
+    line("M1241 858H1229V925H1235",VIOLET,1,True)
+    box(1405,902,95,34,["Episode","Memory"],13,stroke="#C7BDCF",fill="#F9F4FD")
+    line("M1376 925H1403",VIOLET,1,True)
+    line("M1538 859V879H1452V900",VIOLET,1,True,"3 3")
+    label(1480,893,"Next hypothesis",13,color=VIOLET)
     end()
 
 

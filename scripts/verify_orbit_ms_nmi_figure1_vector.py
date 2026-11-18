@@ -39,6 +39,7 @@ def run_poppler(binary_dir, name, *args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--poppler-dir")
+    parser.add_argument("--reference", type=Path, default=SOURCE/"revision_reference.png")
     args = parser.parse_args()
     VERIFY.mkdir(exist_ok=True)
     svg_path = STEM.with_suffix(".svg")
@@ -126,7 +127,7 @@ def main():
     run_poppler(args.poppler_dir, "pdfinfo", pdf_path)
     run_poppler(args.poppler_dir, "pdftoppm", "-png", "-singlefile", "-scale-to-x", "1670",
                 "-scale-to-y", "942", pdf_path, VERIFY/"render-reference-size")
-    source = Image.open(SOURCE/"selected_reference.png").convert("RGB")
+    source = Image.open(args.reference).convert("RGB")
     rendered = Image.open(VERIFY/"render-reference-size.png").convert("RGB")
     assert source.size == rendered.size == (1670, 942)
     source_arr, rendered_arr = np.asarray(source, dtype=np.int16), np.asarray(rendered, dtype=np.int16)
@@ -147,13 +148,35 @@ def main():
         sheet.paste(old,(0,32)); sheet.paste(new,(old.width+24,32))
         sheet.save(VERIFY/f"panel-{letter}-comparison.png")
 
+    previous_path = VERIFY/"previous-vector-render.png"
+    revision = {}
+    if previous_path.exists():
+        previous = Image.open(previous_path).convert("RGB")
+        assert previous.size == source.size
+        for letter, xy in PANELS.items():
+            crops = [im.crop(xy) for im in (source, previous, rendered)]
+            width,height = crops[0].size
+            sheet = Image.new("RGB",(3*width+48,height+32),"white")
+            draw = ImageDraw.Draw(sheet)
+            for i,(im,caption) in enumerate(zip(crops,("Reference","Previous vector","Refined vector"))):
+                xx = i*(width+24)
+                sheet.paste(im,(xx,32))
+                draw.text((xx,2),caption,fill="#101214",font=font)
+            sheet.save(VERIFY/f"three-way-{letter}.png")
+            reference_array = np.asarray(crops[0],dtype=np.int16)
+            revision[letter] = {
+                "previous_mae":float(abs(reference_array-np.asarray(crops[1],dtype=np.int16)).mean()),
+                "refined_mae":float(abs(reference_array-np.asarray(crops[2],dtype=np.int16)).mean()),
+            }
+        (VERIFY/"revision-comparison.json").write_text(json.dumps(revision,indent=2)+"\n")
+
     spans = [span for b in page.get_text("dict")["blocks"] if b["type"] == 0
              for line in b["lines"] for span in line["spans"]]
     statistics = {
         "pdf_pages": len(document), "page_points": list(page.rect), "page_mm": [page.rect.width*25.4/72,page.rect.height*25.4/72],
         "pdf_image_count": 0, "pdf_path_objects": len(page.get_drawings()), "pdf_text_characters": len(text),
         "font_families": families, "embedded_font_records": len(page.get_fonts(full=True)),
-        "svg_objects": dict(counts), "source_png": str(SOURCE/"selected_reference.png"), "source_sha256":digest(SOURCE/"selected_reference.png"),
+        "svg_objects": dict(counts), "source_png": str(args.reference), "source_sha256":digest(args.reference),
         "reference_pixels": list(source.size), "changed_pixel_fraction": float(pixel_error.mean()),
         "mean_absolute_channel_error_0_255": float(error.mean()), "max_channel_error": int(error.max()),
         "native_text_clipped": clipped, "native_text_overlaps": overlaps,
@@ -164,6 +187,13 @@ def main():
         "note": "Differences include scientific replacements of malformed generated molecules and native font/rasterization differences; pixel equality is not expected."
     }
     (VERIFY/"statistics.json").write_text(json.dumps(statistics, indent=2)+"\n")
+    index_path = SOURCE/"source_index.json"
+    index = json.loads(index_path.read_text())
+    index["comparison_reference_png"] = args.reference.name
+    index["comparison_reference_sha256"] = digest(args.reference)
+    for asset_record in index["assets"]:
+        asset_record["sha256"] = digest(SOURCE/asset_record["file"])
+    index_path.write_text(json.dumps(index,indent=2)+"\n")
     print(json.dumps(statistics,indent=2))
 
 

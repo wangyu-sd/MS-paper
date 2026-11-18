@@ -8,22 +8,22 @@
   "assets": [
     {
       "file": "assets/a-measured.svg",
-      "sha256": "375f4351243fd3c57d10c4b96317d57c3ed48daeb2e94d0f069f6af1aef1fdf2",
+      "sha256": "f1f5e2133c81d11c33823a06da08e08fd7f54ba190f36024267f9dccbceca1e5",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/atom-level-alignment.svg",
-      "sha256": "4cb8bcaa026ef43ded566c222c796593098fa77e623a1775d96ded6cfd668187",
+      "sha256": "c7ac59836bf0f07e15466efdffbd9921f3af565f8651eae6e42b2b07d14de6a1",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/b-measured.svg",
-      "sha256": "cee639669bd49e47201268fe379bcb2f2f835d8aea0efb14cc1ee9695e0df954",
+      "sha256": "6e72888a59d41dcb545def404e80ad79efe743d71f2887557efa029f6d84976d",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/c-query.svg",
-      "sha256": "31af46e6a781e45bb4b8a2ee4a703006dc966e6dfe84f72a9e0e786300d08aba",
+      "sha256": "1dc38bccb9f0b10974b5ea00901943be08f54f5ead67de46f27488912f796345",
       "representation": "native SVG paths and/or text"
     },
     {
@@ -38,72 +38,72 @@
     },
     {
       "file": "assets/e-measured.svg",
-      "sha256": "179823ac06b3c58a0982c62ca30d01874d42f62a84dd2c5a58b2d4a99fd2257b",
+      "sha256": "cac3fe904bb41cbd31ef2cac56d10acd5765993d63c5136e875f249e453bcd47",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/f-hindsight.svg",
-      "sha256": "8f8a887d4fc7c9c4e53bdb0e18098e656873f264eb344024009946657b004d55",
+      "sha256": "33e814e1126d80ec219fa289099166249d8acf0c8103bedffe62cebe64405e0c",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/f-input-0.svg",
-      "sha256": "499c423bf5a2659979c1a543e7fa3261770d72a9dce744c507b74f97ec3fe0cb",
+      "sha256": "7c083bff115de616ac1789ad72730c7165109420d643311451dd2efd6beea965",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/f-input-2.svg",
-      "sha256": "d8c16f3ce60ad6ad037c88049c56cf30651a05c29c9674043ea421bcfcd4dee7",
+      "sha256": "9d124e3f87484ffd09a78a8cfb73a21f7239515904c6d86dcf9f57e24d6c88e2",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/f-paired.svg",
-      "sha256": "40a19bb7ea2548a9d65593e8490605af4fe2c8827003755e67c8db25772debf5",
+      "sha256": "9ac1fd92af3424de150896294c71c29bb43c3a6b3974416296e1fddc5c6e1fdb",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/f-sleep.svg",
-      "sha256": "31c780fdfbf15ab4878c3d25c86ecf9a9990c1b6b6d3f5a25225289c51e8563c",
+      "sha256": "7aa0439cf124866b2118f3d2a50d19dc96901db61f2976028402588e616270e9",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/f-wake.svg",
-      "sha256": "58973dea8561a104e99d1ede300bb0a70d5846cf0ff89b39958f4c6132c27ea9",
+      "sha256": "1eb883197e8029dc489bcf14dd0ea4f89a05b8566f56ef517f69c7bae391658e",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/g-selected-0.svg",
-      "sha256": "df458e60b7483c0312c5815d263b9488d13119ebaa575c2cd950a72aabf47e2a",
+      "sha256": "a0ba8a06076c552ef31922f04a2a4f4c309eed855a5906393ed19d885b77160d",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/g-selected-1.svg",
-      "sha256": "4f160daa8938e20e4cd198e4d7fb26cfc9b47719ed5f13304b36fed16e474254",
+      "sha256": "ad1ee9c82c363ed1b4aad944ec37e19e092539d78939a179ca84ca1a2c7dac41",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/g-selected-2.svg",
-      "sha256": "b579a4c2a0bd9cb8b32cefe3a6b192c0c646dcde33e7b860e03f1d3438c81a34",
+      "sha256": "d88ec29c304ef626aafdaa09d3f6fa3be971b7c0d859423b1593ae545add99a7",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/g-spectrum-0.svg",
-      "sha256": "adf9d3689c278fd879bcbec0d13c1c076a6f6db293da1165ade9729655d25ef6",
+      "sha256": "ec060b21476c7f717981e306bd871a7bacde7e68e21c74e1482bc1dbf0bf5c28",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/g-spectrum-1.svg",
-      "sha256": "9a230c4cb6a9d24a1c2c10ab0419378da75b5e2842c995d59ee4236e6092ecdf",
+      "sha256": "14e5dc2196746478569daa7ba3d4b0b4ffaa6944d11bc58ffd13e3f1ab4e7fb2",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/g-spectrum-2.svg",
-      "sha256": "27567d355062715132896ad3ee7f70f37f6caf4ed1493091e398017ccfe415d2",
+      "sha256": "5517a822272467753a961fff111ca56de47414cbf44ed1203d920f132b04f8df",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/g-spectrum-3.svg",
-      "sha256": "d4e7fb6a3c01709151fb5e94f7f3cea5dc06cb14b7d49ac3b9eed9cc2eb0090b",
+      "sha256": "e502483231a03b78189507cb9a94b6544f68c0f51c291c07bfd26a486e6222e3",
       "representation": "native SVG paths and/or text"
     },
     {
@@ -133,34 +133,36 @@
     },
     {
       "file": "assets/zoom_motif_1.svg",
-      "sha256": "5bc4e7500b63eb3f02123e7c96ceb8fa85852bd76d0358c376d1f07ff4d9e624",
+      "sha256": "c6ecc9b1e37ee09eb1a3ce56c17766a950245554a6f48cc310032681341fa27a",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/zoom_motif_2.svg",
-      "sha256": "be167d599c4c581322a79cf5725a65f7e18d1553591c66ade4b31a6b6275ad23",
+      "sha256": "4cb0e54aba9b696b60ff0a6d48d097e2f7967578fe471e5cdb317494edea2c0f",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/zoom_motif_3.svg",
-      "sha256": "f319662283237759a214ca4f88d0e07ae968491d662279f513a25cf1dbc091b6",
+      "sha256": "0c869c239e24413e5b6aa1e6dc6367a49c335b017745d09ef7c1ad30d6f911a8",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/zoom_motif_4.svg",
-      "sha256": "e845bb992918ba746ef6c274b721a93da9eff674285ceaf5a27e55fcffed8602",
+      "sha256": "6e3f5995bffed49c7014d15ed874171d65bf342c2751b1b0d21e423deb4c2ded",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/zoom_motif_5.svg",
-      "sha256": "adbc3fcb5fdc09ecba7badffa1a7394d6e827b0d07388966742dcb5999b7cc4b",
+      "sha256": "71e1aea24fe8f53dea330823a521201c992f49bf11642fb565dfeee17996f8f7",
       "representation": "native SVG paths and/or text"
     },
     {
       "file": "assets/zoom_motif_6.svg",
-      "sha256": "90ee74fcf275e4d0a87c20b4e49fed611ae5b53ac089efb7c866776621afffc9",
+      "sha256": "c419a91a9694f68892b09afe2ffeec966994c750a783ef27c86d83b3a50af33f",
       "representation": "native SVG paths and/or text"
     }
   ],
-  "limits": "See README.md and ../orbit_ms_nmi_figure1_vector_validation.md"
+  "limits": "See README.md and ../orbit_ms_nmi_figure1_vector_validation.md",
+  "comparison_reference_png": "revision_reference.png",
+  "comparison_reference_sha256": "b3b7b474981ba4284cf0a35a4c0ba7d27dd31aca42b2450af2017d31ac3da4f1"
 }
