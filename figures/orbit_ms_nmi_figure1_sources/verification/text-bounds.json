@@ -1,0 +1,1918 @@
+[
+  {
+    "text": "Across-generation scientific learning",
+    "left": 27.002158617502403,
+    "right": 251.78608328626964,
+    "top": 712.7259071903376,
+    "bottom": 727.9447165181298,
+    "family": "Arial"
+  },
+  {
+    "text": "a",
+    "left": 21.02282238225626,
+    "right": 33.83357111905001,
+    "top": 5.361415580806362,
+    "bottom": 29.909644030860633,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "Metabolomic dark matter",
+    "left": 55.0218672956082,
+    "right": 315.6382146019644,
+    "top": 5.361415580806362,
+    "bottom": 29.909644030860633,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "Tandem mass spectrometry (MS/MS)",
+    "left": 70.02144731093176,
+    "right": 300.9600869329029,
+    "top": 33.72588331209409,
+    "bottom": 48.94471136870012,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "Benchmark illustration",
+    "left": 363.01322800334464,
+    "right": 510.5669716873134,
+    "top": 3.271061070506389,
+    "bottom": 20.454821453764723,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "70",
+    "left": 79.79095607577084,
+    "right": 94.25099282358894,
+    "top": 122.72587124373956,
+    "bottom": 137.45481908284006,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "80",
+    "left": 123.78971787795705,
+    "right": 138.24976398991947,
+    "top": 122.72587124373956,
+    "bottom": 137.45481908284006,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "90",
+    "left": 167.78847968014327,
+    "right": 182.24853515625,
+    "top": 122.72587124373956,
+    "bottom": 137.45481908284006,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "100",
+    "left": 208.18182117915995,
+    "right": 229.85269853331707,
+    "top": 122.72587124373956,
+    "bottom": 137.45481908284006,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "110",
+    "left": 252.66002717059743,
+    "right": 273.372016146252,
+    "top": 122.72587124373956,
+    "bottom": 137.45481908284006,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "120",
+    "left": 296.1793447835324,
+    "right": 317.85022213768946,
+    "top": 122.72587124373956,
+    "bottom": 137.45481908284006,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "1",
+    "left": 49.77261359548152,
+    "right": 57.02180505488847,
+    "top": 47.72587762585127,
+    "bottom": 62.45482078274831,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "0",
+    "left": 49.77261359548152,
+    "right": 57.02180505488847,
+    "top": 109.72588321268425,
+    "bottom": 124.45482168737784,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "m/z",
+    "left": 306.49949332689766,
+    "right": 329.014192454137,
+    "top": 138.72588748730735,
+    "bottom": 153.45483532640785,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-a"
+  },
+  {
+    "text": "120.0808",
+    "left": 265.0645593267326,
+    "right": 325.0142794789992,
+    "top": 49.271060948729335,
+    "bottom": 66.45481782033508,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-a"
+  },
+  {
+    "text": "MassSpecGym 0002114",
+    "left": 52.02195129254349,
+    "right": 193.28537784939135,
+    "top": 147.7258784807759,
+    "bottom": 162.73288365358678,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "[M+H]+ 493.2804",
+    "left": 207.01759584397968,
+    "right": 301.18043461292774,
+    "top": 147.7258784807759,
+    "bottom": 162.58071204166498,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-a"
+  },
+  {
+    "text": "A",
+    "left": 360.511840315658,
+    "right": 373.51436672815225,
+    "top": 31.816237273154698,
+    "bottom": 53.909644985195094,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "C28H36N4O4",
+    "left": 388.5517591582453,
+    "right": 473.47087650185176,
+    "top": 136.27105504378486,
+    "bottom": 159.59189302419682,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-a"
+  },
+  {
+    "text": "B",
+    "left": 532.5070120058423,
+    "right": 545.5095384183365,
+    "top": 31.816237273154698,
+    "bottom": 53.909644985195094,
+    "family": "Arial",
+    "panel": "panel-a"
+  },
+  {
+    "text": "C28H36N4O4",
+    "left": 560.5469308484296,
+    "right": 645.466048192036,
+    "top": 136.27105504378486,
+    "bottom": 159.59189302419682,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-a"
+  },
+  {
+    "text": "b",
+    "left": 700.0037236772221,
+    "right": 714.041849538499,
+    "top": 5.361415580806362,
+    "bottom": 29.909644030860633,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "ORBIT-MS molecular inference at generation t",
+    "left": 734.0027592264297,
+    "right": 1191.2007380964344,
+    "top": 5.361415580806362,
+    "bottom": 29.909644030860633,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "World–Generator–Verifier (WGV)",
+    "left": 745.002557364636,
+    "right": 1008.658431004536,
+    "top": 30.816240354859726,
+    "bottom": 52.90964338469667,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "Within-spectrum molecular inference",
+    "left": 1067.993469995263,
+    "right": 1278.7570606769636,
+    "top": 34.725882571490786,
+    "bottom": 49.580709109074704,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "Experimental",
+    "left": 722.3614797456362,
+    "right": 815.642141206362,
+    "top": 77.75105970888981,
+    "bottom": 95.65589932184993,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "MS/MS",
+    "left": 742.8049799753101,
+    "right": 795.1987158898427,
+    "top": 95.67106029660079,
+    "bottom": 112.85482185040998,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "MMA-conditioned",
+    "left": 909.3218650414849,
+    "right": 1033.6704350525379,
+    "top": 89.75106018605705,
+    "bottom": 106.93482173986624,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "G",
+    "left": 965.2634130433222,
+    "right": 977.7288870507005,
+    "top": 107.67106077376802,
+    "bottom": 124.85482232757721,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "Molecular",
+    "left": 1122.4654466438906,
+    "right": 1187.688584670705,
+    "top": 90.47106133841591,
+    "bottom": 107.6548228922251,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "candidates",
+    "left": 1118.7066791133154,
+    "right": 1191.275276685232,
+    "top": 107.27106013356865,
+    "bottom": 124.45482168737784,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "W",
+    "left": 1301.4908058681672,
+    "right": 1318.482307935232,
+    "top": 97.43624163048679,
+    "bottom": 119.52964934252718,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "V",
+    "left": 1450.9798559873104,
+    "right": 1462.9851384861622,
+    "top": 97.43624163048679,
+    "bottom": 119.52964934252718,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "Structural",
+    "left": 1564.8749694964401,
+    "right": 1629.0821353209692,
+    "top": 89.97105819706498,
+    "bottom": 107.15481975087417,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "hypotheses",
+    "left": 1558.6038395010335,
+    "right": 1635.3532653163757,
+    "top": 106.77105699221772,
+    "bottom": 124.65652164732761,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "Next WGV",
+    "left": 925.453214267771,
+    "right": 991.5398013141652,
+    "top": 58.98588394195483,
+    "bottom": 73.71482241664843,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "Measured MS/MS",
+    "left": 1391.9843983262517,
+    "right": 1512.037223314768,
+    "top": 5.27106017457521,
+    "bottom": 22.454821728384402,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "c  MMA retrieval",
+    "left": 852.999458561811,
+    "right": 955.9073593427021,
+    "top": 153.7258787193595,
+    "bottom": 168.4548171940531,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "d  Molecular Generator (G)",
+    "left": 1007.9950750208142,
+    "right": 1171.3129436473646,
+    "top": 153.7258787193595,
+    "bottom": 168.94470677596553,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "e  Fragmentation World (W) /",
+    "left": 1281.9874657283533,
+    "right": 1458.2695052322576,
+    "top": 142.72587516048725,
+    "bottom": 157.94469385268638,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "Spectral Verifier (V)",
+    "left": 1309.9865569016995,
+    "right": 1431.3051145498391,
+    "top": 157.72588512135317,
+    "bottom": 172.94469444914543,
+    "family": "Arial",
+    "panel": "panel-b"
+  },
+  {
+    "text": "c",
+    "left": 19.022879940903838,
+    "right": 31.83362867769759,
+    "top": 189.36141743479988,
+    "bottom": 213.90964822595586,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Motif knowledge construction",
+    "left": 53.021924854255786,
+    "right": 336.1241297233417,
+    "top": 191.81624051391546,
+    "bottom": 213.90962949714208,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "and retrieval",
+    "left": 53.021924854255786,
+    "right": 171.88572825342897,
+    "top": 214.81621645673428,
+    "bottom": 236.90964289758847,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Offline structure-only",
+    "left": 27.02265438838568,
+    "right": 169.3216897581606,
+    "top": 250.72587009058543,
+    "bottom": 265.94469814719145,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Substructure",
+    "left": 193.19565061850454,
+    "right": 266.8382968157872,
+    "top": 412.8659118729386,
+    "bottom": 427.59485034763225,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "mining",
+    "left": 210.87755231809112,
+    "right": 249.15635765962332,
+    "top": 427.42587898975427,
+    "bottom": 442.43290289137894,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Canonicalize /",
+    "left": 189.7258418533963,
+    "right": 271.30806509639126,
+    "top": 471.3658861059082,
+    "bottom": 486.0948245806018,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "deduplicate",
+    "left": 197.30106004356625,
+    "right": 263.7328469062213,
+    "top": 485.9258906803514,
+    "bottom": 500.7806867836129,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Mined",
+    "left": 321.8127909052739,
+    "right": 357.2149498395872,
+    "top": 468.86588912796736,
+    "bottom": 483.5948276026609,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "motifs",
+    "left": 322.1963462566749,
+    "right": 356.83139448818616,
+    "top": 483.42585624478295,
+    "bottom": 498.15483217710414,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Online mass-matched retrieval",
+    "left": 27.02265438838568,
+    "right": 230.8056125877426,
+    "top": 538.7258253561577,
+    "bottom": 553.4547638308512,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "120.0808",
+    "left": 16.07157906360127,
+    "right": 76.02128048757922,
+    "top": 607.2710737725986,
+    "bottom": 624.4548353264079,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Precursor",
+    "left": 103.05310120273742,
+    "right": 155.14028312462318,
+    "top": 603.1806633865131,
+    "bottom": 615.4547787820911,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "mass/formula",
+    "left": 93.0614842987411,
+    "right": 164.9781126864306,
+    "top": 617.1807138867116,
+    "bottom": 629.4548292822896,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "C8H10N+",
+    "left": 102.80105589418494,
+    "right": 153.23858460341782,
+    "top": 634.0436134029277,
+    "bottom": 658.5917692788286,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-c"
+  },
+  {
+    "text": "2 · Phenethylamine",
+    "left": 192.01803455694477,
+    "right": 297.99435942075536,
+    "top": 599.7258340246956,
+    "bottom": 614.5881965687223,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "427 mined groups",
+    "left": 213.0174278501091,
+    "right": 311.4760678264599,
+    "top": 614.725890807596,
+    "bottom": 629.5882533516226,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "3 · N-ethylaniline",
+    "left": 190.01807806937586,
+    "right": 282.3014768881704,
+    "top": 675.7258620185064,
+    "bottom": 690.588149647278,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "107 mined groups",
+    "left": 214.01740609389356,
+    "right": 312.4760460702443,
+    "top": 690.7258438861517,
+    "bottom": 705.5881315149232,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Paired TRAIN /",
+    "left": 39.84100681036834,
+    "right": 118.2013651015948,
+    "top": 676.1066562601795,
+    "bottom": 688.3807716557576,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "W simulations",
+    "left": 42.66014800731009,
+    "right": 115.3822426329417,
+    "top": 689.21075776701,
+    "bottom": 701.4848731625881,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "Retrieved",
+    "left": 317.87310810641077,
+    "right": 369.1544585887259,
+    "top": 671.540721292347,
+    "bottom": 683.814836687925,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "motifs 2, 3",
+    "left": 315.87858282254825,
+    "right": 371.14894641601114,
+    "top": 684.9806678877907,
+    "bottom": 697.2547832833686,
+    "family": "Arial",
+    "panel": "panel-c"
+  },
+  {
+    "text": "d",
+    "left": 399.0122200401212,
+    "right": 413.05034590139815,
+    "top": 189.36141743479988,
+    "bottom": 213.90964822595586,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Knowledge graph to molecular construction",
+    "left": 433.01125558932875,
+    "right": 851.5852480298289,
+    "top": 191.81624051391546,
+    "bottom": 213.90962949714208,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Mass-matched substructure alignment (MMA)",
+    "left": 435.01121207689766,
+    "right": 738.4418880268145,
+    "top": 216.27103325314803,
+    "bottom": 234.15648854385103,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Motif containment overview",
+    "left": 409.0119275648111,
+    "right": 632.7397265804433,
+    "top": 239.27106538240818,
+    "bottom": 256.4548269362174,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Archived motif sample",
+    "left": 448.99176717888724,
+    "right": 576.7731201284021,
+    "top": 261.7258830138646,
+    "bottom": 276.58071657475364,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "1",
+    "left": 959.8764830113114,
+    "right": 967.1256791527906,
+    "top": 291.63085420568837,
+    "bottom": 306.3598114091957,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "2",
+    "left": 937.8270694871096,
+    "right": 945.0762656285887,
+    "top": 315.6408938042062,
+    "bottom": 330.36983227889976,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "3",
+    "left": 1066.6934271108464,
+    "right": 1073.9426232523253,
+    "top": 306.8208960755222,
+    "bottom": 321.5498345502158,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "4",
+    "left": 983.885774485387,
+    "right": 991.1349706268661,
+    "top": 337.93586101009305,
+    "bottom": 352.6647994847866,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "5",
+    "left": 1066.6934271108464,
+    "right": 1073.9426232523253,
+    "top": 336.22086353271715,
+    "bottom": 350.9498020074107,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "6",
+    "left": 1002.9952212584692,
+    "right": 1010.2444173999484,
+    "top": 368.3158698345057,
+    "bottom": 383.04480830919925,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Selected molecular neighborhood",
+    "left": 399.0122200401212,
+    "right": 672.7556368784451,
+    "top": 425.2710540496865,
+    "bottom": 443.5749859553779,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "1 Phenylalanine",
+    "left": 409.0374354939423,
+    "right": 497.9839214838367,
+    "top": 519.72589327296,
+    "bottom": 534.6295715801742,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "2 Phenethylamine",
+    "left": 528.991562401312,
+    "right": 629.0228355032729,
+    "top": 556.7258260719085,
+    "bottom": 571.6295043791227,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "3 N-ethylaniline",
+    "left": 654.9305012273197,
+    "right": 741.0770331519867,
+    "top": 519.72589327296,
+    "bottom": 534.6295715801742,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "4 Ethylbenzene",
+    "left": 412.43736901412495,
+    "right": 498.58390093879194,
+    "top": 644.7258545428865,
+    "bottom": 659.6294953924732,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "5 Aniline",
+    "left": 671.8768306621785,
+    "right": 719.130849954783,
+    "top": 646.7258671082902,
+    "bottom": 661.4548055829838,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "6 Benzene",
+    "left": 551.1280624677021,
+    "right": 610.8859862159795,
+    "top": 675.7258620185064,
+    "bottom": 690.4548004932001,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Substructure containment",
+    "left": 469.0102476261053,
+    "right": 655.6865996963999,
+    "top": 696.271071068651,
+    "bottom": 713.4548326224602,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "MMA alignment and construction",
+    "left": 777.0015615131201,
+    "right": 1044.4163525099048,
+    "top": 425.2710540496865,
+    "bottom": 443.5749859553779,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Retrieved",
+    "left": 676.7150967501149,
+    "right": 732.2922671681213,
+    "top": 541.8658982736725,
+    "bottom": 556.5948367483662,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "motifs 2, 3",
+    "left": 674.5479341015446,
+    "right": 734.4592799903824,
+    "top": 556.4259028481158,
+    "bottom": 571.1548413228094,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Motif",
+    "left": 902.3034014160829,
+    "right": 929.1098751686667,
+    "top": 467.66466047006696,
+    "bottom": 479.93877586564497,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "graph",
+    "left": 899.9253582373966,
+    "right": 931.0700527711587,
+    "top": 481.3287160511421,
+    "bottom": 493.71037229541616,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "encoder",
+    "left": 893.4816283338597,
+    "right": 937.6478023082224,
+    "top": 494.9926592593347,
+    "bottom": 507.26677465491264,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Peak attention",
+    "left": 967.1971463022508,
+    "right": 1043.7932248901873,
+    "top": 456.040697115874,
+    "bottom": 468.31477505382446,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "+ prior",
+    "left": 988.3502239320165,
+    "right": 1022.8020345874484,
+    "top": 469.4806811689452,
+    "bottom": 481.7547965645232,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Peak",
+    "left": 1082.338065571888,
+    "right": 1109.6472065916398,
+    "top": 452.54069385523127,
+    "bottom": 464.8147717931817,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "memory",
+    "left": 1074.360114262747,
+    "right": 1117.6251579007808,
+    "top": 465.9806404506749,
+    "bottom": 478.3210558470164,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Atom memory (variant)",
+    "left": 964.9809155374369,
+    "right": 1071.58622997531,
+    "top": 488.18065257072254,
+    "bottom": 500.45476796630055,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Graph state",
+    "left": 1072.2200701761312,
+    "right": 1126.991699443041,
+    "top": 535.1806481966896,
+    "bottom": 547.4547635922676,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Shared spectrum/graph backbone",
+    "left": 892.2452616308279,
+    "right": 1072.7464100001434,
+    "top": 554.260664687589,
+    "bottom": 566.6010800839306,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Hybrid policy",
+    "left": 775.0016050255513,
+    "right": 840.7813477908245,
+    "top": 580.1806687148805,
+    "bottom": 592.4547841104585,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Atom",
+    "left": 772.9878645175413,
+    "right": 795.1328672269752,
+    "top": 597.6355111192689,
+    "bottom": 607.4547659781038,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Ring / motif",
+    "left": 773.0017234511369,
+    "right": 821.2480423891824,
+    "top": 606.6354927483305,
+    "bottom": 616.454785064793,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Rt",
+    "left": 853.2437503588654,
+    "right": 862.1379644615583,
+    "top": 581.1807124552099,
+    "bottom": 598.3644365513916,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Formula /",
+    "left": 943.0719641780547,
+    "right": 997.9204543415538,
+    "top": 585.8659125091616,
+    "bottom": 600.5948509838552,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "valence masks",
+    "left": 927.5379724463137,
+    "right": 1013.4543711601401,
+    "top": 600.4258421683497,
+    "bottom": 615.1547806430433,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Graph",
+    "left": 1065.4467973056385,
+    "right": 1101.5394307856282,
+    "top": 585.8659125091616,
+    "bottom": 600.7207460700507,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "transition",
+    "left": 1057.1428239478066,
+    "right": 1109.84340414346,
+    "top": 600.4258421683497,
+    "bottom": 615.1547806430433,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "Reference-conditioned action replay",
+    "left": 775.0016050255513,
+    "right": 1016.8332540838884,
+    "top": 638.7258917619305,
+    "bottom": 653.9447010897227,
+    "family": "Arial",
+    "panel": "panel-d"
+  },
+  {
+    "text": "e",
+    "left": 1171.9905331304547,
+    "right": 1184.801356780403,
+    "top": 189.36141743479988,
+    "bottom": 213.90964822595586,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "Fragmentation evidence and verification",
+    "left": 1205.9895686796624,
+    "right": 1569.79196930983,
+    "top": 191.81624051391546,
+    "bottom": 213.90962949714208,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "MassSpecGym 0002114 · benchmark",
+    "left": 1220.989204879852,
+    "right": 1454.8428277158935,
+    "top": 218.7258750610774,
+    "bottom": 233.94470311768345,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "A",
+    "left": 1175.4889774488975,
+    "right": 1188.4915787745465,
+    "top": 250.816217888236,
+    "bottom": 272.90964432909016,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "B",
+    "left": 1175.4889774488975,
+    "right": 1188.4915787745465,
+    "top": 324.81625204545685,
+    "bottom": 346.90965975749725,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "A/B",
+    "left": 1295.4967047183625,
+    "right": 1316.4580046724277,
+    "top": 289.3659038406236,
+    "bottom": 304.0948423153172,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "candidates",
+    "left": 1274.5736104731282,
+    "right": 1337.3999770326136,
+    "top": 303.9259084150668,
+    "bottom": 318.6548468897604,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "W",
+    "left": 1381.8681259330501,
+    "right": 1395.1007855563848,
+    "top": 287.14590262861884,
+    "bottom": 301.8748411033124,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "fragments",
+    "left": 1357.3589389785254,
+    "right": 1419.6099725109095,
+    "top": 302.8258902668065,
+    "bottom": 318.04469959459874,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "120.0808 · shared",
+    "left": 1457.2613239980478,
+    "right": 1562.7008399244946,
+    "top": 283.1458774978114,
+    "bottom": 297.87481597250496,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "120.0889 · A only",
+    "left": 1459.7927893172944,
+    "right": 1560.169224778939,
+    "top": 316.1458975388351,
+    "bottom": 331.1529214404597,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "V",
+    "left": 1618.1464628430754,
+    "right": 1628.8093016120233,
+    "top": 305.21106088749286,
+    "bottom": 322.39484117011585,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "Measured MS/MS",
+    "left": 1550.9799277603927,
+    "right": 1662.9780903694877,
+    "top": 229.72586925554276,
+    "bottom": 244.45482645905014,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "Candidates",
+    "left": 1169.9905766428858,
+    "right": 1230.6307526125402,
+    "top": 380.1806482762175,
+    "bottom": 392.4547636717955,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "from G output",
+    "left": 1169.9905766428858,
+    "right": 1243.249648760479,
+    "top": 395.1807050591178,
+    "bottom": 407.45482045469583,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "m/z",
+    "left": 1216.989142078405,
+    "right": 1239.5039161187988,
+    "top": 410.72584523812554,
+    "bottom": 425.4548211704467,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-e"
+  },
+  {
+    "text": "72.0816",
+    "left": 1297.2415819146188,
+    "right": 1342.7312465907785,
+    "top": 391.72587569730035,
+    "bottom": 406.454814171994,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-e"
+  },
+  {
+    "text": "90.9773",
+    "left": 1387.2389496368282,
+    "right": 1432.7286143129882,
+    "top": 391.72587569730035,
+    "bottom": 406.454814171994,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-e"
+  },
+  {
+    "text": "120.0808",
+    "left": 1473.7461134875975,
+    "right": 1526.216485559256,
+    "top": 391.72587569730035,
+    "bottom": 406.454814171994,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-e"
+  },
+  {
+    "text": "120.0893",
+    "left": 1563.7436310361163,
+    "right": 1616.2140031077745,
+    "top": 391.72587569730035,
+    "bottom": 406.454814171994,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-e"
+  },
+  {
+    "text": "A",
+    "left": 1267.9878452285254,
+    "right": 1278.1137065055123,
+    "top": 416.72584547670914,
+    "bottom": 431.4548214090303,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "B",
+    "left": 1267.9878452285254,
+    "right": 1278.1137065055123,
+    "top": 439.7258776059693,
+    "bottom": 454.4548160806629,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "Structural hypotheses",
+    "left": 1197.9896678162322,
+    "right": 1377.3400752181901,
+    "top": 479.271056196939,
+    "bottom": 497.5749881026304,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "A",
+    "left": 1234.4873567229847,
+    "right": 1247.489883135479,
+    "top": 508.81620941851764,
+    "bottom": 530.909617130558,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "B",
+    "left": 1441.4814672930065,
+    "right": 1454.4841435318099,
+    "top": 508.81620941851764,
+    "bottom": 530.909617130558,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "C28H36N4O4",
+    "left": 1310.9998322304202,
+    "right": 1390.971122997531,
+    "top": 596.2710421205057,
+    "bottom": 619.591861372104,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-e"
+  },
+  {
+    "text": "(MassSpecGym 0002114)",
+    "left": 1438.8725417719338,
+    "right": 1583.0893538987139,
+    "top": 598.7258277419937,
+    "bottom": 613.629506049208,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "Separate TRAIN FIT audit",
+    "left": 1266.9879044413183,
+    "right": 1482.9679228152274,
+    "top": 624.81622651701,
+    "bottom": 646.9096342290504,
+    "family": "Arial",
+    "panel": "panel-e"
+  },
+  {
+    "text": "f",
+    "left": 20.022848820543967,
+    "right": 28.347343700656005,
+    "top": 734.3613579479519,
+    "bottom": 758.9095887391079,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Molecular experience sources",
+    "left": 54.021893733895915,
+    "right": 325.0804605689901,
+    "top": 736.8162559423225,
+    "bottom": 758.9095887391079,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Available data",
+    "left": 58.021783298672915,
+    "right": 151.60927967637517,
+    "top": 773.725803485993,
+    "bottom": 788.4547419606865,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Learning pair",
+    "left": 324.01433869179203,
+    "right": 412.8243329140589,
+    "top": 773.725803485993,
+    "bottom": 788.9446128137852,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Paired",
+    "left": 57.12299399842458,
+    "right": 88.91974199371268,
+    "top": 796.7607461241297,
+    "bottom": 809.0348615197076,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "molecule–spectrum",
+    "left": 25.345426111742615,
+    "right": 120.69728647003384,
+    "top": 809.0807096558289,
+    "bottom": 821.3548250514068,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Structure-only",
+    "left": 38.789048201456275,
+    "right": 107.25367842653667,
+    "top": 840.9206669716295,
+    "bottom": 853.1947823672075,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Motif mining",
+    "left": 246.86682437306212,
+    "right": 306.1644816996584,
+    "top": 817.4207253450874,
+    "bottom": 829.6948407406653,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Forward Sleep",
+    "left": 239.1573618099018,
+    "right": 313.87392553453003,
+    "top": 835.1506940238304,
+    "bottom": 847.4248094194083,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "frozen W",
+    "left": 253.52150971986967,
+    "right": 299.5097963528508,
+    "top": 848.0306490874018,
+    "bottom": 860.3047644829797,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Spectrum-only",
+    "left": 37.56167107697304,
+    "right": 108.48104618687557,
+    "top": 874.9206558377275,
+    "bottom": 887.1947712333055,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Wake / G,W,V",
+    "left": 240.1532198301849,
+    "right": 311.8780705421739,
+    "top": 870.1506517150026,
+    "bottom": 882.4247671105807,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "filter",
+    "left": 265.1610287415308,
+    "right": 287.0210992675557,
+    "top": 883.030606778574,
+    "bottom": 895.3047221741521,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Pseudo-pair",
+    "left": 365.01318449091355,
+    "right": 421.6750224739464,
+    "top": 888.1807309056761,
+    "bottom": 900.4548463012542,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Model-generated",
+    "left": 31.443963222126925,
+    "right": 114.59876340586601,
+    "top": 909.9206884441548,
+    "bottom": 922.1947289244778,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "Hindsight",
+    "left": 252.06261349118626,
+    "right": 299.9686768811725,
+    "top": 904.1506405811006,
+    "bottom": 916.4247559766786,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "frozen W",
+    "left": 253.02148314140015,
+    "right": 299.00978850266995,
+    "top": 917.0306705599271,
+    "bottom": 929.304785955505,
+    "family": "Arial",
+    "panel": "panel-f"
+  },
+  {
+    "text": "g",
+    "left": 463.0104156199759,
+    "right": 477.0485040246756,
+    "top": 734.3613579479519,
+    "bottom": 758.9095887391079,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Information-guided experience acquisition",
+    "left": 497.0094886257608,
+    "right": 879.7593363322519,
+    "top": 736.8162559423225,
+    "bottom": 758.9095887391079,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Evidence / scaffold guards",
+    "left": 495.0095321381919,
+    "right": 672.3272085474564,
+    "top": 771.7258658358443,
+    "bottom": 786.9446751636366,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Illustrative signals",
+    "left": 486.0097654007091,
+    "right": 553.0552033690285,
+    "top": 815.6354948160553,
+    "bottom": 825.4547871325176,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Entropy",
+    "left": 521.9427964048863,
+    "right": 558.0736730502842,
+    "top": 793.1806959134126,
+    "bottom": 805.4547363937355,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "TRAIN",
+    "left": 580.2809285911661,
+    "right": 611.7324674060491,
+    "top": 793.1806959134126,
+    "bottom": 805.4547363937355,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "composition",
+    "left": 568.0263351139039,
+    "right": 623.9870608833113,
+    "top": 804.1807275655055,
+    "bottom": 816.4548429610835,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Ring",
+    "left": 647.2079288621096,
+    "right": 668.8020951459864,
+    "top": 793.1806959134126,
+    "bottom": 805.4547363937355,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "scarcity",
+    "left": 640.2271465534566,
+    "right": 675.7827276283302,
+    "top": 804.1807275655055,
+    "bottom": 816.4548429610835,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Wake /",
+    "left": 696.8749008634302,
+    "right": 729.1319059162552,
+    "top": 793.1806959134126,
+    "bottom": 805.4547363937355,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Hindsight",
+    "left": 691.1407483599851,
+    "right": 734.8660584197003,
+    "top": 804.1807275655055,
+    "bottom": 816.4548429610835,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "priority",
+    "left": 697.2776339824012,
+    "right": 728.7291727972841,
+    "top": 815.1806843023434,
+    "bottom": 827.4547996979213,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Weight",
+    "left": 755.7773163865124,
+    "right": 788.2260991150379,
+    "top": 793.1806959134126,
+    "bottom": 805.4547363937355,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Weighted",
+    "left": 791.8529445804146,
+    "right": 838.1480754945165,
+    "top": 830.1806661699886,
+    "bottom": 842.4547815655666,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "sampling",
+    "left": 792.9844328670475,
+    "right": 837.0165872078835,
+    "top": 843.1806354722302,
+    "bottom": 855.4547508678081,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "without",
+    "left": 797.5679193162896,
+    "right": 832.4331007586414,
+    "top": 856.1806796897267,
+    "bottom": 868.4547950853048,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "replacement",
+    "left": 784.7380677250804,
+    "right": 845.2631021761598,
+    "top": 869.1807239072234,
+    "bottom": 881.4548393028014,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Selected",
+    "left": 853.6786212211472,
+    "right": 900.3189519515101,
+    "top": 786.1806893921271,
+    "bottom": 798.4548047877051,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "experience",
+    "left": 847.6952326524461,
+    "right": 906.3024154333659,
+    "top": 800.180627519443,
+    "bottom": 812.4547429150209,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Knowledge",
+    "left": 928.3477087340664,
+    "right": 987.6453660606626,
+    "top": 805.040679778798,
+    "bottom": 817.3810202598844,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "expansion",
+    "left": 930.6874712907671,
+    "right": 985.305753330271,
+    "top": 818.4806263742416,
+    "bottom": 830.7547417698196,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "c",
+    "left": 1008.8142503660428,
+    "right": 1017.1757570265847,
+    "top": 806.2710879285598,
+    "bottom": 823.454849482369,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Generator",
+    "left": 931.0134184263034,
+    "right": 985.1127770440974,
+    "top": 852.0407128623926,
+    "bottom": 864.3148282579706,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "learning",
+    "left": 936.6708598594684,
+    "right": 979.3222149352607,
+    "top": 865.4806594578363,
+    "bottom": 877.8210748541777,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "d",
+    "left": 1008.4114423339171,
+    "right": 1017.5784152324012,
+    "top": 853.2709711816442,
+    "bottom": 870.4548076507085,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Verifier",
+    "left": 939.3366444648599,
+    "right": 976.783258300557,
+    "top": 899.0406710307321,
+    "bottom": 911.3147864263101,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "learning",
+    "left": 936.6708598594684,
+    "right": 979.3222149352607,
+    "top": 912.4806176261758,
+    "bottom": 924.8210330225172,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "e",
+    "left": 1008.8142503660428,
+    "right": 1017.1757570265847,
+    "top": 900.2710791804939,
+    "bottom": 917.4548407343032,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Paired TRAIN anchors",
+    "left": 555.0078521994861,
+    "right": 684.687953964745,
+    "top": 911.7258464310436,
+    "bottom": 926.4547849057373,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "Tool resources",
+    "left": 792.7704808975942,
+    "right": 877.2293692760967,
+    "top": 910.6458681135225,
+    "bottom": 925.3748065882162,
+    "family": "Arial",
+    "panel": "panel-g"
+  },
+  {
+    "text": "h",
+    "left": 1045.9940984583143,
+    "right": 1060.0322992327458,
+    "top": 734.3613579479519,
+    "bottom": 758.9095887391079,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Scientific Improver Agent",
+    "left": 1079.9931340075218,
+    "right": 1321.3260112827286,
+    "top": 736.8162559423225,
+    "bottom": 758.9095887391079,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "TRAIN FIT",
+    "left": 1065.9933636813848,
+    "right": 1128.7814496188848,
+    "top": 789.7259040092226,
+    "bottom": 804.4548424839163,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "training diagnostic subset",
+    "left": 1065.9933636813848,
+    "right": 1184.2818340534566,
+    "top": 807.1806340407285,
+    "bottom": 819.4547494363064,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Absent",
+    "left": 1066.9773479666685,
+    "right": 1101.2449471750115,
+    "top": 831.1806349950629,
+    "bottom": 843.4547503906409,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Misranked",
+    "left": 1066.9935292080559,
+    "right": 1117.7379021984095,
+    "top": 847.1807355182926,
+    "bottom": 859.4548509138707,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Motif gaps",
+    "left": 1066.9935292080559,
+    "right": 1117.7379021984095,
+    "top": 863.1806862110122,
+    "bottom": 875.4548016065903,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Hypothesis",
+    "left": 1199.275701940744,
+    "right": 1253.7021313913929,
+    "top": 836.4206574282849,
+    "bottom": 848.694772823863,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Select ONE",
+    "left": 1248.9883709663527,
+    "right": 1322.0940209433854,
+    "top": 783.7258663130116,
+    "bottom": 798.4548047877051,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Expand knowledge",
+    "left": 1268.5188296681213,
+    "right": 1361.454291312586,
+    "top": 808.7607466012969,
+    "bottom": 821.0348619968748,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "(retrieval resource)",
+    "left": 1268.8448517168122,
+    "right": 1361.1282692638952,
+    "top": 821.080710132996,
+    "bottom": 833.354825528574,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Improve G",
+    "left": 1287.02537537322,
+    "right": 1342.9477456074874,
+    "top": 851.2606952262918,
+    "bottom": 863.5348106218698,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Improve V",
+    "left": 1287.6774194706018,
+    "right": 1342.2955516837965,
+    "top": 877.26070874603,
+    "bottom": 889.5348241416079,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Tool selection → g",
+    "left": 1268.5393558724736,
+    "right": 1362.4337058954409,
+    "top": 902.590605308899,
+    "bottom": 914.864720704477,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Trial from g",
+    "left": 1404.9123112367938,
+    "right": 1465.0539401627814,
+    "top": 771.2607170169287,
+    "bottom": 783.6010574980149,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Paired CAL",
+    "left": 1389.9843669255283,
+    "right": 1465.4295547197978,
+    "top": 797.7258044403274,
+    "bottom": 812.4547429150209,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "independent calibration set",
+    "left": 1377.984777826424,
+    "right": 1497.4239142526988,
+    "top": 813.1806717369396,
+    "bottom": 825.4547871325176,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Baseline",
+    "left": 1386.8883560734382,
+    "right": 1429.0794447275493,
+    "top": 832.1806787353923,
+    "bottom": 844.4547941309703,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "WGV",
+    "left": 1394.8471296150092,
+    "right": 1421.1206711859784,
+    "top": 847.1807355182926,
+    "bottom": 859.4548509138707,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Trial",
+    "left": 1455.4920251134015,
+    "right": 1476.4725028350367,
+    "top": 832.1806787353923,
+    "bottom": 844.4547941309703,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "WGV",
+    "left": 1452.8454931887345,
+    "right": 1479.1190347597037,
+    "top": 847.1807355182926,
+    "bottom": 859.4548509138707,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "(W frozen)",
+    "left": 1442.6620986090377,
+    "right": 1489.3024293394005,
+    "top": 865.180698776416,
+    "bottom": 877.4547392567389,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Promotion",
+    "left": 1509.1711958472094,
+    "right": 1563.7893280604042,
+    "top": 839.040668644896,
+    "bottom": 851.3147840404739,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "gate",
+    "left": 1524.8202541843707,
+    "right": 1548.1404195495522,
+    "top": 852.4806152403396,
+    "bottom": 864.820955721426,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "",
+    "left": 0.023412349769485398,
+    "right": 0.023412349769485398,
+    "top": 0,
+    "bottom": 0,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "WGVt+1",
+    "left": 1600.8905173403766,
+    "right": 1649.0650694763435,
+    "top": 807.725867267346,
+    "bottom": 828.5918634398286,
+    "family": "\"Times New Roman\"",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Pass",
+    "left": 1588.9788762847381,
+    "right": 1615.6359732071085,
+    "top": 786.1806893921271,
+    "bottom": 798.4548047877051,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Retain",
+    "left": 1606.7027293508843,
+    "right": 1644.2527982530432,
+    "top": 861.1458380519871,
+    "bottom": 875.8747765266806,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Fail",
+    "left": 1574.9792557849105,
+    "right": 1594.3104454955214,
+    "top": 842.1806666471558,
+    "bottom": 854.4547820427338,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Collect evidence",
+    "left": 1275.6364783101747,
+    "right": 1356.3365242449472,
+    "top": 925.9207140521296,
+    "bottom": 938.1948294477075,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Episode",
+    "left": 1430.830914281408,
+    "right": 1474.134313454582,
+    "top": 911.5406559204365,
+    "bottom": 923.8147713160145,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Memory",
+    "left": 1430.850092048978,
+    "right": 1474.1151356870118,
+    "top": 924.9806774311352,
+    "bottom": 937.3210179122216,
+    "family": "Arial",
+    "panel": "panel-h"
+  },
+  {
+    "text": "Next hypothesis",
+    "left": 1509.9810070481167,
+    "right": 1595.245211838252,
+    "top": 890.1806685558247,
+    "bottom": 902.5210839521662,
+    "family": "Arial",
+    "panel": "panel-h"
+  }
+]

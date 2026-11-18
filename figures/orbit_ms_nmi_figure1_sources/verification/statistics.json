@@ -1,0 +1,54 @@
+{
+  "pdf_pages": 1,
+  "page_points": [
+    0.0,
+    0.0,
+    510.2362060546875,
+    287.8099060058594
+  ],
+  "page_mm": [
+    179.99999491373697,
+    101.53293906317816
+  ],
+  "pdf_image_count": 0,
+  "pdf_path_objects": 2363,
+  "pdf_text_characters": 2642,
+  "font_families": [
+    "Arial-BoldMT",
+    "ArialMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+  ],
+  "embedded_font_records": 39,
+  "svg_objects": {
+    "svg": 21,
+    "title": 242,
+    "defs": 1,
+    "marker": 6,
+    "path": 1968,
+    "rect": 100,
+    "text": 213,
+    "g": 223,
+    "tspan": 33,
+    "circle": 112,
+    "ellipse": 126
+  },
+  "source_png": "/Users/wangyu/.codex/worktrees/8b55/\u4ee3\u8c22\u8c31\u56fe/ms-paper-vector/figures/orbit_ms_nmi_figure1_sources/selected_reference.png",
+  "source_sha256": "22802a0db4933d0467c250e3e2ddf4ff2d806142184942e4f93eff563b57102a",
+  "reference_pixels": [
+    1670,
+    942
+  ],
+  "changed_pixel_fraction": 0.9118705264629976,
+  "mean_absolute_channel_error_0_255": 27.408826296451682,
+  "max_channel_error": 255,
+  "native_text_clipped": [],
+  "native_text_overlaps": [],
+  "minimum_pdf_type_points": 2.302500009536743,
+  "body_13_svg_pixels_in_pdf_points": 3.971898722240559,
+  "kg_nodes": 91,
+  "verified_kg_edges": 102,
+  "pdf_sha256": "3daf02ea470f90c5fb5f41101462ed4e7ec7afabcc16b28199a4fa2bde43d3e2",
+  "svg_sha256": "ca9a89e4d2b93cef5cdebe0c4d0b85e3442c6806355f6c9c71e127b01acfc3ac",
+  "note": "Differences include scientific replacements of malformed generated molecules and native font/rasterization differences; pixel equality is not expected."
+}

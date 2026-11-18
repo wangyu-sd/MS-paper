@@ -1,0 +1,3881 @@
+{
+  "scope": "Deterministic display sample from source motifs and connected source-molecule subgraphs; containment computed for this figure, not exported production graph topology.",
+  "rdkit": "2025.09.3",
+  "inputs_sha256": {
+    "case_manifest.json": "e9294c3a7be86ee90f67becb3164c9d1b10462f75cf84fa174ecf0e7998e2409",
+    "nmi_mma_entries.json": "f615a9df330da5d6fb965e4f13a764c5890af3f488d169d83ce696b8db3237a7"
+  },
+  "mining_source": "/aaa/fionafyang/buddy1/whaleywang/orbit-ms-worktrees/pr93-submit-clean/outputs/pr93_v4loop_hmdb_mma_lib_train_plus_hmdbw_1h20_20261108d/results",
+  "source_shards": [
+    "shard_000.jsonl.gz",
+    "shard_001.jsonl.gz",
+    "shard_002.jsonl.gz",
+    "shard_003.jsonl.gz"
+  ],
+  "focus_ids": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "overview_edges": [
+    {
+      "larger": "1",
+      "included": "2",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "1",
+      "included": "4",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "2",
+      "included": "6",
+      "parent_atom_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "3",
+      "included": "5",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "4",
+      "included": "6",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "larger": "5",
+      "included": "6",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "larger": "M0-0-1",
+      "included": "M1-0-2",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        13,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M0-0-1",
+      "included": "M1-0-5",
+      "parent_atom_indices": [
+        11,
+        10,
+        8,
+        9,
+        6,
+        5,
+        4,
+        13,
+        14,
+        15,
+        2,
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "larger": "M0-0-4",
+      "included": "M1-0-4",
+      "parent_atom_indices": [
+        9,
+        8,
+        7,
+        5,
+        6,
+        4,
+        3,
+        12,
+        13,
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "larger": "M0-0-4",
+      "included": "M1-0-7",
+      "parent_atom_indices": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "larger": "M0-0-6",
+      "included": "M1-0-3",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ]
+    },
+    {
+      "larger": "M0-1-0",
+      "included": "M1-1-2",
+      "parent_atom_indices": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "larger": "M0-1-0",
+      "included": "M1-1-4",
+      "parent_atom_indices": [
+        2,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "larger": "M0-1-1",
+      "included": "M1-1-2",
+      "parent_atom_indices": [
+        2,
+        3,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "larger": "M0-1-1",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "larger": "M0-1-2",
+      "included": "M1-1-2",
+      "parent_atom_indices": [
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "larger": "M0-1-2",
+      "included": "M3-1-2",
+      "parent_atom_indices": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "larger": "M0-1-3",
+      "included": "M1-1-2",
+      "parent_atom_indices": [
+        14,
+        13,
+        12,
+        10,
+        11,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M0-1-3",
+      "included": "M1-1-6",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        10,
+        11,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M0-1-4",
+      "included": "M1-1-5",
+      "parent_atom_indices": [
+        14,
+        13,
+        12,
+        11,
+        10,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        15
+      ]
+    },
+    {
+      "larger": "M0-1-4",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "larger": "M0-1-5",
+      "included": "M1-1-2",
+      "parent_atom_indices": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "larger": "M0-1-5",
+      "included": "M1-1-3",
+      "parent_atom_indices": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "larger": "M0-1-6",
+      "included": "M1-1-2",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "larger": "M0-1-6",
+      "included": "M1-1-3",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "larger": "M0-1-7",
+      "included": "M1-1-1",
+      "parent_atom_indices": [
+        12,
+        11,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        10,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "larger": "M0-1-7",
+      "included": "M1-1-2",
+      "parent_atom_indices": [
+        4,
+        6,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "larger": "M0-2-0",
+      "included": "M1-2-2",
+      "parent_atom_indices": [
+        0,
+        1,
+        3,
+        4,
+        15,
+        13,
+        12,
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5
+      ]
+    },
+    {
+      "larger": "M0-2-0",
+      "included": "M1-2-6",
+      "parent_atom_indices": [
+        14,
+        13,
+        15,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "larger": "M0-2-1",
+      "included": "M0-2-4",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "larger": "M0-2-1",
+      "included": "M0-2-5",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "larger": "M0-2-2",
+      "included": "M0-2-4",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "larger": "M0-2-2",
+      "included": "M1-2-3",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "larger": "M0-2-3",
+      "included": "3",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11
+      ]
+    },
+    {
+      "larger": "M0-2-3",
+      "included": "M1-2-2",
+      "parent_atom_indices": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11,
+        10,
+        9
+      ]
+    },
+    {
+      "larger": "M0-2-3",
+      "included": "M1-2-7",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "larger": "M0-2-4",
+      "included": "M1-2-0",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M0-2-4",
+      "included": "M1-2-5",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14
+      ]
+    },
+    {
+      "larger": "M0-2-5",
+      "included": "M1-2-0",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "larger": "M0-2-5",
+      "included": "M1-2-3",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "larger": "M0-2-6",
+      "included": "2",
+      "parent_atom_indices": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "larger": "M0-2-6",
+      "included": "4",
+      "parent_atom_indices": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "larger": "M0-2-7",
+      "included": "2",
+      "parent_atom_indices": [
+        11,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M0-2-7",
+      "included": "4",
+      "parent_atom_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-0-4",
+      "included": "M3-0-5",
+      "parent_atom_indices": [
+        10,
+        9,
+        11,
+        6,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M1-0-5",
+      "included": "M2-0-4",
+      "parent_atom_indices": [
+        2,
+        4,
+        5,
+        6,
+        10,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M1-0-5",
+      "included": "M3-0-5",
+      "parent_atom_indices": [
+        11,
+        10,
+        12,
+        6,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M1-0-7",
+      "included": "M2-0-4",
+      "parent_atom_indices": [
+        6,
+        4,
+        3,
+        2,
+        1,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "larger": "M1-1-0",
+      "included": "M1-1-4",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-1-0",
+      "included": "M3-1-0",
+      "parent_atom_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M1-1-1",
+      "included": "M1-1-5",
+      "parent_atom_indices": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        9,
+        10,
+        11,
+        12,
+        13,
+        8
+      ]
+    },
+    {
+      "larger": "M1-1-1",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M1-1-2",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-1-2",
+      "included": "M3-1-2",
+      "parent_atom_indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-1-3",
+      "included": "M1-1-6",
+      "parent_atom_indices": [
+        12,
+        11,
+        4,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-1-3",
+      "included": "M1-1-7",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "larger": "M1-1-4",
+      "included": "M3-1-0",
+      "parent_atom_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M1-1-4",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M1-1-5",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        2,
+        3,
+        12,
+        0,
+        1
+      ]
+    },
+    {
+      "larger": "M1-1-5",
+      "included": "M3-1-2",
+      "parent_atom_indices": [
+        4,
+        3,
+        2,
+        1,
+        0,
+        12
+      ]
+    },
+    {
+      "larger": "M1-1-6",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-1-6",
+      "included": "M3-1-2",
+      "parent_atom_indices": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-1-7",
+      "included": "M3-1-1",
+      "parent_atom_indices": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M1-1-7",
+      "included": "M3-1-2",
+      "parent_atom_indices": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "larger": "M1-2-0",
+      "included": "M2-2-4",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-2-0",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-2-1",
+      "included": "4",
+      "parent_atom_indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "larger": "M1-2-1",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "larger": "M1-2-2",
+      "included": "5",
+      "parent_atom_indices": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-2-2",
+      "included": "6",
+      "parent_atom_indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-2-3",
+      "included": "M1-2-4",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-2-3",
+      "included": "M2-2-5",
+      "parent_atom_indices": [
+        5,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "larger": "M1-2-4",
+      "included": "M2-2-4",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-2-4",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-2-5",
+      "included": "M2-2-4",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-2-5",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "larger": "M1-2-6",
+      "included": "5",
+      "parent_atom_indices": [
+        1,
+        11,
+        10,
+        9,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "larger": "M1-2-6",
+      "included": "6",
+      "parent_atom_indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "larger": "M1-2-7",
+      "included": "5",
+      "parent_atom_indices": [
+        1,
+        12,
+        11,
+        10,
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "larger": "M1-2-7",
+      "included": "6",
+      "parent_atom_indices": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "larger": "M2-0-1",
+      "included": "M3-0-4",
+      "parent_atom_indices": [
+        0,
+        1,
+        5,
+        2,
+        3
+      ]
+    },
+    {
+      "larger": "M2-0-2",
+      "included": "M3-0-1",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "larger": "M2-0-2",
+      "included": "M3-0-4",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        6,
+        7
+      ]
+    },
+    {
+      "larger": "M2-0-3",
+      "included": "M3-0-1",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "larger": "M2-0-3",
+      "included": "M3-0-4",
+      "parent_atom_indices": [
+        4,
+        5,
+        6,
+        8,
+        2
+      ]
+    },
+    {
+      "larger": "M2-2-0",
+      "included": "6",
+      "parent_atom_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-0",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-1",
+      "included": "6",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-1",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-2",
+      "included": "6",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-2",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-3",
+      "included": "4",
+      "parent_atom_indices": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-3",
+      "included": "6",
+      "parent_atom_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-3",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-4",
+      "included": "6",
+      "parent_atom_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-4",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-5",
+      "included": "6",
+      "parent_atom_indices": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "larger": "M2-2-5",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "larger": "M2-2-6",
+      "included": "M3-2-0",
+      "parent_atom_indices": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        8,
+        7
+      ]
+    },
+    {
+      "larger": "M2-2-6",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-7",
+      "included": "6",
+      "parent_atom_indices": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8
+      ]
+    },
+    {
+      "larger": "M2-2-7",
+      "included": "M3-2-1",
+      "parent_atom_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        8
+      ]
+    }
+  ],
+  "zoom_edges": [
+    [
+      "1",
+      "2"
+    ],
+    [
+      "1",
+      "4"
+    ],
+    [
+      "2",
+      "6"
+    ],
+    [
+      "4",
+      "6"
+    ],
+    [
+      "3",
+      "5"
+    ],
+    [
+      "5",
+      "6"
+    ]
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "canonical_smiles": "NC(Cc1ccccc1)C(=O)O",
+      "xy": [
+        1112,
+        69
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "2",
+      "canonical_smiles": "NCCc1ccccc1",
+      "xy": [
+        1067,
+        167
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "NCCc1ccccc1",
+          "support": 427,
+          "examples": [
+            [
+              "HMDB:ABDWINSTWUZFIV",
+              [
+                "C8H10N1",
+                "NCCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:AHWCYDXQIXZVRK",
+              [
+                "C8H10N1",
+                "NCCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:ALXRNCVIQSDJAO",
+              [
+                "C8H10N1",
+                "NCCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:ANAFHSULEWIOPZ",
+              [
+                "C8H10N1",
+                "NCCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "canonical_smiles": "CCNc1ccccc1",
+      "xy": [
+        1330,
+        131
+      ],
+      "parent_cases": [
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCNc1ccccc1",
+          "support": 107,
+          "examples": [
+            [
+              "HMDB:ALISTFINEQANJP",
+              [
+                "C8H10N1",
+                "CCNc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:AMTPYFGPPVFBBI",
+              [
+                "C8H10N1",
+                "CCNc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:AWYSNGNHQFFZEX",
+              [
+                "C8H10N1",
+                "CCNc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:BVHLYIIHYJFKSI",
+              [
+                "C8H10N1",
+                "CCNc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "canonical_smiles": "CCc1ccccc1",
+      "xy": [
+        1161,
+        258
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+",
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "5",
+      "canonical_smiles": "Nc1ccccc1",
+      "xy": [
+        1330,
+        251
+      ],
+      "parent_cases": [
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "6",
+      "canonical_smiles": "c1ccccc1",
+      "xy": [
+        1200,
+        382
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX",
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+",
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-0",
+      "canonical_smiles": "CCC(C=O)NCC(CC(C)C)NC=O",
+      "xy": [
+        45,
+        58
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-1",
+      "canonical_smiles": "CCC(C)C(NC(=O)C(N)CC=O)C(=O)O",
+      "xy": [
+        112,
+        63
+      ],
+      "parent_cases": [
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-2",
+      "canonical_smiles": "CCCNC(CC(C)C)C(=O)NCC(N)=O",
+      "xy": [
+        179,
+        56
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-3",
+      "canonical_smiles": "CCCC(NCC(C)NC)C(=O)NC(C)CC",
+      "xy": [
+        246,
+        54
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-4",
+      "canonical_smiles": "CC(C)C(NC(=O)CCC(=O)O)C(=O)O",
+      "xy": [
+        75,
+        96
+      ],
+      "parent_cases": [
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-5",
+      "canonical_smiles": "CC(NCCNCC1CCCN1)C(N)=O",
+      "xy": [
+        142,
+        95
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-6",
+      "canonical_smiles": "CC(NC(=O)C1CCCN1C(=O)CN)C(N)=O",
+      "xy": [
+        209,
+        96
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-0-7",
+      "canonical_smiles": "CCCCNC(CC(C)C)C(=O)NCC",
+      "xy": [
+        276,
+        95
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-0",
+      "canonical_smiles": "CCC(CN)NC(=O)C(Cc1cnc[nH]1)NC",
+      "xy": [
+        365,
+        51
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-1",
+      "canonical_smiles": "CCCC(CNC)NC(=O)C(N)Cc1cnc[nH]1",
+      "xy": [
+        432,
+        51
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-2",
+      "canonical_smiles": "CCCCNCC(C)NC(=O)CCc1cnc[nH]1",
+      "xy": [
+        499,
+        61
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-3",
+      "canonical_smiles": "CCNC(Cc1cnc[nH]1)C(=O)NC(CC)CN",
+      "xy": [
+        566,
+        62
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-4",
+      "canonical_smiles": "NCC1CCCN1CC(N)Cc1cnc[nH]1",
+      "xy": [
+        395,
+        95
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-5",
+      "canonical_smiles": "CCCC(C)NC(=O)C(Cc1cnc[nH]1)NC=O",
+      "xy": [
+        462,
+        92
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-6",
+      "canonical_smiles": "CCCNC(=O)C(Cc1cnc[nH]1)NC=O",
+      "xy": [
+        529,
+        89
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-1-7",
+      "canonical_smiles": "CC(C)NC(=O)C1CCCN1C(=O)C(N)Cc1cnc[nH]1",
+      "xy": [
+        596,
+        96
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-0",
+      "canonical_smiles": "CC(=O)OC1CSc2ccccc2N(C)C1",
+      "xy": [
+        685,
+        60
+      ],
+      "parent_cases": [
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-1",
+      "canonical_smiles": "CCCCOC(=O)c1ccccc1C(=O)OCC",
+      "xy": [
+        752,
+        51
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-2",
+      "canonical_smiles": "CCCOC(=O)c1ccccc1C(=O)OCCC",
+      "xy": [
+        819,
+        65
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-3",
+      "canonical_smiles": "CCN1CC(OC(C)=O)CSc2ccccc21",
+      "xy": [
+        886,
+        64
+      ],
+      "parent_cases": [
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-4",
+      "canonical_smiles": "CCOC(=O)c1ccccc1C(=O)OCC",
+      "xy": [
+        715,
+        94
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-5",
+      "canonical_smiles": "CCCCOC(=O)c1ccccc1C=O",
+      "xy": [
+        782,
+        91
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-6",
+      "canonical_smiles": "CNC(CC(C)C)C(=O)NCCNCCc1ccccc1",
+      "xy": [
+        849,
+        90
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M0-2-7",
+      "canonical_smiles": "NC(=O)C(Cc1ccccc1)NCC1CCCN1",
+      "xy": [
+        916,
+        99
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-0",
+      "canonical_smiles": "CCNC(=O)CNC(=O)C1CCCN1",
+      "xy": [
+        45,
+        179
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-1",
+      "canonical_smiles": "CC(C)CCCNC(C)CN",
+      "xy": [
+        112,
+        181
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-2",
+      "canonical_smiles": "CCC(C)C(C)NC(=O)CN",
+      "xy": [
+        179,
+        173
+      ],
+      "parent_cases": [
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-3",
+      "canonical_smiles": "CCNC(=O)C1CCCN1CC",
+      "xy": [
+        246,
+        180
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-4",
+      "canonical_smiles": "CCCC(=O)NC(C=O)C(C)C",
+      "xy": [
+        75,
+        205
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-5",
+      "canonical_smiles": "CCC(N)CNC(C(=O)O)C(C)CC",
+      "xy": [
+        142,
+        204
+      ],
+      "parent_cases": [
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-6",
+      "canonical_smiles": "NC(CC(=O)O)C(=O)NCCO",
+      "xy": [
+        209,
+        207
+      ],
+      "parent_cases": [
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-0-7",
+      "canonical_smiles": "CCC(NC(=O)CCC=O)C(=O)O",
+      "xy": [
+        276,
+        206
+      ],
+      "parent_cases": [
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-0",
+      "canonical_smiles": "CNCC(Cc1cnc[nH]1)NCCN",
+      "xy": [
+        365,
+        171
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-1",
+      "canonical_smiles": "O=C(CCc1cnc[nH]1)N1CCCC1",
+      "xy": [
+        432,
+        177
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-2",
+      "canonical_smiles": "CCNC(=O)CCc1cnc[nH]1",
+      "xy": [
+        499,
+        178
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-3",
+      "canonical_smiles": "CNC(=O)C(Cc1cnc[nH]1)NC=O",
+      "xy": [
+        566,
+        174
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-4",
+      "canonical_smiles": "CNCC(Cc1cnc[nH]1)NC",
+      "xy": [
+        395,
+        211
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-5",
+      "canonical_smiles": "c1ncc(CCCN2CCCC2)[nH]1",
+      "xy": [
+        462,
+        204
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-6",
+      "canonical_smiles": "CNC(C=O)Cc1cnc[nH]1",
+      "xy": [
+        529,
+        216
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-1-7",
+      "canonical_smiles": "NC(=O)C(Cc1cnc[nH]1)NC=O",
+      "xy": [
+        596,
+        207
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-0",
+      "canonical_smiles": "CCOC(=O)c1ccccc1",
+      "xy": [
+        685,
+        169
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-1",
+      "canonical_smiles": "O=CCNC(=O)CCc1ccccc1",
+      "xy": [
+        752,
+        179
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-2",
+      "canonical_smiles": "CCOC1CNc2ccccc2SC1",
+      "xy": [
+        819,
+        178
+      ],
+      "parent_cases": [
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-3",
+      "canonical_smiles": "CCCOC(=O)c1ccccc1C=O",
+      "xy": [
+        886,
+        178
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-4",
+      "canonical_smiles": "CCCOC(=O)c1ccccc1",
+      "xy": [
+        715,
+        207
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-5",
+      "canonical_smiles": "CCOC(=O)c1ccccc1COC",
+      "xy": [
+        782,
+        214
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-6",
+      "canonical_smiles": "CN1CCCSc2ccccc21",
+      "xy": [
+        849,
+        213
+      ],
+      "parent_cases": [
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M1-2-7",
+      "canonical_smiles": "CN1CC(O)CSc2ccccc21",
+      "xy": [
+        916,
+        211
+      ],
+      "parent_cases": [
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M2-0-0",
+      "canonical_smiles": "CC1=CC(C)CN=C1C",
+      "xy": [
+        45,
+        297
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CC1=CC(C)CN=C1C",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:WARQKINUIYNWHO",
+              [
+                "C8H10N1",
+                "CC1=CC(C)CN=C1C",
+                "hshift",
+                4,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-0-1",
+      "canonical_smiles": "C=C(CCC)N(C)CC",
+      "xy": [
+        112,
+        295
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "C=C(N(C)CC)CCC",
+          "support": 4,
+          "examples": [
+            [
+              "HMDB:LHZWOGDJILLEFO",
+              [
+                "C8H10N1",
+                "C=C(N(C)CC)CCC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:QIZMUNLEIQZDBA",
+              [
+                "C8H10N1",
+                "C=C(N(C)CC)CCC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:IDLBOFBAMNDNFR",
+              [
+                "C8H10N1",
+                "C=C(N(C)CC)CCC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:OYIXGZDXSCZURQ",
+              [
+                "C8H10N1",
+                "C=C(N(C)CC)CCC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-0-2",
+      "canonical_smiles": "CCC1=C(NC)CCC1",
+      "xy": [
+        179,
+        285
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCC1=C(CCC1)NC",
+          "support": 4,
+          "examples": [
+            [
+              "HMDB:BLYRSJVTGQJCQI",
+              [
+                "C8H10N1",
+                "CCC1=C(CCC1)NC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:RXFDRMNPYAIRFJ",
+              [
+                "C8H10N1",
+                "CCC1=C(CCC1)NC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:RYGXXXQBRORLIJ",
+              [
+                "C8H10N1",
+                "CCC1=C(CCC1)NC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:XZTJVKYWRODILK",
+              [
+                "C8H10N1",
+                "CCC1=C(CCC1)NC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "CCC1=C(NC)CCC1",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:XYFITVFPQSIWES",
+              [
+                "C8H10N1",
+                "CCC1=C(NC)CCC1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-0-3",
+      "canonical_smiles": "CCC1CC=C(NC)C1",
+      "xy": [
+        246,
+        288
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCC1CC(=CC1)NC",
+          "support": 2,
+          "examples": [
+            [
+              "HMDB:GOTCNQZLHJWEAK",
+              [
+                "C8H10N1",
+                "CCC1CC(=CC1)NC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:RXFDRMNPYAIRFJ",
+              [
+                "C8H10N1",
+                "CCC1CC(=CC1)NC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "CCC1CC(NC)=CC1",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:IDLBOFBAMNDNFR",
+              [
+                "C8H10N1",
+                "CCC1CC(NC)=CC1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-0-4",
+      "canonical_smiles": "CCNC(C)C(=O)O",
+      "xy": [
+        75,
+        331
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+",
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M2-0-5",
+      "canonical_smiles": "CC=CC=NCCCC",
+      "xy": [
+        142,
+        327
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CC=CC=NCCCC",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:PXOPDYTVWWQZEK",
+              [
+                "C8H10N1",
+                "CC=CC=NCCCC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-0-6",
+      "canonical_smiles": "CCC=CC=C(C)NC",
+      "xy": [
+        209,
+        322
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCC=CC=C(NC)C",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:WWWFGNPHCWUJER",
+              [
+                "C8H10N1",
+                "CCC=CC=C(NC)C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-0-7",
+      "canonical_smiles": "C=CCCCC(C)CN",
+      "xy": [
+        276,
+        333
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "C=CCCCC(C)CN",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:CSIVOLSDYXXYMG",
+              [
+                "C8H10N1",
+                "C=CCCCC(C)CN",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-0",
+      "canonical_smiles": "Cc1cc(C)n(C)c1C",
+      "xy": [
+        365,
+        294
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1c(C)cc(n1C)C",
+          "support": 2,
+          "examples": [
+            [
+              "HMDB:FEOYYZKCVVLICI",
+              [
+                "C8H10N1",
+                "Cc1c(C)cc(n1C)C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:NWFQKPJYEJRQRI",
+              [
+                "C8H10N1",
+                "Cc1c(C)cc(n1C)C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1cc(C)n(c1C)C",
+          "support": 2,
+          "examples": [
+            [
+              "HMDB:LNXCMFJNJNUFNW",
+              [
+                "C8H10N1",
+                "Cc1cc(C)n(c1C)C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:MBJGXSSIUJRGNO",
+              [
+                "C8H10N1",
+                "Cc1cc(C)n(c1C)C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1cc(n(c1C)C)C",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:MBJGXSSIUJRGNO",
+              [
+                "C8H10N1",
+                "Cc1cc(n(c1C)C)C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-1",
+      "canonical_smiles": "CCc1cccc(C)n1",
+      "xy": [
+        432,
+        290
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCc1cccc(C)n1",
+          "support": 3,
+          "examples": [
+            [
+              "HMDB:FPQMUQPPAYCAME",
+              [
+                "C8H10N1",
+                "CCc1cccc(C)n1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:SFSXNVBMAODLGN",
+              [
+                "C8H10N1",
+                "CCc1cccc(C)n1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:JPGDYIGSCHWQCC",
+              [
+                "C8H10N1",
+                "CCc1cccc(C)n1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-2",
+      "canonical_smiles": "CCn1cc(C)c(C)c1",
+      "xy": [
+        499,
+        286
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCn1cc(C)c(C)c1",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:DFFVSJCTDBAPFY",
+              [
+                "C8H10N1",
+                "CCn1cc(C)c(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1cn(cc1C)CC",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:MBJGXSSIUJRGNO",
+              [
+                "C8H10N1",
+                "Cc1cn(cc1C)CC",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-3",
+      "canonical_smiles": "CCc1ccn(C)c1C",
+      "xy": [
+        566,
+        287
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCc1ccn(c1C)C",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:DJAGDEJXGVMMGJ",
+              [
+                "C8H10N1",
+                "CCc1ccn(c1C)C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-4",
+      "canonical_smiles": "CCc1cnccc1C",
+      "xy": [
+        395,
+        324
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCc1cnccc1C",
+          "support": 6,
+          "examples": [
+            [
+              "HMDB:LGYCOYCCCKHXGC",
+              [
+                "C8H10N1",
+                "CCc1cnccc1C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:IOIGOIPHPUCFOB",
+              [
+                "C8H10N1",
+                "CCc1cnccc1C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:RLNQBGQGMYNOCX",
+              [
+                "C8H10N1",
+                "CCc1cnccc1C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:OPRAONAUWNNOOV",
+              [
+                "C8H10N1",
+                "CCc1cnccc1C",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-5",
+      "canonical_smiles": "Cc1ccc2n1CCC2",
+      "xy": [
+        462,
+        325
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1ccc2n1CCC2",
+          "support": 9,
+          "examples": [
+            [
+              "HMDB:LNXCMFJNJNUFNW",
+              [
+                "C8H10N1",
+                "Cc1ccc2n1CCC2",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:MBJGXSSIUJRGNO",
+              [
+                "C8H10N1",
+                "Cc1ccc2n1CCC2",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:NWFQKPJYEJRQRI",
+              [
+                "C8H10N1",
+                "Cc1ccc2n1CCC2",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:PIQMOWBWPFGZMW",
+              [
+                "C8H10N1",
+                "Cc1ccc2n1CCC2",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-6",
+      "canonical_smiles": "CCc1ccnc(C)c1",
+      "xy": [
+        529,
+        323
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CCc1ccnc(C)c1",
+          "support": 2,
+          "examples": [
+            [
+              "HMDB:NIGBUKPEJHINOG",
+              [
+                "C8H10N1",
+                "CCc1ccnc(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:HCBOYQSYWSEVID",
+              [
+                "C8H10N1",
+                "CCc1ccnc(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-1-7",
+      "canonical_smiles": "CC(C)c1cccnc1",
+      "xy": [
+        596,
+        322
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CC(C)c1cccnc1",
+          "support": 7,
+          "examples": [
+            [
+              "HMDB:DDFNHFXLQJLFSX",
+              [
+                "C8H10N1",
+                "CC(C)c1cccnc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:IOIGOIPHPUCFOB",
+              [
+                "C8H10N1",
+                "CC(C)c1cccnc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:RLNQBGQGMYNOCX",
+              [
+                "C8H10N1",
+                "CC(C)c1cccnc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:TUYWTLTWNJOZNY",
+              [
+                "C8H10N1",
+                "CC(C)c1cccnc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-2-0",
+      "canonical_smiles": "CNCc1ccccc1",
+      "xy": [
+        685,
+        283
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CNCc1ccccc1",
+          "support": 67,
+          "examples": [
+            [
+              "HMDB:BFNKQTIJVFGCKQ",
+              [
+                "C8H10N1",
+                "CNCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:FDTDKBQVKSHHIE",
+              [
+                "C8H10N1",
+                "CNCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:GMJWGJSDPOAZTP",
+              [
+                "C8H10N1",
+                "CNCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:GRUVVLWKPGIYEG",
+              [
+                "C8H10N1",
+                "CNCc1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-2-1",
+      "canonical_smiles": "C=Cc1ccc(N)cc1",
+      "xy": [
+        752,
+        292
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "C=Cc1ccc(N)cc1",
+          "support": 4,
+          "examples": [
+            [
+              "HMDB:RUKJCCIJLIMGEP",
+              [
+                "C8H10N1",
+                "C=Cc1ccc(N)cc1",
+                "hshift",
+                3,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:XGHHHPDRXLIMPM",
+              [
+                "C8H10N1",
+                "C=Cc1ccc(N)cc1",
+                "hshift",
+                3,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:YNDIAUKFXKEXSV",
+              [
+                "C8H10N1",
+                "C=Cc1ccc(N)cc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:QURXGTDNTHRACO",
+              [
+                "C8H10N1",
+                "C=Cc1ccc(N)cc1",
+                "hshift",
+                3,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-2-2",
+      "canonical_smiles": "CNc1cccc(C)c1",
+      "xy": [
+        819,
+        286
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CNc1cccc(C)c1",
+          "support": 10,
+          "examples": [
+            [
+              "HMDB:FDXVHZCFTCIKDD",
+              [
+                "C8H10N1",
+                "CNc1cccc(C)c1",
+                "hshift",
+                3,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:KPCOLEDDUNYSQA",
+              [
+                "C8H10N1",
+                "CNc1cccc(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:RRHXDYJWVYFMKV",
+              [
+                "C8H10N1",
+                "CNc1cccc(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:HFQMYSHATTXRTC",
+              [
+                "C8H10N1",
+                "CNc1cccc(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1cccc(NC)c1",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:JTAGHJPZEDNHHA",
+              [
+                "C8H10N1",
+                "Cc1cccc(NC)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-2-3",
+      "canonical_smiles": "CC(N)c1ccccc1",
+      "xy": [
+        886,
+        293
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "CC(N)c1ccccc1",
+          "support": 22,
+          "examples": [
+            [
+              "HMDB:CJUWBZDJMYYRDG",
+              [
+                "C8H10N1",
+                "CC(N)c1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:FMINYZXVCTYSNY",
+              [
+                "C8H10N1",
+                "CC(N)c1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:GMJWGJSDPOAZTP",
+              [
+                "C8H10N1",
+                "CC(N)c1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:KNHNFKZUNFPPQE",
+              [
+                "C8H10N1",
+                "CC(N)c1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "CC(c1ccccc1)N",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:UDTWZFJEMMUFLC",
+              [
+                "C8H10N1",
+                "CC(c1ccccc1)N",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "C[C@H](N)c1ccccc1",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:FUBBGQLTSCSAON",
+              [
+                "C8H10N1",
+                "C[C@H](N)c1ccccc1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M2-2-4",
+      "canonical_smiles": "COCc1ccccc1",
+      "xy": [
+        715,
+        322
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M2-2-5",
+      "canonical_smiles": "O=Cc1ccccc1C=O",
+      "xy": [
+        782,
+        334
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M2-2-6",
+      "canonical_smiles": "CCc1ccc(O)cc1",
+      "xy": [
+        849,
+        322
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M2-2-7",
+      "canonical_smiles": "Cc1ccc(N)c(C)c1",
+      "xy": [
+        916,
+        328
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1ccc(N)c(C)c1",
+          "support": 17,
+          "examples": [
+            [
+              "HMDB:DAMRUBXLPVLGQF",
+              [
+                "C8H10N1",
+                "Cc1ccc(N)c(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:OKIBNKKYNPBDRS",
+              [
+                "C8H10N1",
+                "Cc1ccc(N)c(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:QQKNIFQTDAHPAP",
+              [
+                "C8H10N1",
+                "Cc1ccc(N)c(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:GOZBHBFUQHMKQB",
+              [
+                "C8H10N1",
+                "Cc1ccc(N)c(C)c1",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        },
+        {
+          "ion": "C8H10N1",
+          "motif": "Cc1ccc(c(c1)C)N",
+          "support": 2,
+          "examples": [
+            [
+              "HMDB:HOVMHIRTZYQSKM",
+              [
+                "C8H10N1",
+                "Cc1ccc(c(c1)C)N",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:BPVGSWDWIRIUME",
+              [
+                "C8H10N1",
+                "Cc1ccc(c(c1)C)N",
+                "plain",
+                0,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-0-0",
+      "canonical_smiles": "C#CC(C)N",
+      "xy": [
+        45,
+        411
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C4H10N1",
+          "motif": "C#CC(C)N",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:DSPDJPFEBQTXDO",
+              [
+                "C4H10N1",
+                "C#CC(C)N",
+                "hshift",
+                6,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-0-1",
+      "canonical_smiles": "CCC=CN",
+      "xy": [
+        112,
+        406
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C4H10N1",
+          "motif": "CCC=CN",
+          "support": 15,
+          "examples": [
+            [
+              "HMDB:ASHYMNYOWDHCGV",
+              [
+                "C4H10N1",
+                "CCC=CN",
+                "hshift",
+                5,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:DAMBAJDWLIFTNW",
+              [
+                "C4H10N1",
+                "CCC=CN",
+                "hshift",
+                5,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:GHUJOXJDUAROKJ",
+              [
+                "C4H10N1",
+                "CCC=CN",
+                "hshift",
+                3,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:MUSRXJZXWIHVSH",
+              [
+                "C4H10N1",
+                "CCC=CN",
+                "hshift",
+                3,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-0-2",
+      "canonical_smiles": "CNC1CC1",
+      "xy": [
+        179,
+        408
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C4H10N1",
+          "motif": "CNC1CC1",
+          "support": 2,
+          "examples": [
+            [
+              "HMDB:OTXAMWFYPMNDME",
+              [
+                "C4H10N1",
+                "CNC1CC1",
+                "hshift",
+                5,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:QUVHZANTGRHKML",
+              [
+                "C4H10N1",
+                "CNC1CC1",
+                "hshift",
+                4,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-0-3",
+      "canonical_smiles": "CC1CNC1",
+      "xy": [
+        246,
+        412
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C4H10N1",
+          "motif": "CC1CNC1",
+          "support": 2,
+          "examples": [
+            [
+              "HMDB:MFTQITSPGQORDA",
+              [
+                "C4H10N1",
+                "CC1CNC1",
+                "hshift",
+                5,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:XJFUIILGVMOOHV",
+              [
+                "C4H10N1",
+                "CC1CNC1",
+                "hshift",
+                5,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-0-4",
+      "canonical_smiles": "C=C(N)CC",
+      "xy": [
+        75,
+        444
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C4H10N1",
+          "motif": "C=C(N)CC",
+          "support": 4,
+          "examples": [
+            [
+              "HMDB:DAMBAJDWLIFTNW",
+              [
+                "C4H10N1",
+                "C=C(N)CC",
+                "hshift",
+                6,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:ZWFIWLWLIXMBEA",
+              [
+                "C4H10N1",
+                "C=C(N)CC",
+                "hshift",
+                6,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:LIHDYIAAKPQZSN",
+              [
+                "C4H10N1",
+                "C=C(N)CC",
+                "hshift",
+                6,
+                "",
+                ""
+              ]
+            ],
+            [
+              "HMDB:WWWFGNPHCWUJER",
+              [
+                "C4H10N1",
+                "C=C(N)CC",
+                "hshift",
+                4,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-0-5",
+      "canonical_smiles": "CC(C)C(N)C=O",
+      "xy": [
+        142,
+        437
+      ],
+      "parent_cases": [
+        "hmdbw:BSWHERGFUNMWGS:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M3-0-6",
+      "canonical_smiles": "C1=CNCC1",
+      "xy": [
+        209,
+        446
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C4H10N1",
+          "motif": "C1CccN1",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:VKDWFHAQOZYATG",
+              [
+                "C4H10N1",
+                "C1CccN1",
+                "hshift",
+                6,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-0-7",
+      "canonical_smiles": "C1=CCNC1",
+      "xy": [
+        276,
+        449
+      ],
+      "parent_cases": [],
+      "archived_index_records": [
+        {
+          "ion": "C4H10N1",
+          "motif": "C1=CCNC1",
+          "support": 1,
+          "examples": [
+            [
+              "HMDB:XMJAZPFSQQKHEG",
+              [
+                "C4H10N1",
+                "C1=CCNC1",
+                "hshift",
+                5,
+                "",
+                ""
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M3-1-0",
+      "canonical_smiles": "CCc1cnc[nH]1",
+      "xy": [
+        365,
+        405
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M3-1-1",
+      "canonical_smiles": "c1c[nH]cn1",
+      "xy": [
+        432,
+        402
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M3-1-2",
+      "canonical_smiles": "Cc1cnc[nH]1",
+      "xy": [
+        499,
+        411
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M3-2-0",
+      "canonical_smiles": "Oc1ccccc1",
+      "xy": [
+        685,
+        406
+      ],
+      "parent_cases": [
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+",
+        "hmdbw:ALISTFINEQANJP:[M+H]+"
+      ],
+      "archived_index_records": []
+    },
+    {
+      "id": "M3-2-1",
+      "canonical_smiles": "Cc1ccccc1",
+      "xy": [
+        752,
+        407
+      ],
+      "parent_cases": [
+        "gems_pseudo:gems_deleaked:0:MQIUGAXCHLFZKX",
+        "hmdbw:ABDWINSTWUZFIV:[M+H]+"
+      ],
+      "archived_index_records": []
+    }
+  ]
+}
