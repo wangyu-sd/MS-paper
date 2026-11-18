@@ -11,8 +11,8 @@
     101.53293906317816
   ],
   "pdf_image_count": 0,
-  "pdf_path_objects": 2320,
-  "pdf_text_characters": 2631,
+  "pdf_path_objects": 2667,
+  "pdf_text_characters": 2651,
   "font_families": [
     "Arial-BoldItalicMT",
     "Arial-BoldMT",
@@ -23,16 +23,17 @@
     "TimesNewRomanPS-ItalicMT",
     "TimesNewRomanPSMT"
   ],
-  "embedded_font_records": 37,
+  "embedded_font_records": 43,
   "svg_objects": {
-    "svg": 20,
-    "title": 260,
+    "svg": 27,
+    "title": 267,
     "defs": 1,
-    "marker": 6,
-    "path": 1894,
+    "marker": 12,
+    "path": 1717,
     "rect": 184,
-    "text": 223,
+    "text": 230,
     "g": 240,
+    "line": 530,
     "tspan": 32,
     "circle": 113,
     "ellipse": 72
@@ -43,8 +44,8 @@
     1670,
     942
   ],
-  "changed_pixel_fraction": 0.9350591810010552,
-  "mean_absolute_channel_error_0_255": 26.979092346093378,
+  "changed_pixel_fraction": 0.9352346262888236,
+  "mean_absolute_channel_error_0_255": 27.854193311890022,
   "max_channel_error": 255,
   "native_text_clipped": [],
   "native_text_overlaps": [],
@@ -53,7 +54,7 @@
   "body_13_svg_pixels_in_pdf_points": 3.971898722240559,
   "kg_nodes": 91,
   "verified_kg_edges": 102,
-  "pdf_sha256": "0b13e43a57cc181849ea6d5882b1271875bc9336e273e295f4419928c4c03c82",
-  "svg_sha256": "39185a6427bf42e11ce799261d4ac2779e16c94f6feb32a15ac6c70ab02dafd4",
+  "pdf_sha256": "4b028f9248bde424b5337e30936311f871a08be674af4809b6da1196f2dc5f1c",
+  "svg_sha256": "066493554e6c485582d6153503d52b477a1d3e7bf59720acf10a5766498c8385",
   "note": "Differences include scientific replacements of malformed generated molecules and native font/rasterization differences; pixel equality is not expected."
 }

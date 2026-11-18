@@ -105,12 +105,39 @@ def main():
     assert nodes["3"].HasSubstructMatch(nodes["5"])
     assert nodes["5"].HasSubstructMatch(nodes["6"])
 
+    paired = json.loads((SOURCE/"data/paired_training_example.json").read_text())
+    assert paired["fold"]=="train" and len(paired["peaks"])==20
+    spectrum_sources = {
+        "a-measured":case["query"], "e-measured":case["query"],
+        "f-paired-input":paired, "f-paired-pair":paired,
+        "f-sleep-pair":case["experience"]["sleep"],
+        "f-wake-input":case["experience"]["wake"],
+        "f-wake-pair":case["experience"]["wake"],
+        "f-hindsight-pair":case["experience"]["hindsight"],
+    }
+    for name,record in spectrum_sources.items():
+        plot=root.find(f'.//s:g[@id="spectrum-{name}"]',NS)
+        assert plot is not None,name
+        sticks=plot.findall("s:line",NS)
+        observed=[(float(stick.get("data-mz")),float(stick.get("data-intensity"))) for stick in sticks]
+        expected=sorted(map(tuple,record["peaks"]))
+        assert observed==expected,name
+        heights=[float(stick.get("y1"))-float(stick.get("y2")) for stick in sticks]
+        peak_max=max(intensity for _,intensity in expected)
+        for height,(_,intensity) in zip(heights,expected):
+            assert abs(height/max(heights)-intensity/peak_max)<.0001,name
+
     drawing_specs = json.loads((SOURCE/'data/reference_drawing_specs.json').read_text())
     for spec in drawing_specs:
         assert Chem.MolFromSmiles(spec['canonical_smiles']) is not None
         art = ET.parse(SOURCE/'assets'/spec['asset']).getroot()
         assert not art.findall('.//s:image',NS)
-        if spec['source'].startswith('case_manifest'):
+        if spec["source"].startswith("experience:"):
+            assert any("bond-" in item.get("class","") for item in art.iter()),spec["asset"]
+            key=spec["source"].split(":")[1]
+            record=paired if key=="paired" else case["experience"][key]
+            expected=Chem.MolToSmiles(Chem.MolFromSmiles(record["smiles"]))
+        elif spec['source'].startswith('case_manifest'):
             index = int(spec['source'].split('[')[1].split(']')[0])
             expected = Chem.MolToSmiles(Chem.MolFromSmiles(case['mma']['motifs'][index]['motif']))
         else:

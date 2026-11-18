@@ -1,23 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="43 42 304 116"><g id="spectrum-a-measured"><title>spectrum a measured</title>
-<path d="M63 118H327" fill="none" stroke="#677680" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M63 52V118" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M94.159 118V87.007" fill="none" stroke="#008BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M177.300 118V79.744" fill="none" stroke="#008BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M305.393 118V115.867" fill="none" stroke="#008BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M305.356 118V52.000" fill="none" stroke="#BD4B00" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M85.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="85.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">70</text>
-<path d="M129.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="129.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">80</text>
-<path d="M173.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="173.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">90</text>
-<path d="M217.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="217.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">100</text>
-<path d="M261.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="261.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">110</text>
-<path d="M305.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="305.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">120</text>
-<text x="55" y="60" fill="#101214" font-family="Arial" font-size="15" font-weight="400" text-anchor="end">1</text>
-<text x="55" y="119" fill="#101214" font-family="Arial" font-size="15" font-weight="400" text-anchor="end">0</text>
-<text x="329" y="145" fill="#101214" font-family="Times New Roman" font-size="15" font-weight="400" text-anchor="start">m/z</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="29 48 313 111"><g id="spectrum-a-measured"><title>spectrum a measured</title>
+<path d="M79 117.0H83" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="75" y="121.0" fill="#101214" font-family="Arial" font-size="12.5" font-weight="400" text-anchor="end">0</text>
+<path d="M83 87.5H326" fill="none" stroke="#E4EAEC" stroke-width="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M79 87.5H83" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="75" y="91.5" fill="#101214" font-family="Arial" font-size="12.5" font-weight="400" text-anchor="end">50</text>
+<path d="M83 58.0H326" fill="none" stroke="#E4EAEC" stroke-width="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M79 58.0H83" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="75" y="62.0" fill="#101214" font-family="Arial" font-size="12.5" font-weight="400" text-anchor="end">100</text>
+<line x1="111.6805" x2="111.6805" y1="117.0000" y2="89.2938" data-mz="72.0816" data-intensity="0.46959673" stroke="#BD4B00" stroke-width="1.65" stroke-linecap="butt"/>
+<line x1="188.2081" x2="188.2081" y1="117.0000" y2="82.8018" data-mz="90.9773" data-intensity="0.57963063" stroke="#BD4B00" stroke-width="1.65" stroke-linecap="butt"/>
+<line x1="306.0772" x2="306.0772" y1="117.0000" y2="58.0000" data-mz="120.0808" data-intensity="1.0" stroke="#A84B09" stroke-width="1.65" stroke-linecap="butt"/>
+<line x1="306.1117" x2="306.1117" y1="117.0000" y2="115.0936" data-mz="120.0893" data-intensity="0.03231163" stroke="#BD4B00" stroke-width="1.65" stroke-linecap="butt"/>
+<path d="M83 58V117H326" fill="none" stroke="#65747C" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M103.25 117v3" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="103.25" y="133" fill="#101214" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle">70</text>
+<path d="M143.75 117v3" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="143.75" y="133" fill="#101214" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle">80</text>
+<path d="M184.25 117v3" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="184.25" y="133" fill="#101214" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle">90</text>
+<path d="M224.75 117v3" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="224.75" y="133" fill="#101214" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle">100</text>
+<path d="M265.25 117v3" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="265.25" y="133" fill="#101214" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle">110</text>
+<path d="M305.75 117v3" fill="none" stroke="#65747C" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="305.75" y="133" fill="#101214" font-family="Arial" font-size="13" font-weight="400" text-anchor="middle">120</text>
+<text x="329" y="133" fill="#101214" font-family="Times New Roman" font-size="13" font-weight="400" text-anchor="start">m/z</text>
+<text transform="translate(41 87.5) rotate(-90)" text-anchor="middle" font-family="Arial" font-size="12.5" fill="#101214">Rel. intensity (%)</text>
 </g></svg>
