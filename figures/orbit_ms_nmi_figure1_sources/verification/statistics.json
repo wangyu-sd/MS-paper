@@ -4,47 +4,56 @@
     0.0,
     0.0,
     510.2362060546875,
-    287.00787353515625
+    287.8099060058594
   ],
   "page_mm": [
     179.99999491373697,
-    101.2499998304579
+    101.53293906317816
   ],
   "pdf_image_count": 0,
-  "pdf_path_objects": 1392,
-  "pdf_text_characters": 2001,
+  "pdf_path_objects": 2320,
+  "pdf_text_characters": 2631,
   "font_families": [
+    "Arial-BoldItalicMT",
     "Arial-BoldMT",
+    "Arial-ItalicMT",
     "ArialMT",
+    "TimesNewRomanPS-BoldItal",
     "TimesNewRomanPS-BoldMT",
     "TimesNewRomanPS-ItalicMT",
     "TimesNewRomanPSMT"
   ],
-  "embedded_font_records": 16,
+  "embedded_font_records": 37,
   "svg_objects": {
-    "svg": 18,
-    "title": 241,
+    "svg": 20,
+    "title": 260,
     "defs": 1,
     "marker": 6,
-    "path": 1129,
-    "rect": 52,
-    "g": 225,
-    "text": 139,
-    "circle": 114,
-    "ellipse": 72,
-    "tspan": 16
+    "path": 1894,
+    "rect": 184,
+    "text": 223,
+    "g": 240,
+    "tspan": 32,
+    "circle": 113,
+    "ellipse": 72
   },
-  "panel_text_overflow": [],
-  "label_words": 257,
-  "previous_label_words": 334,
+  "source_png": "/Users/wangyu/.codex/worktrees/8b55/\u4ee3\u8c22\u8c31\u56fe/ms-paper-vector/figures/orbit_ms_nmi_figure1_sources/revision_reference.png",
+  "source_sha256": "b3b7b474981ba4284cf0a35a4c0ba7d27dd31aca42b2450af2017d31ac3da4f1",
+  "reference_pixels": [
+    1670,
+    942
+  ],
+  "changed_pixel_fraction": 0.9350591810010552,
+  "mean_absolute_channel_error_0_255": 26.979092346093378,
+  "max_channel_error": 255,
   "native_text_clipped": [],
   "native_text_overlaps": [],
   "connector_text_crossings": [],
-  "minimum_pdf_type_points": 3.9000000953674316,
-  "standard_annotation_points": 5.102362204724409,
+  "minimum_pdf_type_points": 3.0749998092651367,
+  "body_13_svg_pixels_in_pdf_points": 3.971898722240559,
   "kg_nodes": 91,
   "verified_kg_edges": 102,
-  "pdf_sha256": "617b977bbcf2f9d97da8b3431919ac5b4f97cc1cea83d11e51f3969a2119ff02",
-  "svg_sha256": "eedbc0b689bdd9569454e935e620c9220340d084530130f384caed78fc7698a4",
-  "note": "Editorial redesign at 180 mm physical page width."
+  "pdf_sha256": "0b13e43a57cc181849ea6d5882b1271875bc9336e273e295f4419928c4c03c82",
+  "svg_sha256": "39185a6427bf42e11ce799261d4ac2779e16c94f6feb32a15ac6c70ab02dafd4",
+  "note": "Differences include scientific replacements of malformed generated molecules and native font/rasterization differences; pixel equality is not expected."
 }

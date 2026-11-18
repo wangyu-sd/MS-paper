@@ -13,7 +13,7 @@
     },
     {
       "file": "assets/atom-level-alignment.svg",
-      "sha256": "4cb8bcaa026ef43ded566c222c796593098fa77e623a1775d96ded6cfd668187",
+      "sha256": "c7ac59836bf0f07e15466efdffbd9921f3af565f8651eae6e42b2b07d14de6a1",
       "representation": "native SVG paths and/or text"
     },
     {
@@ -57,61 +57,6 @@
       "representation": "native SVG paths and/or text"
     },
     {
-      "file": "assets/editorial-a.svg",
-      "sha256": "f3945ec88292016c9915eb862b1308d43eecb2f6e5688c541541a79d69d72d2f",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-e.svg",
-      "sha256": "3fd5f4485810cb99a3aa9a592d12a43602c7ccca24e8f0f00b9c200d75ba20ea",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-mined-motif.svg",
-      "sha256": "b6f0681ca73bf49df1355b99e85adb8e937e309e2f100176961d29d0c6fc5c16",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-neighborhood-1.svg",
-      "sha256": "dac0579dd5369b5ee325cd13fc0e7c329591c3f433dee64985064b92cb82ef3f",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-neighborhood-2.svg",
-      "sha256": "0d1302dc6b930577c055d90cc7cc26e73c7d4b6b169e4e7388eb0331eb6a74c6",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-neighborhood-3.svg",
-      "sha256": "c7b451182166d9d4decc967b562d19d002a7eb622e3f622d7b01df08fadd16ad",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-neighborhood-4.svg",
-      "sha256": "07c6b0e66f2203e776f0ff82fd6f14b7dad42aafa560a7d9ccba9c198fadf0b4",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-neighborhood-5.svg",
-      "sha256": "029da02a05c509d3f3875788d1cec9cceec6be4ae934557b3ea84e163b790d30",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-neighborhood-6.svg",
-      "sha256": "ff069d87f2a4e989f9dbfa92fe9ec66e929cba28e6f481a3b5e996b1e9bf80db",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-retrieved-0.svg",
-      "sha256": "c60cde1b804bcd752c932538f928b0dbc480a52f54c9cdb0023743f8fe942bd8",
-      "representation": "native SVG paths and/or text"
-    },
-    {
-      "file": "assets/editorial-retrieved-1.svg",
-      "sha256": "56fcc88c22b9a411bf7d331a2a194caca53e55c9859f3ab261d475949b5b0449",
-      "representation": "native SVG paths and/or text"
-    },
-    {
       "file": "assets/encoder-motif-reference.svg",
       "sha256": "397dd1d072c601ecc5ed885f30465878e3113c77ce8da6c88479a9f7d3fff7d0",
       "representation": "native SVG paths and/or text"
@@ -143,7 +88,7 @@
     },
     {
       "file": "assets/f-wake.svg",
-      "sha256": "07adaeb1f578f2455b9ecaca9a11c24a33a23217653e93050b4888eccbd28868",
+      "sha256": "552174b8c12d2e069eb75b03fa6a49afc882e842b039800ef44dc28f4e98c088",
       "representation": "native SVG paths and/or text"
     },
     {

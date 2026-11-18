@@ -11,10 +11,10 @@ async function main() {
   const executablePath = process.env.CHROME_PATH || undefined;
   const browser = await chromium.launch({ executablePath, headless: true });
   try {
-    const page = await browser.newPage({ viewport: { width: 1600, height: 900 } });
+    const page = await browser.newPage({ viewport: { width: 1670, height: 942 } });
     await page.setContent(`<!doctype html><meta charset="utf-8">
       <style>
-        @page {size: 180mm 101.25mm; margin: 0}
+        @page {size: 180mm 101.5329341317mm; margin: 0}
         html,body {margin:0; padding:0}
         body > svg {display:block}
       </style>${svg}`);
@@ -28,6 +28,7 @@ async function main() {
     );
     if (normalized.status !== 0) throw new Error(normalized.stderr || "PDF page normalization failed");
     const issues = await page.evaluate(() => {
+      const ns = "http://www.w3.org/2000/svg";
       const outer = document.querySelector("body > svg");
       const nodes = Array.from(outer.querySelectorAll("text"));
       return nodes.map(element => {
@@ -35,10 +36,10 @@ async function main() {
         const frame = outer.getBoundingClientRect();
         return {
           text: element.textContent,
-          left: (bounds.left-frame.left)*1600/frame.width,
-          right: (bounds.right-frame.left)*1600/frame.width,
-          top: (bounds.top-frame.top)*900/frame.height,
-          bottom: (bounds.bottom-frame.top)*900/frame.height,
+          left: (bounds.left-frame.left)*1670/frame.width,
+          right: (bounds.right-frame.left)*1670/frame.width,
+          top: (bounds.top-frame.top)*942/frame.height,
+          bottom: (bounds.bottom-frame.top)*942/frame.height,
           family: getComputedStyle(element).fontFamily,
           panel: element.closest('g[id^="panel-"]')?.id,
         };

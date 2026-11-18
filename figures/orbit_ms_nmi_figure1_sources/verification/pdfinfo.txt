@@ -1,8 +1,8 @@
 Title:           about:blank
 Creator:         Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36
 Producer:        Skia/PDF m157
-CreationDate:    Wed Nov 18 14:32:55 2026 CST
-ModDate:         Wed Nov 18 14:32:55 2026 CST
+CreationDate:    Wed Nov 18 14:40:01 2026 CST
+ModDate:         Wed Nov 18 14:40:01 2026 CST
 Custom Metadata: no
 Metadata Stream: no
 Tagged:          no
@@ -12,8 +12,8 @@ Form:            none
 JavaScript:      no
 Pages:           1
 Encrypted:       no
-Page size:       510.236 x 287.008 pts
+Page size:       510.236 x 287.81 pts
 Page rot:        0
-File size:       319690 bytes
+File size:       630731 bytes
 Optimized:       no
 PDF version:     1.3
