@@ -1,0 +1,16 @@
+Title:           ORBIT-MS NMI Figure 1
+Producer:        pypdf
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           1
+Encrypted:       no
+Page size:       510.235 x 287.809 pts
+Page rot:        0
+File size:       1922165 bytes
+Optimized:       no
+PDF version:     1.4

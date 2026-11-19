@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="43 42 304 116"><g id="spectrum-a-measured"><title>spectrum a measured</title>
+<path d="M63 118H327" fill="none" stroke="#677680" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M63 52V118" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M94.159 118V87.007" fill="none" stroke="#008BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M177.300 118V79.744" fill="none" stroke="#008BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M305.393 118V115.867" fill="none" stroke="#008BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M305.356 118V52.000" fill="none" stroke="#BD4B00" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M85.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="85.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">70</text>
+<path d="M129.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="129.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">80</text>
+<path d="M173.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="173.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">90</text>
+<path d="M217.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="217.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">100</text>
+<path d="M261.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="261.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">110</text>
+<path d="M305.0 118v4" fill="none" stroke="#677680" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="305.0" y="134" fill="#101214" font-family="Arial" font-size="14" font-weight="400" text-anchor="middle">120</text>
+<text x="55" y="60" fill="#101214" font-family="Arial" font-size="15" font-weight="400" text-anchor="end">1</text>
+<text x="55" y="119" fill="#101214" font-family="Arial" font-size="15" font-weight="400" text-anchor="end">0</text>
+<text x="329" y="145" fill="#101214" font-family="Times New Roman" font-size="15" font-weight="400" text-anchor="start">m/z</text>
+</g></svg>
