@@ -20,6 +20,10 @@ The active manuscript is `main.tex`. The governing experiment plan is [the five-
 
 The paper follows this sequence and retains the existing component experiments, external development evaluations and chemical endpoints. Main figures load the named PDF when supplied; until then, their panel specifications remain visible. Final molecular drawings and spectra are generated from the actual chemical structures and measured data.
 
+## Mechanistic evidence and independent validation
+
+The focused 19 November 2026 manuscript revision replaces broad explanations with traceable tests of chemical-knowledge transfer, paired spectral discrimination, agent intervention selection, and independent structural corroboration. The four expert questions---additional unrequested experiments, original raw materials, concrete analysis tools, and external evidence---are documented in [Expert evidence redesign](internal/EXPERT_EVIDENCE_REDESIGN_20261119.md). This is a research and verification plan, not a claim that the planned experiments are already completed.
+
 ## Draft notation
 
 Completed experiments retain their recorded values and evaluation settings. Pending outcomes are written as complete result sentences with **x** for the value or chemical identifier to be filled. These sentences express the expected result direction for the working manuscript. The LaTeX pending macro prints x; [the editorial revision record](internal/EDITORIAL_REVISION_20261118.md) maps its identifiers to their experiment and position in the text. A short note outside the abstract explains the convention in the PDF.
