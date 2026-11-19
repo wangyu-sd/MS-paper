@@ -6,6 +6,16 @@
 
 This repository contains the Nature Machine Intelligence manuscript, supplementary results and experiment/figure plans. The scientific contribution combines molecular structure elucidation from tandem spectra with recursive learning that updates reusable chemical knowledge, the molecular generator and the verifier in response to observed failures. A Scientific Improver selects the existing learning interventions and retains their outcomes for later decisions.
 
+## Main-text Figure 1 — ORBIT-MS method framework
+
+The main-text **Figure 1** is the ORBIT-MS method overview, covering mass-matched substructure alignment (MMA), World–Generator–Verifier (WGV) inference, information-guided semi-supervised learning, and the Scientific Improver.
+
+[**Open the publication-quality vector PDF**](figures/fig1_orbit_ms_method_framework.pdf)
+
+![ORBIT-MS Figure 1: method framework](figures/fig1_orbit_ms_method_framework_preview.png)
+
+The Figure 1 source is included in [main.tex](main.tex) after the Introduction. **The Results figures listed below are separate figures and follow this method overview in the compiled manuscript.** GitHub does not automatically compile `main.tex`; to see the figure within the complete paper, compile the LaTeX source.
+
 ## Current manuscript and experiment design
 
 The active manuscript is `main.tex`. The governing experiment plan is [the five-result NMI plan](internal/NMI_CHEMICAL_ELUCIDATION_RESULTS_PLAN_20261112.md). The earlier Nature six-figure outline remains historical context in the repository and git history.
