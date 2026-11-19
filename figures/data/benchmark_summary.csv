@@ -1,0 +1,7 @@
+dataset,protocol,spectra,exact1_pct,exact10_pct,reach_pct
+"MassSpecGym","database-assisted full-horizon (Setting I)","17556","31.57","56.7","64.77"
+"MassSpecGym","database-assisted uniform isomer prior","17556","24.47","53.29","64.77"
+"MassSpecGym","pure partial-core (Setting II Gen13-14)","17556","6.81","12.68","22.89"
+"MassSpecGym","H0+H1+H2 diagnostic pool","17556","8.99","14.41","22.22"
+"NPLIB1/CANOPUS","external pure partial core","813","16.73","31.98","41.82"
+"CASMI 2022","external pure partial core","237","4.64","11.39","16.46"

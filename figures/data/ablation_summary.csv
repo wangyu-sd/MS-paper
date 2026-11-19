@@ -1,0 +1,11 @@
+variant,protocol,exact1_pct,exact10_pct,reach_pct
+"MMA OFF","same-checkpoint CAL200","1.5","4.5","6.5"
+"MMA ON","same-checkpoint CAL200","6","14.5","19"
+"MMA features G only","fixed pool CAL200","7","11.5","16"
+"MMA features G + WV","fixed pool CAL200","8.5","13.5","16"
+"MMA starts G only","MMA-start CAL200","5.5","16","19"
+"MMA starts G + WV","MMA-start CAL200","10","18","19"
+"Canonical Hybrid","CAL200","12.5","21.5","22.5"
+"H0","full 17556 diagnostic pool","7.48","13.58","22.22"
+"H0+H1","full 17556 diagnostic pool","8.52","","22.22"
+"H0+H1+H2","full 17556 diagnostic pool","8.99","14.41","22.22"

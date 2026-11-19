@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="370" viewBox="0 0 810 370">
+<rect width="810" height="370" fill="white"/>
+<text x="40" y="40" font-size="22" font-weight="600" font-family="Arial" fill="#25465D">GeMS mass-difference categories</text>
+<text x="145" y="90" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">C2H4</text>
+<rect x="164" y="70" width="510.0" height="27" fill="#25465D"/>
+<text x="684" y="90" font-size="15" font-family="Arial" fill="#34454E">68</text>
+<text x="145" y="133" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">O</text>
+<rect x="164" y="113" width="225.0" height="27" fill="#397D83"/>
+<text x="399" y="133" font-size="15" font-family="Arial" fill="#34454E">30</text>
+<text x="145" y="176" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">C2H2O</text>
+<rect x="164" y="156" width="172.5" height="27" fill="#397D83"/>
+<text x="346.5" y="176" font-size="15" font-family="Arial" fill="#34454E">23</text>
+<text x="145" y="219" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">CH2</text>
+<rect x="164" y="199" width="135.0" height="27" fill="#397D83"/>
+<text x="309" y="219" font-size="15" font-family="Arial" fill="#34454E">18</text>
+<text x="145" y="262" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">CH2O</text>
+<rect x="164" y="242" width="120.0" height="27" fill="#397D83"/>
+<text x="294" y="262" font-size="15" font-family="Arial" fill="#34454E">16</text>
+<text x="145" y="305" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">H2</text>
+<rect x="164" y="285" width="97.5" height="27" fill="#397D83"/>
+<text x="271.5" y="305" font-size="15" font-family="Arial" fill="#34454E">13</text>
+</svg>

@@ -16,6 +16,18 @@ The main-text **Figure 1** is the ORBIT-MS method overview, covering mass-matche
 
 The Figure 1 source is included in [main.tex](main.tex) after the Introduction. **The Results figures listed below are separate figures and follow this method overview in the compiled manuscript.** GitHub does not automatically compile `main.tex`; to see the figure within the complete paper, compile the LaTeX source.
 
+## Results inventory and scientific figure production (2026-11-19)
+
+ORBIT-MS results are now organized into source-linked assets, editable vector drafts and manuscript-aligned figure targets:
+
+- [Master Results and figure plan](internal/ORBIT_MS_RESULTS_VISUALIZATION_MASTERPLAN_20261119.md)
+- [Complete results inventory (51 existing experimental assets)](internal/ORBIT_MS_RESULTS_INVENTORY_20261119.md)
+- [Five Results figure panel designs](internal/ORBIT_MS_MAINFIGURES_LAYOUT_20261119.md)
+- [Full Gen0–19 and episode-level RSI curves](internal/ORBIT_MS_GEN_CURVES_20261119.md)
+- [Plottable figure datasets](figures/data/) and [SVG Gen curve previews](figures/previews/)
+
+Rebuild editable quantitative plot drafts with `python scripts/render_paper_result_previews.py --out figures/previews` after installing matplotlib. The existing five manuscript figure bindings and the original numerical results are unchanged.
+
 ## Current manuscript and experiment design
 
 The active manuscript is `main.tex`. The governing experiment plan is [the five-result NMI plan](internal/NMI_CHEMICAL_ELUCIDATION_RESULTS_PLAN_20261112.md). The earlier Nature six-figure outline remains historical context in the repository and git history.

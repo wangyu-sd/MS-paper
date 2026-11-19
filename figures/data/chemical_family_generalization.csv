@@ -1,0 +1,7 @@
+chemical_family,spectra,molecules,single_spectrum_exact1_pct,blind_consensus_exact1_pct,identity_multi_energy_exact1_pct,identity_multi_energy_exact10_pct,identity_multi_energy_reach_pct,formula_recall_pct
+"1_Peptides & Depsipeptides","5492","1008","1.18","3.73","4.08","5.54","13.73","75.00"
+"2_Flavonoids & Phenylpropanoids","1404","177","1.21","7.48","10.54","17.38","36.32","84.83"
+"3_Alkaloids & N-Heterocycles","6822","1437","1.96","4.10","5.54","9.53","20.05","83.60"
+"4_Macrolides & Macrocycles (Ring>=12)","1240","145","5.24","19.60","24.11","39.11","45.24","80.24"
+"5_Glycosides & Saponins","1999","135","0.90","2.55","6.70","8.40","49.07","90.30"
+"6_Terpenoids, Lipids & Polyketides","599","96","0.33","1.00","1.00","1.67","4.84","86.98"
