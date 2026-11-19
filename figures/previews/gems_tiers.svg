@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="370" viewBox="0 0 810 370">
+<rect width="810" height="370" fill="white"/>
+<text x="40" y="40" font-size="22" font-weight="600" font-family="Arial" fill="#25465D">GeMS candidate evidence tiers</text>
+<text x="145" y="90" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">Platinum</text>
+<rect x="164" y="70" width="5.1" height="27" fill="#25465D"/>
+<text x="179.05665722379604" y="90" font-size="15" font-family="Arial" fill="#34454E">7</text>
+<text x="145" y="133" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">Gold</text>
+<rect x="164" y="113" width="34.0" height="27" fill="#397D83"/>
+<text x="207.95184135977337" y="133" font-size="15" font-family="Arial" fill="#34454E">47</text>
+<text x="145" y="176" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">Silver</text>
+<rect x="164" y="156" width="173.4" height="27" fill="#397D83"/>
+<text x="347.371104815864" y="176" font-size="15" font-family="Arial" fill="#34454E">240</text>
+<text x="145" y="219" font-size="15" font-family="Arial" text-anchor="end" fill="#405058">Bronze</text>
+<rect x="164" y="199" width="510.0" height="27" fill="#397D83"/>
+<text x="684" y="219" font-size="15" font-family="Arial" fill="#34454E">706</text>
+</svg>

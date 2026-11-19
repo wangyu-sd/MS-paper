@@ -296,6 +296,13 @@ The completed MassSpecGym development results appear in Tables~S2--S12, followed
   \input{ORBIT_WGV_RSI_Results}%
 }
 
+% Supplementary results figure map; existing source tables remain unchanged.
+\IfFileExists{supplementary/ORBIT_Results_Visualization_Roadmap.tex}{%
+  \input{supplementary/ORBIT_Results_Visualization_Roadmap}%
+}{%
+  \input{ORBIT_Results_Visualization_Roadmap}%
+}
+
 \bibliographystyle{unsrtnat}
 % Overleaf compiles with the project root as its working directory, even
 % when this document resides under supplementary/.
