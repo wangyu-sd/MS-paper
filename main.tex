@@ -146,11 +146,27 @@ Computational methods constrain molecular identity through formulas, fingerprint
 
 Two distinct failures limit structure elucidation: the correct molecular graph may be absent from the generated pool, or it may be present but misranked among isomers sharing fragment masses. These are proposal and discrimination failures, not interchangeable error rates. Furthermore, a chemical prior can improve ranking without adding spectrum-specific evidence. The deeper question is whether observed fragments constrain candidate-specific substructures that can later be reused to recover another molecule, beyond simply generating more candidates or favouring familiar chemistry.\cite{Stravs2022,Schymanski2014} This requires tracing experimental peaks, alternative molecular graphs and molecular identities through learning and inference.
 
-Here we introduce ORBIT-MS, a framework for recursive chemical learning from tandem mass spectra. A spectrum-conditioned generator constructs molecular graphs from atoms, rings and reusable motifs linked to fragment-ion hypotheses by mass-matched substructure alignment. A fragmentation model predicts fragment structures from each proposed precursor without observing the measured target fragment peaks; a verifier compares those predictions with the experimental spectrum. Separating construction from spectral discrimination allows the system to distinguish failures to generate the correct structure from failures to rank available candidates.
+Here we introduce ORBIT-MS (Fig.~\ref{fig:orbit_method}), a framework for recursive chemical learning from tandem mass spectra. A spectrum-conditioned generator constructs molecular graphs from atoms, rings and reusable motifs linked to fragment-ion hypotheses by mass-matched substructure alignment. A fragmentation model predicts fragment structures from each proposed precursor without observing the measured target fragment peaks; a verifier compares those predictions with the experimental spectrum. Separating construction from spectral discrimination allows the system to distinguish failures to generate the correct structure from failures to rank available candidates.
 
 Recursive learning offers a test of this transfer hypothesis. The Scientific Improver chooses a bounded update to the chemical knowledge resource, generator or verifier in response to diagnosed errors, and retains its measured outcome before selecting the next action. Two effects must be distinguished: the molecular model gains capabilities through training, while the decision policy adapts through experience. We evaluate both by following independent molecular identities through successive updates and comparing the agent with fixed or scripted interventions at matched starting states and budgets.
 
 We evaluate ORBIT-MS through five connected analyses. A source-linked landscape of reference-unmatched spectra establishes the structural information available for elucidation. Controlled benchmarks quantify the contributions of motifs and fragmentation evidence, distinguishing inference with predicted formulas from inference with supplied formulas. Successive learning generations test the effects of targeted updates and retained decision experience. Molecular-graph comparisons then describe relationships among supported hypotheses, and independent spectral and chemical evidence assesses representative assignments. The framework links each learning decision to its consequences for molecular recovery and chemical interpretation.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_orbit_ms_method_framework.pdf}
+\caption{\textbf{ORBIT-MS integrates motif knowledge, molecular graph inference and recursive scientific learning.}
+\textbf{a}, An illustrative experimental tandem mass spectrum and competing molecular connectivities.
+\textbf{b}, The World--Generator--Verifier (WGV) inference loop: mass-matched substructure alignment (MMA) informs graph construction, the World predicts candidate-conditioned fragmentation, and the Verifier evaluates experimental spectral evidence.
+\textbf{c}, Offline motif mining and online mass-matched retrieval of structural hypotheses.
+\textbf{d}, The motif knowledge graph, local substructure relationships and MMA-guided molecular graph construction.
+\textbf{e}, Candidate-specific fragmentation evidence and spectral discrimination.
+\textbf{f}, Paired molecular--spectral examples, structure-only molecules, spectrum-only measurements and model-generated experience.
+\textbf{g}, Information-guided experience selection and task-specific knowledge or model updates.
+\textbf{h}, A Scientific Improver selects bounded interventions from training failures, evaluates updates against a calibration baseline and retains outcomes for subsequent decisions.
+The schematic illustrates system mechanisms; experimental performance and autonomous improvement are evaluated separately.}
+\label{fig:orbit_method}
+\end{figure}
 
 \clearpage
 \section*{Results}
