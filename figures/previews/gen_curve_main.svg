@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="510" viewBox="0 0 1080 510">
+<rect width="1080" height="510" fill="white"/>
+<text x="80" y="43" font-family="Arial" font-size="23" fill="#223743" font-weight="600">ORBIT-MS cumulative development · Gen0–19</text>
+<line x1="78" x2="1042" y1="375" y2="375" stroke="#D3D8DB" opacity=".7"/><text x="66" y="379" text-anchor="end" font-family="Arial" font-size="14" fill="#526068">0%</text>
+<line x1="78" x2="1042" y1="319" y2="319" stroke="#D3D8DB" opacity=".7"/><text x="66" y="323" text-anchor="end" font-family="Arial" font-size="14" fill="#526068">5%</text>
+<line x1="78" x2="1042" y1="263" y2="263" stroke="#D3D8DB" opacity=".7"/><text x="66" y="267" text-anchor="end" font-family="Arial" font-size="14" fill="#526068">10%</text>
+<line x1="78" x2="1042" y1="207" y2="207" stroke="#D3D8DB" opacity=".7"/><text x="66" y="211" text-anchor="end" font-family="Arial" font-size="14" fill="#526068">15%</text>
+<line x1="78" x2="1042" y1="151" y2="151" stroke="#D3D8DB" opacity=".7"/><text x="66" y="155" text-anchor="end" font-family="Arial" font-size="14" fill="#526068">20%</text>
+<line x1="78" x2="1042" y1="95" y2="95" stroke="#D3D8DB" opacity=".7"/><text x="66" y="99" text-anchor="end" font-family="Arial" font-size="14" fill="#526068">25%</text>
+<path d="M78.0,375.0 L215.7,369.2 L353.4,366.9 L491.1,356.5 L628.9,334.9 L766.6,291.2 L904.3,291.2 L1042.0,274.3 " fill="none" stroke="#25465D" stroke-width="3"/>
+<circle cx="78" cy="375" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<circle cx="215.71428571428572" cy="369.17600000000004" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<circle cx="353.42857142857144" cy="366.93600000000004" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<circle cx="491.14285714285717" cy="356.52" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<circle cx="628.8571428571429" cy="334.904" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<circle cx="766.5714285714286" cy="291.224" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<circle cx="904.2857142857143" cy="291.224" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<circle cx="1042" cy="274.312" r="5.5" fill="#25465D" stroke="white" stroke-width="1.4"/>
+<line x1="78" x2="105" y1="70" y2="70" stroke="#25465D" stroke-width="4"/><text x="114" y="75" font-family="Arial" font-size="15" fill="#3d5058">Exact@1</text>
+<path d="M78.0,375.0 L215.7,344.5 L353.4,337.8 L491.1,330.9 L628.9,285.3 L766.6,222.9 L904.3,222.9 L1042.0,213.6 " fill="none" stroke="#397D83" stroke-width="3"/>
+<circle cx="78" cy="375" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<circle cx="215.71428571428572" cy="344.53600000000006" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<circle cx="353.42857142857144" cy="337.816" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<circle cx="491.14285714285717" cy="330.87199999999996" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<circle cx="628.8571428571429" cy="285.288" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<circle cx="766.5714285714286" cy="222.904" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<circle cx="904.2857142857143" cy="222.904" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<circle cx="1042" cy="213.608" r="5.5" fill="#397D83" stroke="white" stroke-width="1.4"/>
+<line x1="298" x2="325" y1="70" y2="70" stroke="#397D83" stroke-width="4"/><text x="334" y="75" font-family="Arial" font-size="15" fill="#3d5058">Exact@10</text>
+<path d="M78.0,375.0 L215.7,306.2 L353.4,258.0 L491.1,233.9 L628.9,118.6 L766.6,118.6 L904.3,113.7 " fill="none" stroke="#899398" stroke-width="3"/>
+<circle cx="78" cy="375" r="5.5" fill="#899398" stroke="white" stroke-width="1.4"/>
+<circle cx="215.71428571428572" cy="306.23199999999997" r="5.5" fill="#899398" stroke="white" stroke-width="1.4"/>
+<circle cx="353.42857142857144" cy="257.96000000000004" r="5.5" fill="#899398" stroke="white" stroke-width="1.4"/>
+<circle cx="491.14285714285717" cy="233.88" r="5.5" fill="#899398" stroke="white" stroke-width="1.4"/>
+<circle cx="628.8571428571429" cy="118.63199999999999" r="5.5" fill="#899398" stroke="white" stroke-width="1.4"/>
+<circle cx="766.5714285714286" cy="118.63199999999999" r="5.5" fill="#899398" stroke="white" stroke-width="1.4"/>
+<circle cx="904.2857142857143" cy="113.70400000000002" r="5.5" fill="#899398" stroke="white" stroke-width="1.4"/>
+<line x1="518" x2="545" y1="70" y2="70" stroke="#899398" stroke-width="4"/><text x="554" y="75" font-family="Arial" font-size="15" fill="#3d5058">Reach</text>
+<text x="78" y="420" transform="rotate(-22 78 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 0</text>
+<text x="215.71428571428572" y="420" transform="rotate(-22 215.71428571428572 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 1-3</text>
+<text x="353.42857142857144" y="420" transform="rotate(-22 353.42857142857144 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 4-5</text>
+<text x="491.14285714285717" y="420" transform="rotate(-22 491.14285714285717 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 6-7</text>
+<text x="628.8571428571429" y="420" transform="rotate(-22 628.8571428571429 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 8-10</text>
+<text x="766.5714285714286" y="420" transform="rotate(-22 766.5714285714286 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 11-14</text>
+<text x="904.2857142857143" y="420" transform="rotate(-22 904.2857142857143 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 15-16</text>
+<text x="1042" y="420" transform="rotate(-22 1042 420)" text-anchor="end" font-family="Arial" font-size="15" fill="#46555B">Gen 17-19 + H1/H2</text>
+<text x="80" y="492" font-family="Arial" font-size="13" fill="#55646d">Full TEST n=17,556; grouped checkpoints; last Reach withheld as archive values differ.</text>
+</svg>
