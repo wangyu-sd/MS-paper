@@ -1,0 +1,477 @@
+{
+  "design_pr": {
+    "url": "https://github.com/wangyu-sd/MS-paper/pull/13",
+    "head": "b53a2b9351597312e41f773df2459df194441aa8"
+  },
+  "code_pr_heads": {
+    "95": "97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d",
+    "96": "c63c32ce24b29d959164c2b081e511b25641a1c4"
+  },
+  "code_sources": {
+    "src/orbit_ms/wgv/peak_fragment_prior.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/src/orbit_ms/wgv/peak_fragment_prior.py",
+      "sha256": "275073770d483f395293b1e01f52ba32cf1750cd4d82672e02236137220d21d3"
+    },
+    "scripts/plot_pr93_paper_figures.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/scripts/plot_pr93_paper_figures.py",
+      "sha256": "2d9d94d0a26c3ddd79ad93be5d8045bbde92fbbf130e6d82fa8999afee3d1575"
+    },
+    "scripts/plot_pr93_gen7_reasoning_trajectories.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/scripts/plot_pr93_gen7_reasoning_trajectories.py",
+      "sha256": "a57ffd0ccbf545fdfa8116cb92b5a1b8ee85b4599c98024723b1f501fcb9c59f"
+    },
+    "src/orbit_ms/wgv/cocograph_v4_peak_msa.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/src/orbit_ms/wgv/cocograph_v4_peak_msa.py",
+      "sha256": "6ffd93722f0ed739b1f098d5a76b776b5deb766130d26e3b2ccdfafbba754e50"
+    },
+    "src/orbit_ms/wgv/peak_ladder_motif.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/src/orbit_ms/wgv/peak_ladder_motif.py",
+      "sha256": "319e1f9f0a57c5bfc74b63f46dda559e841ffbb87b286c311c25da99a398ac5f"
+    },
+    "src/orbit_ms/wgv/peak_ladder_scaffold.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/src/orbit_ms/wgv/peak_ladder_scaffold.py",
+      "sha256": "b619dd76bd07c2e8f4cd15841b0937e2c176d6e0f2a962c36d31563ac8bbb106"
+    },
+    "src/orbit_ms/wgv/v_set_mma.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/src/orbit_ms/wgv/v_set_mma.py",
+      "sha256": "ed4227f5a534f5ac97ce31561cf0d5f64eb17a2dfa2b02b18db59f1aec0a8c4c"
+    },
+    "scripts/build_pr93_unlabeled_gems_rsi_cycle.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/scripts/build_pr93_unlabeled_gems_rsi_cycle.py",
+      "sha256": "13dce4127b9ccee3d0485c397b1e2d2f2344cdd20bcbfa3bace391daa686e4b7"
+    },
+    "scripts/run_pr93_autonomous_rsi.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/97444cc648f318e0eb2e0fbbce5fecc3cbc6e43d/scripts/run_pr93_autonomous_rsi.py",
+      "sha256": "fa2e8d98a7741bcfd62a68c340cfab4304f79bbe3c062127a4c5a1f83dd4c5b1"
+    },
+    "src/orbit_ms/agents/scientific_improver.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/c63c32ce24b29d959164c2b081e511b25641a1c4/src/orbit_ms/agents/scientific_improver.py",
+      "sha256": "fdae2b821a5416724c6381df21668b70ca4806010c61982d0fee2659db8e74bf"
+    },
+    "scripts/run_pr93_scientific_improver.py": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/c63c32ce24b29d959164c2b081e511b25641a1c4/scripts/run_pr93_scientific_improver.py",
+      "sha256": "d5c14f4a1d0d7db4f7f100f47356005de2ec1f8dd4cce2709cbbd2494db70cec"
+    },
+    "docs/results/PR96_SCIENTIFIC_RSI_CLUSTER_REPRO.md": {
+      "url": "https://github.com/wangyu-sd/orbit-ms/blob/c63c32ce24b29d959164c2b081e511b25641a1c4/docs/results/PR96_SCIENTIFIC_RSI_CLUSTER_REPRO.md",
+      "sha256": "9528802e007bbe7932d98bbaa6cd06515f843bd571a7e68e651ffdfd57e3e85a"
+    }
+  },
+  "query": {
+    "id": "MassSpecGymID0002114",
+    "dataset": "MassSpecGym",
+    "split": "test",
+    "dataset_url": "https://huggingface.co/datasets/roman-bushuiev/MassSpecGym/resolve/1b6d1ec/data/MassSpecGym.tsv",
+    "dataset_sha256": "0c9cc50450def3f0d4fe2dc09dea1105fc15e635db8c6656bc3e3be37a3bcd95",
+    "tsv_row_sha256": "837f33aab66ed8a2ad0dd1f5a381fccdce8916b702fe08905804362458688ac7",
+    "instrument_type": "Orbitrap",
+    "collision_energy_as_reported": "55.0",
+    "adduct": "[M+H]+",
+    "precursor_mz": 493.2804,
+    "reference_formula": "C28H36N4O4",
+    "reference_smiles": "CC(C)C1C(=O)NC(C(=O)NC(C(=O)NC(C(=O)N1)CC2=CC=CC=C2)CC3=CC=CC=C3)C(C)C",
+    "reference_inchikey14": "OWKLJRMFTXDULF",
+    "peaks": [
+      [
+        72.0816,
+        0.46959673
+      ],
+      [
+        90.9773,
+        0.57963063
+      ],
+      [
+        120.0808,
+        1.0
+      ],
+      [
+        120.0893,
+        0.03231163
+      ]
+    ]
+  },
+  "candidates": {
+    "source": "scripts/plot_pr93_gen7_reasoning_trajectories.py",
+    "source_line": 493,
+    "M1": {
+      "smiles": "CCCC1NC(=O)C(Cc2ccccc2)NC(=O)C(Cc2ccccc2)NC(=O)C(C(C)C)NC1=O",
+      "formula": "C28H36N4O4",
+      "inchikey14": "WDSYSVKNMRFAGY",
+      "role": "source-depicted first-round G candidate"
+    },
+    "M2": {
+      "smiles": "CC(C)C1NC(=O)C(Cc2ccccc2)NC(=O)C(Cc2ccccc2)NC(=O)C(C(C)C)NC1=O",
+      "formula": "C28H36N4O4",
+      "inchikey14": "OWKLJRMFTXDULF",
+      "role": "source-depicted second-round local refinement; reference connectivity"
+    },
+    "scope": "Same-formula structures from a historical refinement example. This pair is not a logged fixed candidate pool or a direct G versus W/V rerank."
+  },
+  "source_depicted_g_states": {
+    "source": "scripts/plot_pr93_paper_figures.py",
+    "source_line": 133,
+    "states": [
+      {
+        "smiles": "NCCc1ccccc1",
+        "formula": "C8H11N",
+        "inchikey14": "BHHGXPLMPWCGHP",
+        "source_label": "Step 1: mstart (Phenethylamine Motif)",
+        "source_highlight_smiles": "NCCc1ccccc1"
+      },
+      {
+        "smiles": "O=C(CCc1ccccc1)NCCc1ccccc1",
+        "formula": "C17H19NO",
+        "inchikey14": "HIUONFHURKCCKW",
+        "source_label": "Step 2: mattach (Second Phe Motif + =O)",
+        "source_highlight_smiles": "CCCc1ccccc1"
+      },
+      {
+        "smiles": "CC(NC(=O)C(Cc1ccccc1)NC(=O)CCc1ccccc1)C(N)=O",
+        "formula": "C21H25N3O3",
+        "inchikey14": "ITHWMHHKCWEALD",
+        "source_label": "Step 3: mattach (Dipeptide Amide Unit)",
+        "source_highlight_smiles": "CC(NC=O)C(N)=O"
+      },
+      {
+        "smiles": "CC(C)C1NC(=O)C(Cc2ccccc2)NC(=O)C(Cc2ccccc2)NC(=O)C(C(C)C)NC1=O",
+        "formula": "C28H36N4O4",
+        "inchikey14": "OWKLJRMFTXDULF",
+        "source_label": "Step 4: Macrocycle Closure -> Rank #1 Hit!",
+        "source_highlight_smiles": "C1NC(=O)CNC(=O)CNC(=O)CNC1=O"
+      }
+    ],
+    "scope": "RDKit structures transcribed from the upstream Fig. 9 drawing script. This is a documented construction illustration, not a saved checkpoint rollout or a trace for M1. No checkpoint hash or raw per-step action receipt was available."
+  },
+  "mma_alignment": {
+    "status": "Code replay of motif_graph/template_features on the published motif/partial-graph pair. Correspondence indices are real; no learned activations, retrieval scores, or execution claims.",
+    "peak_index": 2,
+    "observed_mz": 120.0808,
+    "mass_error_da": 2.425990899723729e-05,
+    "ion_formula": "C8H10N+",
+    "motif": {
+      "smiles": "NCCc1ccccc1",
+      "formula": "C8H11N",
+      "inchikey14": "BHHGXPLMPWCGHP"
+    },
+    "mass_scope": "Calculated composition compatible with the measured peak. The neutral motif SMILES is the source-depicted graph and its formula differs from the ion formula. The source does not provide this query's peak-to-motif retrieval receipt.",
+    "support_prior": null,
+    "alternate_motifs": null,
+    "ion_exact_mz": 120.080775740091,
+    "motif_graph": {
+      "z": [
+        7,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "x": [
+        [
+          0.0,
+          0.0,
+          0.25,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          1.0,
+          0.75,
+          0.0
+        ],
+        [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ]
+      ],
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "kinds": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "alignment": [
+      [
+        10,
+        0,
+        0
+      ],
+      [
+        11,
+        0,
+        1
+      ],
+      [
+        12,
+        0,
+        2
+      ],
+      [
+        13,
+        0,
+        3
+      ],
+      [
+        14,
+        0,
+        4
+      ],
+      [
+        15,
+        0,
+        5
+      ],
+      [
+        16,
+        0,
+        6
+      ],
+      [
+        17,
+        0,
+        7
+      ],
+      [
+        18,
+        0,
+        8
+      ]
+    ],
+    "bond_units": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        1,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        13,
+        14
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        17,
+        18
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        18,
+        13
+      ]
+    ],
+    "matched_internal_bonds": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      19
+    ],
+    "matched_boundary_bonds": [
+      9
+    ]
+  },
+  "unset_assets": {
+    "b1": "TRAIN/W mined precursor-fragment linkage, supporting source groups.",
+    "b2": "Actual top-K candidate list and per-candidate support, prior and peak weight.",
+    "c": "Original checkpoint rollout and same-query candidate-wise W structural-ion receipts, V per-peak matches and fixed-pool score/rank receipts. Earlier drawing-script peak annotations that are absent from the pinned measured row were discarded.",
+    "e": "No completed controlled PR96 episode receipt was found. The controller is shown schematically."
+  },
+  "rendering": {
+    "rdkit": "2025.09.3",
+    "stereochemistry": "Connectivity diagrams, not stereochemical assignment."
+  }
+}
