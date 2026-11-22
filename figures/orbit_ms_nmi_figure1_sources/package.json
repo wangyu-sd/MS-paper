@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "Native Chromium PDF export for the ORBIT-MS editable SVG",
+  "dependencies": {
+    "playwright": "^1.56.1"
+  }
+}

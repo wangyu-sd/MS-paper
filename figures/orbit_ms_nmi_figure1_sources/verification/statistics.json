@@ -1,0 +1,59 @@
+{
+  "pdf_pages": 1,
+  "page_points": [
+    0.0,
+    0.0,
+    510.2362060546875,
+    287.8099060058594
+  ],
+  "page_mm": [
+    179.99999491373697,
+    101.53293906317816
+  ],
+  "pdf_image_count": 0,
+  "pdf_path_objects": 2315,
+  "pdf_text_characters": 2676,
+  "font_families": [
+    "Arial-BoldItalicMT",
+    "Arial-BoldMT",
+    "Arial-ItalicMT",
+    "ArialMT",
+    "TimesNewRomanPS-BoldItal",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+  ],
+  "embedded_font_records": 42,
+  "svg_objects": {
+    "svg": 20,
+    "title": 260,
+    "defs": 1,
+    "marker": 6,
+    "path": 1892,
+    "rect": 184,
+    "text": 222,
+    "g": 240,
+    "tspan": 32,
+    "circle": 111,
+    "ellipse": 72
+  },
+  "source_png": "/Users/wangyu/.codex/worktrees/8b55/\u4ee3\u8c22\u8c31\u56fe/ms-paper-vector/figures/orbit_ms_nmi_figure1_sources/revision_reference.png",
+  "source_sha256": "b3b7b474981ba4284cf0a35a4c0ba7d27dd31aca42b2450af2017d31ac3da4f1",
+  "reference_pixels": [
+    1670,
+    942
+  ],
+  "changed_pixel_fraction": 0.9346701501455688,
+  "mean_absolute_channel_error_0_255": 26.478434426264243,
+  "max_channel_error": 255,
+  "native_text_clipped": [],
+  "native_text_overlaps": [],
+  "connector_text_crossings": [],
+  "minimum_pdf_type_points": 2.844200849533081,
+  "body_13_svg_pixels_in_pdf_points": 3.971898722240559,
+  "kg_nodes": 91,
+  "verified_kg_edges": 102,
+  "pdf_sha256": "51d593993e28c3302482ebdedfdd5f1eae3876c1c180380c8a4d0f750c375483",
+  "svg_sha256": "c19ba5c89e40df2c928c1049e4233d3c80c53c80969387068781acb0cfa9b436",
+  "note": "Differences include scientific replacements of malformed generated molecules and native font/rasterization differences; pixel equality is not expected."
+}
