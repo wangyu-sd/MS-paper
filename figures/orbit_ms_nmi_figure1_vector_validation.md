@@ -1,26 +1,13 @@
-# ORBIT-MS Figure 1 chemical atlas redesign
+# ORBIT-MS Figure 1 integrated scientific revision
 
-The baseline is the vector figure at PR #18 commit `23fa6e8`. The [before/after preview](orbit_ms_nmi_figure1_atlas_before_after.png) shows both PDF renders at equal width.
+The [selected PNG](orbit_ms_nmi_figure1_sources/revision_reference.png) set the content baseline. The [scientific object inventory](orbit_ms_nmi_figure1_sources/integrated_content.md) records the locked assets and their source. The [three-way comparison](orbit_ms_nmi_figure1_integrated_comparison.png) shows the selected PNG, the preceding vector draft and the integrated revision at the same width.
 
-| Area | Editorial change |
-| --- | --- |
-| a–b | The spectrum, molecular formula and A/B pointer explain ambiguity. Complete candidate structures appear once, in e. The inference band separates G/W/V flow from the measured-spectrum connection into V. |
-| c–e | d occupies about 50% of the middle band. The archived graph, highlighted neighborhood and RDKit structures are the main visual sequence. The atom correspondence, alignment, backbone and constrained replay replace separate model cards. c and e use matching label hierarchy and short panel references for retrieved motifs and candidates. |
-| f–g | Four actual records replace repeated input/output graphics. Row numbers connect the experiences to a quieter, illustrative sampling matrix. The brief output strip gives the three distinct learning routes. |
-| h | Decision and controlled evaluation occupy separate rows. The pipeline distinguishes promotion and retention. A short dashed connector points episode memory to the next hypothesis. |
+The d panel was rebuilt and rendered first. The 91-node graph links to a six-motif chemical neighborhood. Teal identifiers 2 and 3 carry compatible motifs into encoding, and the measured 120.0808 peak feeds attention separately. Motif 2 then reappears in the archived atom correspondence. Peak memory and graph information feed the shared state before hybrid action selection. The `mattach` before/after object uses a chemically valid reference-conditioned replay. See the [panel d detail](orbit_ms_nmi_figure1_sources/verification/integrated-d-detail.png).
 
-The canvas uses neutral separators, fixed arrowhead sizes, recurring alignment lines and the requested charcoal, slate, teal, copper and violet palette. Compared with the baseline, extracted English words fell from 334 to 210, and editable rectangles fell from 184 to 49. The counts describe layout density and include structural and technical labels.
+The integration pass restored both A/B candidates to a, the source-to-extracted motif graphic to c, and both calculated fragment skeletons to e. The A-only peak has weak support. The W labels are calculated ion masses paired with source graph skeletons. The measured peaks and candidate-specific evidence remain independent inputs to V. In h, the paired CAL panel shows baseline and trial columns, the gate has promotion and retention exits, and episode memory routes back to the hypothesis.
 
-At 180 mm page width, panel letters are approximately 12.5 pt, titles 9.3 pt and mechanism headings 8.1 pt. Main labels are generally 6.5–7.3 pt. Some compact metadata and numeric ticks are about 6.1–6.4 pt, and chemical subscripts and atom glyphs are smaller. The page was reviewed at 180 mm and at 2× raster scale, checking d's molecular bounds and atom mapping, e's evidence symbols, f/g's alignment and h's gate and memory connections. The final motif depictions have extra internal padding to clear terminal atoms and ring vertices. Automated checks found no label overlap, panel overflow or sampled connector/label crossings.
+The f/g pair retains the measured MassSpecGym training record, structure-only Sleep, spectrum-only Wake and generated Hindsight. Indexed rows link these examples to the illustrative entropy, composition, ring rarity and source-priority matrix. The model, knowledge and verification outputs are distinct task routes.
 
-The editable SVG and PDF contain no raster images. The PDF has 1,541 vector drawing objects and embedded, searchable Arial and Times New Roman. The verifier checks the spectra against their recorded centroids and normalized intensities. It also checks the chemical source records, atom mapping and all 102 displayed containment edges.
+At 180 mm, panel letters are about 11.6 pt, panel titles 9.3 pt and key headings 8.1 pt. Ordinary labels are around 6.3–7.3 pt, with smaller chemical indices. The layout was inspected at the 180 mm page width and in 200% detail crops. The smallest chemical labels are in a and f. The two near-coincident benchmark peaks are retained as separate source values, with an independent label for each in the evidence matrix.
 
-## Material for the figure caption
-
-- The benchmark trace and evidence matrix are for MassSpecGym 0002114. The precursor is [M+H]+ at m/z 493.2804. The close 120.0808/120.0893 observed sticks remain separate in the SVG and are listed independently in e.
-- The overview is a 91-node archived sample. The containment network is independent of retrieval score; motif 2 is phenethylamine and motif 3 is N-ethylaniline. The group counts are for mined source shards. The ion lookup is also supported by paired TRAIN and W simulations.
-- The atom correspondence illustrates an archived marked substructure. Motif Atom Memory is used when enabled. The before/after example is a reference-conditioned motif attachment replay. A/B in e are benchmark candidates.
-- The four acquisition rows reuse the measured TRAIN record and archived Sleep, Wake and Hindsight examples. The bars illustrate weighting rather than reporting fitted weights. Evidence/scaffold filters precede sampling, and TRAIN anchors contribute to learning.
-- The agent uses a TRAIN FIT diagnostic subset and a separate, matched CAL set. W is frozen. Only promotion advances the WGV generation. Episode memory informs the next hypothesis. Collecting evidence can update memory directly.
-
-The [source inventory](orbit_ms_nmi_figure1_sources/README.md) records the underlying cases and rebuild commands.
+The 180 × 101.53 mm PDF retains 1,840 vector drawing objects, searchable embedded Arial and Times New Roman and no images. SVG checks protect the locked A/B, W fragment, six-neighborhood and attachment assets. The validator also tests atom mapping, all 102 containment edges, source peak values and stick heights, text boundaries and connector/label intersections. Text overflow, overlaps and connector/label intersections all passed.
